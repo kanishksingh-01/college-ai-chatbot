@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College AI Chatbot</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <h2>🎓 College AI Chatbot</h2>
+    <div class="topbar-right">
+        {% if student_name %}
+            <span>Logged in as {{ student_name }}</span>
+            <a href="/logout" class="link-btn">Logout</a>
+        {% else %}
+            <a href="/login" class="link-btn">Student Login</a>
+        {% endif %}
+        <a href="/admin" class="link-btn admin-link">Admin</a>
+    </div>
+</div>
+
+<div class="chat-container">
+    <div id="chat-box" class="chat-box">
+        <div class="bot-msg">
+            👋 Hi! I'm your college assistant. Ask me about admission, fees, exam
+            timetable, attendance, library timings, courses, or faculty contacts.
+            {% if not student_name %}
+                <br><br>Tip: <a href="/login">Log in with your roll number</a> to get
+                personalized answers about your own attendance, fees, or exam date.
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="chat-input-row">
+        <input type="text" id="user-input" placeholder="Type your question..." autocomplete="off">
+        <button id="send-btn">Send</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

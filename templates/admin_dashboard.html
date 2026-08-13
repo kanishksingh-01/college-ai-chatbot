@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="topbar">
+    <h2>⚙️ Admin Dashboard</h2>
+    <div class="topbar-right">
+        <a href="/" class="link-btn">View Chatbot</a>
+        <a href="/admin/logout" class="link-btn">Logout</a>
+    </div>
+</div>
+
+<div class="admin-container">
+
+    <section class="admin-section">
+        <h3>Add New FAQ</h3>
+        <form method="POST" action="/admin/add" class="admin-form">
+            <input type="text" name="category" placeholder="Category (e.g. Hostel)" required>
+            <input type="text" name="keywords" placeholder="Keywords, comma separated (e.g. hostel,room,accommodation)" required>
+            <textarea name="answer" placeholder="Answer text" rows="3" required></textarea>
+            <button type="submit">Add FAQ</button>
+        </form>
+    </section>
+
+    <section class="admin-section">
+        <h3>Existing FAQs ({{ faqs|length }})</h3>
+        <table class="admin-table">
+            <tr><th>Category</th><th>Keywords</th><th>Answer</th><th></th></tr>
+            {% for f in faqs %}
+            <tr>
+                <td>{{ f.category }}</td>
+                <td>{{ f.keywords }}</td>
+                <td class="answer-cell">{{ f.answer }}</td>
+                <td><a href="/admin/delete/{{ f.id }}" class="delete-btn" onclick="return confirm('Delete this FAQ?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section class="admin-section">
+        <h3>Recent Chat History (last 50)</h3>
+        <table class="admin-table">
+            <tr><th>Roll No</th><th>Query</th><th>Response</th><th>Time</th></tr>
+            {% for h in history %}
+            <tr>
+                <td>{{ h.roll_no or "-" }}</td>
+                <td>{{ h.user_query }}</td>
+                <td class="answer-cell">{{ h.bot_response }}</td>
+                <td>{{ h.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+</div>
+
+</body>
+</html>
