@@ -4,11 +4,16 @@ Flask backend for the AI Chatbot for College project.
 Run: python app.py   (make sure you've run database.py first)
 """
 
+import os
+import re
 import sqlite3
+import difflib
 from flask import Flask, request, jsonify, session, render_template, redirect, url_for
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = "change-this-secret-key-before-submission"  # used for session/login
+# In production (Render), set SECRET_KEY as an environment variable instead of hardcoding it.
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key-change-before-submission")
 DB_NAME = "college_chatbot.db"
 
 
@@ -18,31 +23,56 @@ def get_db():
     return conn
 
 
-# ---------------- CHATBOT LOGIC (rule-based keyword matching) ----------------
+# ---------------- CHATBOT LOGIC (rule-based keyword matching with fuzzy fallback) ----------------
 
 def match_query(message):
     """
-    Very simple rule-based NLP: lowercase the message, then check it against
-    each category's keyword list. Returns the first matching answer, or a
-    fallback message if nothing matches.
+    Rule-based NLP with light fuzzy matching:
+    1. Exact substring match against each category's keyword list (strongest signal).
+    2. If nothing matches exactly, try close-match (typo tolerant) comparison against
+       individual words in the message, using difflib's sequence matching.
+    Returns (answer, category) or a fallback message if nothing matches well enough.
     """
-    message = message.lower()
+    message_lower = message.lower()
+    words = re.findall(r"[a-zA-Z]+", message_lower)
+
     conn = get_db()
     rows = conn.execute("SELECT category, keywords, answer FROM college_info").fetchall()
     conn.close()
 
+    best_row = None
+    best_score = 0
+
     for row in rows:
         keywords = [k.strip() for k in row["keywords"].split(",")]
+        score = 0
         for kw in keywords:
-            if kw in message:
-                return row["answer"], row["category"]
+            if kw in message_lower:
+                score += 2  # exact substring match is a strong signal
+            else:
+                close = difflib.get_close_matches(kw, words, n=1, cutoff=0.82)
+                if close:
+                    score += 1  # fuzzy/typo-tolerant match is a weaker signal
+        if score > best_score:
+            best_score = score
+            best_row = row
+
+    if best_row:
+        return best_row["answer"], best_row["category"]
 
     return (
         "Sorry, I couldn't understand that. You can ask me about admission, "
         "fees, exam timetable, attendance, library timings, courses, or faculty "
-        "contacts.",
+        "contacts \u2014 or tap one of the buttons above.",
         None,
     )
+
+
+def get_categories():
+    conn = get_db()
+    rows = conn.execute("SELECT DISTINCT category FROM college_info ORDER BY id").fetchall()
+    conn.close()
+    return [r["category"] for r in rows]
 
 
 def personalized_answer(message, roll_no):
@@ -77,13 +107,17 @@ def personalized_answer(message, roll_no):
 
 @app.route("/")
 def home():
-    return render_template("index.html", student_name=session.get("student_name"))
+    return render_template(
+        "index.html",
+        student_name=session.get("student_name"),
+        categories=get_categories(),
+    )
 
 
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json()
-    user_message = data.get("message", "").strip()
+    user_message = (data.get("message") or "").strip()
 
     if not user_message:
         return jsonify({"response": "Please type a question."})
@@ -108,7 +142,7 @@ def chat():
     conn.commit()
     conn.close()
 
-    return jsonify({"response": bot_response})
+    return jsonify({"response": bot_response, "category": category})
 
 
 # ---------------- ROUTES: STUDENT LOGIN ----------------
@@ -151,12 +185,11 @@ def admin_login():
         password = request.form.get("password", "").strip()
         conn = get_db()
         admin = conn.execute(
-            "SELECT * FROM admin WHERE username = ? AND password = ?",
-            (username, password),
+            "SELECT * FROM admin WHERE username = ?", (username,)
         ).fetchone()
         conn.close()
 
-        if admin:
+        if admin and check_password_hash(admin["password_hash"], password):
             session["is_admin"] = True
             return redirect(url_for("admin_dashboard"))
         else:
@@ -211,6 +244,23 @@ def admin_delete(faq_id):
     return redirect(url_for("admin_dashboard"))
 
 
+@app.route("/admin/change_password", methods=["POST"])
+def admin_change_password():
+    if not session.get("is_admin"):
+        return redirect(url_for("admin_login"))
+
+    new_password = request.form.get("new_password", "").strip()
+    if new_password:
+        conn = get_db()
+        conn.execute(
+            "UPDATE admin SET password_hash = ? WHERE username = ?",
+            (generate_password_hash(new_password), "admin"),
+        )
+        conn.commit()
+        conn.close()
+    return redirect(url_for("admin_dashboard"))
+
+
 @app.route("/admin/logout")
 def admin_logout():
     session.pop("is_admin", None)
@@ -218,4 +268,5 @@ def admin_logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host="0.0.0.0")
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)

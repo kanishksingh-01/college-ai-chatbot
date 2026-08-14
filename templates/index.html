@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>College AI Chatbot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College AI Assistant</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="topbar">
-    <h2>🎓 College AI Chatbot</h2>
+    <div class="brand">
+        <span class="brand-icon">🎓</span>
+        <div>
+            <div class="brand-title">GH Raisoni College Assistant</div>
+            <div class="brand-subtitle">AI Chatbot &middot; BBA Computer Applications</div>
+        </div>
+    </div>
     <div class="topbar-right">
         {% if student_name %}
-            <span>Logged in as {{ student_name }}</span>
+            <span class="user-chip">👤 {{ student_name }}</span>
             <a href="/logout" class="link-btn">Logout</a>
         {% else %}
             <a href="/login" class="link-btn">Student Login</a>
@@ -22,19 +30,29 @@
 
 <div class="chat-container">
     <div id="chat-box" class="chat-box">
-        <div class="bot-msg">
-            👋 Hi! I'm your college assistant. Ask me about admission, fees, exam
-            timetable, attendance, library timings, courses, or faculty contacts.
-            {% if not student_name %}
-                <br><br>Tip: <a href="/login">Log in with your roll number</a> to get
-                personalized answers about your own attendance, fees, or exam date.
-            {% endif %}
+        <div class="msg-row bot-row">
+            <div class="avatar bot-avatar">🤖</div>
+            <div class="bot-msg">
+                Hi! I'm your college assistant. Ask me anything below, or tap a topic to get started.
+                {% if not student_name %}
+                    <br><br><a href="/login">Log in with your roll number</a> for personalized answers
+                    about your own attendance, fees, or exam date.
+                {% endif %}
+            </div>
         </div>
+
+        {% if categories %}
+        <div class="quick-replies">
+            {% for cat in categories %}
+                <button class="quick-reply-btn" data-query="{{ cat }}">{{ cat }}</button>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 
     <div class="chat-input-row">
         <input type="text" id="user-input" placeholder="Type your question..." autocomplete="off">
-        <button id="send-btn">Send</button>
+        <button id="send-btn" aria-label="Send">➤</button>
     </div>
 </div>
 

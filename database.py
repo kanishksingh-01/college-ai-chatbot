@@ -5,6 +5,7 @@ Run this once (python database.py) before starting app.py.
 """
 
 import sqlite3
+from werkzeug.security import generate_password_hash
 
 DB_NAME = "college_chatbot.db"
 
@@ -47,7 +48,7 @@ def init_db():
     cur.execute("""
     CREATE TABLE IF NOT EXISTS admin (
         username TEXT PRIMARY KEY,
-        password TEXT NOT NULL
+        password_hash TEXT NOT NULL
     )
     """)
 
@@ -139,8 +140,11 @@ def init_db():
 
     cur.execute("SELECT COUNT(*) FROM admin")
     if cur.fetchone()[0] == 0:
-        cur.execute("INSERT INTO admin (username, password) VALUES (?, ?)", ("admin", "admin123"))
-
+        # Default admin login: admin / admin123 — change this before final submission!
+        cur.execute(
+            "INSERT INTO admin (username, password_hash) VALUES (?, ?)",
+            ("admin", generate_password_hash("admin123"))
+        )
     conn.commit()
     conn.close()
     print("Database initialized: college_chatbot.db")

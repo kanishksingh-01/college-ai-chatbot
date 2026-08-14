@@ -21,6 +21,16 @@
 
 4. Open your browser to: http://127.0.0.1:5000
 
+## What's new in this version
+
+- Fuzzy/typo-tolerant matching (e.g. "libary timmings" still matches Library Timings)
+- Quick-reply category buttons under the welcome message
+- Typing indicator animation before bot responses
+- College-branded header and polished, mobile-responsive UI
+- Admin passwords are now securely hashed (not stored in plain text)
+- Admin can change their password from the dashboard
+- Reads PORT and SECRET_KEY from environment variables (Render-ready)
+
 ## Logins for demo
 
 **Student login** (try personalized questions like "what is my attendance" or "how much are my fees" after logging in):

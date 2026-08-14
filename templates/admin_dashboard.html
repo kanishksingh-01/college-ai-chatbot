@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | College AI Assistant</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <div class="topbar">
-    <h2>⚙️ Admin Dashboard</h2>
+    <div class="brand">
+        <span class="brand-icon">⚙️</span>
+        <div>
+            <div class="brand-title">Admin Dashboard</div>
+            <div class="brand-subtitle">College AI Assistant</div>
+        </div>
+    </div>
     <div class="topbar-right">
         <a href="/" class="link-btn">View Chatbot</a>
         <a href="/admin/logout" class="link-btn">Logout</a>
@@ -55,6 +62,14 @@
             </tr>
             {% endfor %}
         </table>
+    </section>
+
+    <section class="admin-section">
+        <h3>Change Admin Password</h3>
+        <form method="POST" action="/admin/change_password" class="admin-form">
+            <input type="password" name="new_password" placeholder="New password" required minlength="6">
+            <button type="submit">Update Password</button>
+        </form>
     </section>
 
 </div>
