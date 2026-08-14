@@ -163,7 +163,7 @@ def login():
             session["student_name"] = student["name"]
             return redirect(url_for("home"))
         else:
-            error = "Roll number not found. Please check and try again."
+            error = "Registration number not found. Please check and try again."
 
     return render_template("login.html", error=error)
 

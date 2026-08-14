@@ -34,9 +34,9 @@
 ## Logins for demo
 
 **Student login** (try personalized questions like "what is my attendance" or "how much are my fees" after logging in):
-- Roll No: ISTU25010120001 (Kanishk Singh — no pending fees)
-- Roll No: ISTU25010120002 (Vibhor Saini — Rs 5000 pending fees)
-- Roll No: ISTU25010120099 (Sample Student)
+- Registration No: STU2026001 (Demo Student A — no pending fees)
+- Registration No: STU2026002 (Demo Student B — Rs 5000 pending fees)
+- Registration No: STU2026003 (Demo Student C)
 
 **Admin login** (http://127.0.0.1:5000/admin):
 - Username: admin

@@ -129,9 +129,9 @@ def init_db():
     cur.execute("SELECT COUNT(*) FROM students")
     if cur.fetchone()[0] == 0:
         students_data = [
-            ("ISTU25010120001", "Kanishk Singh", 82.5, 0, "10-Dec-2026"),
-            ("ISTU25010120002", "Vibhor Saini", 78.0, 5000, "10-Dec-2026"),
-            ("ISTU25010120099", "Sample Student", 68.0, 12000, "10-Dec-2026"),
+            ("STU2026001", "Demo Student A", 82.5, 0, "10-Dec-2026"),
+            ("STU2026002", "Demo Student B", 78.0, 5000, "10-Dec-2026"),
+            ("STU2026003", "Demo Student C", 68.0, 12000, "10-Dec-2026"),
         ]
         cur.executemany(
             "INSERT INTO students (roll_no, name, attendance, fees_due, exam_date) VALUES (?, ?, ?, ?, ?)",
