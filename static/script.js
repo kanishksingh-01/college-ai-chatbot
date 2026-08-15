@@ -1,3 +1,52 @@
+function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// Converts a chunk of "| a | b |" pipe-table lines into a real <table>.
+// Any text outside table blocks is escaped and line-broken normally.
+function renderBotContent(text) {
+    const lines = text.split("\n");
+    let html = "";
+    let i = 0;
+
+    while (i < lines.length) {
+        const line = lines[i];
+
+        if (line.trim().startsWith("|")) {
+            // collect the contiguous block of table lines
+            const tableLines = [];
+            while (i < lines.length && lines[i].trim().startsWith("|")) {
+                tableLines.push(lines[i].trim());
+                i++;
+            }
+
+            const rows = tableLines
+                .map((l) => l.replace(/^\|/, "").replace(/\|$/, "").split("|").map((c) => c.trim()))
+                .filter((cells) => !cells.every((c) => /^-+$/.test(c))); // drop separator row
+
+            if (rows.length > 0) {
+                html += '<table class="bot-table">';
+                html += "<thead><tr>" + rows[0].map((c) => `<th>${escapeHtml(c)}</th>`).join("") + "</tr></thead>";
+                if (rows.length > 1) {
+                    html += "<tbody>";
+                    for (let r = 1; r < rows.length; r++) {
+                        html += "<tr>" + rows[r].map((c) => `<td>${escapeHtml(c)}</td>`).join("") + "</tr>";
+                    }
+                    html += "</tbody>";
+                }
+                html += "</table>";
+            }
+        } else {
+            html += escapeHtml(line) + "<br>";
+            i++;
+        }
+    }
+
+    return html;
+}
+
 const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
@@ -32,7 +81,7 @@ function appendBotMessage(text) {
         <div class="avatar bot-avatar">🤖</div>
         <div class="bot-msg"></div>
     `;
-    row.querySelector(".bot-msg").textContent = text;
+    row.querySelector(".bot-msg").innerHTML = renderBotContent(text);
     chatBox.appendChild(row);
     scrollToBottom();
 }

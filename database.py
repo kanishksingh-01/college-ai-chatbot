@@ -120,6 +120,17 @@ def init_db():
                 "| Accounts   | Prof. S. Iyer   | s.iyer@college.edu     |\n"
                 "For general queries, email info@college.edu or call the office at 020-1234567."
             ),
+            (
+                "Branch Change",
+                "change branch,change my branch,switch branch,transfer branch,branch change,"
+                "change course,change my course,switch course",
+                "If you want to change your branch, first contact your HOD. Once the HOD "
+                "approves, go to the college principal/director, who will provide further "
+                "details.\n"
+                "Note: If you change your course or branch, the fee structure may vary. If "
+                "the new fee is higher than your current one, you will need to pay the "
+                "difference. If the new fee is lower, the difference will be refunded."
+            ),
         ]
         cur.executemany(
             "INSERT INTO college_info (category, keywords, answer) VALUES (?, ?, ?)",
@@ -129,9 +140,9 @@ def init_db():
     cur.execute("SELECT COUNT(*) FROM students")
     if cur.fetchone()[0] == 0:
         students_data = [
-            ("STU2026001", "Demo Student A", 82.5, 0, "10-Dec-2026"),
-            ("STU2026002", "Demo Student B", 78.0, 5000, "10-Dec-2026"),
-            ("STU2026003", "Demo Student C", 68.0, 12000, "10-Dec-2026"),
+            ("ISTU00000001", "Demo Student A", 82.5, 0, "10-Dec-2026"),
+            ("ISTU00000002", "Demo Student B", 78.0, 5000, "10-Dec-2026"),
+            ("ISTU00000003", "Demo Student C", 68.0, 12000, "10-Dec-2026"),
         ]
         cur.executemany(
             "INSERT INTO students (roll_no, name, attendance, fees_due, exam_date) VALUES (?, ?, ?, ?, ?)",

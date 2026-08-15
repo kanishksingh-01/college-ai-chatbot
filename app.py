@@ -160,7 +160,14 @@ def chat():
 def login():
     error = None
     if request.method == "POST":
-        roll_no = request.form.get("roll_no", "").strip()
+        roll_no = request.form.get("roll_no", "").strip().upper()
+
+        if not roll_no.startswith("ISTU"):
+            return render_template(
+                "login.html",
+                error="Registration number should start with ISTU (e.g. ISTU00000001).",
+            )
+
         conn = get_db()
         student = conn.execute(
             "SELECT * FROM students WHERE roll_no = ?", (roll_no,)

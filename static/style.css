@@ -150,6 +150,33 @@ body {
     color: #2c5aa0;
 }
 
+/* Tables rendered inside bot messages (e.g. fee structure, timetable) */
+.bot-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 6px 0;
+    font-size: 13px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bot-table th, .bot-table td {
+    border: 1px solid #dbe2ee;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+.bot-table th {
+    background: #dce6f5;
+    color: #1e3d73;
+    font-weight: 600;
+}
+
+.bot-table tr:nth-child(even) td {
+    background: #f7f9fc;
+}
+
 /* Typing indicator */
 .typing-dots {
     display: inline-flex;
