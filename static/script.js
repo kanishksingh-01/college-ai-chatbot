@@ -2,6 +2,13 @@ const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
 
+// Register service worker so the app becomes installable (PWA)
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    });
+}
+
 function scrollToBottom() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }

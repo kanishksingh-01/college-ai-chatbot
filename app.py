@@ -8,7 +8,7 @@ import os
 import re
 import sqlite3
 import difflib
-from flask import Flask, request, jsonify, session, render_template, redirect, url_for
+from flask import Flask, request, jsonify, session, render_template, redirect, url_for, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
@@ -112,6 +112,15 @@ def home():
         student_name=session.get("student_name"),
         categories=get_categories(),
     )
+
+
+@app.route("/service-worker.js")
+def service_worker():
+    # Served from the root path (not /static/) so its scope covers the whole site,
+    # letting the PWA control every page, not just /static/.
+    response = send_from_directory("static", "service-worker.js")
+    response.headers["Service-Worker-Allowed"] = "/"
+    return response
 
 
 @app.route("/chat", methods=["POST"])
