@@ -78,6 +78,9 @@ def init_db():
             (
                 "Exam Timetable",
                 "exam,exams,timetable,time table,schedule,datesheet",
+                "Exam timetable will be displayed by the college as soon as exams are "
+                "announced. It is given by the class teacher as well as the Head of "
+                "Department (HOD) as per the academic calendar of the semester.\n\n"
                 "EXAM TIMETABLE (Semester III):\n"
                 "| Date       | Subject              | Time            |\n"
                 "|------------|----------------------|-----------------|\n"
