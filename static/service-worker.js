@@ -1,4 +1,4 @@
-const CACHE_NAME = "college-ai-chatbot-v1";
+const CACHE_NAME = "college-ai-chatbot-v2";
 const PRECACHE_URLS = [
   "/",
   "/static/style.css",
@@ -25,24 +25,29 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Network-first for /chat (always want fresh answers), cache-first for static assets
+// Network-first for everything: always try to fetch the latest version first,
+// so code/content updates show up immediately on next reload. Only fall back
+// to the cached copy if the network request fails (e.g. offline), which is
+// what actually makes this a usable "app" without going stale on every deploy.
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
   if (url.pathname === "/chat") {
-    return; // let it hit the network normally, no caching for live chat responses
+    return; // live chat responses should never be cached
   }
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return (
-        cached ||
-        fetch(event.request).catch(() => {
-          if (event.request.mode === "navigate") {
-            return caches.match("/");
-          }
-        })
-      );
-    })
+    fetch(event.request)
+      .then((response) => {
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request).then((cached) => {
+          if (cached) return cached;
+          if (event.request.mode === "navigate") return caches.match("/");
+        });
+      })
   );
 });
