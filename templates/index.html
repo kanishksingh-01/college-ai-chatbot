@@ -24,6 +24,7 @@
         </div>
     </div>
     <div class="topbar-right">
+        <button id="end-chat-btn" class="link-btn end-chat-btn" title="End conversation (Exit Session)">⏹ End Chat</button>
         {% if student_name %}
             <span class="user-chip">👤 {{ student_name }}</span>
             <a href="/logout" class="link-btn">Logout</a>
@@ -39,11 +40,13 @@
         <div class="msg-row bot-row">
             <div class="avatar bot-avatar">🤖</div>
             <div class="bot-msg">
-                Hi! I'm your college assistant. Ask me anything below, or tap a topic to get started.
-                {% if not student_name %}
-                    <br><br><a href="/login">Log in with your registration number</a> for personalized answers
-                    about your own attendance, fees, or exam date.
-                {% endif %}
+                <div class="bot-text">
+                    Hi! I'm your college assistant. Ask me anything below, or tap a topic to get started.
+                    {% if not student_name %}
+                        <br><br><a href="/login">Log in with your registration number</a> for personalized answers
+                        about your own attendance, fees, or exam date.
+                    {% endif %}
+                </div>
             </div>
         </div>
 

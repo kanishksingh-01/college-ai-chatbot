@@ -437,10 +437,176 @@ body {
         max-width: 88%;
         font-size: 14px;
     }
-    .quick-replies {
+    .quick-replies, .follow-up-bar {
         padding-left: 0;
     }
     .admin-container {
         margin: 12px auto;
     }
 }
+
+/* ---------- Polished Chat Loop & End Session Controls ---------- */
+
+.end-chat-btn {
+    border: none;
+    cursor: pointer;
+    background: rgba(239, 68, 68, 0.25);
+    color: #fff;
+    font-weight: 500;
+}
+
+.end-chat-btn:hover {
+    background: rgba(239, 68, 68, 0.45);
+}
+
+.bot-msg-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 11px;
+    gap: 12px;
+}
+
+.msg-time {
+    font-size: 11px;
+    color: #7b8ea5;
+    user-select: none;
+}
+
+.user-time {
+    color: rgba(255, 255, 255, 0.75);
+    text-align: right;
+    margin-top: 4px;
+    font-size: 10.5px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: none;
+    color: #4b6b94;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.copy-btn:hover {
+    background: rgba(44, 90, 160, 0.1);
+    color: #1e3d73;
+}
+
+/* Follow-up Loop Bar ("Ask another question?") */
+.follow-up-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: -4px;
+    margin-bottom: 6px;
+    padding-left: 38px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.follow-up-hint {
+    font-size: 11.5px;
+    color: #64748b;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.follow-up-chip {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.follow-up-chip:hover {
+    background: #f1f5f9;
+    border-color: #2c5aa0;
+    color: #1e3d73;
+    transform: translateY(-1px);
+}
+
+.follow-up-chip.end-chip {
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.follow-up-chip.end-chip:hover {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+/* Session Ended Card (UML End State) */
+.session-ended-card {
+    background: #f8fafc;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-align: center;
+    margin: 12px 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.session-ended-icon {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.session-ended-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.session-ended-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 14px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+.new-session-btn {
+    background: linear-gradient(135deg, #2c5aa0, #1e3d73);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 6px rgba(30, 61, 115, 0.2);
+}
+
+.new-session-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(30, 61, 115, 0.3);
+}
+
+.input-highlight {
+    border-color: #2c5aa0 !important;
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.2) !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

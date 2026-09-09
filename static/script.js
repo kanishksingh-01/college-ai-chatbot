@@ -50,6 +50,7 @@ function renderBotContent(text) {
 const chatBox = document.getElementById("chat-box");
 const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
+const endChatBtn = document.getElementById("end-chat-btn");
 
 // Register service worker so the app becomes installable (PWA)
 if ("serviceWorker" in navigator) {
@@ -58,18 +59,27 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+function formatTime(date = new Date()) {
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+}
+
 function scrollToBottom() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function appendUserMessage(text) {
+    // Remove previous follow-up bars
+    document.querySelectorAll(".follow-up-bar").forEach((bar) => bar.remove());
+
     const row = document.createElement("div");
     row.className = "msg-row user-row";
     row.innerHTML = `
-        <div class="user-msg"></div>
+        <div class="user-msg">
+            <div class="user-text">${escapeHtml(text)}</div>
+            <div class="msg-time user-time">${formatTime()}</div>
+        </div>
         <div class="avatar user-avatar">🧑</div>
     `;
-    row.querySelector(".user-msg").textContent = text;
     chatBox.appendChild(row);
     scrollToBottom();
 }
@@ -79,11 +89,115 @@ function appendBotMessage(text) {
     row.className = "msg-row bot-row";
     row.innerHTML = `
         <div class="avatar bot-avatar">🤖</div>
-        <div class="bot-msg"></div>
+        <div class="bot-msg">
+            <div class="bot-text">${renderBotContent(text)}</div>
+            <div class="bot-msg-footer">
+                <span class="msg-time">${formatTime()}</span>
+                <button class="copy-btn" title="Copy answer">📋 Copy</button>
+            </div>
+        </div>
     `;
-    row.querySelector(".bot-msg").innerHTML = renderBotContent(text);
+
+    const copyBtn = row.querySelector(".copy-btn");
+    copyBtn.addEventListener("click", () => {
+        const contentToCopy = row.querySelector(".bot-text").innerText;
+        navigator.clipboard.writeText(contentToCopy).then(() => {
+            copyBtn.textContent = "✓ Copied";
+            setTimeout(() => { copyBtn.textContent = "📋 Copy"; }, 1800);
+        }).catch(() => {});
+    });
+
     chatBox.appendChild(row);
+
+    // Provide follow-up options ("Ask another question?" loop)
+    appendFollowUpBar();
+
     scrollToBottom();
+    if (!userInput.disabled) {
+        userInput.focus();
+    }
+}
+
+function appendFollowUpBar() {
+    document.querySelectorAll(".follow-up-bar").forEach((b) => b.remove());
+
+    const bar = document.createElement("div");
+    bar.className = "follow-up-bar";
+    bar.innerHTML = `
+        <span class="follow-up-hint">Ask another question:</span>
+        <button class="follow-up-chip" data-action="focus">💬 Type Query</button>
+        <button class="follow-up-chip" data-query="Fee Structure">💰 Fees</button>
+        <button class="follow-up-chip" data-query="Exam Timetable">📅 Timetable</button>
+        <button class="follow-up-chip" data-query="Attendance Rules">📊 Attendance</button>
+        <button class="follow-up-chip end-chip" data-action="end">⏹ End Chat</button>
+    `;
+
+    const focusBtn = bar.querySelector('[data-action="focus"]');
+    if (focusBtn) {
+        focusBtn.addEventListener("click", () => {
+            userInput.focus();
+            userInput.classList.add("input-highlight");
+            setTimeout(() => userInput.classList.remove("input-highlight"), 1000);
+        });
+    }
+
+    const endChip = bar.querySelector('[data-action="end"]');
+    if (endChip) {
+        endChip.addEventListener("click", endChatSession);
+    }
+
+    bar.querySelectorAll("[data-query]").forEach((btn) => {
+        btn.addEventListener("click", () => sendMessage(btn.dataset.query));
+    });
+
+    chatBox.appendChild(bar);
+}
+
+function endChatSession() {
+    document.querySelectorAll(".follow-up-bar").forEach((b) => b.remove());
+
+    const endCard = document.createElement("div");
+    endCard.className = "session-ended-card";
+    endCard.innerHTML = `
+        <div class="session-ended-icon">🏁</div>
+        <div class="session-ended-title">Chat Session Ended</div>
+        <div class="session-ended-desc">
+            Thank you for using GH Raisoni College Assistant! You have successfully completed this chat session.
+        </div>
+        <button class="new-session-btn" id="restart-chat-btn">🔄 Start New Chat</button>
+    `;
+
+    chatBox.appendChild(endCard);
+    scrollToBottom();
+
+    userInput.disabled = true;
+    sendBtn.disabled = true;
+    userInput.placeholder = "Session ended. Click 'Start New Chat' to ask again.";
+
+    endCard.querySelector("#restart-chat-btn").addEventListener("click", restartChatSession);
+}
+
+function restartChatSession() {
+    userInput.disabled = false;
+    sendBtn.disabled = false;
+    userInput.placeholder = "Type your question...";
+    userInput.value = "";
+
+    chatBox.innerHTML = `
+        <div class="msg-row bot-row">
+            <div class="avatar bot-avatar">🤖</div>
+            <div class="bot-msg">
+                <div class="bot-text">
+                    Hi! I'm your college assistant. Ask me anything below, or tap a topic to get started.
+                </div>
+                <div class="bot-msg-footer">
+                    <span class="msg-time">${formatTime()}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    appendFollowUpBar();
+    userInput.focus();
 }
 
 function showTypingIndicator() {
@@ -108,6 +222,15 @@ function removeTypingIndicator() {
 async function sendMessage(overrideText) {
     const message = (overrideText !== undefined ? overrideText : userInput.value).trim();
     if (!message) return;
+
+    // If user types exit / bye / quit, cleanly end session
+    const lower = message.toLowerCase();
+    if (["exit", "quit", "bye", "end"].includes(lower)) {
+        appendUserMessage(message);
+        userInput.value = "";
+        setTimeout(endChatSession, 400);
+        return;
+    }
 
     appendUserMessage(message);
     userInput.value = "";
@@ -137,6 +260,10 @@ sendBtn.addEventListener("click", () => sendMessage());
 userInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") sendMessage();
 });
+
+if (endChatBtn) {
+    endChatBtn.addEventListener("click", endChatSession);
+}
 
 document.querySelectorAll(".quick-reply-btn").forEach((btn) => {
     btn.addEventListener("click", () => sendMessage(btn.dataset.query));
