@@ -1,15 +1,49 @@
 """
 app.py
 Flask backend for the AI Chatbot for College project.
-Run: python app.py   (make sure you've run database.py first)
+GH Raisoni College - BBA Computer Applications
 """
 
 import os
 import re
+import csv
+import io
 import sqlite3
 import difflib
-from flask import Flask, request, jsonify, session, render_template, redirect, url_for, send_from_directory
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    session,
+    render_template,
+    redirect,
+    url_for,
+    send_from_directory,
+    Response,
+)
+
+try:
+    from werkzeug.security import generate_password_hash, check_password_hash
+except ImportError:
+    import hashlib
+
+    def generate_password_hash(password):
+        salt = "7x4k8m9q2w1e6r3t"
+        h = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), 600000).hex()
+        return f"pbkdf2:sha256:600000${salt}${h}"
+
+    def check_password_hash(p_hash, password):
+        try:
+            parts = p_hash.split("$")
+            if len(parts) >= 3:
+                salt = parts[-2]
+                expected = parts[-1]
+                h = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), 600000).hex()
+                return h == expected
+        except Exception:
+            pass
+        return False
+
 
 app = Flask(__name__)
 # In production (Render), set SECRET_KEY as an environment variable instead of hardcoding it.
@@ -27,14 +61,13 @@ def get_db():
 
 def match_query(message):
     """
-    Rule-based NLP with light fuzzy matching:
-    1. Exact substring match against each category's keyword list (strongest signal).
-    2. If nothing matches exactly, try close-match (typo tolerant) comparison against
-       individual words in the message, using difflib's sequence matching.
-    Returns (answer, category) or a fallback message if nothing matches well enough.
+    Rule-based NLP with typo tolerance:
+    1. Exact substring match against each category's keyword list.
+    2. Fuzzy match against individual words in the message using difflib.
+    Returns (answer, category) or a fallback message if nothing matches.
     """
     message_lower = message.lower()
-    words = re.findall(r"[a-zA-Z]+", message_lower)
+    words = re.findall(r"[a-zA-Z0-9]+", message_lower)
 
     conn = get_db()
     rows = conn.execute("SELECT category, keywords, answer FROM college_info").fetchall()
@@ -44,26 +77,38 @@ def match_query(message):
     best_score = 0
 
     for row in rows:
-        keywords = [k.strip() for k in row["keywords"].split(",")]
+        keywords = [k.strip().lower() for k in row["keywords"].split(",") if k.strip()]
         score = 0
         for kw in keywords:
             if kw in message_lower:
-                score += 2  # exact substring match is a strong signal
+                # Multi-word exact matches carry higher confidence
+                score += 3 if " " in kw else 2
             else:
-                close = difflib.get_close_matches(kw, words, n=1, cutoff=0.82)
-                if close:
-                    score += 1  # fuzzy/typo-tolerant match is a weaker signal
+                kw_parts = kw.split()
+                if len(kw_parts) == 1:
+                    close = difflib.get_close_matches(kw, words, n=1, cutoff=0.80)
+                    if close:
+                        score += 1
+                else:
+                    # If multi-word keyword, check token overlap
+                    matched_parts = sum(
+                        1 for p in kw_parts
+                        if p in words or difflib.get_close_matches(p, words, n=1, cutoff=0.82)
+                    )
+                    if matched_parts == len(kw_parts):
+                        score += 2
+
         if score > best_score:
             best_score = score
             best_row = row
 
-    if best_row:
+    if best_row and best_score >= 2:
         return best_row["answer"], best_row["category"]
 
     return (
-        "Sorry, I couldn't understand that. You can ask me about admission, "
-        "fees, exam timetable, attendance, library timings, courses, or faculty "
-        "contacts \u2014 or tap one of the buttons above.",
+        "I'm not completely sure about that. You can ask me about Admissions, "
+        "Fee Structure, Exam Timetable, Attendance Rules, Placements, Hostels, "
+        "Scholarships, or Faculty Contacts — or tap one of the suggested topics below.",
         None,
     )
 
@@ -77,10 +122,10 @@ def get_categories():
 
 def personalized_answer(message, roll_no):
     """
-    If a logged-in student asks about 'my attendance' / 'my fees' / 'my exam',
+    If a logged-in student asks about their personal records,
     fetch their specific record instead of the generic FAQ answer.
     """
-    message = message.lower()
+    msg = message.lower()
     conn = get_db()
     student = conn.execute(
         "SELECT * FROM students WHERE roll_no = ?", (roll_no,)
@@ -90,15 +135,52 @@ def personalized_answer(message, roll_no):
     if not student:
         return None
 
-    if "my" in message and "attendance" in message:
-        return f"Hi {student['name']}, your current attendance is {student['attendance']}%."
-    if "my" in message and ("fee" in message or "fees" in message):
+    # Full profile summary
+    if any(q in msg for q in ["profile", "who am i", "my details", "about me", "my info", "student info"]):
+        fee_status = (
+            f"Rs {student['fees_due']:.0f} pending"
+            if student["fees_due"] and student["fees_due"] > 0
+            else "All cleared (No dues)"
+        )
+        return (
+            f"👤 STUDENT PROFILE SUMMARY:\n\n"
+            f"• Full Name: {student['name']}\n"
+            f"• Registration No: {student['roll_no']}\n"
+            f"• Program: {student['course']} ({student['semester']})\n"
+            f"• Cumulative GPA (CGPA): {student['cgpa']} / 10.0\n"
+            f"• Lecture Attendance: {student['attendance']}%\n"
+            f"• Fee Balance: {fee_status}\n"
+            f"• Faculty Mentor: {student['mentor']}\n"
+            f"• Next Exam Date: {student['exam_date']}"
+        )
+
+    # Attendance
+    if "attendance" in msg and any(k in msg for k in ["my", "what", "how", "current", "show"]):
+        status = "Good standing (eligible for exams)" if student["attendance"] >= 75 else "⚠️ Shortage alert (<75% threshold)"
+        return f"Hi {student['name']}, your current attendance is {student['attendance']}% ({status})."
+
+    # Fees
+    if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending"]) and any(k in msg for k in ["my", "how", "what", "check"]):
         due = student["fees_due"]
         if due and due > 0:
-            return f"Hi {student['name']}, you have Rs {due:.0f} in pending fees."
-        return f"Hi {student['name']}, you have no pending fees. You're all clear!"
-    if "my" in message and "exam" in message:
-        return f"Hi {student['name']}, your next exam date is {student['exam_date']}."
+            return f"Hi {student['name']}, you have Rs {due:.0f} in pending fees. You can pay online via the student ERP portal or at Accounts Counter 4."
+        return f"Hi {student['name']}, you have no pending fees. You're completely all clear! 🎉"
+
+    # Exams
+    if ("exam" in msg or "exams" in msg or "datesheet" in msg or "timetable" in msg) and "my" in msg:
+        return f"Hi {student['name']}, your next semester examination begins on {student['exam_date']}. Admit cards are downloadable from the student portal."
+
+    # CGPA / Marks / Results
+    if any(k in msg for k in ["cgpa", "sgpa", "gpa", "marks", "result", "grade", "score"]) and any(k in msg for k in ["my", "what", "how"]):
+        return f"Hi {student['name']}, your current CGPA is {student['cgpa']} / 10.0 in {student['course']} ({student['semester']}). Keep up the great work! 🌟"
+
+    # Mentor / Guide
+    if any(k in msg for k in ["mentor", "guide", "counselor", "class teacher"]) and any(k in msg for k in ["my", "who"]):
+        return f"Hi {student['name']}, your designated faculty mentor is {student['mentor']}. You can contact them during mentoring hours or via email."
+
+    # Course / Semester
+    if any(k in msg for k in ["course", "semester", "branch", "program"]) and any(k in msg for k in ["my", "which", "what"]):
+        return f"Hi {student['name']}, you are currently registered in {student['course']}, {student['semester']}."
 
     return None
 
@@ -107,17 +189,24 @@ def personalized_answer(message, roll_no):
 
 @app.route("/")
 def home():
+    roll_no = session.get("roll_no")
+    student_record = None
+    if roll_no:
+        conn = get_db()
+        student_record = conn.execute("SELECT * FROM students WHERE roll_no = ?", (roll_no,)).fetchone()
+        conn.close()
+
     return render_template(
         "index.html",
         student_name=session.get("student_name"),
+        student=student_record,
         categories=get_categories(),
     )
 
 
 @app.route("/service-worker.js")
 def service_worker():
-    # Served from the root path (not /static/) so its scope covers the whole site,
-    # letting the PWA control every page, not just /static/.
+    # Served from the root path so its scope covers the whole site for PWA
     response = send_from_directory("static", "service-worker.js")
     response.headers["Service-Worker-Allowed"] = "/"
     return response
@@ -125,16 +214,16 @@ def service_worker():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    data = request.get_json()
+    data = request.get_json() or {}
     user_message = (data.get("message") or "").strip()
 
     if not user_message:
-        return jsonify({"response": "Please type a question."})
+        return jsonify({"response": "Please type a question or use voice input."})
 
     roll_no = session.get("roll_no")
     bot_response = None
 
-    # check personalized queries first if student is logged in
+    # Check personalized queries first if student is logged in
     if roll_no:
         bot_response = personalized_answer(user_message, roll_no)
 
@@ -142,16 +231,38 @@ def chat():
     if not bot_response:
         bot_response, category = match_query(user_message)
 
-    # save to chat history
+    # Save to chat history and capture ID
     conn = get_db()
-    conn.execute(
+    cur = conn.cursor()
+    cur.execute(
         "INSERT INTO chat_history (roll_no, user_query, bot_response) VALUES (?, ?, ?)",
         (roll_no, user_message, bot_response),
     )
+    history_id = cur.lastrowid
     conn.commit()
     conn.close()
 
-    return jsonify({"response": bot_response, "category": category})
+    return jsonify({
+        "response": bot_response,
+        "category": category,
+        "history_id": history_id
+    })
+
+
+@app.route("/chat/feedback", methods=["POST"])
+def chat_feedback():
+    data = request.get_json() or {}
+    history_id = data.get("history_id")
+    rating = data.get("rating")  # "like" or "dislike"
+
+    if history_id and rating in ["like", "dislike"]:
+        conn = get_db()
+        conn.execute("UPDATE chat_history SET feedback = ? WHERE id = ?", (rating, history_id))
+        conn.commit()
+        conn.close()
+        return jsonify({"status": "success", "history_id": history_id, "rating": rating})
+
+    return jsonify({"status": "ignored"}), 400
 
 
 # ---------------- ROUTES: STUDENT LOGIN ----------------
@@ -220,13 +331,53 @@ def admin_dashboard():
         return redirect(url_for("admin_login"))
 
     conn = get_db()
-    faqs = conn.execute("SELECT * FROM college_info").fetchall()
+    faqs = conn.execute("SELECT * FROM college_info ORDER BY category").fetchall()
     history = conn.execute(
-        "SELECT * FROM chat_history ORDER BY id DESC LIMIT 50"
+        "SELECT * FROM chat_history ORDER BY id DESC LIMIT 100"
+    ).fetchall()
+    total_students = conn.execute("SELECT COUNT(*) FROM students").fetchone()[0]
+    total_chats = conn.execute("SELECT COUNT(*) FROM chat_history").fetchone()[0]
+    conn.close()
+
+    return render_template(
+        "admin_dashboard.html",
+        faqs=faqs,
+        history=history,
+        total_faqs=len(faqs),
+        total_chats=total_chats,
+        total_students=total_students,
+    )
+
+
+@app.route("/admin/export_chat")
+def admin_export_chat():
+    if not session.get("is_admin"):
+        return redirect(url_for("admin_login"))
+
+    conn = get_db()
+    rows = conn.execute(
+        "SELECT id, roll_no, user_query, bot_response, timestamp, feedback FROM chat_history ORDER BY id DESC"
     ).fetchall()
     conn.close()
 
-    return render_template("admin_dashboard.html", faqs=faqs, history=history)
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["ID", "Registration No", "User Query", "Bot Response", "Timestamp", "Feedback"])
+    for r in rows:
+        writer.writerow([
+            r["id"],
+            r["roll_no"] or "Guest",
+            r["user_query"],
+            r["bot_response"],
+            r["timestamp"],
+            r["feedback"] or "-",
+        ])
+
+    return Response(
+        output.getvalue(),
+        mimetype="text/csv",
+        headers={"Content-Disposition": "attachment;filename=college_chatbot_logs.csv"},
+    )
 
 
 @app.route("/admin/add", methods=["POST"])
@@ -234,21 +385,22 @@ def admin_add():
     if not session.get("is_admin"):
         return redirect(url_for("admin_login"))
 
-    category = request.form.get("category")
-    keywords = request.form.get("keywords")
-    answer = request.form.get("answer")
+    category = request.form.get("category", "").strip()
+    keywords = request.form.get("keywords", "").strip()
+    answer = request.form.get("answer", "").strip()
 
-    conn = get_db()
-    conn.execute(
-        "INSERT INTO college_info (category, keywords, answer) VALUES (?, ?, ?)",
-        (category, keywords, answer),
-    )
-    conn.commit()
-    conn.close()
+    if category and keywords and answer:
+        conn = get_db()
+        conn.execute(
+            "INSERT INTO college_info (category, keywords, answer) VALUES (?, ?, ?)",
+            (category, keywords, answer),
+        )
+        conn.commit()
+        conn.close()
     return redirect(url_for("admin_dashboard"))
 
 
-@app.route("/admin/delete/<int:faq_id>")
+@app.route("/admin/delete/<int:faq_id>", methods=["GET", "POST"])
 def admin_delete(faq_id):
     if not session.get("is_admin"):
         return redirect(url_for("admin_login"))

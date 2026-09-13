@@ -1,69 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>College AI Assistant</title>
-<link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-<meta name="theme-color" content="#1e3d73">
-<link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.png') }}">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="{{ url_for('static', filename='icons/icon-192.png') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GH Raisoni College | AI Campus Assistant</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#1e3d73">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192.png') }}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="{{ url_for('static', filename='icons/icon-192.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="topbar">
-    <div class="brand">
-        <span class="brand-icon">🎓</span>
-        <div>
-            <div class="brand-title">GH Raisoni College Assistant</div>
-            <div class="brand-subtitle">AI Chatbot &middot; BBA Computer Applications</div>
-        </div>
-    </div>
-    <div class="topbar-right">
-        <button id="end-chat-btn" class="link-btn end-chat-btn" title="End conversation (Exit Session)">⏹ End Chat</button>
-        {% if student_name %}
-            <span class="user-chip">👤 {{ student_name }}</span>
-            <a href="/logout" class="link-btn">Logout</a>
-        {% else %}
-            <a href="/login" class="link-btn">Student Login</a>
-        {% endif %}
-        <a href="/admin" class="link-btn admin-link">Admin</a>
-    </div>
-</div>
-
-<div class="chat-container">
-    <div id="chat-box" class="chat-box">
-        <div class="msg-row bot-row">
-            <div class="avatar bot-avatar">🤖</div>
-            <div class="bot-msg">
-                <div class="bot-text">
-                    Hi! I'm your college assistant. Ask me anything below, or tap a topic to get started.
-                    {% if not student_name %}
-                        <br><br><a href="/login">Log in with your registration number</a> for personalized answers
-                        about your own attendance, fees, or exam date.
-                    {% endif %}
-                </div>
+<header class="app-header">
+    <div class="header-container">
+        <div class="brand">
+            <div class="brand-avatar">
+                <span class="brand-icon">🎓</span>
+                <span class="status-indicator-dot" title="AI Assistant Online"></span>
+            </div>
+            <div class="brand-text">
+                <div class="brand-title">GH Raisoni College AI</div>
+                <div class="brand-subtitle">Campus Smart Assistant &middot; BBA CA</div>
             </div>
         </div>
 
-        {% if categories %}
-        <div class="quick-replies">
-            {% for cat in categories %}
-                <button class="quick-reply-btn" data-query="{{ cat }}">{{ cat }}</button>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
+        <div class="header-actions">
+            <!-- Theme toggle -->
+            <button id="theme-toggle-btn" class="icon-action-btn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+                <span class="theme-icon">🌙</span>
+            </button>
 
-    <div class="chat-input-row">
-        <input type="text" id="user-input" placeholder="Type your question..." autocomplete="off">
-        <button id="send-btn" aria-label="Send">➤</button>
+            <!-- Sound toggle -->
+            <button id="sound-toggle-btn" class="icon-action-btn" title="Toggle Chat Sounds" aria-label="Toggle Sounds">
+                <span class="sound-icon">🔔</span>
+            </button>
+
+            <!-- Export chat -->
+            <button id="export-chat-btn" class="icon-action-btn" title="Export Conversation" aria-label="Export Chat">
+                <span>📥</span>
+            </button>
+
+            <!-- Clear chat -->
+            <button id="clear-chat-btn" class="icon-action-btn" title="Clear Conversation" aria-label="Clear Chat">
+                <span>🗑️</span>
+            </button>
+
+            {% if student_name %}
+                <div class="student-pill" id="student-profile-trigger" title="Logged in as {{ student_name }} (Click for Quick Info)">
+                    <span class="student-avatar-badge">👤</span>
+                    <span class="student-pill-name">{{ student_name.split()[0] }}</span>
+                </div>
+                <a href="/logout" class="nav-btn nav-btn-outline" title="Sign out">Logout</a>
+            {% else %}
+                <a href="/login" class="nav-btn nav-btn-primary" title="Student Login">Student Login</a>
+            {% endif %}
+
+            <a href="/admin" class="nav-btn nav-btn-ghost admin-btn" title="Admin Portal">Admin</a>
+        </div>
     </div>
-</div>
+</header>
+
+<main class="chat-wrapper">
+    <div class="chat-card">
+
+        <!-- Banner / Info Bar -->
+        <div class="chat-status-strip">
+            <div class="pulse-wrapper">
+                <span class="pulse-ring"></span>
+                <span class="pulse-center"></span>
+            </div>
+            <span class="status-strip-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions & Campus Support</span>
+            <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
+        </div>
+
+        <!-- Chat messages container -->
+        <div id="chat-box" class="chat-box" role="log" aria-live="polite">
+
+            <!-- Welcome Message -->
+            <div class="msg-row bot-row">
+                <div class="avatar bot-avatar">🤖</div>
+                <div class="bot-msg">
+                    <div class="bot-text">
+                        <strong>Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong><br>
+                        I'm here to answer questions regarding admissions, exams, fees, syllabus, hostel, placements, and campus facilities.
+                        {% if student_name %}
+                            <div class="auth-notice-card logged-in">
+                                <span>✨ Logged in as <strong>{{ student_name }}</strong>. You can ask:</span>
+                                <div class="student-quick-prompts">
+                                    <button class="prompt-chip" data-query="what is my attendance?">📊 My Attendance</button>
+                                    <button class="prompt-chip" data-query="how much are my fees?">💰 My Fee Balance</button>
+                                    <button class="prompt-chip" data-query="what is my cgpa?">🌟 My CGPA</button>
+                                    <button class="prompt-chip" data-query="who is my mentor?">👨‍🏫 My Mentor</button>
+                                    <button class="prompt-chip" data-query="my student profile summary">👤 Full Profile</button>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="auth-notice-card">
+                                <span>💡 <strong>Student Tip:</strong> <a href="/login">Log in with your registration number</a> (e.g. <code>ISTU00000001</code>) to instantly view your personalized attendance, pending fees, CGPA, and mentor details!</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="bot-msg-footer">
+                        <span class="msg-time" id="welcome-timestamp">Just now</span>
+                        <div class="msg-actions">
+                            <button class="msg-action-btn copy-btn" title="Copy answer">📋 Copy</button>
+                            <button class="msg-action-btn speak-btn" title="Read aloud">🔊 Listen</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Topics Categories -->
+            {% if categories %}
+            <div class="quick-topics-container">
+                <div class="quick-topics-label">Explore Popular Topics:</div>
+                <div class="quick-replies">
+                    {% for cat in categories %}
+                        <button class="quick-reply-btn" data-query="{{ cat }}">
+                            {% if "Admission" in cat %}🎓
+                            {% elif "Fee" in cat %}💰
+                            {% elif "Exam" in cat %}📅
+                            {% elif "Attendance" in cat %}📊
+                            {% elif "Library" in cat %}📚
+                            {% elif "Course" in cat %}📖
+                            {% elif "Faculty" in cat %}👨‍🏫
+                            {% elif "Branch" in cat %}🔄
+                            {% elif "Placement" in cat %}💼
+                            {% elif "Hostel" in cat %}🏢
+                            {% elif "Scholarship" in cat %}🏅
+                            {% elif "Club" in cat %}🎨
+                            {% elif "Emergency" in cat %}🚨
+                            {% elif "Location" in cat or "Map" in cat %}📍
+                            {% else %}📌{% endif %}
+                            <span>{{ cat }}</span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input-area">
+            <div class="input-container">
+                <!-- Voice input button -->
+                <button type="button" id="mic-btn" class="input-icon-btn mic-btn" title="Speak to ask (Speech-to-Text)" aria-label="Voice Input">
+                    <span class="mic-icon">🎙️</span>
+                </button>
+
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="Ask about admissions, fees, timetable, hostal..." 
+                    autocomplete="off"
+                    aria-label="Your question"
+                >
+
+                <button type="button" id="send-btn" class="send-btn" title="Send message" aria-label="Send">
+                    <span class="send-icon">➤</span>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span class="input-hint">Press <strong>Enter ↵</strong> to send &bull; Type <code>exit</code> to end</span>
+                <span id="speech-status" class="speech-status-indicator"></span>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

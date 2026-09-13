@@ -1,4 +1,4 @@
-const CACHE_NAME = "college-ai-chatbot-v2";
+const CACHE_NAME = "college-ai-chatbot-v3";
 const PRECACHE_URLS = [
   "/",
   "/static/style.css",

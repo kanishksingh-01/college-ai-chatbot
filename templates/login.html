@@ -1,25 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<title>Student Login</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Login | GH Raisoni College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="auth-page">
 
-<div class="form-container">
-    <h2>Student Login</h2>
+<div class="auth-card">
+    <div class="auth-header">
+        <div class="auth-badge">🎓</div>
+        <h2>Student Portal Login</h2>
+        <p class="auth-sub">GH Raisoni College AI Assistant &middot; BBA Computer Applications</p>
+    </div>
+
     {% if error %}
-        <p class="error-msg">{{ error }}</p>
+        <div class="error-alert">
+            <span class="error-icon">⚠️</span>
+            <span>{{ error }}</span>
+        </div>
     {% endif %}
-    <form method="POST">
-        <label for="roll_no">Registration Number</label>
-        <input type="text" id="roll_no" name="roll_no" placeholder="e.g. ISTU00000001" required>
-        <button type="submit">Login</button>
+
+    <form method="POST" class="auth-form">
+        <div class="form-group">
+            <label for="roll_no">Student Registration Number</label>
+            <div class="input-with-icon">
+                <span class="field-icon">🪪</span>
+                <input 
+                    type="text" 
+                    id="roll_no" 
+                    name="roll_no" 
+                    placeholder="e.g. ISTU00000001" 
+                    required 
+                    autocomplete="off" 
+                    autofocus
+                >
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Sign In to Student Portal →</button>
     </form>
-    <p class="hint">Registration number should start with ISTU. Try sample: ISTU00000001</p>
-    <a href="/" class="link-btn">&larr; Back to chatbot</a>
+
+    <div class="demo-logins">
+        <span class="demo-title">Tap sample registration ID to test:</span>
+        <div class="demo-chips">
+            <button type="button" class="demo-chip" onclick="fillRoll('ISTU00000001')">
+                <strong>ISTU00000001</strong> (Aarav - 86.5% Att., All Clear)
+            </button>
+            <button type="button" class="demo-chip" onclick="fillRoll('ISTU00000002')">
+                <strong>ISTU00000002</strong> (Priya - 78% Att., Rs 5000 Due)
+            </button>
+            <button type="button" class="demo-chip" onclick="fillRoll('ISTU00000003')">
+                <strong>ISTU00000003</strong> (Rohan - 67.5% Att., Shortage)
+            </button>
+        </div>
+    </div>
+
+    <div class="auth-footer">
+        <a href="/" class="back-link">&larr; Return to Chatbot</a>
+    </div>
 </div>
+
+<script>
+function fillRoll(id) {
+    const input = document.getElementById('roll_no');
+    input.value = id;
+    input.focus();
+}
+// Apply saved theme
+const savedTheme = localStorage.getItem('ghr_theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
 
 </body>
 </html>

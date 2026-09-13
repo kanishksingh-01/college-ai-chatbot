@@ -1,78 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard | College AI Assistant</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center | GH Raisoni College AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="admin-page">
 
-<div class="topbar">
-    <div class="brand">
-        <span class="brand-icon">⚙️</span>
-        <div>
-            <div class="brand-title">Admin Dashboard</div>
-            <div class="brand-subtitle">College AI Assistant</div>
+<header class="app-header">
+    <div class="header-container">
+        <div class="brand">
+            <div class="brand-avatar admin-avatar-icon">⚙️</div>
+            <div class="brand-text">
+                <div class="brand-title">Admin Command Center</div>
+                <div class="brand-subtitle">Knowledge Base & Student Analytics</div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button id="theme-toggle-btn" class="icon-action-btn" title="Toggle Theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <a href="/admin/export_chat" class="nav-btn nav-btn-outline" title="Download Query History as CSV">📥 Export CSV</a>
+            <a href="/" class="nav-btn nav-btn-primary" target="_blank" title="Open Chatbot View">💬 Live Chatbot</a>
+            <a href="/admin/logout" class="nav-btn nav-btn-outline" title="Sign Out">Sign Out</a>
         </div>
     </div>
-    <div class="topbar-right">
-        <a href="/" class="link-btn">View Chatbot</a>
-        <a href="/admin/logout" class="link-btn">Logout</a>
+</header>
+
+<main class="admin-container">
+
+    <!-- KPI Metrics Cards -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-icon">📚</div>
+            <div class="metric-content">
+                <div class="metric-value">{{ total_faqs }}</div>
+                <div class="metric-label">Knowledge Base FAQs</div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">💬</div>
+            <div class="metric-content">
+                <div class="metric-value">{{ total_chats }}</div>
+                <div class="metric-label">Total Queries Handled</div>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">🎓</div>
+            <div class="metric-content">
+                <div class="metric-value">{{ total_students }}</div>
+                <div class="metric-label">Enrolled Demo Students</div>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="admin-container">
-
-    <section class="admin-section">
-        <h3>Add New FAQ</h3>
-        <form method="POST" action="/admin/add" class="admin-form">
-            <input type="text" name="category" placeholder="Category (e.g. Hostel)" required>
-            <input type="text" name="keywords" placeholder="Keywords, comma separated (e.g. hostel,room,accommodation)" required>
-            <textarea name="answer" placeholder="Answer text" rows="3" required></textarea>
-            <button type="submit">Add FAQ</button>
+    <!-- Add New FAQ Section -->
+    <section class="admin-panel-card">
+        <div class="panel-header">
+            <h3>➕ Add New Knowledge Base FAQ</h3>
+            <span class="panel-subtitle">Create new response logic for student queries</span>
+        </div>
+        <form method="POST" action="/admin/add" class="admin-form-grid">
+            <div class="form-row">
+                <div class="form-field">
+                    <label>Category Title</label>
+                    <input type="text" name="category" placeholder="e.g. Sports & Gymnasium" required>
+                </div>
+                <div class="form-field">
+                    <label>Matching Keywords (comma-separated)</label>
+                    <input type="text" name="keywords" placeholder="e.g. sports,gym,fitness,ground,cricket,badminton" required>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Chatbot Response (Supports Pipe Tables: | Col | Col |)</label>
+                <textarea name="answer" placeholder="Enter detailed answers, contact numbers, or markdown tables..." rows="4" required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="action-btn primary-action">Save to Knowledge Base</button>
+            </div>
         </form>
     </section>
 
-    <section class="admin-section">
-        <h3>Existing FAQs ({{ faqs|length }})</h3>
-        <table class="admin-table">
-            <tr><th>Category</th><th>Keywords</th><th>Answer</th><th></th></tr>
-            {% for f in faqs %}
-            <tr>
-                <td>{{ f.category }}</td>
-                <td>{{ f.keywords }}</td>
-                <td class="answer-cell">{{ f.answer }}</td>
-                <td><a href="/admin/delete/{{ f.id }}" class="delete-btn" onclick="return confirm('Delete this FAQ?')">Delete</a></td>
-            </tr>
-            {% endfor %}
-        </table>
+    <!-- Existing FAQs Table -->
+    <section class="admin-panel-card">
+        <div class="panel-header-with-search">
+            <div>
+                <h3>📖 Knowledge Base Directory ({{ faqs|length }})</h3>
+                <span class="panel-subtitle">Current topics indexed in the rule matching engine</span>
+            </div>
+            <div class="table-search-box">
+                <input type="text" id="faq-search" placeholder="🔍 Search FAQs by category or keyword..." onkeyup="filterTable('faq-search', 'faqs-table')">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="modern-table" id="faqs-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Category</th>
+                        <th style="width: 25%;">Keywords</th>
+                        <th style="width: 50%;">Answer Template</th>
+                        <th style="width: 10%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in faqs %}
+                    <tr>
+                        <td><span class="category-badge">{{ f.category }}</span></td>
+                        <td><div class="keywords-list">{{ f.keywords }}</div></td>
+                        <td><div class="answer-preview">{{ f.answer }}</div></td>
+                        <td>
+                            <a href="/admin/delete/{{ f.id }}" class="table-delete-btn" onclick="return confirm('Are you sure you want to delete category \'{{ f.category }}\'?')">🗑️ Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section class="admin-section">
-        <h3>Recent Chat History (last 50)</h3>
-        <table class="admin-table">
-            <tr><th>Registration No</th><th>Query</th><th>Response</th><th>Time</th></tr>
-            {% for h in history %}
-            <tr>
-                <td>{{ h.roll_no or "-" }}</td>
-                <td>{{ h.user_query }}</td>
-                <td class="answer-cell">{{ h.bot_response }}</td>
-                <td>{{ h.timestamp }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+    <!-- Recent Chat History Section -->
+    <section class="admin-panel-card">
+        <div class="panel-header-with-search">
+            <div>
+                <h3>📊 Recent Chat Audit Logs (Latest {{ history|length }})</h3>
+                <span class="panel-subtitle">Real queries submitted by students & bot responses</span>
+            </div>
+            <div class="table-search-box">
+                <input type="text" id="history-search" placeholder="🔍 Filter chat queries..." onkeyup="filterTable('history-search', 'history-table')">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="modern-table" id="history-table">
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Student ID</th>
+                        <th style="width: 28%;">User Query</th>
+                        <th style="width: 40%;">Bot Response</th>
+                        <th style="width: 12%;">Timestamp</th>
+                        <th style="width: 8%;">Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in history %}
+                    <tr>
+                        <td>
+                            {% if h.roll_no %}
+                                <span class="student-id-badge">{{ h.roll_no }}</span>
+                            {% else %}
+                                <span class="guest-badge">Guest</span>
+                            {% endif %}
+                        </td>
+                        <td class="query-cell"><strong>{{ h.user_query }}</strong></td>
+                        <td><div class="answer-preview">{{ h.bot_response }}</div></td>
+                        <td class="time-cell">{{ h.timestamp }}</td>
+                        <td class="feedback-cell">
+                            {% if h.feedback == 'like' %}
+                                <span class="thumb-badge like" title="Positive Rating">👍 Good</span>
+                            {% elif h.feedback == 'dislike' %}
+                                <span class="thumb-badge dislike" title="Needs Improvement">👎 Needs work</span>
+                            {% else %}
+                                <span class="thumb-badge neutral">-</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section class="admin-section">
-        <h3>Change Admin Password</h3>
-        <form method="POST" action="/admin/change_password" class="admin-form">
-            <input type="password" name="new_password" placeholder="New password" required minlength="6">
-            <button type="submit">Update Password</button>
+    <!-- Admin Credentials Management -->
+    <section class="admin-panel-card small-panel">
+        <div class="panel-header">
+            <h3>🔒 Security: Change Admin Password</h3>
+            <span class="panel-subtitle">Update the hashed password for the administrative account</span>
+        </div>
+        <form method="POST" action="/admin/change_password" class="inline-form">
+            <div class="form-field">
+                <input type="password" name="new_password" placeholder="Enter new strong password (min 6 chars)" required minlength="6">
+            </div>
+            <button type="submit" class="action-btn secondary-action">Update Password</button>
         </form>
     </section>
 
-</div>
+</main>
+
+<script>
+function filterTable(inputId, tableId) {
+    const input = document.getElementById(inputId);
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById(tableId);
+    const trs = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < trs.length; i++) {
+        const text = trs[i].textContent.toLowerCase();
+        trs[i].style.display = text.includes(filter) ? '' : 'none';
+    }
+}
+
+// Theme handling
+const themeBtn = document.getElementById('theme-toggle-btn');
+const currentTheme = localStorage.getItem('ghr_theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+themeBtn.addEventListener('click', () => {
+    const activeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    localStorage.setItem('ghr_theme', activeTheme);
+    updateThemeIcon(activeTheme);
+});
+
+function updateThemeIcon(t) {
+    themeBtn.querySelector('.theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+}
+</script>
 
 </body>
 </html>

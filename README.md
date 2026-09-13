@@ -1,83 +1,97 @@
-# AI Chatbot for College
+# AI Chatbot for College (GH Raisoni College)
 
 2nd Year BBA CA Project — Kanishk Singh (ISTU25010120001) & Vibhor Saini (ISTU25010120002)
 
-## How to run
+Live Deployment: [https://college-ai-chatbot-c94w.onrender.com](https://college-ai-chatbot-c94w.onrender.com)
 
-1. Install Flask (only dependency needed):
-   ```
-   pip install flask
+---
+
+## 🌟 Key Features & Highlights
+
+- **Modern Glassmorphic UI**: High-end responsive design with Google *Plus Jakarta Sans*, sleek message bubbles, and college branding.
+- **Dark Mode & Light Mode**: Seamless theme switching with persistent local storage.
+- **Voice Input (Speech-to-Text)**: Speak queries aloud via the browser Web Speech API (Chrome / Safari).
+- **Text-to-Speech (Read Aloud)**: High-quality audio readout of bot responses with a single click.
+- **Interactive Audio Effects**: Synthesized Web Audio sound effects on message send and receive (with mute toggle).
+- **Expanded Knowledge Base (14 Categories)**:
+  - Admissions & Eligibility
+  - Fee Structure (per annum breakdown table)
+  - Exam Timetable & Admit Cards
+  - Attendance Rules & Medical Condonation
+  - Training & Placements (recruiter packages & internship details)
+  - Hostel & Mess Facilities (fees & curfew rules)
+  - Scholarships & Government Schemes (MahaDBT & NSP)
+  - Library Timings & E-Resources
+  - Course Information & Syllabus
+  - Key Faculty & HOD Directory
+  - Branch Change / Transfer Policy
+  - Clubs, Cultural Fests & Sports
+  - Campus Emergency & Anti-Ragging Helpline
+  - Campus Map, Directions & Metro Transit
+- **Personalized Student Self-Service Portal**:
+  - Full Student Profile Summary (`"my profile"`, `"who am i"`)
+  - Real-time Lecture Attendance (`"what is my attendance?"`)
+  - Pending Fee Balance (`"how much are my fees?"`)
+  - Cumulative GPA / CGPA (`"what is my CGPA?"`)
+  - Designated Faculty Mentor (`"who is my mentor?"`)
+  - Upcoming Semester Exam Date (`"when is my exam?"`)
+- **Interactive Message Controls**:
+  - One-click copy with toast notifications
+  - Student feedback collection (👍 Helpful / 👎 Needs Improvement)
+  - Export entire chat transcript as a `.txt` file
+  - Clear conversation and session reset
+- **Upgraded Admin Command Center**:
+  - KPI Metrics (Total FAQs, Queries Handled, Registered Students)
+  - Real-time Search & Filter for FAQs and Chat Logs
+  - One-click CSV Export of Student Query Logs for academic reporting
+  - CRUD operations on Knowledge Base entries
+  - Securely hashed password management (PBKDF2/scrypt)
+- **Progressive Web App (PWA)**: Installable on Android, iOS, Windows, and macOS with service worker caching.
+
+---
+
+## 🚀 How to Run Locally
+
+1. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
    ```
 
-2. Initialize the database (creates college_chatbot.db with placeholder data):
-   ```
+2. **Initialize Database**:
+   ```bash
    python database.py
    ```
 
-3. Start the app:
-   ```
+3. **Start the Application**:
+   ```bash
    python app.py
    ```
 
-4. Open your browser to: http://127.0.0.1:5000
+4. **Access in Browser**:
+   - Chatbot: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+   - Student Login: [http://127.0.0.1:5000/login](http://127.0.0.1:5000/login)
+   - Admin Command Center: [http://127.0.0.1:5000/admin](http://127.0.0.1:5000/admin)
 
-## What's new in this version
+---
 
-- Fuzzy/typo-tolerant matching (e.g. "libary timmings" still matches Library Timings)
-- Quick-reply category buttons under the welcome message
-- Typing indicator animation before bot responses
-- College-branded header and polished, mobile-responsive UI
-- Admin passwords are now securely hashed (not stored in plain text)
-- Admin can change their password from the dashboard
-- Reads PORT and SECRET_KEY from environment variables (Render-ready)
+## 🔑 Demo Logins
 
-## Logins for demo
+### Student Login ([/login](http://127.0.0.1:5000/login))
+Try asking personalized questions after logging in:
+- `ISTU00000001`: Aarav Sharma (86.5% Attendance, 8.92 CGPA, No fees pending)
+- `ISTU00000002`: Priya Patel (78.0% Attendance, 7.84 CGPA, Rs 5,000 pending)
+- `ISTU00000003`: Rohan Kulkarni (67.5% Attendance - Shortage Alert, Rs 12,000 pending)
+- `ISTU00000004`: Sneha Deshmukh (94.0% Attendance, 9.45 CGPA, All Clear)
 
-**Student login** (try personalized questions like "what is my attendance" or "how much are my fees" after logging in):
-- Registration No: ISTU00000001 (Demo Student A — no pending fees)
-- Registration No: ISTU00000002 (Demo Student B — Rs 5000 pending fees)
-- Registration No: ISTU00000003 (Demo Student C)
+### Admin Login ([/admin](http://127.0.0.1:5000/admin))
+- **Username**: `admin`
+- **Password**: `admin123`
 
-**Admin login** (http://127.0.0.1:5000/admin):
-- Username: admin
-- Password: admin123
-- ⚠️ Change this password in database.py before final submission.
+---
 
-## What the chatbot can answer (no login needed)
+## 📊 Database Schema
 
-Ask about: admission, fee structure, exam timetable, attendance rules,
-library timings, course information, faculty contacts.
-
-## Editing placeholder data
-
-All FAQ answers and student records are placeholder/sample data. To edit:
-- Easiest: log in as admin and use the dashboard to add/delete FAQs.
-- Or edit the `college_info_data` and `students_data` lists directly in
-  `database.py`, delete `college_chatbot.db`, and re-run `python database.py`
-  to reseed with your real college data.
-
-## Project structure
-
-```
-chatbot/
-├── app.py                 # Flask backend + chatbot logic + routes
-├── database.py             # Creates & seeds the SQLite database
-├── requirements.txt
-├── templates/
-│   ├── index.html          # Main chat interface
-│   ├── login.html          # Student login
-│   ├── admin_login.html    # Admin login
-│   └── admin_dashboard.html # Admin panel (FAQ management + chat history)
-└── static/
-    ├── style.css
-    └── script.js
-```
-
-## Database schema
-
-- **college_info**: id, category, keywords, answer — the FAQ knowledge base
-- **students**: roll_no, name, attendance, fees_due, exam_date
-- **chat_history**: id, roll_no, user_query, bot_response, timestamp
-- **admin**: username, password
-
-Use this schema directly for your project report's ER Diagram and SQL tables section.
+- **`college_info`**: `id`, `category`, `keywords`, `answer`
+- **`students`**: `roll_no`, `name`, `attendance`, `fees_due`, `exam_date`, `course`, `semester`, `cgpa`, `mentor`
+- **`chat_history`**: `id`, `roll_no`, `user_query`, `bot_response`, `timestamp`, `feedback`
+- **`admin`**: `username`, `password_hash`
