@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SYNOPSIS - AI Chatbot for College</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; line-height: 1.55; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 20px 22px 14px 22px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .title-banner { text-align: center; margin-bottom: 24px; }
+    .title-banner h1 { font-size: 26px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; }
+    .info-list { list-style: none; margin-bottom: 18px; }
+    .info-list li { margin-bottom: 7px; font-size: 14px; }
+    .info-list li strong { color: #0f254e; display: inline-block; min-width: 155px; }
+    .section-title { font-size: 16px; font-weight: 700; color: #0f254e; margin-top: 18px; margin-bottom: 8px; text-transform: uppercase; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 4px; }
+    .text-block { font-size: 13.5px; color: #334155; text-align: justify; margin-bottom: 12px; }
+    ul.bullet-list { margin-left: 22px; margin-top: 6px; margin-bottom: 10px; }
+    ul.bullet-list li { font-size: 13.5px; margin-bottom: 5px; color: #334155; }
+    .page-footer { margin-top: auto; text-align: right; font-size: 11px; color: #94a3b8; }
+    @media print { body { background: none; padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; max-height: 297mm; page-break-after: always; page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="title-banner">
+        <h1>SYNOPSIS :</h1>
+    </div>
+    <ul class="info-list">
+        <li><strong>&bull; Project Name :</strong> AI Chatbot for College</li>
+        <li><strong>&bull; Class :</strong> SYBBA-CA</li>
+        <li><strong>&bull; Sem :</strong> III</li>
+        <li><strong>&bull; Project Members :</strong> Kanishk Singh &nbsp;(ISTU25010120001)</li>
+        <li><strong>&bull;</strong> Vibhor Saini &nbsp;&nbsp;&nbsp;&nbsp;(ISTU25010120002)</li>
+        <li><strong>&bull; Project Frontend :</strong> HTML5, CSS3 (Light/Dark Theme), JavaScript, Web Speech API (PWA-enabled).</li>
+        <li><strong>&bull; Project Backend :</strong> Python (Flask), SQLite3 database, Werkzeug (secure password hashing).</li>
+        <li><strong>&bull; Deployment :</strong> GitHub + Render (live, publicly accessible link).</li>
+    </ul>
+
+    <div class="section-title">&bull; Project Modules :</div>
+    <div class="text-block"><strong>Student Query &amp; NLP Module &ndash;</strong> Detects keywords using exact matching combined with typo-tolerant fuzzy matching (via difflib) to answer queries across 14 categories: admission, fees, timetable, attendance, library, courses, faculty contacts, branch change, placements, hostel &amp; mess, scholarships, clubs, emergency helplines, and campus location/transit.</div>
+    <div class="text-block"><strong>Voice Interaction Module &ndash;</strong> Implements hands-free accessibility with Speech-to-Text voice input and Text-to-Speech audio readout of bot responses using native browser Web Speech APIs.</div>
+    <div class="text-block"><strong>Student Login &amp; Profile Module &ndash;</strong> Allows students to log in using their registration number (ISTU-prefixed) to receive personalized data: attendance percentage, pending fee dues, CGPA score, assigned mentor, exam dates, and complete profile summaries.</div>
+    <div class="text-block"><strong>Admin Panel &amp; Analytics Module &ndash;</strong> Provides a secure dashboard with live KPI metric cards (Total FAQs, Queries Handled, Registered Students), real-time search/filter, FAQ management, and CSV export of query logs.</div>
+    <div class="text-block"><strong>Chat History &amp; Feedback Module &ndash;</strong> Stores all student queries, bot responses, timestamps, and 👍/👎 satisfaction ratings in the database for record-keeping and future analysis.</div>
+    <div class="text-block"><strong>Installable App Module &ndash;</strong> Configured as a Progressive Web App (PWA), allowing students to install it directly to their phone or laptop home screen and use it like a native app, without any app store.</div>
+    <div class="page-footer">Page 1</div>
+</div></div></div>
+
+<!-- PAGE 2 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="section-title">INTRODUCTION :</div>
+    <div class="text-block">The AI Chatbot for College is a web-based application, deployed live and publicly accessible, designed to provide instant, 24x7 answers to common student queries such as admission details, fee structure, exam timetable, attendance rules, library timings, course information, faculty contact details, branch/course change procedures, placements, hostel accommodation, scholarships, and campus facilities. The system uses rule-based keyword detection with typo-tolerant fuzzy matching to understand student questions and respond with accurate information stored in a database.</div>
+    <div class="text-block">Every academic year, college administrative staff spend a significant amount of time answering the same repetitive questions from students. The AI Chatbot for College solves this problem by providing a centralized, always-available platform where students can get immediate answers without visiting the college office or waiting for staff availability. The chatbot is also configured as an installable Progressive Web App with voice input and output capabilities, so students can add it to their phone's home screen and interact using text or voice.</div>
+
+    <div class="section-title">PROBLEM STATEMENT :</div>
+    <div class="text-block">Students often struggle to get quick answers to basic college-related questions, especially outside office hours. College administrative staff are repeatedly asked the same set of questions regarding admission, fees, timetables, and attendance, which adds to their daily workload and reduces their availability for other important tasks.</div>
+    <div class="text-block">There is currently no centralized, automated system in most colleges that allows students to self-serve this information at any time. This results in delays, unnecessary visits to the college office, and inefficient use of staff time.</div>
+    <div class="page-footer">Page 2</div>
+</div></div></div>
+
+<!-- PAGE 3 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="section-title">PROPOSED SYSTEM :</div>
+    <div class="text-block">The proposed system, AI Chatbot for College, is a web-based chatbot application that instantly answers common student queries using rule-based keyword matching with fuzzy, typo-tolerant fallback. It integrates a student login feature, a securely authenticated admin panel with live analytics, voice interaction, and a chat history log into a single platform, and is deployed live with a continuous deployment pipeline (GitHub to Render), so updates go live automatically.</div>
+    <div class="text-block">The system allows students to type their queries in plain text, speak via microphone, or tap quick-reply category buttons, which the chatbot analyzes for relevant keywords before fetching the correct predefined answer from the database. Students who log in with their registration number receive personalized responses, such as their own attendance percentage, fee dues, CGPA score, assigned faculty mentor, or exam date, in addition to general FAQ answers. Answers containing tabular data (such as the fee structure or exam timetable) are rendered as properly formatted tables in the chat interface rather than plain text.</div>
+
+    <div class="section-title">PROJECT DESCRIPTION :</div>
+    <div class="text-block">AI Chatbot for College is a web-based chatbot application designed to reduce the workload of college administrative staff while giving students round-the-clock access to important information.</div>
+    <div class="text-block">The system provides a polished chat interface built with HTML, modern CSS with Dark/Light theme switching, and JavaScript, connected to a Python Flask backend. When a student types or speaks a query, the backend matches keywords against an expanded set of 14 categories &mdash; admission, fees, timetable, attendance, library, courses, faculty, branch change, placements, hostel, scholarships, clubs, emergency helplines, and campus map &mdash; and returns the corresponding answer from the SQLite database. An admin panel allows the college staff to update this information whenever it changes and export audit logs as CSV.</div>
+    <div class="page-footer">Page 3</div>
+</div></div></div>
+
+<!-- PAGE 4 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="section-title">SCOPE OF THE PROJECT :</div>
+    <div class="text-block">The scope of the AI Chatbot for College is to provide a reliable, easy-to-use platform where students can get instant answers to common college-related questions. The system is designed for use by current students, prospective applicants, and college administrative staff across smartphones, tablets, and computers.</div>
+    <div class="text-block"><strong>Future Scope:</strong> The project can be expanded in the future by adding Generative AI / LLM integration (Gemini or GPT API) with Retrieval-Augmented Generation (RAG) for deep conversational understanding, official WhatsApp chatbot integration, multi-language support (Hindi and Marathi), and real-time synchronization with the college ERP database.</div>
+
+    <div class="section-title">EXISTING SYSTEM :</div>
+    <div class="text-block">In the existing system, students depend on visiting the college office, calling staff, or checking scattered notices and websites to find information about admission, fees, timetables, and other college matters. This process is time-consuming and only available during office hours.</div>
+    <div class="text-block">There is no centralized digital system in most colleges that allows students to instantly self-serve this information, resulting in repeated queries to staff and unnecessary delays.</div>
+    <div class="page-footer">Page 4</div>
+</div></div></div>
+
+<!-- PAGE 5 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="section-title">ADVANTAGES :</div>
+    <div class="text-block">The AI Chatbot for College provides students with instant, 24x7 access to important information without needing to visit the college office. It reduces the repetitive workload on administrative staff by automatically handling common queries, and tolerates minor typing mistakes through fuzzy matching so students still get accurate answers.</div>
+    <div class="text-block">The system features multi-modal voice interaction (Speech-to-Text and SpeechSynthesis), an accessible Dark/Light mode, and personalized student data lookup (attendance, fee balance, CGPA, and mentor). The system is easy for admins to update through a securely authenticated dashboard, requiring no coding knowledge for routine changes. The chat history feature allows the college to review commonly asked questions and export logs to CSV. The chatbot can also be installed as an app on a student's phone or laptop for quicker, native-like access. Overall, it improves student experience and administrative efficiency.</div>
+
+    <div class="section-title">DISADVANTAGES / LIMITATIONS :</div>
+    <div class="text-block">Since the chatbot relies on rule-based keyword matching and fuzzy matching rather than open-domain generative AI, queries phrased in highly unusual ways may trigger the fallback prompt. It depends on the admin keeping the database updated with accurate, current information.</div>
+    <div class="text-block">The system requires an internet connection to function. On the free cloud hosting tier (Render), the application enters sleep mode after 15 minutes of inactivity and requires ~30 seconds to wake up on the first request.</div>
+    <div class="page-footer">Page 5</div>
+</div></div></div>
+
+<!-- PAGE 6 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="section-title">FUTURE SCOPE :</div>
+    <div class="text-block">The future scope of the AI Chatbot for College is promising, as it can be further enhanced with:</div>
+    <ul class="bullet-list">
+        <li>Integration with Large Language Models (LLMs) like Google Gemini or OpenAI with strict Retrieval-Augmented Generation (RAG).</li>
+        <li>WhatsApp Business API integration for querying directly from messaging apps.</li>
+        <li>Multi-language support in Hindi and Marathi alongside English.</li>
+        <li>Live bi-directional synchronization with the college ERP system for automatic grade publishing and fee receipt generation.</li>
+    </ul>
+
+    <div class="section-title">CONCLUSION :</div>
+    <div class="text-block">The AI Chatbot for College is an efficient, easy-to-use web application designed to assist students with instant answers to common college-related queries. It integrates student login, voice interaction, an admin command center with analytics, and chat history tracking into a single platform, reducing the workload on administrative staff.</div>
+    <div class="text-block">By providing structured, always-available information, the system improves the overall student experience and makes college administration more efficient. It lays a strong foundation that can be expanded with more advanced AI features in the future.</div>
+    <div class="page-footer">Page 6</div>
+</div></div></div>
+
+</body>
+</html>

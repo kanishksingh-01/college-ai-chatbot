@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College AI Chatbot - Full Project Reports & Assignments</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 12mm;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+        background-color: #525659;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 25px 0;
+        color: #1e293b;
+        line-height: 1.55;
+    }
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 14mm;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        position: relative;
+    }
+    .outer-border {
+        border: 2.5px solid #1e3d73;
+        padding: 4px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .inner-border {
+        border: 1px solid #1e3d73;
+        padding: 24px 22px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+    }
+    .title-banner {
+        text-align: center;
+        margin-bottom: 22px;
+    }
+    .title-banner h1 {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .title-banner p {
+        font-size: 13px;
+        color: #64748b;
+        margin-top: 3px;
+    }
+    .section-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f254e;
+        margin-top: 14px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        border-bottom: 1.5px solid #e2e8f0;
+        padding-bottom: 3px;
+    }
+    .info-list {
+        list-style: none;
+        margin-bottom: 14px;
+    }
+    .info-list li {
+        margin-bottom: 6px;
+        font-size: 13.5px;
+    }
+    .info-list li strong {
+        color: #0f254e;
+        display: inline-block;
+        min-width: 140px;
+    }
+    .text-block {
+        font-size: 13px;
+        color: #334155;
+        text-align: justify;
+        margin-bottom: 10px;
+    }
+    .question-block {
+        margin-bottom: 15px;
+    }
+    .question-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0f254e;
+        margin-bottom: 5px;
+    }
+    .answer-text {
+        font-size: 13px;
+        color: #334155;
+        text-align: justify;
+    }
+    ul.bullet-list {
+        margin-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 8px;
+    }
+    ul.bullet-list li {
+        font-size: 13px;
+        margin-bottom: 4px;
+        color: #334155;
+    }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+        font-size: 12.5px;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 7px 10px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #eff6ff;
+        color: #1e3d73;
+        font-weight: 700;
+    }
+    table.data-table tr:nth-child(even) td {
+        background: #f8fafc;
+    }
+    .page-footer {
+        margin-top: auto;
+        text-align: right;
+        font-size: 11px;
+        color: #94a3b8;
+        padding-top: 10px;
+    }
+
+    @media print {
+        body {
+            background: none;
+            padding: 0;
+            gap: 0;
+        }
+        .page {
+            box-shadow: none;
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            page-break-after: always;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 1
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="title-banner">
+            <h1>SYNOPSIS</h1>
+            <p>AI Chatbot for College &middot; BBA Computer Applications</p>
+        </div>
+
+        <ul class="info-list">
+            <li><strong>Project Name :</strong> AI Chatbot for College</li>
+            <li><strong>Class :</strong> SYBBA-CA</li>
+            <li><strong>Sem :</strong> III</li>
+            <li><strong>Project Members :</strong> Kanishk Singh (ISTU25010120001)</li>
+            <li><strong></strong> Vibhor Saini (ISTU25010120002)</li>
+            <li><strong>Project Frontend :</strong> HTML5, CSS3 (Light/Dark Theme), JavaScript, Web Speech API (PWA-enabled)</li>
+            <li><strong>Project Backend :</strong> Python (Flask), SQLite3 database, Werkzeug (secure password hashing)</li>
+            <li><strong>Deployment :</strong> GitHub + Render (Live Link: <code>https://college-ai-chatbot-c94w.onrender.com</code>)</li>
+        </ul>
+
+        <div class="section-title">Project Modules :</div>
+
+        <div class="text-block">
+            <strong>Student Query &amp; NLP Module &ndash;</strong> Detects keywords using exact matching combined with typo-tolerant fuzzy matching (via SequenceMatcher) to answer queries across 14 categories: admission, fees, timetable, attendance, library, courses, faculty, branch change, placements, hostel, scholarships, clubs, emergency helplines, and campus transit.
+        </div>
+
+        <div class="text-block">
+            <strong>Voice Interaction Module &ndash;</strong> Implements hands-free accessibility with Speech-to-Text voice typing and Text-to-Speech audio readout of bot responses using native browser Web Speech APIs.
+        </div>
+
+        <div class="text-block">
+            <strong>Student Self-Service Portal &ndash;</strong> Allows students to log in using their registration number (ISTU-prefixed) to receive personalized records: lecture attendance, fee balance, CGPA, faculty mentor, exam dates, and complete profile summaries.
+        </div>
+
+        <div class="text-block">
+            <strong>Admin Command Center &amp; Analytics &ndash;</strong> Provides a secure dashboard with live KPI metric cards (Total FAQs, Queries Handled, Registered Students), real-time search/filter, FAQ management, and CSV export of query logs.
+        </div>
+
+        <div class="text-block">
+            <strong>Chat History &amp; Feedback Module &ndash;</strong> Logs all user interactions with timestamps and 👍/👎 student satisfaction ratings for administrative review and report generation.
+        </div>
+
+        <div class="text-block">
+            <strong>Installable PWA Module &ndash;</strong> Configured with a root-scoped Service Worker and Web Manifest, enabling direct installation onto smartphones or laptops without needing an app store.
+        </div>
+
+        <div class="page-footer">Page 1 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 2
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="section-title">INTRODUCTION :</div>
+        <div class="text-block">
+            The AI Chatbot for College is a web-based, cloud-deployed conversational assistant designed to provide instant, 24x7 guidance on academic, financial, and administrative matters. It addresses inquiries regarding admission procedures, course eligibility, detailed fee schedules, semester examination timetables, attendance regulations, placement statistics, residential hostel facilities, scholarships, and departmental faculty contacts. The architecture integrates rule-based keyword matching with typo-tolerant fuzzy fallback algorithms to interpret misspelled student queries accurately.
+        </div>
+        <div class="text-block">
+            Each academic year, college administrative personnel expend substantial time addressing identical, high-volume repetitive student inquiries. The AI Chatbot resolves this operational bottleneck by offering an always-available digital portal where students can instantly self-serve accurate information without waiting in administrative queues. Furthermore, the application is packaged as an installable Progressive Web App (PWA) with multi-modal voice input and output.
+        </div>
+
+        <div class="section-title">PROBLEM STATEMENT :</div>
+        <div class="text-block">
+            Students consistently struggle to acquire prompt answers to routine college inquiries outside standard administrative working hours (10:00 AM – 5:00 PM). Administrative counters experience high congestion, leading to long student queues and placing heavy recurring burdens on college office staff.
+        </div>
+        <div class="text-block">
+            Currently, most collegiate institutions lack a centralized, automated digital self-service platform that provides student-specific academic information (such as real-time attendance and fee dues). This absence results in communication delays, manual administrative inefficiency, and frequent unnecessary campus visits.
+        </div>
+
+        <div class="page-footer">Page 2 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 3
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="section-title">PROPOSED SYSTEM :</div>
+        <div class="text-block">
+            The proposed system, AI Chatbot for College, delivers an automated, intelligent conversational experience that resolves common inquiries instantly through dual-tier keyword matching and fuzzy string matching. It unifies a student self-service portal, a securely authenticated admin dashboard, chat history analytics, and continuous cloud deployment (GitHub &rarr; Render) into a cohesive architecture.
+        </div>
+        <div class="text-block">
+            Users can interact by typing in natural language, speaking through voice input, or tapping categorized suggestion chips. For authenticated students, the backend retrieves individual academic records (attendance percentage, fee dues, CGPA score, assigned faculty mentor, and next exam date). Answers containing structured tabular data (such as semester fee structures and examination datesheets) are dynamically rendered as interactive HTML tables.
+        </div>
+
+        <div class="section-title">PROJECT DESCRIPTION :</div>
+        <div class="text-block">
+            AI Chatbot for College is an institutional web software application constructed to reduce administrative workloads while providing students with 24/7 academic support.
+        </div>
+        <div class="text-block">
+            The frontend is engineered with responsive HTML5, modern CSS3 (supporting Light and Dark themes via CSS custom properties), and vanilla JavaScript. The backend is implemented in Python using the Flask WSGI microframework, interacting with a lightweight SQLite relational database. When a student enters a query, the Flask server first verifies whether the query relates to personal student records; if not, it evaluates the message against the indexed FAQ knowledge base and returns a formatted response. An admin panel enables authorized staff to curate FAQs and review student feedback without modifying code.
+        </div>
+
+        <div class="page-footer">Page 3 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 4
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="section-title">SCOPE OF THE PROJECT :</div>
+        <div class="text-block">
+            The scope of the project encompasses delivering a reliable, accessible conversational portal for enrolled students, prospective candidates, faculty, and administrative staff across GH Raisoni College. The platform covers 14 distinct academic and campus life categories and functions seamlessly across smartphones, tablets, and desktop workstations.
+        </div>
+        <div class="text-block">
+            <strong>Future Scope:</strong> The application establishes an extensible architectural foundation that can be expanded with Generative AI / Large Language Models (Gemini / GPT API) using Retrieval-Augmented Generation (RAG), official WhatsApp Business API integration, multi-language translation (Hindi and Marathi), and automated synchronization with college enterprise ERP databases.
+        </div>
+
+        <div class="section-title">EXISTING SYSTEM :</div>
+        <div class="text-block">
+            In the existing institutional framework, students rely on physical notice boards, telephone calls to administrative helplines, or in-person visits to departmental counters to clarify admission, exam, and fee inquiries. This procedure is constrained to college working hours, paper-intensive, and prone to administrative bottlenecks.
+        </div>
+        <div class="text-block">
+            No unified digital self-service system exists to let students check attendance, fee balance, and CGPA on-demand, leading to repetitive inquiries and administrative delays.
+        </div>
+
+        <div class="page-footer">Page 4 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 5
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="section-title">ADVANTAGES :</div>
+        <ul class="bullet-list">
+            <li><strong>24x7 Instant Access :</strong> Provides immediate answers to student queries at any hour without campus visits.</li>
+            <li><strong>Administrative Workload Reduction :</strong> Offloads routine repetitive inquiries, enabling staff to focus on critical tasks.</li>
+            <li><strong>Typo-Tolerant Matching :</strong> Forgives typing and spelling errors through fuzzy string matching.</li>
+            <li><strong>Multi-Modal Voice Interaction :</strong> Supports voice typing (Speech-to-Text) and auditory answer readout (SpeechSynthesis).</li>
+            <li><strong>Personalized Student Data :</strong> Securely retrieves real-time attendance, fees, CGPA, and mentor details for logged-in students.</li>
+            <li><strong>Modern Light &amp; Dark Theme :</strong> Accessible, eye-catching visual interface with persistent theme preferences.</li>
+            <li><strong>No-Code Admin Management :</strong> Allows non-technical staff to add, delete, or update FAQs via an authenticated dashboard.</li>
+            <li><strong>Installable App (PWA) :</strong> Can be installed directly to home screens without app store downloads.</li>
+        </ul>
+
+        <div class="section-title">DISADVANTAGES / LIMITATIONS :</div>
+        <ul class="bullet-list">
+            <li><strong>Rule-Based Boundaries :</strong> Since the NLP engine uses rule-based keyword matching with fuzzy fallback, questions phrased with complex non-standard vocabulary may trigger the fallback prompt.</li>
+            <li><strong>Information Currency :</strong> System accuracy depends on administrators updating the database as college rules evolve.</li>
+            <li><strong>Internet Requirement :</strong> Requires active network connectivity to reach the cloud server.</li>
+            <li><strong>Free Hosting Container Latency :</strong> On Render's free tier, the application may take ~30 seconds to wake up after 15 minutes of idle time.</li>
+        </ul>
+
+        <div class="page-footer">Page 5 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     SYNOPSIS - PAGE 6
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="section-title">FUTURE SCOPE :</div>
+        <div class="text-block">
+            The future development trajectory of the AI Chatbot for College involves:
+        </div>
+        <ul class="bullet-list">
+            <li><strong>Generative AI &amp; LLM Integration :</strong> Connecting Google Gemini or OpenAI APIs with strict Retrieval-Augmented Generation (RAG) for deep conversational nuance.</li>
+            <li><strong>WhatsApp Chatbot Bot :</strong> Integrating via Meta WhatsApp Business API for instant mobile messaging.</li>
+            <li><strong>Multilingual Support :</strong> Full conversational capability in regional languages including Hindi and Marathi.</li>
+            <li><strong>Live ERP Integration :</strong> Real-time bi-directional database hooks with institutional ERP systems for grade publishing and fee payment gateways.</li>
+        </ul>
+
+        <div class="section-title">CONCLUSION :</div>
+        <div class="text-block">
+            The AI Chatbot for College is a comprehensive, production-ready web application engineered to solve real-world institutional communication challenges. By integrating rule-based NLP, personalized student records, voice interaction, admin analytics, and continuous cloud deployment, it enhances student satisfaction while streamlining administrative operations. It establishes a resilient software engineering foundation ready for future AI integration.
+        </div>
+
+        <div class="page-footer">Page 6 of Synopsis</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     ASSIGNMENT 1 - PAGE 1
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="title-banner">
+            <h1>ASSIGNMENT 1</h1>
+            <p>Software Engineering &middot; Project Fundamentals</p>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">1. Describe your project.</div>
+            <div class="answer-text">
+                The AI Chatbot for College is a web application that provides instant, 24x7 answers to common student inquiries regarding admissions, fee structures, exam timetables, attendance regulations, placements, hostels, scholarships, and faculty contacts. Built on Python Flask and SQLite, it uses rule-based keyword matching with typo-tolerant fuzzy matching (using Python's difflib) to interpret questions accurately. Enrolled students can log in with their registration number to receive personalized details regarding their attendance percentage, pending fee dues, CGPA score, assigned mentor, and upcoming exam schedule. The platform features voice input/output, dark mode, PWA installability, and an administrative dashboard for updating FAQs and exporting query audit logs to CSV.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">2. Advantages of your project.</div>
+            <ul class="bullet-list">
+                <li>Instant, 24x7 self-service without visiting physical college offices.</li>
+                <li>Reduces administrative workload by automating high-frequency routine questions.</li>
+                <li>Tolerates minor spelling and typing mistakes via fuzzy string matching.</li>
+                <li>Personalized academic data for logged-in students (attendance, fees, CGPA, mentor).</li>
+                <li>Multi-modal accessibility: Voice typing (Speech-to-Text) and audio read aloud (SpeechSynthesis).</li>
+                <li>Dark Mode and Light Mode with persistent local storage.</li>
+                <li>Admin dashboard enables no-code FAQ management and CSV analytics export.</li>
+                <li>Installable as a Progressive Web App (PWA) across Android, iOS, and PC.</li>
+            </ul>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">3. How do you gather the requirements of your project?</div>
+            <div class="answer-text">
+                Requirements were gathered by analyzing high-frequency inquiries handled at college administrative desks (admissions, fees, datesheets, attendance shortages, hostel accommodation, and placement records). Student interviews confirmed the necessity of after-hours access to individual attendance and fee records. Administrative staff inputs emphasized the need for a no-code administrative dashboard to maintain FAQs and export query logs. Accessibility audits led to the inclusion of voice input/output and dark mode.
+            </div>
+        </div>
+
+        <div class="page-footer">Assignment 1 &middot; Page 1</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     ASSIGNMENT 1 - PAGE 2
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="question-block">
+            <div class="question-title">4. How and where do you implement your project?</div>
+            <div class="answer-text">
+                The project is implemented using Python (Flask) for backend routing and logic, SQLite3 for database persistence, and HTML5/CSS3/JavaScript for the responsive frontend. Development was version-controlled using Git and GitHub. Continuous deployment is configured on Render, so code pushed to the GitHub repository automatically triggers a cloud build and redeploys the live application at <code>https://college-ai-chatbot-c94w.onrender.com</code>.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">5. Which software did you use in your project?</div>
+            <ul class="bullet-list">
+                <li><strong>VS Code :</strong> Primary code editor for writing backend and frontend code.</li>
+                <li><strong>Python 3 :</strong> Core backend programming language.</li>
+                <li><strong>Flask (v3.0.3) :</strong> WSGI web framework for application routing and JSON API endpoints.</li>
+                <li><strong>Werkzeug (v3.0.3) :</strong> Security module for cryptographic password hashing (PBKDF2/scrypt).</li>
+                <li><strong>SQLite3 :</strong> Relational database engine for structured data storage.</li>
+                <li><strong>Git &amp; GitHub :</strong> Distributed version control and cloud code repository hosting.</li>
+                <li><strong>Render :</strong> Cloud hosting platform for live continuous deployment.</li>
+                <li><strong>Google Chrome &amp; Safari :</strong> Browser testing for Web Speech API and responsive UI.</li>
+            </ul>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">6. What methodology is used for the project?</div>
+            <div class="answer-text">
+                The project followed an <strong>Iterative and Incremental Development Methodology</strong>. The software was engineered in successive cycles: core Flask routing &rarr; SQLite schema design &rarr; student authentication &rarr; admin panel with password hashing &rarr; fuzzy keyword matching &rarr; PWA installability &rarr; modern UI redesign, voice I/O, expanded student profiling (CGPA/mentor), and CSV analytics export. Each increment was verified before progressing.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">7. What is the hardware or software of the project?</div>
+            <div class="answer-text">
+                <strong>Hardware Requirements :</strong> Minimal. Any smartphone, tablet, or PC with an active web browser. All computation occurs server-side on Render's cloud infrastructure (Linux container, 512 MB RAM, 0.1 CPU core).<br>
+                <strong>Software Requirements :</strong> Python 3.10+, Flask 3.0.3, SQLite3, Werkzeug 3.0.3, and any modern HTML5/CSS3 web browser supporting the Web Speech API.
+            </div>
+        </div>
+
+        <div class="page-footer">Assignment 1 &middot; Page 2</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     ASSIGNMENT 1 - PAGE 3
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="question-block">
+            <div class="question-title">8. What is your role in the project?</div>
+            <div class="answer-text">
+                As part of a two-member team, my responsibilities included core backend engineering (Flask route implementation, keyword and fuzzy matching algorithms, student personalization logic), database architecture (designing college_info, students, chat_history, and admin tables), authentication security (PBKDF2 password hashing), voice input/output integration, automated unit testing, and cloud deployment on Render via Git/GitHub.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">9. Explain the data flow of your application.</div>
+            <div class="answer-text">
+                When a student submits a query via text or microphone, JavaScript transmits an AJAX POST request to the Flask <code>/chat</code> endpoint. The backend checks if the student is authenticated and requesting personal data (e.g. "my attendance", "my cgpa"); if so, it queries the <code>students</code> table. Otherwise, it invokes <code>match_query()</code>, comparing words against the <code>college_info</code> table via exact and fuzzy matching. The query-response pair is logged into <code>chat_history</code>, and a JSON payload is returned. The frontend parses markdown and tables, renders the bubble, and plays a synthesized audio chime.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">10. What are the entities in your project?</div>
+            <ul class="bullet-list">
+                <li><strong>CollegeInfo :</strong> <code>id</code> (PK), <code>category</code>, <code>keywords</code>, <code>answer</code></li>
+                <li><strong>Student :</strong> <code>roll_no</code> (PK), <code>name</code>, <code>attendance</code>, <code>fees_due</code>, <code>exam_date</code>, <code>course</code>, <code>semester</code>, <code>cgpa</code>, <code>mentor</code></li>
+                <li><strong>ChatHistory :</strong> <code>id</code> (PK), <code>roll_no</code> (FK), <code>user_query</code>, <code>bot_response</code>, <code>timestamp</code>, <code>feedback</code></li>
+                <li><strong>Admin :</strong> <code>username</code> (PK), <code>password_hash</code></li>
+            </ul>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">14. In the future, what changes will you make in your application?</div>
+            <div class="answer-text">
+                Future enhancements include: (1) Integrating Generative AI / Large Language Models (Gemini / GPT) with Retrieval-Augmented Generation (RAG); (2) Meta WhatsApp Business API integration; (3) Multi-language conversational support in Hindi and Marathi; and (4) Real-time automated synchronization with the institutional ERP database.
+            </div>
+        </div>
+
+        <div class="page-footer">Assignment 1 &middot; Page 3</div>
+    </div></div>
+</div>
+
+<!-- ==========================================================================
+     ASSIGNMENT 4 - TESTING & SCM
+     ========================================================================== -->
+<div class="page">
+    <div class="outer-border"><div class="inner-border">
+        <div class="title-banner">
+            <h1>ASSIGNMENT 4</h1>
+            <p>Software Testing, Quality Metrics &amp; SCM</p>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">1. Define Software Testing.</div>
+            <div class="answer-text">
+                Software Testing is the systematic process of evaluating an application by executing its code with test inputs and comparing actual outputs with expected specifications to detect bugs and ensure quality. In this project, testing verified that all 14 FAQ categories return accurate data, typo-tolerant fuzzy matching maps misspelled queries correctly, student authentication protects confidential records, and admin actions perform securely.
+            </div>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">6. Differentiate Between Black Box Testing and White Box Testing.</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Parameter</th><th>Black Box Testing</th><th>White Box Testing</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Definition</strong></td>
+                        <td>Tests functionality without inspecting internal code structure.</td>
+                        <td>Tests internal logic, branch coverage, and code statement paths.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perspective</strong></td>
+                        <td>Executed from the end-user / student viewpoint.</td>
+                        <td>Executed from the developer / software engineer viewpoint.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project Example</strong></td>
+                        <td>Typing "fees for BBA CA" into the UI to verify that the fee table shows Rs 47,000.</td>
+                        <td>Writing unit test assertions for <code>match_query()</code> scoring logic directly.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="question-block">
+            <div class="question-title">11. Differentiate Between Manual Testing and Automated Testing.</div>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Parameter</th><th>Manual Testing</th><th>Automated Testing</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Execution</strong></td>
+                        <td>Test cases are executed by human testers step by step.</td>
+                        <td>Test cases are executed by automated scripts without human intervention.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speed</strong></td>
+                        <td>Slower and labor-intensive for repetitive regression runs.</td>
+                        <td>Extremely fast; executes dozens of assertions in milliseconds.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>In This Project</strong></td>
+                        <td>Manually tested voice input, theme toggle, copy button, and admin forms across Chrome and Safari.</td>
+                        <td>Implemented an automated test suite (<code>test_suite.py</code>) using Python's <code>unittest</code> framework covering 7 core scenarios with 100% pass rate.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="page-footer">Assignment 4 &middot; Testing Summary</div>
+    </div></div>
+</div>
+
+</body>
+</html>

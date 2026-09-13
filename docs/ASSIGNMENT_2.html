@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASSIGNMENT 2 - AI Chatbot for College</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; line-height: 1.55; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 20px 22px 14px 22px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .title-banner { text-align: center; margin-bottom: 22px; }
+    .title-banner h1 { font-size: 26px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; }
+    .question-block { margin-bottom: 15px; }
+    .question-title { font-size: 14.5px; font-weight: 700; color: #0f254e; margin-bottom: 6px; }
+    .answer-text { font-size: 13.5px; color: #334155; text-align: justify; }
+    ul.bullet-list { margin-left: 22px; margin-top: 5px; margin-bottom: 6px; }
+    ul.bullet-list li { font-size: 13.5px; margin-bottom: 4px; color: #334155; }
+    .diagram-frame { display: flex; justify-content: center; align-items: center; margin: 10px 0; flex: 1; }
+    .diagram-caption { text-align: center; font-size: 12.5px; font-style: italic; color: #475569; margin-top: 6px; }
+    @media print { body { background: none; padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; max-height: 297mm; page-break-after: always; page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="title-banner"><h1>ASSIGNMENT 2</h1></div>
+
+    <div class="question-block">
+        <div class="question-title">1. What is UML?</div>
+        <div class="answer-text">UML (Unified Modeling Language) is a standardized, general-purpose visual modeling language used in software engineering to specify, visualize, construct, and document the structure and behavior of a software system. It provides a common set of diagram types and notations so that developers, designers, and stakeholders can understand a system's design regardless of the programming language used to build it.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">2. What is the use of UML?</div>
+        <div class="answer-text">UML is used to model a software system before and during development. It helps a team plan the system's structure (what data/entities exist and how they relate), its behavior (how users interact with it and how processes flow), and its architecture, before writing code. It improves communication between team members, makes the design easier to review and modify, and serves as documentation for future maintenance. For the AI Chatbot for College project, UML diagrams were used to plan how students and the admin interact with the system, and how the database entities relate to each other.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">3. Explain types of UML diagram with example.</div>
+        <div class="answer-text">UML diagrams are broadly divided into two categories: Structural diagrams (show the static structure of a system) and Behavioral diagrams (show the dynamic behavior).</div>
+        <ul class="bullet-list">
+            <li><strong>Class Diagram (Structural) &ndash;</strong> Shows classes, their attributes, methods, and relationships. Example: in this project, a Student class with attributes roll_no, name, attendance, fees_due, course, semester, cgpa, and mentor.</li>
+            <li><strong>Use Case Diagram (Behavioral) &ndash;</strong> Shows actors and the actions (use cases) they can perform with the system. Example: a Student actor performing &ldquo;Ask FAQ&rdquo;, &ldquo;Voice Input&rdquo;, and &ldquo;Login&rdquo; use cases.</li>
+            <li><strong>Sequence Diagram (Behavioral) &ndash;</strong> Shows the order of messages exchanged between objects over time. Example: Student sends query &rarr; Flask backend queries SQLite &rarr; response back to Student.</li>
+            <li><strong>Activity Diagram (Behavioral) &ndash;</strong> Shows the flow of control/steps in a process, similar to a flowchart. Example: decision logic determining whether to fetch personal records or match general FAQs.</li>
+            <li><strong>Component Diagram (Structural) &ndash;</strong> Shows how software modules are organized. Example: Frontend UI component, Flask backend component, and SQLite database component.</li>
+            <li><strong>Deployment Diagram (Structural) &ndash;</strong> Shows the physical/hardware setup a system runs on. Example: Client browser &rarr; Render cloud Linux container &rarr; SQLite storage.</li>
+        </ul>
+    </div>
+
+    <div class="page-footer">Page 1</div>
+</div></div></div>
+
+<!-- PAGE 2: USE CASE DIAGRAM -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="question-title">4. Draw UML Diagrams of your project.</div>
+        <div class="answer-text"><strong>(a) Use Case Diagram</strong></div>
+    </div>
+
+    <div class="diagram-frame">
+        <svg viewBox="0 0 760 680" width="700" height="630" xmlns="http://www.w3.org/2000/svg">
+            <rect x="170" y="20" width="420" height="640" rx="8" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+            <text x="380" y="48" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3d73">AI Chatbot for College (System)</text>
+
+            <!-- Student Actor -->
+            <g transform="translate(70, 270)" stroke="#1e3d73" stroke-width="2" fill="none">
+                <circle cx="0" cy="0" r="14" fill="#eff6ff"/>
+                <line x1="0" y1="14" x2="0" y2="52"/>
+                <line x1="-20" y1="28" x2="20" y2="28"/>
+                <line x1="0" y1="52" x2="-18" y2="90"/>
+                <line x1="0" y1="52" x2="18" y2="90"/>
+            </g>
+            <text x="70" y="380" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3d73">Student</text>
+
+            <!-- Admin Actor -->
+            <g transform="translate(690, 270)" stroke="#1e3d73" stroke-width="2" fill="none">
+                <circle cx="0" cy="0" r="14" fill="#fef3c7"/>
+                <line x1="0" y1="14" x2="0" y2="52"/>
+                <line x1="-20" y1="28" x2="20" y2="28"/>
+                <line x1="0" y1="52" x2="-18" y2="90"/>
+                <line x1="0" y1="52" x2="18" y2="90"/>
+            </g>
+            <text x="690" y="380" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3d73">Admin</text>
+
+            <!-- Use cases -->
+            <ellipse cx="380" cy="85" rx="100" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.6"/>
+            <text x="380" y="90" text-anchor="middle" font-size="12" font-weight="600" fill="#0f254e">Ask College FAQ</text>
+
+            <ellipse cx="380" cy="140" rx="95" ry="19" fill="#f1f5f9" stroke="#64748b" stroke-width="1.4" stroke-dasharray="4,3"/>
+            <text x="380" y="144" text-anchor="middle" font-size="11" fill="#334155">&lt;&lt;include&gt;&gt; Typo-Tolerant Match</text>
+
+            <ellipse cx="380" cy="195" rx="110" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.6"/>
+            <text x="380" y="200" text-anchor="middle" font-size="12" font-weight="600" fill="#0f254e">Voice Input &amp; Read Aloud</text>
+
+            <ellipse cx="380" cy="250" rx="95" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.6"/>
+            <text x="380" y="255" text-anchor="middle" font-size="12" font-weight="600" fill="#0f254e">Student Login</text>
+
+            <ellipse cx="380" cy="305" rx="120" ry="22" fill="#ffffff" stroke="#2563eb" stroke-width="1.6"/>
+            <text x="380" y="310" text-anchor="middle" font-size="11.5" font-weight="600" fill="#0f254e">View Attendance, CGPA, Fees, Mentor</text>
+
+            <ellipse cx="380" cy="360" rx="110" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.6"/>
+            <text x="380" y="365" text-anchor="middle" font-size="12" font-weight="600" fill="#0f254e">Submit Feedback &amp; Export Chat</text>
+
+            <ellipse cx="380" cy="420" rx="100" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+            <text x="380" y="425" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Admin Login (Hashed)</text>
+
+            <ellipse cx="380" cy="475" rx="105" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+            <text x="380" y="480" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">View KPI Analytics</text>
+
+            <ellipse cx="380" cy="530" rx="95" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+            <text x="380" y="535" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Manage FAQs (Add/Delete)</text>
+
+            <ellipse cx="380" cy="585" rx="110" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+            <text x="380" y="590" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Filter Logs &amp; Export CSV</text>
+
+            <ellipse cx="380" cy="635" rx="95" ry="19" fill="#ffffff" stroke="#d97706" stroke-width="1.6"/>
+            <text x="380" y="639" text-anchor="middle" font-size="11.5" font-weight="600" fill="#92400e">Change Password</text>
+
+            <!-- Links -->
+            <line x1="88" y1="280" x2="280" y2="88" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="88" y1="290" x2="270" y2="198" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="88" y1="300" x2="285" y2="252" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="88" y1="310" x2="260" y2="307" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="88" y1="325" x2="270" y2="362" stroke="#1e3d73" stroke-width="1.4"/>
+
+            <line x1="672" y1="290" x2="480" y2="422" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="672" y1="300" x2="485" y2="477" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="672" y1="310" x2="475" y2="532" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="672" y1="325" x2="490" y2="587" stroke="#1e3d73" stroke-width="1.4"/>
+            <line x1="672" y1="340" x2="475" y2="637" stroke="#1e3d73" stroke-width="1.4"/>
+        </svg>
+    </div>
+    <div class="diagram-caption">Fig 1: Use Case Diagram &mdash; Student and Admin actors and their interactions with the system.</div>
+    <div class="page-footer">Page 2</div>
+</div></div></div>
+
+<!-- PAGE 3: CLASS DIAGRAM -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="answer-text"><strong>(b) Class Diagram</strong></div>
+    </div>
+
+    <div class="diagram-frame">
+        <svg viewBox="0 0 740 660" width="700" height="620" xmlns="http://www.w3.org/2000/svg">
+            <!-- Student Class -->
+            <g transform="translate(40, 30)">
+                <rect x="0" y="0" width="270" height="34" fill="#1e3d73" rx="3"/>
+                <text x="135" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Student</text>
+                <rect x="0" y="34" width="270" height="210" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="56" font-size="12.5" fill="#1e293b">- roll_no : TEXT (PK)</text>
+                <text x="12" y="78" font-size="12.5" fill="#1e293b">- name : TEXT</text>
+                <text x="12" y="100" font-size="12.5" fill="#1e293b">- attendance : REAL</text>
+                <text x="12" y="122" font-size="12.5" fill="#1e293b">- fees_due : REAL</text>
+                <text x="12" y="144" font-size="12.5" fill="#1e293b">- exam_date : TEXT</text>
+                <text x="12" y="166" font-size="12.5" fill="#1e293b">- course : TEXT</text>
+                <text x="12" y="188" font-size="12.5" fill="#1e293b">- semester : TEXT</text>
+                <text x="12" y="210" font-size="12.5" fill="#1e293b">- cgpa : REAL</text>
+                <text x="12" y="230" font-size="12.5" fill="#1e293b">- mentor : TEXT</text>
+                <rect x="0" y="244" width="270" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="266" font-size="12" font-weight="600" fill="#0f254e">+ personalized_answer()</text>
+                <text x="12" y="284" font-size="12" font-weight="600" fill="#0f254e">+ get_profile_summary()</text>
+            </g>
+
+            <!-- CollegeInfo Class -->
+            <g transform="translate(410, 30)">
+                <rect x="0" y="0" width="280" height="34" fill="#1e3d73" rx="3"/>
+                <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">CollegeInfo</text>
+                <rect x="0" y="34" width="280" height="120" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="58" font-size="12.5" fill="#1e293b">- id : INTEGER (PK AUTO)</text>
+                <text x="12" y="82" font-size="12.5" fill="#1e293b">- category : TEXT</text>
+                <text x="12" y="106" font-size="12.5" fill="#1e293b">- keywords : TEXT</text>
+                <text x="12" y="130" font-size="12.5" fill="#1e293b">- answer : TEXT</text>
+                <rect x="0" y="154" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="176" font-size="12" font-weight="600" fill="#0f254e">+ match_query()</text>
+                <text x="12" y="194" font-size="12" font-weight="600" fill="#0f254e">+ get_categories()</text>
+            </g>
+
+            <!-- Admin Class -->
+            <g transform="translate(410, 340)">
+                <rect x="0" y="0" width="280" height="34" fill="#0f254e" rx="3"/>
+                <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Admin</text>
+                <rect x="0" y="34" width="280" height="66" fill="#ffffff" stroke="#0f254e" stroke-width="1.4"/>
+                <text x="12" y="60" font-size="12.5" fill="#1e293b">- username : TEXT (PK)</text>
+                <text x="12" y="84" font-size="12.5" fill="#1e293b">- password_hash : TEXT</text>
+                <rect x="0" y="100" width="280" height="72" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
+                <text x="12" y="122" font-size="12" font-weight="600" fill="#0f254e">+ admin_login()</text>
+                <text x="12" y="140" font-size="12" font-weight="600" fill="#0f254e">+ add_faq() / delete_faq()</text>
+                <text x="12" y="158" font-size="12" font-weight="600" fill="#0f254e">+ export_chat_csv()</text>
+            </g>
+
+            <!-- ChatHistory Class -->
+            <g transform="translate(40, 390)">
+                <rect x="0" y="0" width="270" height="34" fill="#1e3d73" rx="3"/>
+                <text x="135" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">ChatHistory</text>
+                <rect x="0" y="34" width="270" height="150" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="56" font-size="12.5" fill="#1e293b">- id : INTEGER (PK AUTO)</text>
+                <text x="12" y="78" font-size="12.5" fill="#1e293b">- roll_no : TEXT (FK)</text>
+                <text x="12" y="100" font-size="12.5" fill="#1e293b">- user_query : TEXT</text>
+                <text x="12" y="122" font-size="12.5" fill="#1e293b">- bot_response : TEXT</text>
+                <text x="12" y="144" font-size="12.5" fill="#1e293b">- timestamp : TEXT</text>
+                <text x="12" y="166" font-size="12.5" fill="#1e293b">- feedback : TEXT</text>
+                <rect x="0" y="184" width="270" height="34" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                <text x="12" y="206" font-size="12" font-weight="600" fill="#0f254e">+ record_feedback()</text>
+            </g>
+
+            <!-- Connector -->
+            <line x1="175" y1="322" x2="175" y2="390" stroke="#1e3d73" stroke-width="1.8"/>
+            <text x="190" y="345" font-size="12" font-weight="bold" fill="#1e3d73">1</text>
+            <text x="190" y="365" font-size="12" font-weight="bold" fill="#1e3d73">logs</text>
+            <text x="190" y="385" font-size="12" font-weight="bold" fill="#1e3d73">0..*</text>
+        </svg>
+    </div>
+    <div class="diagram-caption">Fig 2: Class Diagram &mdash; core entities and their attributes, matching the updated SQLite schema.</div>
+    <div class="page-footer">Page 3</div>
+</div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASSIGNMENT 1 - AI Chatbot for College</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; line-height: 1.55; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 22px 22px 14px 22px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .title-banner { text-align: center; margin-bottom: 22px; }
+    .title-banner h1 { font-size: 26px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; }
+    .question-block { margin-bottom: 16px; }
+    .question-title { font-size: 14.5px; font-weight: 700; color: #0f254e; margin-bottom: 6px; }
+    .answer-text { font-size: 13.5px; color: #334155; text-align: justify; }
+    ul.bullet-list { margin-left: 22px; margin-top: 5px; margin-bottom: 6px; }
+    ul.bullet-list li { font-size: 13.5px; margin-bottom: 4px; color: #334155; }
+    @media print { body { background: none; padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; max-height: 297mm; page-break-after: always; page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="title-banner"><h1>ASSIGNMENT 1</h1></div>
+
+    <div class="question-block">
+        <div class="question-title">1. Describe your project.</div>
+        <div class="answer-text">The AI Chatbot for College is a web-based application that instantly answers common student questions such as admission details, fee structure, exam timetable, attendance rules, library timings, course information, faculty contact details, branch/course change procedures, placements, hostel accommodation, scholarships, and campus facilities. It uses rule-based keyword matching with typo-tolerant fuzzy matching to understand what a student is asking, then fetches the correct answer from a database. Students can log in with their registration number to get personalized answers about their own attendance, fees, CGPA, assigned mentor, or exam date. The system also includes voice typing and read-aloud features, dark mode, an installable Progressive Web App configuration, and a secure admin command center with analytics and CSV export.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">2. Advantages of your project.</div>
+        <ul class="bullet-list">
+            <li>&bull; Provides instant, 24x7 answers without needing to visit the college office.</li>
+            <li>&bull; Reduces repetitive workload on administrative staff.</li>
+            <li>&bull; Tolerates minor spelling mistakes through fuzzy matching.</li>
+            <li>&bull; Personalized answers for logged-in students (attendance, fees, CGPA, mentor, exam date).</li>
+            <li>&bull; Voice-enabled with Speech-to-Text and SpeechSynthesis read-aloud support.</li>
+            <li>&bull; Admin can update FAQs anytime through a secure dashboard, with no coding needed.</li>
+            <li>&bull; Chat history is logged with student feedback ratings (👍/👎), helping identify areas for improvement.</li>
+            <li>&bull; Installable as an app on phone or laptop (Progressive Web App), working like a native application without needing an app store.</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">3. How do you gather the requirements of your project?</div>
+        <div class="answer-text">Requirements were gathered by identifying the most common questions students ask the college office repeatedly &mdash; admission process, fee structure, exam schedules, attendance policy, library timings, course details, placement records, hostel facilities, and faculty contacts. These were confirmed as realistic, high-frequency queries based on general college administrative experience, and then structured into an indexed knowledge base of 14 categories. Additional requirements (student login for personalized data, admin panel with analytics, CSV export, voice accessibility, secure authentication) were identified as necessary to make the system practically usable and maintainable by non-technical college staff.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">4. How and where do you implement your project?</div>
+        <div class="answer-text">The project is implemented using Python (Flask) for the backend, HTML/CSS/JavaScript for the frontend, and SQLite for the database. It was developed locally and then version controlled using Git and hosted on GitHub. From GitHub, it is deployed to Render, a cloud hosting platform, which automatically rebuilds and redeploys the application every time new code is pushed to the repository. This gives the project a live, publicly accessible URL (<code>https://college-ai-chatbot-c94w.onrender.com</code>) that works from any device with an internet connection.</div>
+    </div>
+
+    <div class="page-footer">Page 1</div>
+</div></div></div>
+
+<!-- PAGE 2 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="question-title">5. Which software you used in your project?</div>
+        <ul class="bullet-list">
+            <li>&bull; VS Code &mdash; code editor used to write and edit the project files.</li>
+            <li>&bull; Python 3 &mdash; programming language for the backend logic.</li>
+            <li>&bull; Flask (v3.0.3) &mdash; Python web framework used to build the server and routes.</li>
+            <li>&bull; SQLite3 &mdash; lightweight relational database used to store FAQs, students, admin, and chat history.</li>
+            <li>&bull; Werkzeug (v3.0.3) &mdash; security library for cryptographic password hashing (PBKDF2/scrypt).</li>
+            <li>&bull; Git and GitHub Desktop &mdash; version control and pushing code to GitHub.</li>
+            <li>&bull; Render &mdash; cloud platform used to host and deploy the live application.</li>
+            <li>&bull; Google Chrome / Safari &mdash; used for testing the chatbot interface and Web Speech APIs.</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">6. What methodology is used for the project?</div>
+        <div class="answer-text">The project follows an incremental/iterative development methodology. The system was built in stages: first a working core chatbot with keyword matching, then a database schema, then student login, then the admin panel, then security improvements (password hashing), then UI polish and fuzzy matching, then PWA support, and finally voice input/output, dark mode, expanded student records (CGPA/mentor), and CSV analytics export. Each stage was tested and confirmed working before adding the next feature, which is consistent with an iterative/incremental approach.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">7. What is the hardware or software of the project?</div>
+        <div class="answer-text">Hardware requirements are minimal: any computer or smartphone with a web browser and an internet connection can access the chatbot, since all processing happens on the server side (Render's cloud servers), not on the user's device. Software requirements include: Python 3 and Flask (backend framework), SQLite (database engine), a modern web browser (Chrome, Safari, Edge, etc.) supporting HTML5/CSS3/JavaScript and the Web Speech API, and Werkzeug for secure password hashing. No special hardware, GPU, or paid software licenses are required.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">8. What is your role in the project?</div>
+        <div class="answer-text">As part of a two-member team, my role covered core backend development (Flask routes, chatbot matching logic, database schema and queries), database design (defining the college_info, students, chat_history, and admin tables), implementing student and admin authentication with secure password handling, voice input/output integration, automated unit testing, and deploying the project using Git, GitHub, and Render. I was also responsible for testing each feature end-to-end before moving to the next stage of development.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">9. Explain the data flow of your application.</div>
+        <div class="answer-text">When a student types a message, speaks via voice input, or taps a quick-reply button, the browser sends it to the Flask backend via the /chat endpoint as JSON. The backend first checks whether the student is logged in and asking about their own data (e.g. &ldquo;my attendance&rdquo;, &ldquo;my cgpa&rdquo;); if so, it queries the students table directly. Otherwise, it runs the message through the match_query() function, which checks it against the keywords column of every row in the college_info table, using exact matching first and fuzzy matching as a fallback. The best matching answer is retrieved, the query-response pair along with row ID is saved into the chat_history table, and the response is sent back to the browser as JSON, where JavaScript renders it in the chat window (including converting any table-formatted answers into an actual HTML table and triggering audio chimes).</div>
+    </div>
+
+    <div class="page-footer">Page 2</div>
+</div></div></div>
+
+<!-- PAGE 3 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="question-title">10. What are the entities in your project?</div>
+        <ul class="bullet-list">
+            <li>&bull; <strong>College Info :</strong> id (PK), category, keywords, and answer for each FAQ topic.</li>
+            <li>&bull; <strong>Student :</strong> roll_no (PK), name, attendance percentage, fees due, exam date, course, semester, cgpa, and mentor.</li>
+            <li>&bull; <strong>Chat History :</strong> id (PK), roll_no (FK), user query, bot response, timestamp, and feedback rating.</li>
+            <li>&bull; <strong>Admin :</strong> username (PK) and securely hashed password for the admin panel.</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">11. What is the drawback of your system?</div>
+        <div class="answer-text">The chatbot relies on rule-based keyword and fuzzy matching rather than open-domain generative AI, so it can occasionally misinterpret questions that are phrased in an unusual way. It depends on the admin keeping the FAQ database accurate and up to date, since it cannot generate new information on its own. The system also requires an internet connection to function, and the free hosting tier can take up to 30&ndash;40 seconds to &ldquo;wake up&rdquo; after a period of inactivity.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">12. How do you test your application?</div>
+        <div class="answer-text">The application was tested through both automated and manual methods. An automated unit test suite (<code>test_suite.py</code>) was implemented using Python's <code>unittest</code> framework, verifying query matching, typo-tolerant fuzzy thresholds (e.g. &ldquo;hostal&rdquo; &rarr; Hostel), and personalized student queries (attendance, CGPA, mentor) with a 100% pass rate. Manual testing was performed across desktop and mobile browsers (Chrome and Safari) to verify voice recognition, speech synthesis, dark mode toggling, student login validation, admin CRUD operations, and CSV log exports. The deployed live version on Render was also tested directly after each Git commit.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">13. From where do you get reference, guide for your project work?</div>
+        <div class="answer-text">Reference and guidance were drawn from the official Flask and SQLite documentation for backend and database concepts, MDN Web Docs for HTML/CSS/JavaScript and Web Speech API specifications, and Render&rsquo;s deployment documentation for setting up continuous deployment from GitHub. The overall project structure, database data, and problem statement were guided by common, real-world administrative pain points observed in college settings.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">14. In the future, what changes will you make in your application?</div>
+        <ul class="bullet-list">
+            <li>&bull; Connect to Generative AI / LLMs (Google Gemini or OpenAI API) with Retrieval-Augmented Generation (RAG) for conversational depth.</li>
+            <li>&bull; Add official WhatsApp Business integration for access without opening a browser.</li>
+            <li>&bull; Add multi-language conversational support in Hindi and Marathi alongside English.</li>
+            <li>&bull; Real-time automated synchronization with the college ERP database to update attendance and fee clearances automatically.</li>
+        </ul>
+    </div>
+
+    <div class="page-footer">Page 3</div>
+</div></div></div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASSIGNMENT 3 - AI Chatbot for College</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; line-height: 1.55; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 22px 22px 14px 22px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .title-banner { text-align: center; margin-bottom: 22px; }
+    .title-banner h1 { font-size: 26px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; }
+    .question-block { margin-bottom: 16px; }
+    .question-title { font-size: 14.5px; font-weight: 700; color: #0f254e; margin-bottom: 6px; }
+    .answer-text { font-size: 13.5px; color: #334155; text-align: justify; }
+    ul.bullet-list { margin-left: 22px; margin-top: 5px; margin-bottom: 6px; }
+    ul.bullet-list li { font-size: 13.5px; margin-bottom: 4px; color: #334155; }
+    .page-footer { margin-top: auto; text-align: right; font-size: 11px; color: #94a3b8; }
+    @media print { body { background: none; padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; max-height: 297mm; page-break-after: always; page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="title-banner"><h1>ASSIGNMENT 3</h1></div>
+
+    <div class="question-block">
+        <div class="question-title">1. What is Project Life Cycle and its Main Characteristics?</div>
+        <div class="answer-text">A Project Life Cycle is the series of phases a software project passes through from initiation to completion &mdash; typically Requirement Analysis, Design, Implementation (Coding), Testing, Deployment, and Maintenance. It provides a structured path for planning, executing, and delivering a project in a predictable, manageable way.</div>
+        <div class="answer-text" style="margin-top: 8px;"><strong>Main characteristics:</strong></div>
+        <ul class="bullet-list">
+            <li>&bull; Defined start and end points, with clear phases in between.</li>
+            <li>&bull; Each phase produces specific deliverables (e.g. requirement document, design diagrams, working code, test reports).</li>
+            <li>&bull; Progress can be tracked and measured against each phase.</li>
+            <li>&bull; Resources (time, people, tools) are planned and allocated per phase.</li>
+            <li>&bull; Risks are identified and managed throughout the cycle, not just at the end.</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">2. Explain following SDLC models.</div>
+        
+        <div class="answer-text"><strong>i) Waterfall Model</strong><br>
+        A linear, sequential model where each phase (Requirements &rarr; Design &rarr; Implementation &rarr; Testing &rarr; Deployment &rarr; Maintenance) must be completed before the next begins. It is simple to understand and manage, but inflexible &mdash; changes are difficult once a phase is finished. Best suited for projects with clear, fixed requirements.</div>
+
+        <div class="answer-text" style="margin-top: 10px;"><strong>ii) Iterative Model (Used in This Project)</strong><br>
+        The system is developed through repeated cycles (iterations), with each iteration adding or refining functionality. A basic working version is built first, then improved in successive iterations based on feedback. This project strictly followed an iterative approach &mdash; starting with a basic chatbot (Iteration 1), adding database persistence (Iteration 2), student login (Iteration 3), admin panel with password hashing (Iteration 4), fuzzy matching &amp; PWA support (Iteration 5), and finally voice input/output, dark mode, expanded student profile records (CGPA/mentor), and CSV analytics export (Iteration 6).</div>
+
+        <div class="answer-text" style="margin-top: 10px;"><strong>iii) Spiral Model</strong><br>
+        Combines iterative development with a strong focus on risk analysis. Each cycle (spiral) passes through four phases: planning, risk analysis, engineering, and evaluation. It is well suited for large, complex, high-risk projects where requirements may evolve.</div>
+
+        <div class="answer-text" style="margin-top: 10px;"><strong>iv) V-shaped Model</strong><br>
+        An extension of the Waterfall model where each development phase has a corresponding testing phase, forming a V shape. For example, requirement analysis pairs with acceptance testing, and system design pairs with system testing. It emphasizes verification and validation at every stage, but like Waterfall, is less flexible to changing requirements.</div>
+
+        <div class="answer-text" style="margin-top: 10px;"><strong>v) Agile Model</strong><br>
+        An iterative and incremental model that delivers working software in small, frequent cycles called sprints, with continuous feedback and collaboration between the team and stakeholders. It embraces changing requirements even late in development and prioritizes working software over extensive documentation.</div>
+    </div>
+
+    <div class="page-footer">Page 1</div>
+</div></div></div>
+
+</body>
+</html>

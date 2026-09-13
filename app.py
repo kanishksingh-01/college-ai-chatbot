@@ -212,6 +212,16 @@ def service_worker():
     return response
 
 
+@app.route("/docs/uml")
+def docs_uml():
+    return send_from_directory("docs", "UML_DIAGRAMS.html")
+
+
+@app.route("/docs/report")
+def docs_report():
+    return send_from_directory("docs", "PROJECT_REPORTS.html")
+
+
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.get_json() or {}

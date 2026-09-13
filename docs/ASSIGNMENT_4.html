@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASSIGNMENT 4 - AI Chatbot for College</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; line-height: 1.55; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 20px 22px 14px 22px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .title-banner { text-align: center; margin-bottom: 22px; }
+    .title-banner h1 { font-size: 26px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; }
+    .question-block { margin-bottom: 15px; }
+    .question-title { font-size: 14.5px; font-weight: 700; color: #0f254e; margin-bottom: 5px; }
+    .answer-text { font-size: 13.5px; color: #334155; text-align: justify; }
+    ul.bullet-list { margin-left: 22px; margin-top: 5px; margin-bottom: 6px; }
+    ul.bullet-list li { font-size: 13.5px; margin-bottom: 4px; color: #334155; }
+    table.data-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+    table.data-table th, table.data-table td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; }
+    table.data-table th { background: #eff6ff; color: #1e3d73; font-weight: 700; }
+    table.data-table tr:nth-child(even) td { background: #f8fafc; }
+    .page-footer { margin-top: auto; text-align: right; font-size: 11px; color: #94a3b8; }
+    @media print { body { background: none; padding: 0; gap: 0; } .page { box-shadow: none; margin: 0; width: 210mm; height: 297mm; max-height: 297mm; page-break-after: always; page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="title-banner"><h1>ASSIGNMENT 4</h1></div>
+
+    <div class="question-block">
+        <div class="question-title">1. Define Software Testing.</div>
+        <div class="answer-text">Software Testing is the process of evaluating a software application to verify that it behaves as expected, meets its requirements, and is free of defects. It involves executing the program with test inputs and comparing actual results with expected results. For this project, testing included automated unit testing (using Python's unittest) and manual functional testing to check that all 14 FAQ categories returned correct answers, that typo-tolerant matching worked, and that login/authentication behaved correctly for valid and invalid inputs.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">2. What is Risk Identification?</div>
+        <div class="answer-text">Risk Identification is the process of recognizing potential problems that could negatively affect a project before they occur, so they can be planned for or mitigated. Examples relevant to this project include: the free hosting tier going to sleep and delaying responses (~30s cold start), the admin database not being updated regularly leading to outdated answers, or keyword-based matching failing to understand oddly phrased questions (mitigated using difflib fuzzy matching).</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">3. What is SCM?</div>
+        <div class="answer-text">SCM (Software Configuration Management) is the discipline of tracking and controlling changes to a software project's files over time, ensuring consistency and enabling collaboration. In this project, SCM was implemented using Git for version control and GitHub for hosting the repository, allowing every change to be tracked, committed with a message, and safely pushed to the live deployment on Render with automated continuous integration.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">4. Define Debugging.</div>
+        <div class="answer-text">Debugging is the process of identifying, analyzing, and fixing errors (bugs) in a program's source code. It involves reproducing the faulty behavior, tracing it back to its root cause (often using logs, error messages, or print statements), and correcting the code so the program behaves as intended.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">5. Explain Configuration Audit.</div>
+        <div class="answer-text">A Configuration Audit is a formal review conducted to verify that a software product conforms to its specified requirements and that all configuration items (code, documentation, versions) are consistent and correctly recorded. It typically has two parts: a Functional Configuration Audit (verifying the software meets its functional and performance requirements) and a Physical Configuration Audit (verifying the software matches its technical documentation).</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">6. Differentiate Between Black Box Testing And White Box Testing.</div>
+        <table class="data-table">
+            <thead>
+                <tr><th>Black Box Testing</th><th>White Box Testing</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tests functionality without knowledge of internal code structure.</td>
+                    <td>Tests internal code structure, logic, and paths directly.</td>
+                </tr>
+                <tr>
+                    <td>Performed from the end-user's perspective (inputs and outputs).</td>
+                    <td>Performed from a developer's perspective (code-level logic).</td>
+                </tr>
+                <tr>
+                    <td>Example: checking the chatbot returns the right FAQ answer for a given query.</td>
+                    <td>Example: checking the match_query() function's keyword-matching scoring logic directly.</td>
+                </tr>
+                <tr>
+                    <td>Does not require programming knowledge.</td>
+                    <td>Requires programming knowledge to design test cases.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-footer">Page 1</div>
+</div></div></div>
+
+<!-- PAGE 2 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="question-title">7. What Do You Mean By Metrics?</div>
+        <div class="answer-text">Software Metrics are quantitative measures used to assess various aspects of a software project, such as its size, complexity, quality, or the productivity of the development process. Examples include lines of code, number of defects found, response time, or number of test cases passed (e.g. 7/7 automated unit tests passed in this project). In this application, live KPI metrics are also displayed on the admin dashboard showing Total Active FAQs, Total Queries Handled, and Registered Students.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">8. What Do You Mean By Version Control?</div>
+        <div class="answer-text">Version Control is a system that records changes to files over time so that specific versions can be recalled, compared, or reverted later, and multiple people can collaborate without overwriting each other's work. This project uses Git for version control, with GitHub used to commit and push changes, and Render automatically redeploying the latest committed version.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">9. Explain Object Oriented Software Engineering.</div>
+        <div class="answer-text">Object Oriented Software Engineering (OOSE) is an approach to designing and building software around &ldquo;objects&rdquo; &mdash; units that bundle data (attributes) and behavior (methods) together, based on real-world entities. It relies on concepts such as encapsulation, inheritance, and polymorphism. In this project, the database design reflects an object-oriented way of thinking about entities &mdash; Student, CollegeInfo, ChatHistory, and Admin &mdash; each with clearly defined attributes and methods.</div>
+    </div>
+
+    <div class="question-block">
+        <div class="question-title">10. Explain Various Types of Testing in details.</div>
+        <div class="answer-text"><strong>Unit Testing &ndash;</strong> Testing individual functions or components in isolation. Example: testing the match_query() function alone with sample inputs and fuzzy typos.</div>
+        <div class="answer-text" style="margin-top: 6px;"><strong>Integration Testing &ndash;</strong> Testing how multiple components work together. Example: testing that the Flask route correctly calls the database, logs chat history, and returns a JSON response.</div>
+        <div class="answer-text" style="margin-top: 6px;"><strong>System Testing &ndash;</strong> Testing the complete, integrated application as a whole. Example: using the live deployed chatbot end-to-end, from speaking a question to receiving an answer.</div>
+        <div class="answer-text" style="margin-top: 6px;"><strong>Acceptance Testing &ndash;</strong> Testing to confirm the system meets user requirements. Example: confirming a student can log in and see their correct attendance, CGPA, and mentor details.</div>
+        <div class="answer-text" style="margin-top: 6px;"><strong>Regression Testing &ndash;</strong> Re-testing existing features after a change, to confirm nothing that previously worked has broken. Example: re-testing FAQ answers and table rendering after adding dark mode and voice features.</div>
+        <div class="answer-text" style="margin-top: 6px;"><strong>Performance Testing &ndash;</strong> Testing how the system behaves under load or response-time constraints. Example: measuring API latency and documenting the free-tier hosting's cold-start delay after inactivity.</div>
+    </div>
+
+    <div class="page-footer">Page 2</div>
+</div></div></div>
+
+<!-- PAGE 3 -->
+<div class="page"><div class="outer-border"><div class="inner-border">
+    <div class="question-block">
+        <div class="question-title">11. Differentiate Between Automated Testing And Manual Testing.</div>
+        <table class="data-table">
+            <thead>
+                <tr><th>Manual Testing</th><th>Automated Testing</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Test cases are executed by a human, step by step.</td>
+                    <td>Test cases are executed by scripts/tools without human intervention.</td>
+                </tr>
+                <tr>
+                    <td>Slower and more time-consuming for repeated tests.</td>
+                    <td>Faster for repeated/regression testing once set up.</td>
+                </tr>
+                <tr>
+                    <td>No programming/scripting knowledge required.</td>
+                    <td>Requires writing test scripts (e.g. using a testing framework).</td>
+                </tr>
+                <tr>
+                    <td>This is how the user experience was verified &mdash; manually testing voice input, speech output, dark mode, login, and admin panel on desktop and mobile browsers.</td>
+                    <td>Implemented an automated test suite (<code>test_suite.py</code>) using Python's <code>unittest</code> framework to test Flask routes, keyword scoring, and student personalization logic with 100% pass rate.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-footer">Page 3</div>
+</div></div></div>
+
+</body>
+</html>
