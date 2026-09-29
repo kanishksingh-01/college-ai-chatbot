@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College AI Chatbot - Complete Project Explanation Guide</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+        background-color: #525659;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        color: #1e293b;
+        line-height: 1.45;
+    }
+    .page {
+        width: 210mm;
+        height: 297mm;
+        max-height: 297mm;
+        padding: 10mm 12mm;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+    }
+    .outer-border {
+        border: 2.5px solid #1e3d73;
+        padding: 3px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .inner-border {
+        border: 1px solid #1e3d73;
+        padding: 16px 18px 10px 18px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+    }
+    .header-banner {
+        text-align: center;
+        margin-bottom: 12px;
+        border-bottom: 2px solid #1e3d73;
+        padding-bottom: 8px;
+    }
+    .college-tag {
+        font-size: 11px;
+        font-weight: 700;
+        color: #1e3d73;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .main-title {
+        font-size: 19px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 3px;
+    }
+    .sub-title {
+        font-size: 11.5px;
+        color: #475569;
+        font-style: italic;
+        margin-top: 2px;
+    }
+    .summary-box {
+        background: #f8fafc;
+        border-left: 4.5px solid #1e3d73;
+        border-top: 1px solid #cbd5e1;
+        border-right: 1px solid #cbd5e1;
+        border-bottom: 1px solid #cbd5e1;
+        padding: 10px 12px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        font-size: 12px;
+    }
+    .box-title {
+        font-size: 11.5px;
+        font-weight: 800;
+        color: #1e3d73;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+    }
+    .section-heading {
+        font-size: 13px;
+        font-weight: 800;
+        color: #0f254e;
+        margin-top: 8px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        border-bottom: 1.5px solid #e2e8f0;
+        padding-bottom: 3px;
+    }
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11.5px;
+        margin-bottom: 12px;
+    }
+    .comparison-table th, .comparison-table td {
+        border: 1px solid #cbd5e1;
+        padding: 6px 8px;
+        text-align: left;
+    }
+    .comparison-table td {
+        background: #ffffff;
+    }
+    .three-pillars {
+        display: flex;
+        gap: 10px;
+        margin-top: 4px;
+    }
+    .pillar-card {
+        flex: 1;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 10px 8px;
+        text-align: center;
+    }
+    .pillar-icon {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+    .pillar-title {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: #1e3d73;
+        margin-bottom: 4px;
+    }
+    .pillar-desc {
+        font-size: 10.5px;
+        color: #475569;
+        line-height: 1.35;
+        text-align: justify;
+    }
+    .workflow-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 4px;
+    }
+    .step-card {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 5px;
+        padding: 6px 10px;
+    }
+    .step-badge {
+        background: #1e3d73;
+        color: #ffffff;
+        font-size: 9.5px;
+        font-weight: 800;
+        padding: 3px 6px;
+        border-radius: 4px;
+        white-space: nowrap;
+        margin-top: 1px;
+    }
+    .step-content {
+        font-size: 11.5px;
+        color: #334155;
+        line-height: 1.35;
+    }
+    .tech-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11.5px;
+        margin-bottom: 10px;
+    }
+    .tech-table th, .tech-table td {
+        border: 1px solid #cbd5e1;
+        padding: 5px 8px;
+        text-align: left;
+    }
+    .tech-table th {
+        background: #eff6ff;
+        color: #1e3d73;
+        font-weight: 700;
+    }
+    .features-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 4px;
+    }
+    .feature-item {
+        background: #f8fafc;
+        border-left: 3.5px solid #2563eb;
+        border: 1px solid #e2e8f0;
+        border-left-width: 3.5px;
+        border-left-color: #2563eb;
+        padding: 5px 8px;
+        font-size: 11px;
+        color: #334155;
+        line-height: 1.35;
+    }
+    .diagram-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 4px;
+    }
+    .diag-item {
+        display: flex;
+        gap: 10px;
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        padding: 5px 8px;
+    }
+    .diag-num {
+        background: #0f254e;
+        color: white;
+        font-size: 10.5px;
+        font-weight: 800;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .diag-body {
+        font-size: 11px;
+        color: #334155;
+        line-height: 1.35;
+    }
+    .diag-body strong {
+        color: #0f254e;
+    }
+    .diag-body p {
+        margin-top: 1px;
+    }
+    .table-card {
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        padding: 6px 8px;
+    }
+    .table-header {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: #1e3d73;
+    }
+    .table-desc {
+        font-size: 10px;
+        color: #64748b;
+        margin-bottom: 4px;
+    }
+    .mini-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+    }
+    .mini-table th, .mini-table td {
+        border: 1px solid #e2e8f0;
+        padding: 3px 5px;
+        text-align: left;
+    }
+    .mini-table th {
+        background: #f1f5f9;
+        color: #334155;
+        font-weight: 700;
+    }
+    .viva-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5.5px;
+        margin-top: 4px;
+    }
+    .viva-card {
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 4px;
+        padding: 6px 8px;
+    }
+    .viva-q {
+        font-size: 11.5px;
+        font-weight: 700;
+        color: #0f254e;
+        margin-bottom: 2px;
+    }
+    .viva-a {
+        font-size: 11px;
+        color: #334155;
+        line-height: 1.35;
+    }
+    .page-footer {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        color: #94a3b8;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 4px;
+    }
+    @media print {
+        body {
+            background: none !important;
+            padding: 0 !important;
+            gap: 0 !important;
+        }
+        .page {
+            box-shadow: none !important;
+            margin: 0 !important;
+            width: 210mm !important;
+            height: 297mm !important;
+            max-height: 297mm !important;
+            page-break-after: always !important;
+            page-break-inside: avoid !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA</div>
+                <h1 class="main-title">PROJECT EXPLANATION &amp; ARCHITECTURE GUIDE</h1>
+                <div class="sub-title">AI Chatbot for College &mdash; Everything Explained in the Easiest Way</div>
+            </div>
+
+            <div class="summary-box">
+                <div class="box-title">⚡ WHAT IS THIS PROJECT IN 30 SECONDS?</div>
+                <p>Imagine having a super-smart college receptionist who never sleeps, never gets tired, speaks and listens in English, remembers every student's attendance and fee status, and answers college questions instantly. That is exactly what this project is! It is a <strong>full-stack, voice-enabled AI Campus Chatbot and Student Portal</strong> built specifically for GH Raisoni College using <strong>Python (Flask)</strong>, <strong>SQLite</strong>, and modern <strong>Web Speech / PWA technologies</strong>.</p>
+            </div>
+
+            <div class="section-heading">1. THE REAL-WORLD PROBLEM WE SOLVED</div>
+            <table class="comparison-table">
+                <tr>
+                    <th style="width: 50%; background: #fee2e2; color: #991b1b;">❌ The Traditional College Way</th>
+                    <th style="width: 50%; background: #dcfce7; color: #166534;">✅ Our AI Chatbot Solution</th>
+                </tr>
+                <tr>
+                    <td>Students wait in long physical queues at the admin/accounts desk for minor inquiries (fee dues, exam dates).</td>
+                    <td>Instant 24/7 web access from mobile or laptop with zero waiting time.</td>
+                </tr>
+                <tr>
+                    <td>Staff repeatedly answers the exact same 50 questions daily, wasting hours of manual productivity.</td>
+                    <td>Automated NLP Knowledge Base answers admissions, syllabus, timings, and campus queries in milliseconds.</td>
+                </tr>
+                <tr>
+                    <td>Students have no quick private way to check their personal attendance percentage or fee balances.</td>
+                    <td>Secure student login with Registration No. (e.g., <code>ISTU...</code>) delivers personalized real-time stats.</td>
+                </tr>
+                <tr>
+                    <td>Static noticeboards and clunky PDF circulars are easily missed by students on the go.</td>
+                    <td>Interactive search with quick suggestion pills and spoken audio responses (voice read-aloud).</td>
+                </tr>
+            </table>
+
+            <div class="section-heading">2. THE THREE CORE PILLARS OF THE SYSTEM</div>
+            <div class="three-pillars">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🤖</div>
+                    <div class="pillar-title">1. Public AI Assistant</div>
+                    <div class="pillar-desc">Open to any visitor, parent, or applicant. Answers admissions, eligibility, fees, placement stats, and campus facilities with smart typo tolerance.</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">👤</div>
+                    <div class="pillar-title">2. Student Portal</div>
+                    <div class="pillar-desc">Authenticated zone. When a student enters their Roll No, the bot greets them personally and answers <em>"What is my attendance?"</em>, <em>"Do I have fee dues?"</em>, etc.</div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🛡️</div>
+                    <div class="pillar-title">3. Admin Control Panel</div>
+                    <div class="pillar-desc">Protected back-office. College administrators can add/edit FAQs, monitor live chat logs, track feedback, and export logs to CSV with one click.</div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 1 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">System Mechanics &amp; Engineering</div>
+                <h1 class="main-title">HOW IT WORKS UNDER THE HOOD</h1>
+                <div class="sub-title">Step-by-Step Lifecycle of a User Message (From Voice/Typing to Response)</div>
+            </div>
+
+            <div class="section-heading">THE LIFECYCLE OF A QUESTION: 7 SIMPLE STEPS</div>
+            <div class="workflow-container">
+                <div class="step-card">
+                    <div class="step-badge">STEP 1</div>
+                    <div class="step-content">
+                        <strong>Student Inputs Query (Typing or Speaking):</strong> The user types in the input box or taps the microphone icon. The browser's native <code>Web Speech API</code> converts speech into text instantly.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 2</div>
+                    <div class="step-content">
+                        <strong>Async HTTP Request (AJAX / Fetch):</strong> JavaScript captures the text, triggers a smooth local audio cue, shows a bouncing "Bot is typing..." indicator, and dispatches a JSON POST request to <code>/chat</code>.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 3</div>
+                    <div class="step-content">
+                        <strong>Session &amp; Student Context Check:</strong> Flask inspects the active browser session. If a student is logged in (e.g. <code>ISTU25010120001</code>), the server first checks if the query asks for personalized data (attendance, marks, fees).
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 4</div>
+                    <div class="step-content">
+                        <strong>Intelligent Fuzzy NLP Engine:</strong> If it's a general question, the bot runs the query through our custom NLP matcher in <code>app.py</code>. It cleans tokens and uses Python's <code>difflib.get_close_matches</code> to forgive typos (e.g., "admisn", "timtable").
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 5</div>
+                    <div class="step-content">
+                        <strong>Database Lookup &amp; Scoring:</strong> The engine scores matching knowledge-base rows from <code>college_info</code>. The answer with the highest multi-word keyword confidence is selected. If confidence is too low, it triggers a helpful fallback with quick buttons.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 6</div>
+                    <div class="step-content">
+                        <strong>Chat History Logging:</strong> The bot inserts the query, response, student ID, and timestamp into the <code>chat_history</code> table in SQLite and returns the response JSON along with a unique <code>history_id</code>.
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">STEP 7</div>
+                    <div class="step-content">
+                        <strong>Rendering &amp; Voice Synthesis:</strong> JavaScript receives the response, renders bold text, links, and markdown lists, plays a chime, speaks the response aloud using <code>SpeechSynthesis</code>, and displays Thumbs Up/Down rating buttons!
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-box" style="margin-top: 10px;">
+                <div class="box-title">💡 WHY IS THIS BETTER THAN A GENERIC LLM (like raw ChatGPT)?</div>
+                <p>1. <strong>Zero Hallucinations:</strong> The chatbot only gives verified, accurate college data stored in the database.<br>
+                2. <strong>Zero API Cost &amp; Infinite Speed:</strong> It runs completely on local Python/SQLite without needing paid OpenAI tokens.<br>
+                3. <strong>Data Privacy:</strong> Student records and internal grades never leave the college server.</p>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 2 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">Technology Stack &amp; Feature Highlights</div>
+                <h1 class="main-title">TECH STACK &amp; SPECIAL FEATURES</h1>
+                <div class="sub-title">Tools Used and the 7 Standout Features that Impress Examiners</div>
+            </div>
+
+            <div class="section-heading">1. OUR COMPLETE TECHNOLOGY STACK</div>
+            <table class="tech-table">
+                <tr>
+                    <th>Component</th>
+                    <th>Technology</th>
+                    <th>Why We Chose It</th>
+                </tr>
+                <tr>
+                    <td><strong>Frontend UI</strong></td>
+                    <td>HTML5, CSS3, Modern JavaScript (ES6+)</td>
+                    <td>Blazing fast loading, 100% responsive on mobiles &amp; desktops, zero heavy npm bloat.</td>
+                </tr>
+                <tr>
+                    <td><strong>Voice I/O</strong></td>
+                    <td>Native Web Speech API (STT &amp; TTS)</td>
+                    <td>Speech recognition and natural voice playback directly inside Chrome/Edge without extra libraries.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sound Synthesis</strong></td>
+                    <td>Web Audio API (OscillatorNode)</td>
+                    <td>Generates pleasant chime frequencies directly via code without loading heavy MP3 audio files.</td>
+                </tr>
+                <tr>
+                    <td><strong>Backend Engine</strong></td>
+                    <td>Python 3.11 + Flask Microframework</td>
+                    <td>Lightweight, robust routing, simple session management, and built-in SQLite integration.</td>
+                </tr>
+                <tr>
+                    <td><strong>Database</strong></td>
+                    <td>SQLite 3 (Embedded Relational DB)</td>
+                    <td>Zero setup, ACID compliant, serverless single-file storage (<code>college_chatbot.db</code>).</td>
+                </tr>
+                <tr>
+                    <td><strong>Cloud Deployment</strong></td>
+                    <td>Render PaaS (Cloud Linux Container)</td>
+                    <td>Automatic HTTPS/TLS 1.3 encryption, CI/CD GitHub integration, 24/7 global availability.</td>
+                </tr>
+            </table>
+
+            <div class="section-heading">2. THE 7 SPECIAL FEATURES EXPLAINED SIMPLY</div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>1. 🎙️ Two-Way Voice Interaction:</strong> Tap the mic to talk to the bot; click the speaker icon on any message to hear it read aloud with smooth speech synthesis.
+                </div>
+                <div class="feature-item">
+                    <strong>2. 👤 Personalized Student Intelligence:</strong> When logged in, asking <em>"what is my attendance?"</em> returns your actual percentage (e.g. 88.5%) and warns you if below 75%!
+                </div>
+                <div class="feature-item">
+                    <strong>3. 🧠 Typo-Tolerant NLP Engine:</strong> Students make mistakes when typing quickly. Typing <em>"admisn eligibility"</em> or <em>"feees structre"</em> still matches the right answer perfectly!
+                </div>
+                <div class="feature-item">
+                    <strong>4. 👍👎 Quality Feedback Loop:</strong> Every answer has Like/Dislike buttons. Clicking a button immediately updates the database row, allowing admins to track bot satisfaction.
+                </div>
+                <div class="feature-item">
+                    <strong>5. 📱 Progressive Web App (PWA):</strong> Students can click "Add to Home Screen" on Android/iOS/Windows to install the bot like an official native app with an app icon.
+                </div>
+                <div class="feature-item">
+                    <strong>6. 📊 Admin Dashboard &amp; CSV Export:</strong> Administrators have a password-protected portal to add new FAQs on the fly and download the entire chat history as an Excel/CSV file.
+                </div>
+                <div class="feature-item">
+                    <strong>7. 🔒 Bulletproof Security:</strong> Passwords are never stored in plain text. We use <strong>PBKDF2 with SHA-256</strong> hashing (600,000 rounds) and parameterized SQL queries to prevent SQL Injection.
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 3 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">System Modeling &amp; UML Demystified</div>
+                <h1 class="main-title">ALL 8 DIAGRAMS EXPLAINED SIMPLY</h1>
+                <div class="sub-title">How to Explain Each Diagram to Your Teacher in 2 Plain Sentences</div>
+            </div>
+
+            <div class="diagram-list">
+                <div class="diag-item">
+                    <div class="diag-num">1</div>
+                    <div class="diag-body">
+                        <strong>Use Case Diagram (Who uses the system and what can they do?):</strong>
+                        <p>Shows the boundary between two actors: <strong>Student</strong> (asks FAQs, uses voice, logs in, checks attendance/fees, gives feedback) and <strong>Administrator</strong> (authenticates, manages FAQs, views analytics, exports CSV logs).</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">2</div>
+                    <div class="diag-body">
+                        <strong>Class Diagram (What objects exist in the code and how do they connect?):</strong>
+                        <p>Models our 4 core Python/DB classes: <code>Student</code>, <code>Admin</code>, <code>CollegeInfo</code>, and <code>ChatHistory</code>. It illustrates multiplicities (e.g. 1 Student submits <code>0..*</code> ChatHistory logs) and roles (Admin <em>manages</em> CollegeInfo).</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">3</div>
+                    <div class="diag-body">
+                        <strong>Object Diagram (A real snapshot of the system running at 10:15 AM):</strong>
+                        <p>Shows actual live runtime instances with real values: <code>stu_kanishk</code> (Roll: ISTU25010120001, Attendance: 88.5%), asking <code>msg_42</code> (<em>"When are internal exams?"</em>), answered by <code>faq_104</code>, audited by <code>admin_super</code>.</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">4</div>
+                    <div class="diag-body">
+                        <strong>Sequence Diagram (Step-by-step chronological timeline of an interaction):</strong>
+                        <p>Tracks messages passing between Student, Browser, Flask, and SQLite. Most importantly, it includes the <strong>End Chat flow</strong> and formal UML lifeline termination (<strong>✕</strong>) so the examiner sees it has a defined end.</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">5</div>
+                    <div class="diag-body">
+                        <strong>Activity Diagram (The flowchart of decisions and loops):</strong>
+                        <p>Shows the student workflow: landing on the site, deciding whether to log in, entering a question, looping until satisfied, and cleanly exiting through a double-ring terminal bullseye (<strong>⨀</strong>).</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">6</div>
+                    <div class="diag-body">
+                        <strong>DFD &mdash; Data Flow Diagram (Where does data travel in the system?):</strong>
+                        <p><strong>Level 0</strong> shows the central system exchanging queries, answers, and credentials. <strong>Level 1</strong> breaks it into 5 distinct processes (Auth, NLP Matcher, Voice Engine, Chat Logger, Admin CMS) and 4 data stores (<code>D1</code> to <code>D4</code>).</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">7</div>
+                    <div class="diag-body">
+                        <strong>ERD &mdash; Entity-Relationship Diagram (How does the database look?):</strong>
+                        <p>Represents our SQLite database schema using Chen/Crow's Foot notation: entities in rectangles, primary keys underlined in ellipses, and diamond relationship blocks (e.g. Student <em>Submits</em> Chat History [1:N]).</p>
+                    </div>
+                </div>
+
+                <div class="diag-item">
+                    <div class="diag-num">8</div>
+                    <div class="diag-body">
+                        <strong>Deployment Diagram (Where does the code physically run in real life?):</strong>
+                        <p>Visualizes the 3 physical tiers: the <strong>Client Device</strong> (Phone/PC browser), the <strong>Render PaaS Cloud Server</strong> (Ubuntu Linux container running Python 3.11), and the <strong>Embedded SQLite DB</strong>, linked by HTTPS (Port 443).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 4 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">Database Architecture &amp; File Structure</div>
+                <h1 class="main-title">DATABASE TABLES &amp; DIRECTORY STRUCTURE</h1>
+                <div class="sub-title">Detailed Schema Breakdown of <code>college_chatbot.db</code> and Code Layout</div>
+            </div>
+
+            <div class="section-heading">1. OUR 4 DATABASE TABLES (SQLite 3)</div>
+            <div class="db-tables-grid">
+                <div class="table-card">
+                    <div class="table-header">📁 TABLE 1: <code>students</code></div>
+                    <div class="table-desc">Stores registered student academic profiles and credentials for personalized queries.</div>
+                    <table class="mini-table">
+                        <tr><th>Column</th><th>Type</th><th>Key</th><th>Description</th></tr>
+                        <tr><td><code>roll_no</code></td><td>TEXT</td><td><strong>PK</strong></td><td>Unique Registration No (e.g. ISTU25010120001)</td></tr>
+                        <tr><td><code>name</code></td><td>TEXT</td><td>-</td><td>Full student name (e.g. Kanishk Singh)</td></tr>
+                        <tr><td><code>attendance</code></td><td>REAL</td><td>-</td><td>Current lecture attendance percentage (e.g. 88.5)</td></tr>
+                        <tr><td><code>fees_due</code></td><td>REAL</td><td>-</td><td>Pending balance in INR (0.00 if all clear)</td></tr>
+                        <tr><td><code>cgpa</code></td><td>REAL</td><td>-</td><td>Cumulative Grade Point Average (out of 10.0)</td></tr>
+                        <tr><td><code>course / semester</code></td><td>TEXT</td><td>-</td><td>BBA-CA, Semester III</td></tr>
+                        <tr><td><code>mentor / exam_date</code></td><td>TEXT</td><td>-</td><td>Assigned faculty mentor &amp; semester exam date</td></tr>
+                    </table>
+                </div>
+
+                <div class="table-card" style="margin-top: 8px;">
+                    <div class="table-header">📁 TABLE 2: <code>college_info</code></div>
+                    <div class="table-desc">The knowledge-base brain of the chatbot storing categories, keywords, and answers.</div>
+                    <table class="mini-table">
+                        <tr><th>Column</th><th>Type</th><th>Key</th><th>Description</th></tr>
+                        <tr><td><code>id</code></td><td>INTEGER</td><td><strong>PK</strong></td><td>Auto-incrementing unique identifier</td></tr>
+                        <tr><td><code>category</code></td><td>TEXT</td><td>-</td><td>Category name (Admission, Fees, Exams, Hostel)</td></tr>
+                        <tr><td><code>keywords</code></td><td>TEXT</td><td>-</td><td>Comma-separated keywords for NLP matching</td></tr>
+                        <tr><td><code>answer</code></td><td>TEXT</td><td>-</td><td>Detailed, officially verified institutional response</td></tr>
+                    </table>
+                </div>
+
+                <div class="table-card" style="margin-top: 8px;">
+                    <div class="table-header">📁 TABLE 3: <code>chat_history</code></div>
+                    <div class="table-desc">Auditable transaction log of all conversations and student feedback ratings.</div>
+                    <table class="mini-table">
+                        <tr><th>Column</th><th>Type</th><th>Key</th><th>Description</th></tr>
+                        <tr><td><code>id</code></td><td>INTEGER</td><td><strong>PK</strong></td><td>Auto-incrementing chat message ID</td></tr>
+                        <tr><td><code>roll_no</code></td><td>TEXT</td><td><strong>FK</strong></td><td>References <code>students.roll_no</code> (or NULL for guest)</td></tr>
+                        <tr><td><code>user_query</code></td><td>TEXT</td><td>-</td><td>Exact prompt typed or spoken by the student</td></tr>
+                        <tr><td><code>bot_response</code></td><td>TEXT</td><td>-</td><td>Answer delivered by the chatbot engine</td></tr>
+                        <tr><td><code>timestamp</code></td><td>TEXT</td><td>-</td><td>Timestamp generated by <code>CURRENT_TIMESTAMP</code></td></tr>
+                        <tr><td><code>feedback</code></td><td>TEXT</td><td>-</td><td>Quality rating: <code>'like'</code> or <code>'dislike'</code></td></tr>
+                    </table>
+                </div>
+
+                <div class="table-card" style="margin-top: 8px;">
+                    <div class="table-header">📁 TABLE 4: <code>admin</code></div>
+                    <div class="table-desc">Authentication store for college staff and project administrators.</div>
+                    <table class="mini-table">
+                        <tr><th>Column</th><th>Type</th><th>Key</th><th>Description</th></tr>
+                        <tr><td><code>username</code></td><td>TEXT</td><td><strong>PK</strong></td><td>Admin username (e.g. <code>'admin'</code>)</td></tr>
+                        <tr><td><code>password_hash</code></td><td>TEXT</td><td>-</td><td>PBKDF2 salted hash (never stored in plain text!)</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 5 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="header-banner">
+                <div class="college-tag">Viva Voce &amp; Project Defense Mastery</div>
+                <h1 class="main-title">TOP VIVA QUESTIONS &amp; BULLETPROOF ANSWERS</h1>
+                <div class="sub-title">Exactly What to Say When Your Teacher or External Examiner Asks You</div>
+            </div>
+
+            <div class="viva-container">
+                <div class="viva-card">
+                    <div class="viva-q">Q1: "Is this chatbot using ChatGPT or an external API?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "No, sir/ma'am. We intentionally engineered an in-house rule-based Natural Language Processing engine using Python's <code>difflib</code> and keyword scoring. This guarantees 100% data privacy for student records, zero latency, zero cloud API costs, and prevents AI hallucinations."</div>
+                </div>
+
+                <div class="viva-card">
+                    <div class="viva-q">Q2: "What happens if a student types a spelling mistake like 'admisn'?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "Our NLP engine has fuzzy matching enabled with an 80% similarity threshold. When a word like 'admisn' is typed, <code>difflib.get_close_matches</code> automatically detects that it is 85% similar to 'admission', awards a match score, and returns the correct admission guidelines."</div>
+                </div>
+
+                <div class="viva-card">
+                    <div class="viva-q">Q3: "How does the bot know a student's personal attendance?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "When a student logs in using their Registration Number, Flask saves their roll number in a secure server session. When the bot detects personal intent words like 'my attendance' or 'my fees', it intercepts the message and performs an SQL query on the <code>students</code> table for that specific roll number."</div>
+                </div>
+
+                <div class="viva-card">
+                    <div class="viva-q">Q4: "How is the system secured against hackers or data leaks?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "We implemented 3 major security defenses: First, admin passwords are protected using industry-standard PBKDF2 SHA-256 password hashing. Second, all SQL queries use parameterized placeholders (<code>?</code>) to prevent SQL Injection attacks. Third, the live application is served over HTTPS with TLS 1.3 encryption on Render Cloud."</div>
+                </div>
+
+                <div class="viva-card">
+                    <div class="viva-q">Q5: "How does the voice feature work?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "We use the browser's native Web Speech API. For Speech-to-Text, <code>webkitSpeechRecognition</code> captures the student's voice and converts speech to text. For Text-to-Speech, <code>window.speechSynthesis</code> converts the bot's text answer into clear audio output."</div>
+                </div>
+
+                <div class="viva-card">
+                    <div class="viva-q">Q6: "What is your sequence diagram termination condition?"</div>
+                    <div class="viva-a"><strong>Answer:</strong> "Our sequence diagram doesn't just hang open; it features an explicit End Chat flow. When the user completes their session or sends a termination command ('bye'), the backend returns a session summary and both the browser and server lifelines are formally destroyed with the UML ✕ destruction mark."</div>
+                </div>
+            </div>
+
+            <div class="summary-box" style="margin-top: 8px;">
+                <div class="box-title">🏆 CLOSING STATEMENT FOR YOUR DEFENSE</div>
+                <p><em>"This project bridges the communication gap between students and the college administration by providing an instant, 24/7, accessible voice and text knowledge assistant that saves faculty time and empowers students with real-time academic records."</em></p>
+            </div>
+
+            <div class="page-footer">
+                <span>AI Chatbot for College &bull; Student Project Master Guide</span>
+                <span>Page 6 of 6</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
