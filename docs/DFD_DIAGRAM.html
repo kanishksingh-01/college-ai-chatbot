@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System &amp; UML Diagrams - AI Chatbot for College</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+        background-color: #525659;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+    .page {
+        width: 210mm;
+        height: 297mm;
+        max-height: 297mm;
+        padding: 10mm 12mm;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+    }
+    /* College Project Double Blue Border */
+    .outer-border {
+        border: 2.5px solid #1e3d73;
+        padding: 3px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .inner-border {
+        border: 1px solid #1e3d73;
+        padding: 14px 16px 8px 16px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+    }
+    .doc-header {
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .doc-title {
+        font-size: 22px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .doc-subtitle {
+        font-size: 11.5px;
+        color: #64748b;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .diagram-heading {
+        font-size: 14.5px;
+        font-weight: 700;
+        color: #1e3d73;
+        margin: 4px 0 6px 0;
+        border-left: 4px solid #1e3d73;
+        padding-left: 8px;
+    }
+    .diagram-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .diagram-container svg {
+        max-height: 205mm;
+        width: auto;
+    }
+    .figure-caption {
+        text-align: center;
+        font-size: 11px;
+        font-style: italic;
+        color: #475569;
+        margin-top: 4px;
+    }
+
+    @media print {
+        body {
+            background: none;
+            padding: 0;
+            gap: 0;
+        }
+        .page {
+            box-shadow: none;
+            margin: 0;
+            width: 210mm;
+            height: 297mm;
+            max-height: 297mm;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+    }
+</style>
+</head>
+<body>
+<!-- ================= PAGE 6: DATA FLOW DIAGRAM (DFD LEVEL 0 & 1) ================= -->
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
+
+            <div class="diagram-heading">6. Data Flow Diagram (DFD Level 0 Context &amp; Level 1 Detailed)</div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="dfdArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#1e3d73"/>
+                        </marker>
+                    </defs>
+
+                    <!-- TOP SECTION: DFD LEVEL 0 (CONTEXT DIAGRAM) -->
+                    <rect x="15" y="10" width="730" height="230" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+                    <rect x="25" y="18" width="220" height="22" rx="4" fill="#1e3d73"/>
+                    <text x="135" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
+
+                    <!-- Entity: Student -->
+                    <rect x="35" y="65" width="130" height="70" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
+                    <text x="100" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
+                    <text x="100" y="122" text-anchor="middle" font-size="9.5" fill="#64748b">(External Entity)</text>
+
+                    <!-- Central Process 0.0 -->
+                    <circle cx="380" cy="115" r="55" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
+                    <line x1="330" y1="90" x2="430" y2="90" stroke="#1e3d73" stroke-width="1.2"/>
+                    <text x="380" y="82" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">0.0</text>
+                    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">AI College</text>
+                    <text x="380" y="128" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Chatbot System</text>
+
+                    <!-- Entity: Admin -->
+                    <rect x="595" y="65" width="130" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                    <text x="660" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">Administrator</text>
+                    <text x="660" y="122" text-anchor="middle" font-size="9.5" fill="#b45309">(External Entity)</text>
+
+                    <!-- Level 0 Data Flows -->
+                    <!-- Student -> System -->
+                    <line x1="165" y1="80" x2="325" y2="80" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="245" y="73" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Query (Text/Voice), Roll No</text>
+
+                    <line x1="165" y1="105" x2="325" y2="105" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="245" y="99" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Rating Feedback (👍 / 👎)</text>
+
+                    <!-- System -> Student -->
+                    <line x1="325" y1="135" x2="165" y2="135" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="245" y="130" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Answer, TTS Speech Audio</text>
+
+                    <line x1="325" y1="158" x2="165" y2="158" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="245" y="153" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Attendance &amp; Academic Summary</text>
+
+                    <!-- Admin -> System -->
+                    <line x1="595" y1="85" x2="435" y2="85" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="515" y="78" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">Login Credentials, FAQ CRUD</text>
+
+                    <!-- System -> Admin -->
+                    <line x1="435" y1="140" x2="595" y2="140" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <text x="515" y="134" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">KPI Analytics, CSV Chat Export</text>
+
+                    <!-- BOTTOM SECTION: DFD LEVEL 1 (DECOMPOSITION) -->
+                    <rect x="15" y="250" width="730" height="445" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+                    <rect x="25" y="258" width="260" height="22" rx="4" fill="#0f254e"/>
+                    <text x="155" y="273" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition</text>
+
+                    <!-- Entities -->
+                    <rect x="30" y="295" width="100" height="42" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.6"/>
+                    <text x="80" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">Student</text>
+
+                    <rect x="630" y="295" width="100" height="42" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.6"/>
+                    <text x="680" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#92400e">Admin</text>
+
+                    <!-- Processes -->
+                    <rect x="180" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+                    <text x="262" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">1.0 Authenticate &amp;</text>
+                    <text x="262" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Profile Lookup</text>
+
+                    <rect x="400" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+                    <text x="482" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">2.0 NLP &amp; Query</text>
+                    <text x="482" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Matching Engine</text>
+
+                    <rect x="180" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+                    <text x="262" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">3.0 Response Formatter</text>
+                    <text x="262" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">&amp; TTS Voice Engine</text>
+
+                    <rect x="400" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+                    <text x="482" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">4.0 Chat History &amp;</text>
+                    <text x="482" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Feedback Processor</text>
+
+                    <rect x="400" y="590" width="175" height="48" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+                    <text x="487" y="611" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">5.0 Knowledgebase &amp;</text>
+                    <text x="487" y="626" text-anchor="middle" font-size="10" font-weight="600" fill="#92400e">Admin Analytics Engine</text>
+
+                    <!-- Data Stores (Gane-Sarson Style) -->
+                    <!-- D1: Students Data Store -->
+                    <g transform="translate(60, 375)">
+                        <rect x="0" y="0" width="160" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D1</text>
+                        <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Students Store</text>
+                    </g>
+
+                    <!-- D2: College FAQs Store -->
+                    <g transform="translate(425, 375)">
+                        <rect x="0" y="0" width="180" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D2</text>
+                        <text x="105" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">College FAQs Store</text>
+                    </g>
+
+                    <!-- D3: Chat History Store -->
+                    <g transform="translate(180, 520)">
+                        <rect x="0" y="0" width="190" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D3</text>
+                        <text x="110" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Chat History &amp; Ratings</text>
+                    </g>
+
+                    <!-- D4: Admin Store -->
+                    <g transform="translate(565, 520)">
+                        <rect x="0" y="0" width="165" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
+                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
+                        <text x="98" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Admin Auth Store</text>
+                    </g>
+
+                    <!-- Level 1 Data Flow Connectors -->
+                    <line x1="130" y1="315" x2="180" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="262" y1="343" x2="262" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="210" y1="375" x2="210" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+
+                    <line x1="345" y1="315" x2="400" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="482" y1="343" x2="482" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="515" y1="375" x2="515" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+
+                    <line x1="482" y1="343" x2="262" y2="445" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="262" y1="493" x2="262" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="180" y1="469" x2="80" y2="469" stroke="#2563eb" stroke-width="1.4"/>
+                    <line x1="80" y1="469" x2="80" y2="337" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+
+                    <line x1="482" y1="493" x2="350" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="680" y1="337" x2="680" y2="520" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="630" y1="315" x2="565" y2="315" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="487" y1="590" x2="487" y2="554" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                    <line x1="487" y1="554" x2="487" y2="590" stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+                    <line x1="575" y1="614" x2="680" y2="614" stroke="#d97706" stroke-width="1.4"/>
+                    <line x1="680" y1="614" x2="680" y2="337" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+                </svg>
+            </div>
+
+            <div class="figure-caption">Fig 6: Data Flow Diagram &mdash; Level 0 (Context Diagram) and Level 1 (Process Decomposition with Data Stores D1&ndash;D4).</div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

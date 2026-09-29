@@ -145,76 +145,108 @@
     </div>
 
     <div class="diagram-frame">
-        <svg viewBox="0 0 740 660" width="700" height="620" xmlns="http://www.w3.org/2000/svg">
-            <!-- Student Class -->
-            <g transform="translate(40, 30)">
-                <rect x="0" y="0" width="270" height="34" fill="#1e3d73" rx="3"/>
-                <text x="135" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Student</text>
-                <rect x="0" y="34" width="270" height="210" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="56" font-size="12.5" fill="#1e293b">- roll_no : TEXT (PK)</text>
-                <text x="12" y="78" font-size="12.5" fill="#1e293b">- name : TEXT</text>
-                <text x="12" y="100" font-size="12.5" fill="#1e293b">- attendance : REAL</text>
-                <text x="12" y="122" font-size="12.5" fill="#1e293b">- fees_due : REAL</text>
-                <text x="12" y="144" font-size="12.5" fill="#1e293b">- exam_date : TEXT</text>
-                <text x="12" y="166" font-size="12.5" fill="#1e293b">- course : TEXT</text>
-                <text x="12" y="188" font-size="12.5" fill="#1e293b">- semester : TEXT</text>
-                <text x="12" y="210" font-size="12.5" fill="#1e293b">- cgpa : REAL</text>
-                <text x="12" y="230" font-size="12.5" fill="#1e293b">- mentor : TEXT</text>
-                <rect x="0" y="244" width="270" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="266" font-size="12" font-weight="600" fill="#0f254e">+ personalized_answer()</text>
-                <text x="12" y="284" font-size="12" font-weight="600" fill="#0f254e">+ get_profile_summary()</text>
-            </g>
+        <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="navArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
+                            <polygon points="0 0, 8 3.5, 0 7" fill="#1e3d73"/>
+                        </marker>
+                    </defs>
 
-            <!-- CollegeInfo Class -->
-            <g transform="translate(410, 30)">
-                <rect x="0" y="0" width="280" height="34" fill="#1e3d73" rx="3"/>
-                <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">CollegeInfo</text>
-                <rect x="0" y="34" width="280" height="120" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="58" font-size="12.5" fill="#1e293b">- id : INTEGER (PK AUTO)</text>
-                <text x="12" y="82" font-size="12.5" fill="#1e293b">- category : TEXT</text>
-                <text x="12" y="106" font-size="12.5" fill="#1e293b">- keywords : TEXT</text>
-                <text x="12" y="130" font-size="12.5" fill="#1e293b">- answer : TEXT</text>
-                <rect x="0" y="154" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="176" font-size="12" font-weight="600" fill="#0f254e">+ match_query()</text>
-                <text x="12" y="194" font-size="12" font-weight="600" fill="#0f254e">+ get_categories()</text>
-            </g>
+                    <!-- CLASS: STUDENT (Top-Left) -->
+                    <g transform="translate(30, 20)">
+                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Student</text>
+                        <rect x="0" y="32" width="280" height="198" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="52" font-size="12" fill="#1e293b">- roll_no : TEXT [PK]</text>
+                        <text x="12" y="72" font-size="12" fill="#1e293b">- name : TEXT</text>
+                        <text x="12" y="92" font-size="12" fill="#1e293b">- attendance : REAL</text>
+                        <text x="12" y="112" font-size="12" fill="#1e293b">- fees_due : REAL</text>
+                        <text x="12" y="132" font-size="12" fill="#1e293b">- exam_date : TEXT</text>
+                        <text x="12" y="152" font-size="12" fill="#1e293b">- course : TEXT</text>
+                        <text x="12" y="172" font-size="12" fill="#1e293b">- semester : TEXT</text>
+                        <text x="12" y="192" font-size="12" fill="#1e293b">- cgpa : REAL</text>
+                        <text x="12" y="212" font-size="12" fill="#1e293b">- mentor : TEXT</text>
+                        <rect x="0" y="230" width="280" height="46" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="250" font-size="11.5" font-weight="600" fill="#0f254e">+ personalized_answer(query) : JSON</text>
+                        <text x="12" y="268" font-size="11.5" font-weight="600" fill="#0f254e">+ get_profile_summary() : Dict</text>
+                    </g>
 
-            <!-- Admin Class -->
-            <g transform="translate(410, 340)">
-                <rect x="0" y="0" width="280" height="34" fill="#0f254e" rx="3"/>
-                <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">Admin</text>
-                <rect x="0" y="34" width="280" height="66" fill="#ffffff" stroke="#0f254e" stroke-width="1.4"/>
-                <text x="12" y="60" font-size="12.5" fill="#1e293b">- username : TEXT (PK)</text>
-                <text x="12" y="84" font-size="12.5" fill="#1e293b">- password_hash : TEXT</text>
-                <rect x="0" y="100" width="280" height="72" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
-                <text x="12" y="122" font-size="12" font-weight="600" fill="#0f254e">+ admin_login()</text>
-                <text x="12" y="140" font-size="12" font-weight="600" fill="#0f254e">+ add_faq() / delete_faq()</text>
-                <text x="12" y="158" font-size="12" font-weight="600" fill="#0f254e">+ export_chat_csv()</text>
-            </g>
+                    <!-- CLASS: ADMIN (Top-Right) -->
+                    <g transform="translate(440, 20)">
+                        <rect x="0" y="0" width="280" height="32" fill="#0f254e" rx="3"/>
+                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Admin</text>
+                        <rect x="0" y="32" width="280" height="74" fill="#ffffff" stroke="#0f254e" stroke-width="1.4"/>
+                        <text x="12" y="54" font-size="12" fill="#1e293b">- username : TEXT [PK]</text>
+                        <text x="12" y="76" font-size="12" fill="#1e293b">- password_hash : TEXT</text>
+                        <text x="12" y="98" font-size="12" fill="#1e293b">- role : TEXT</text>
+                        <rect x="0" y="106" width="280" height="88" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
+                        <text x="12" y="126" font-size="11.5" font-weight="600" fill="#0f254e">+ admin_login(pwd) : bool</text>
+                        <text x="12" y="145" font-size="11.5" font-weight="600" fill="#0f254e">+ add_faq(cat, q, a) : int</text>
+                        <text x="12" y="164" font-size="11.5" font-weight="600" fill="#0f254e">+ delete_faq(id) : bool</text>
+                        <text x="12" y="183" font-size="11.5" font-weight="600" fill="#0f254e">+ export_chat_csv() : File</text>
+                    </g>
 
-            <!-- ChatHistory Class -->
-            <g transform="translate(40, 390)">
-                <rect x="0" y="0" width="270" height="34" fill="#1e3d73" rx="3"/>
-                <text x="135" y="22" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="bold">ChatHistory</text>
-                <rect x="0" y="34" width="270" height="150" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="56" font-size="12.5" fill="#1e293b">- id : INTEGER (PK AUTO)</text>
-                <text x="12" y="78" font-size="12.5" fill="#1e293b">- roll_no : TEXT (FK)</text>
-                <text x="12" y="100" font-size="12.5" fill="#1e293b">- user_query : TEXT</text>
-                <text x="12" y="122" font-size="12.5" fill="#1e293b">- bot_response : TEXT</text>
-                <text x="12" y="144" font-size="12.5" fill="#1e293b">- timestamp : TEXT</text>
-                <text x="12" y="166" font-size="12.5" fill="#1e293b">- feedback : TEXT</text>
-                <rect x="0" y="184" width="270" height="34" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                <text x="12" y="206" font-size="12" font-weight="600" fill="#0f254e">+ record_feedback()</text>
-            </g>
+                    <!-- CLASS: CHATHISTORY (Bottom-Left) -->
+                    <g transform="translate(30, 390)">
+                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">ChatHistory</text>
+                        <rect x="0" y="32" width="280" height="152" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="54" font-size="12" fill="#1e293b">- id : INTEGER [PK AUTO]</text>
+                        <text x="12" y="76" font-size="12" fill="#1e293b">- roll_no : TEXT [FK]</text>
+                        <text x="12" y="98" font-size="12" fill="#1e293b">- user_query : TEXT</text>
+                        <text x="12" y="120" font-size="12" fill="#1e293b">- bot_response : TEXT</text>
+                        <text x="12" y="142" font-size="12" fill="#1e293b">- timestamp : DATETIME</text>
+                        <text x="12" y="164" font-size="12" fill="#1e293b">- feedback : TEXT</text>
+                        <rect x="0" y="184" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="205" font-size="11.5" font-weight="600" fill="#0f254e">+ record_feedback(rating) : bool</text>
+                        <text x="12" y="223" font-size="11.5" font-weight="600" fill="#0f254e">+ export_logs() : List</text>
+                    </g>
 
-            <!-- Connector -->
-            <line x1="175" y1="322" x2="175" y2="390" stroke="#1e3d73" stroke-width="1.8"/>
-            <text x="190" y="345" font-size="12" font-weight="bold" fill="#1e3d73">1</text>
-            <text x="190" y="365" font-size="12" font-weight="bold" fill="#1e3d73">logs</text>
-            <text x="190" y="385" font-size="12" font-weight="bold" fill="#1e3d73">0..*</text>
-        </svg>
+                    <!-- CLASS: COLLEGEINFO (Bottom-Right) -->
+                    <g transform="translate(440, 390)">
+                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">CollegeInfo (FAQ)</text>
+                        <rect x="0" y="32" width="280" height="122" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="56" font-size="12" fill="#1e293b">- id : INTEGER [PK AUTO]</text>
+                        <text x="12" y="80" font-size="12" fill="#1e293b">- category : TEXT</text>
+                        <text x="12" y="104" font-size="12" fill="#1e293b">- keywords : TEXT</text>
+                        <text x="12" y="128" font-size="12" fill="#1e293b">- answer : TEXT</text>
+                        <rect x="0" y="154" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
+                        <text x="12" y="176" font-size="11.5" font-weight="600" fill="#0f254e">+ match_query(query) : String</text>
+                        <text x="12" y="194" font-size="11.5" font-weight="600" fill="#0f254e">+ get_categories() : List</text>
+                    </g>
+
+                    <!-- ================= RELATIONS ================= -->
+                    <!-- 1. Student (1) to ChatHistory (0..*) [Left Vertical] -->
+                    <line x1="170" y1="296" x2="170" y2="390" stroke="#1e3d73" stroke-width="2" marker-end="url(#navArrow)"/>
+                    <rect x="110" y="332" width="120" height="22" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+                    <text x="170" y="347" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">submits / logs ▼</text>
+                    <text x="155" y="315" font-size="12.5" font-weight="bold" fill="#1e3d73">1</text>
+                    <text x="150" y="380" font-size="12.5" font-weight="bold" fill="#1e3d73">0..*</text>
+
+                    <!-- 2. Admin (1) to CollegeInfo (0..*) [Right Vertical] -->
+                    <line x1="580" y1="214" x2="580" y2="390" stroke="#0f254e" stroke-width="2" marker-end="url(#navArrow)"/>
+                    <rect x="510" y="295" width="140" height="22" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+                    <text x="580" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">manages / updates ▼</text>
+                    <text x="565" y="235" font-size="12.5" font-weight="bold" fill="#0f254e">1</text>
+                    <text x="560" y="380" font-size="12.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+                    <!-- 3. CollegeInfo (0..1) to ChatHistory (0..*) [Bottom Horizontal] -->
+                    <line x1="440" y1="490" x2="310" y2="490" stroke="#1e3d73" stroke-width="2" marker-end="url(#navArrow)"/>
+                    <rect x="330" y="478" width="90" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+                    <text x="375" y="494" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">&#9668; matched_in</text>
+                    <text x="425" y="482" font-size="12" font-weight="bold" fill="#1e3d73">0..1</text>
+                    <text x="318" y="482" font-size="12" font-weight="bold" fill="#1e3d73">0..*</text>
+
+                    <!-- 4. Admin (1) to ChatHistory (0..*) [Diagonal Audit Link] -->
+                    <path d="M 440 180 L 335 250 L 300 390" fill="none" stroke="#d97706" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#navArrow)"/>
+                    <rect x="290" y="260" width="105" height="22" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+                    <text x="342" y="275" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#b45309">&#9668; audits / exports</text>
+                    <text x="420" y="195" font-size="12" font-weight="bold" fill="#b45309">1</text>
+                    <text x="310" y="375" font-size="12" font-weight="bold" fill="#b45309">0..*</text>
+                </svg>
     </div>
-    <div class="diagram-caption">Fig 2: Class Diagram &mdash; core entities and their attributes, matching the updated SQLite schema.</div>
+    <div class="diagram-caption">Fig 2: Class Diagram &mdash; fully connected system classes with associations, multiplicities (1 to 0..*), and role verbs.</div>
     <div class="page-footer">Page 3</div>
 </div></div></div>
 

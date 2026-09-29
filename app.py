@@ -217,6 +217,16 @@ def docs_uml():
     return send_from_directory("docs", "UML_DIAGRAMS.html")
 
 
+@app.route("/docs/dfd")
+def docs_dfd():
+    return send_from_directory("docs", "DFD_DIAGRAM.html")
+
+
+@app.route("/docs/erd")
+def docs_erd():
+    return send_from_directory("docs", "ERD_DIAGRAM.html")
+
+
 @app.route("/docs/report")
 def docs_report():
     return send_from_directory("docs", "PROJECT_REPORTS.html")
