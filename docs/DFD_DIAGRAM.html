@@ -129,148 +129,178 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <marker id="dfdArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-                            <path d="M0,0 L0,6 L8,3 z" fill="#1e3d73"/>
-                        </marker>
-                    </defs>
+    <defs>
+        <marker id="dfdSolidArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 7 3, 0 6" fill="#1e3d73"/>
+        </marker>
+    </defs>
 
-                    <!-- TOP SECTION: DFD LEVEL 0 (CONTEXT DIAGRAM) -->
-                    <rect x="15" y="10" width="730" height="230" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-                    <rect x="25" y="18" width="220" height="22" rx="4" fill="#1e3d73"/>
-                    <text x="135" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
+    <!-- ==================== TOP: DFD LEVEL 0 (CONTEXT DIAGRAM) ==================== -->
+    <rect x="15" y="10" width="730" height="235" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+    <rect x="25" y="18" width="230" height="22" rx="4" fill="#1e3d73"/>
+    <text x="140" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
 
-                    <!-- Entity: Student -->
-                    <rect x="35" y="65" width="130" height="70" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
-                    <text x="100" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
-                    <text x="100" y="122" text-anchor="middle" font-size="9.5" fill="#64748b">(External Entity)</text>
+    <!-- External Entity: Student (Left) -->
+    <rect x="35" y="65" width="130" height="70" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
+    <text x="100" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">[Entity]</text>
+    <text x="100" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e3d73">Student</text>
 
-                    <!-- Central Process 0.0 -->
-                    <circle cx="380" cy="115" r="55" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
-                    <line x1="330" y1="90" x2="430" y2="90" stroke="#1e3d73" stroke-width="1.2"/>
-                    <text x="380" y="82" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">0.0</text>
-                    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">AI College</text>
-                    <text x="380" y="128" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Chatbot System</text>
+    <!-- Central Process: 0.0 AI College Chatbot System (PROMINENT CIRCLE) -->
+    <circle cx="380" cy="118" r="62" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
+    <line x1="320" y1="95" x2="440" y2="95" stroke="#1e3d73" stroke-width="1.2"/>
+    <text x="380" y="85" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">0.0</text>
+    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">AI College Chatbot</text>
+    <text x="380" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">System</text>
+    <text x="380" y="145" text-anchor="middle" font-size="9" fill="#64748b">(Yourdon Circle Process)</text>
 
-                    <!-- Entity: Admin -->
-                    <rect x="595" y="65" width="130" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
-                    <text x="660" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">Administrator</text>
-                    <text x="660" y="122" text-anchor="middle" font-size="9.5" fill="#b45309">(External Entity)</text>
+    <!-- External Entity: Administrator (Right) -->
+    <rect x="595" y="65" width="130" height="70" rx="4" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
+    <text x="660" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">[Entity]</text>
+    <text x="660" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Administrator</text>
 
-                    <!-- Level 0 Data Flows -->
-                    <!-- Student -> System -->
-                    <line x1="165" y1="80" x2="325" y2="80" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="73" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Query (Text/Voice), Roll No</text>
+    <!-- SOLID DATA FLOW ARROWS (LEVEL 0) -->
+    <!-- Student -> System -->
+    <line x1="165" y1="88" x2="318" y2="88" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="240" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query / Roll No / Feedback &#9658;</text>
 
-                    <line x1="165" y1="105" x2="325" y2="105" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="99" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Rating Feedback (👍 / 👎)</text>
+    <!-- System -> Student -->
+    <line x1="318" y1="140" x2="165" y2="140" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="240" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">&#9668; Answers / TTS Audio / Profile</text>
 
-                    <!-- System -> Student -->
-                    <line x1="325" y1="135" x2="165" y2="135" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="130" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Answer, TTS Speech Audio</text>
+    <!-- Admin -> System -->
+    <line x1="595" y1="88" x2="442" y2="88" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="520" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&#9668; Credentials / FAQ Updates</text>
 
-                    <line x1="325" y1="158" x2="165" y2="158" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="153" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Attendance &amp; Academic Summary</text>
+    <!-- System -> Admin -->
+    <line x1="442" y1="140" x2="595" y2="140" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="520" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Audit Logs / CSV Export &#9658;</text>
 
-                    <!-- Admin -> System -->
-                    <line x1="595" y1="85" x2="435" y2="85" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="515" y="78" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">Login Credentials, FAQ CRUD</text>
 
-                    <!-- System -> Admin -->
-                    <line x1="435" y1="140" x2="595" y2="140" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="515" y="134" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">KPI Analytics, CSV Chat Export</text>
+    <!-- ==================== BOTTOM: DFD LEVEL 1 (PROCESS DECOMPOSITION) ==================== -->
+    <rect x="15" y="255" width="730" height="435" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+    <rect x="25" y="263" width="280" height="22" rx="4" fill="#1e3d73"/>
+    <text x="165" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition (Circles)</text>
 
-                    <!-- BOTTOM SECTION: DFD LEVEL 1 (DECOMPOSITION) -->
-                    <rect x="15" y="250" width="730" height="445" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-                    <rect x="25" y="258" width="260" height="22" rx="4" fill="#0f254e"/>
-                    <text x="155" y="273" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition</text>
+    <!-- External Entity: Student (Left) -->
+    <rect x="28" y="320" width="95" height="180" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+    <text x="75" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">Student</text>
+    <text x="75" y="422" text-anchor="middle" font-size="10" fill="#475569">(External Entity)</text>
 
-                    <!-- Entities -->
-                    <rect x="30" y="295" width="100" height="42" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.6"/>
-                    <text x="80" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">Student</text>
+    <!-- PROCESS 1.0 (CIRCLE): Auth & Student Lookup -->
+    <circle cx="200" cy="345" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="165" y1="330" x2="235" y2="330" stroke="#1e3d73" stroke-width="1"/>
+    <text x="200" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">1.0</text>
+    <text x="200" y="344" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Student Auth &amp;</text>
+    <text x="200" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Profile Lookup</text>
 
-                    <rect x="630" y="295" width="100" height="42" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.6"/>
-                    <text x="680" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#92400e">Admin</text>
+    <!-- PROCESS 2.0 (CIRCLE): Fuzzy NLP Matcher -->
+    <circle cx="380" cy="345" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="345" y1="330" x2="415" y2="330" stroke="#1e3d73" stroke-width="1"/>
+    <text x="380" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">2.0</text>
+    <text x="380" y="344" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Fuzzy NLP &amp;</text>
+    <text x="380" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query Matcher</text>
 
-                    <!-- Processes -->
-                    <rect x="180" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="262" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">1.0 Authenticate &amp;</text>
-                    <text x="262" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Profile Lookup</text>
+    <!-- PROCESS 3.0 (CIRCLE): Voice TTS/STT Engine -->
+    <circle cx="200" cy="540" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="165" y1="525" x2="235" y2="525" stroke="#1e3d73" stroke-width="1"/>
+    <text x="200" y="519" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">3.0</text>
+    <text x="200" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Speech STT &amp;</text>
+    <text x="200" y="553" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">TTS Audio</text>
 
-                    <rect x="400" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="482" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">2.0 NLP &amp; Query</text>
-                    <text x="482" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Matching Engine</text>
+    <!-- PROCESS 4.0 (CIRCLE): Chat & Feedback Logger -->
+    <circle cx="380" cy="540" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="345" y1="525" x2="415" y2="525" stroke="#1e3d73" stroke-width="1"/>
+    <text x="380" y="519" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">4.0</text>
+    <text x="380" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Chat Logger &amp;</text>
+    <text x="380" y="553" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Feedback</text>
 
-                    <rect x="180" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="262" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">3.0 Response Formatter</text>
-                    <text x="262" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">&amp; TTS Voice Engine</text>
+    <!-- PROCESS 5.0 (CIRCLE): Admin FAQ CMS Engine -->
+    <circle cx="560" cy="440" r="38" fill="#f8fafc" stroke="#0f254e" stroke-width="2"/>
+    <line x1="525" y1="425" x2="595" y2="425" stroke="#0f254e" stroke-width="1"/>
+    <text x="560" y="419" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">5.0</text>
+    <text x="560" y="439" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin FAQ CMS</text>
+    <text x="560" y="453" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&amp; Analytics</text>
 
-                    <rect x="400" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="482" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">4.0 Chat History &amp;</text>
-                    <text x="482" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Feedback Processor</text>
+    <!-- External Entity: Administrator (Right) -->
+    <rect x="645" y="380" width="90" height="120" rx="4" fill="#eff6ff" stroke="#0f254e" stroke-width="1.8"/>
+    <text x="690" y="440" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Admin</text>
+    <text x="690" y="455" text-anchor="middle" font-size="9.5" fill="#475569">(Entity)</text>
 
-                    <rect x="400" y="590" width="175" height="48" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="487" y="611" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">5.0 Knowledgebase &amp;</text>
-                    <text x="487" y="626" text-anchor="middle" font-size="10" font-weight="600" fill="#92400e">Admin Analytics Engine</text>
+    <!-- DATA STORES (OPEN PARALLEL BARS) -->
+    <!-- D1: Students Store -->
+    <g transform="translate(140, 435)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D1</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Students Store</text>
+    </g>
 
-                    <!-- Data Stores (Gane-Sarson Style) -->
-                    <!-- D1: Students Data Store -->
-                    <g transform="translate(60, 375)">
-                        <rect x="0" y="0" width="160" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D1</text>
-                        <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Students Store</text>
-                    </g>
+    <!-- D2: College FAQs Store -->
+    <g transform="translate(320, 435)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D2</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">College FAQs</text>
+    </g>
 
-                    <!-- D2: College FAQs Store -->
-                    <g transform="translate(425, 375)">
-                        <rect x="0" y="0" width="180" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D2</text>
-                        <text x="105" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">College FAQs Store</text>
-                    </g>
+    <!-- D3: Chat History & Feedback -->
+    <g transform="translate(320, 630)">
+        <line x1="0" y1="0" x2="140" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="140" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D3</text>
+        <text x="85" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Chat History &amp; Logs</text>
+    </g>
 
-                    <!-- D3: Chat History Store -->
-                    <g transform="translate(180, 520)">
-                        <rect x="0" y="0" width="190" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D3</text>
-                        <text x="110" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Chat History &amp; Ratings</text>
-                    </g>
+    <!-- D4: Admin Credentials Store -->
+    <g transform="translate(500, 315)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#0f254e" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#0f254e" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#0f254e" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin Auth DB</text>
+    </g>
 
-                    <!-- D4: Admin Store -->
-                    <g transform="translate(565, 520)">
-                        <rect x="0" y="0" width="165" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
-                        <text x="98" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Admin Auth Store</text>
-                    </g>
+    <!-- SOLID DATA FLOWS (LEVEL 1) -->
+    <!-- Student -> 1.0 (Login) -->
+    <line x1="123" y1="340" x2="162" y2="340" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- 1.0 <-> D1 -->
+    <line x1="200" y1="383" x2="200" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <!-- Level 1 Data Flow Connectors -->
-                    <line x1="130" y1="315" x2="180" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="262" y1="343" x2="262" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="210" y1="375" x2="210" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+    <!-- Student -> 2.0 (Query) -->
+    <path d="M 123 370 L 250 370 L 342 355" fill="none" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    
+    <!-- 2.0 <-> D2 (FAQ Lookup) -->
+    <line x1="380" y1="383" x2="380" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="345" y1="315" x2="400" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="482" y1="343" x2="482" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="515" y1="375" x2="515" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+    <!-- Student <-> 3.0 (Voice I/O) -->
+    <line x1="123" y1="480" x2="165" y2="520" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <line x1="165" y1="535" x2="123" y2="495" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="482" y1="343" x2="262" y2="445" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="262" y1="493" x2="262" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="180" y1="469" x2="80" y2="469" stroke="#2563eb" stroke-width="1.4"/>
-                    <line x1="80" y1="469" x2="80" y2="337" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+    <!-- 2.0 -> 4.0 (Query & Bot Response) -->
+    <line x1="380" y1="383" x2="380" y2="502" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="482" y1="493" x2="350" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="680" y1="337" x2="680" y2="520" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="630" y1="315" x2="565" y2="315" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="487" y1="590" x2="487" y2="554" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="487" y1="554" x2="487" y2="590" stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
-                    <line x1="575" y1="614" x2="680" y2="614" stroke="#d97706" stroke-width="1.4"/>
-                    <line x1="680" y1="614" x2="680" y2="337" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                </svg>
+    <!-- 4.0 -> D3 (Write log) -->
+    <line x1="380" y1="578" x2="380" y2="630" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- Admin <-> 5.0 (CRUD FAQs) -->
+    <line x1="645" y1="435" x2="598" y2="435" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <line x1="598" y1="445" x2="645" y2="445" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 <-> D4 (Admin Auth) -->
+    <line x1="560" y1="402" x2="560" y2="339" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 -> D2 (FAQ Update) -->
+    <path d="M 522 450 L 440 450" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 <- D3 (Read Audit Logs) -->
+    <path d="M 460 642 L 560 642 L 560 478" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 6: Data Flow Diagram &mdash; Level 0 (Context Diagram) and Level 1 (Process Decomposition with Data Stores D1&ndash;D4).</div>
+            <div class="figure-caption">Fig: Data Flow Diagram (DFD) &mdash; Level 0 Context &amp; Level 1 Process Breakdown using circle process symbols and solid data flow arrows.</div>
         </div>
     </div>
 </div>

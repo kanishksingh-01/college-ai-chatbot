@@ -571,7 +571,7 @@
                     <div class="diag-num">1</div>
                     <div class="diag-body">
                         <strong>Use Case Diagram (Who uses the system and what can they do?):</strong>
-                        <p>Shows the boundary between two actors: <strong>Student</strong> (asks FAQs, uses voice, logs in, checks attendance/fees, gives feedback) and <strong>Administrator</strong> (authenticates, manages FAQs, views analytics, exports CSV logs).</p>
+                        <p>Features the system boundary with two primary actors (<strong>Student</strong> and <strong>Administrator</strong>) on the left, and a dedicated secondary system actor (<strong>Database System - SQLite</strong>) on the right connected to all data operations.</p>
                     </div>
                 </div>
 
@@ -579,7 +579,7 @@
                     <div class="diag-num">2</div>
                     <div class="diag-body">
                         <strong>Class Diagram (What objects exist in the code and how do they connect?):</strong>
-                        <p>Models our 4 core Python/DB classes: <code>Student</code>, <code>Admin</code>, <code>CollegeInfo</code>, and <code>ChatHistory</code>. It illustrates multiplicities (e.g. 1 Student submits <code>0..*</code> ChatHistory logs) and roles (Admin <em>manages</em> CollegeInfo).</p>
+                        <p>Models our 4 core classes (<code>Student</code>, <code>Admin</code>, <code>CollegeInfo</code>, <code>ChatHistory</code>) connected with <strong>100% solid association arrows</strong>, multiplicities (e.g. 1 to 0..*), and explicit role verbs without any dashed lines.</p>
                     </div>
                 </div>
 
@@ -587,7 +587,7 @@
                     <div class="diag-num">3</div>
                     <div class="diag-body">
                         <strong>Object Diagram (A real snapshot of the system running at 10:15 AM):</strong>
-                        <p>Shows actual live runtime instances with real values: <code>stu_kanishk</code> (Roll: ISTU25010120001, Attendance: 88.5%), asking <code>msg_42</code> (<em>"When are internal exams?"</em>), answered by <code>faq_104</code>, audited by <code>admin_super</code>.</p>
+                        <p>Contains <strong>exactly 3 runtime instance boxes</strong> (<code>stu_kanishk : Student</code>, <code>msg_42 : ChatHistory</code>, and <code>faq_101 : CollegeInfo</code>) connected by <strong>solid directional arrows</strong> representing an active query transaction.</p>
                     </div>
                 </div>
 
@@ -611,7 +611,7 @@
                     <div class="diag-num">6</div>
                     <div class="diag-body">
                         <strong>DFD &mdash; Data Flow Diagram (Where does data travel in the system?):</strong>
-                        <p><strong>Level 0</strong> shows the central system exchanging queries, answers, and credentials. <strong>Level 1</strong> breaks it into 5 distinct processes (Auth, NLP Matcher, Voice Engine, Chat Logger, Admin CMS) and 4 data stores (<code>D1</code> to <code>D4</code>).</p>
+                        <p>Uses standard Yourdon &amp; DeMarco <strong>circle process symbols</strong> and <strong>solid data flow arrows</strong>. Level 0 features circle <code>0.0</code>; Level 1 decomposes into 5 circle processes (<code>1.0</code> to <code>5.0</code>) and 4 data stores (<code>D1</code> to <code>D4</code>).</p>
                     </div>
                 </div>
 
@@ -619,7 +619,7 @@
                     <div class="diag-num">7</div>
                     <div class="diag-body">
                         <strong>ERD &mdash; Entity-Relationship Diagram (How does the database look?):</strong>
-                        <p>Represents our SQLite database schema using Chen/Crow's Foot notation: entities in rectangles, primary keys underlined in ellipses, and diamond relationship blocks (e.g. Student <em>Submits</em> Chat History [1:N]).</p>
+                        <p>Structured with <strong>pristine left-to-right &amp; top-to-bottom relational flow</strong>: STUDENT (1) &rarr; Submits &rarr; (N) CHAT_HISTORY (N) &larr; Answers &larr; (1) COLLEGE_INFO, audited and managed by ADMIN (top), with zero crossing lines.</p>
                     </div>
                 </div>
 
@@ -627,7 +627,7 @@
                     <div class="diag-num">8</div>
                     <div class="diag-body">
                         <strong>Deployment Diagram (Where does the code physically run in real life?):</strong>
-                        <p>Visualizes the 3 physical tiers: the <strong>Client Device</strong> (Phone/PC browser), the <strong>Render PaaS Cloud Server</strong> (Ubuntu Linux container running Python 3.11), and the <strong>Embedded SQLite DB</strong>, linked by HTTPS (Port 443).</p>
+                        <p>A classic <strong>3-Tier UML 2.0 deployment architecture</strong> with shaded 3D cube nodes: Client Device (Browser), Application Server (Python 3.11 / Flask), and Database Server (SQLite 3), connected by formal communication pipes.</p>
                     </div>
                 </div>
             </div>

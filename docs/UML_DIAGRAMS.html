@@ -128,90 +128,134 @@
             <div class="diagram-heading">1. Use Case Diagram</div>
 
             <div class="diagram-container">
-                <svg viewBox="0 0 760 710" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-                            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
-                        </filter>
-                    </defs>
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="ucShadow" x="-5%" y="-5%" width="110%" height="115%">
+            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.10"/>
+        </filter>
+        <marker id="ucArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#1e3d73"/>
+        </marker>
+    </defs>
 
-                    <!-- System Boundary Box -->
-                    <rect x="170" y="20" width="420" height="670" rx="8" fill="#f8fafc" stroke="#1e3d73" stroke-width="2.2"/>
-                    <text x="380" y="48" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3d73">AI Chatbot for College (System)</text>
+    <!-- System Boundary Box -->
+    <rect x="180" y="15" width="400" height="675" rx="8" fill="#f8fafc" stroke="#1e3d73" stroke-width="2.2" filter="url(#ucShadow)"/>
+    <rect x="180" y="15" width="400" height="34" rx="6" fill="#1e3d73"/>
+    <text x="380" y="38" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">AI Chatbot for College (System)</text>
 
-                    <!-- ACTOR: STUDENT (LEFT) -->
-                    <g transform="translate(70, 290)" stroke="#1e3d73" stroke-width="2" fill="none">
-                        <circle cx="0" cy="0" r="14" fill="#eff6ff"/>
-                        <line x1="0" y1="14" x2="0" y2="52"/>
-                        <line x1="-20" y1="28" x2="20" y2="28"/>
-                        <line x1="0" y1="52" x2="-18" y2="90"/>
-                        <line x1="0" y1="52" x2="18" y2="90"/>
-                    </g>
-                    <text x="70" y="400" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3d73">Student</text>
+    <!-- ACTOR 1: STUDENT (Left-Top) -->
+    <g transform="translate(80, 160)" stroke="#1e3d73" stroke-width="2" fill="none">
+        <circle cx="0" cy="0" r="14" fill="#eff6ff"/>
+        <line x1="0" y1="14" x2="0" y2="52"/>
+        <line x1="-22" y1="28" x2="22" y2="28"/>
+        <line x1="0" y1="52" x2="-18" y2="90"/>
+        <line x1="0" y1="52" x2="18" y2="90"/>
+    </g>
+    <text x="80" y="270" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;primary actor&gt;&gt;</text>
+    <text x="80" y="285" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">Student / Visitor</text>
 
-                    <!-- ACTOR: ADMIN (RIGHT) -->
-                    <g transform="translate(690, 290)" stroke="#1e3d73" stroke-width="2" fill="none">
-                        <circle cx="0" cy="0" r="14" fill="#fef3c7"/>
-                        <line x1="0" y1="14" x2="0" y2="52"/>
-                        <line x1="-20" y1="28" x2="20" y2="28"/>
-                        <line x1="0" y1="52" x2="-18" y2="90"/>
-                        <line x1="0" y1="52" x2="18" y2="90"/>
-                    </g>
-                    <text x="690" y="400" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3d73">Admin</text>
+    <!-- ACTOR 2: ADMINISTRATOR (Left-Bottom) -->
+    <g transform="translate(80, 480)" stroke="#1e3d73" stroke-width="2" fill="none">
+        <circle cx="0" cy="0" r="14" fill="#eff6ff"/>
+        <line x1="0" y1="14" x2="0" y2="52"/>
+        <line x1="-22" y1="28" x2="22" y2="28"/>
+        <line x1="0" y1="52" x2="-18" y2="90"/>
+        <line x1="0" y1="52" x2="18" y2="90"/>
+    </g>
+    <text x="80" y="590" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;primary actor&gt;&gt;</text>
+    <text x="80" y="605" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">Administrator</text>
 
-                    <!-- USE CASES -->
-                    <ellipse cx="380" cy="90" rx="110" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="95" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1e3d73">Ask College FAQ Query</text>
+    <!-- ACTOR 3: DATABASE SYSTEM (Right-Center) -->
+    <!-- Cylinder Icon above secondary stickman -->
+    <g transform="translate(680, 270)">
+        <path d="M-18,-20 C-18,-26 18,-26 18,-20 L18,-5 C18,1 -18,1 -18,-5 Z" fill="#dbeafe" stroke="#1e3d73" stroke-width="1.8"/>
+        <ellipse cx="0" cy="-20" rx="18" ry="6" fill="#bfdbfe" stroke="#1e3d73" stroke-width="1.8"/>
+    </g>
+    <g transform="translate(680, 330)" stroke="#1e3d73" stroke-width="2" fill="none">
+        <circle cx="0" cy="0" r="14" fill="#eff6ff"/>
+        <line x1="0" y1="14" x2="0" y2="52"/>
+        <line x1="-22" y1="28" x2="22" y2="28"/>
+        <line x1="0" y1="52" x2="-18" y2="90"/>
+        <line x1="0" y1="52" x2="18" y2="90"/>
+    </g>
+    <text x="680" y="440" text-anchor="middle" font-size="10" fill="#475569">&lt;&lt;secondary actor&gt;&gt;</text>
+    <text x="680" y="454" text-anchor="middle" font-size="10" fill="#475569">&lt;&lt;system&gt;&gt;</text>
+    <text x="680" y="470" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Database System</text>
+    <text x="680" y="485" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">(SQLite 3)</text>
 
-                    <ellipse cx="380" cy="142" rx="100" ry="20" fill="#ffffff" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,3"/>
-                    <text x="380" y="146" text-anchor="middle" font-size="11.5" font-style="italic" fill="#475569">&lt;&lt;include&gt;&gt; Typo-Tolerant Match</text>
-                    <line x1="380" y1="111" x2="380" y2="122" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <!-- USE CASES (OVALS IN SYSTEM BOUNDARY) -->
+    <!-- UC 1: Query FAQs -->
+    <ellipse cx="380" cy="72" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="76" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Ask College FAQs / Queries</text>
 
-                    <ellipse cx="380" cy="198" rx="110" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="203" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1e3d73">Voice Input (STT)</text>
+    <!-- UC 2: Voice Input -->
+    <ellipse cx="380" cy="126" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="130" text-anchor="middle" font-size="11.5" fill="#0f254e">Use Voice Input &amp; Read Aloud</text>
 
-                    <ellipse cx="380" cy="252" rx="110" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="257" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1e3d73">Read Aloud (Listen / TTS)</text>
+    <!-- UC 3: Student Login -->
+    <ellipse cx="380" cy="180" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="184" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Login with Registration No</text>
 
-                    <ellipse cx="380" cy="307" rx="115" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="312" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3d73">Student Portal Login</text>
+    <!-- UC 4: Check Personal Stats -->
+    <ellipse cx="380" cy="240" rx="150" ry="22" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="380" y="244" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">Check Personal Stats (Attendance/Fees)</text>
 
-                    <ellipse cx="380" cy="362" rx="125" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="367" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1e3d73">View Attendance, Fees, CGPA, Mentor</text>
+    <!-- UC 5: Feedback -->
+    <ellipse cx="380" cy="300" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="304" text-anchor="middle" font-size="11.5" fill="#0f254e">Submit Chat Feedback (Like/Dislike)</text>
 
-                    <ellipse cx="380" cy="418" rx="115" ry="21" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="423" text-anchor="middle" font-size="12" font-weight="600" fill="#1e3d73">Submit Feedback &amp; Export Chat</text>
+    <!-- UC 6: End Chat Session -->
+    <ellipse cx="380" cy="358" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="362" text-anchor="middle" font-size="11.5" fill="#0f254e">End Chat Session &amp; Summary</text>
 
-                    <!-- Admin Use Cases -->
-                    <ellipse cx="380" cy="475" rx="110" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="480" text-anchor="middle" font-size="12.5" font-weight="600" fill="#92400e">Admin Login (Hashed Auth)</text>
+    <!-- UC 7: Admin Login -->
+    <ellipse cx="380" cy="425" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="429" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Administrator Authenticate</text>
 
-                    <ellipse cx="380" cy="530" rx="115" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="535" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">View KPI Analytics Dashboard</text>
+    <!-- UC 8: Manage FAQs -->
+    <ellipse cx="380" cy="490" rx="150" ry="22" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="380" y="494" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">Manage Knowledgebase (FAQ CRUD)</text>
 
-                    <ellipse cx="380" cy="585" rx="115" ry="21" fill="#ffffff" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="590" text-anchor="middle" font-size="12.5" font-weight="600" fill="#92400e">Manage FAQs (Add / Delete)</text>
+    <!-- UC 9: View Analytics -->
+    <ellipse cx="380" cy="554" rx="150" ry="22" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="558" text-anchor="middle" font-size="11.5" fill="#0f254e">View Analytics &amp; Chat Audit Logs</text>
 
-                    <ellipse cx="380" cy="638" rx="100" ry="20" fill="#ffffff" stroke="#d97706" stroke-width="1.8" filter="url(#shadow)"/>
-                    <text x="380" y="643" text-anchor="middle" font-size="12" font-weight="600" fill="#92400e">Filter Logs &amp; Export CSV</text>
+    <!-- UC 10: Export CSV -->
+    <ellipse cx="380" cy="618" rx="135" ry="21" fill="#ffffff" stroke="#1e3d73" stroke-width="1.6"/>
+    <text x="380" y="622" text-anchor="middle" font-size="11.5" fill="#0f254e">Export Chat History to CSV</text>
 
-                    <!-- Connections Student -->
-                    <line x1="88" y1="300" x2="275" y2="92" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="88" y1="310" x2="270" y2="198" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="88" y1="320" x2="280" y2="252" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="88" y1="330" x2="265" y2="307" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="88" y1="345" x2="255" y2="362" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="88" y1="360" x2="265" y2="418" stroke="#1e3d73" stroke-width="1.5"/>
+    <!-- <<include>> RELATIONSHIP BETWEEN UC4 AND UC3 -->
+    <line x1="380" y1="218" x2="380" y2="201" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ucArrow)"/>
+    <text x="428" y="213" text-anchor="middle" font-size="9" font-weight="bold" fill="#b45309">&lt;&lt;include&gt;&gt;</text>
 
-                    <!-- Connections Admin -->
-                    <line x1="672" y1="310" x2="490" y2="477" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="672" y1="320" x2="495" y2="532" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="672" y1="335" x2="495" y2="587" stroke="#1e3d73" stroke-width="1.5"/>
-                    <line x1="672" y1="350" x2="480" y2="639" stroke="#1e3d73" stroke-width="1.5"/>
-                </svg>
+    <!-- ASSOCIATIONS: STUDENT (LEFT) TO USE CASES -->
+    <line x1="102" y1="180" x2="245" y2="72" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="185" x2="245" y2="126" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="190" x2="245" y2="180" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="195" x2="230" y2="240" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="200" x2="245" y2="300" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="205" x2="245" y2="358" stroke="#1e3d73" stroke-width="1.5"/>
+
+    <!-- ASSOCIATIONS: ADMINISTRATOR (LEFT) TO USE CASES -->
+    <line x1="102" y1="510" x2="245" y2="425" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="520" x2="230" y2="490" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="530" x2="230" y2="554" stroke="#1e3d73" stroke-width="1.5"/>
+    <line x1="102" y1="540" x2="245" y2="618" stroke="#1e3d73" stroke-width="1.5"/>
+
+    <!-- ASSOCIATIONS: DATABASE ACTOR (RIGHT) TO DATA USE CASES -->
+    <!-- Solid lines connecting Database System actor to all database operations -->
+    <line x1="515" y1="72" x2="658" y2="340" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="515" y1="180" x2="658" y2="345" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="530" y1="240" x2="658" y2="350" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="515" y1="300" x2="658" y2="355" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="515" y1="425" x2="658" y2="360" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="530" y1="490" x2="658" y2="365" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="530" y1="554" x2="658" y2="370" stroke="#1e3d73" stroke-width="1.6"/>
+    <line x1="515" y1="618" x2="658" y2="375" stroke="#1e3d73" stroke-width="1.6"/>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 1: Use Case Diagram &mdash; Student and Admin actors and their interactions with the system.</div>
+            <div class="figure-caption">Fig 1: Use Case Diagram &mdash; primary actors (Student &amp; Administrator), system boundary, and secondary actor (SQLite Database System) with data-tier associations.</div>
         </div>
     </div>
 </div>
@@ -228,108 +272,117 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <marker id="navArrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
-                            <polygon points="0 0, 8 3.5, 0 7" fill="#1e3d73"/>
-                        </marker>
-                    </defs>
+    <defs>
+        <!-- SOLID ARROWHEAD DEFINITION -->
+        <marker id="solidArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#1e3d73"/>
+        </marker>
+    </defs>
 
-                    <!-- CLASS: STUDENT (Top-Left) -->
-                    <g transform="translate(30, 20)">
-                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
-                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Student</text>
-                        <rect x="0" y="32" width="280" height="198" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="52" font-size="12" fill="#1e293b">- roll_no : TEXT [PK]</text>
-                        <text x="12" y="72" font-size="12" fill="#1e293b">- name : TEXT</text>
-                        <text x="12" y="92" font-size="12" fill="#1e293b">- attendance : REAL</text>
-                        <text x="12" y="112" font-size="12" fill="#1e293b">- fees_due : REAL</text>
-                        <text x="12" y="132" font-size="12" fill="#1e293b">- exam_date : TEXT</text>
-                        <text x="12" y="152" font-size="12" fill="#1e293b">- course : TEXT</text>
-                        <text x="12" y="172" font-size="12" fill="#1e293b">- semester : TEXT</text>
-                        <text x="12" y="192" font-size="12" fill="#1e293b">- cgpa : REAL</text>
-                        <text x="12" y="212" font-size="12" fill="#1e293b">- mentor : TEXT</text>
-                        <rect x="0" y="230" width="280" height="46" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="250" font-size="11.5" font-weight="600" fill="#0f254e">+ personalized_answer(query) : JSON</text>
-                        <text x="12" y="268" font-size="11.5" font-weight="600" fill="#0f254e">+ get_profile_summary() : Dict</text>
-                    </g>
+    <!-- CLASS 1: STUDENT (Top-Left) -->
+    <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Student</text>
+        <rect x="0" y="32" width="280" height="200" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="52" font-size="11.5" fill="#1e293b">- roll_no : TEXT [PK]</text>
+        <text x="12" y="70" font-size="11.5" fill="#1e293b">- name : TEXT</text>
+        <text x="12" y="88" font-size="11.5" fill="#1e293b">- attendance : REAL</text>
+        <text x="12" y="106" font-size="11.5" fill="#1e293b">- fees_due : REAL</text>
+        <text x="12" y="124" font-size="11.5" fill="#1e293b">- course : TEXT</text>
+        <text x="12" y="142" font-size="11.5" fill="#1e293b">- semester : TEXT</text>
+        <text x="12" y="160" font-size="11.5" fill="#1e293b">- cgpa : REAL</text>
+        <text x="12" y="178" font-size="11.5" fill="#1e293b">- mentor : TEXT</text>
+        <text x="12" y="196" font-size="11.5" fill="#1e293b">- exam_date : TEXT</text>
+        <line x1="0" y1="205" x2="280" y2="205" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="205" width="280" height="60" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="224" font-size="11" fill="#0f254e">+ login(roll_no) : bool</text>
+        <text x="12" y="242" font-size="11" fill="#0f254e">+ check_attendance() : float</text>
+        <text x="12" y="260" font-size="11" fill="#0f254e">+ check_fee_status() : float</text>
+    </g>
 
-                    <!-- CLASS: ADMIN (Top-Right) -->
-                    <g transform="translate(440, 20)">
-                        <rect x="0" y="0" width="280" height="32" fill="#0f254e" rx="3"/>
-                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Admin</text>
-                        <rect x="0" y="32" width="280" height="74" fill="#ffffff" stroke="#0f254e" stroke-width="1.4"/>
-                        <text x="12" y="54" font-size="12" fill="#1e293b">- username : TEXT [PK]</text>
-                        <text x="12" y="76" font-size="12" fill="#1e293b">- password_hash : TEXT</text>
-                        <text x="12" y="98" font-size="12" fill="#1e293b">- role : TEXT</text>
-                        <rect x="0" y="106" width="280" height="88" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
-                        <text x="12" y="126" font-size="11.5" font-weight="600" fill="#0f254e">+ admin_login(pwd) : bool</text>
-                        <text x="12" y="145" font-size="11.5" font-weight="600" fill="#0f254e">+ add_faq(cat, q, a) : int</text>
-                        <text x="12" y="164" font-size="11.5" font-weight="600" fill="#0f254e">+ delete_faq(id) : bool</text>
-                        <text x="12" y="183" font-size="11.5" font-weight="600" fill="#0f254e">+ export_chat_csv() : File</text>
-                    </g>
+    <!-- CLASS 2: CHAT_HISTORY (Bottom-Left) -->
+    <g transform="translate(30, 395)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">ChatHistory</text>
+        <rect x="0" y="32" width="280" height="150" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="54" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="74" font-size="11.5" fill="#1e293b">- roll_no : TEXT [FK]</text>
+        <text x="12" y="94" font-size="11.5" fill="#1e293b">- user_query : TEXT</text>
+        <text x="12" y="114" font-size="11.5" fill="#1e293b">- bot_response : TEXT</text>
+        <text x="12" y="134" font-size="11.5" fill="#1e293b">- timestamp : TEXT</text>
+        <text x="12" y="154" font-size="11.5" fill="#1e293b">- feedback : TEXT</text>
+        <line x1="0" y1="165" x2="280" y2="165" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="165" width="280" height="90" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="186" font-size="11" fill="#0f254e">+ log_message() : int</text>
+        <text x="12" y="206" font-size="11" fill="#0f254e">+ update_feedback(rating) : bool</text>
+        <text x="12" y="226" font-size="11" fill="#0f254e">+ fetch_recent_logs() : list</text>
+        <text x="12" y="246" font-size="11" fill="#0f254e">+ export_to_csv() : str</text>
+    </g>
 
-                    <!-- CLASS: CHATHISTORY (Bottom-Left) -->
-                    <g transform="translate(30, 390)">
-                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
-                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">ChatHistory</text>
-                        <rect x="0" y="32" width="280" height="152" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="54" font-size="12" fill="#1e293b">- id : INTEGER [PK AUTO]</text>
-                        <text x="12" y="76" font-size="12" fill="#1e293b">- roll_no : TEXT [FK]</text>
-                        <text x="12" y="98" font-size="12" fill="#1e293b">- user_query : TEXT</text>
-                        <text x="12" y="120" font-size="12" fill="#1e293b">- bot_response : TEXT</text>
-                        <text x="12" y="142" font-size="12" fill="#1e293b">- timestamp : DATETIME</text>
-                        <text x="12" y="164" font-size="12" fill="#1e293b">- feedback : TEXT</text>
-                        <rect x="0" y="184" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="205" font-size="11.5" font-weight="600" fill="#0f254e">+ record_feedback(rating) : bool</text>
-                        <text x="12" y="223" font-size="11.5" font-weight="600" fill="#0f254e">+ export_logs() : List</text>
-                    </g>
+    <!-- CLASS 3: ADMIN (Top-Right) -->
+    <g transform="translate(440, 20)">
+        <rect x="0" y="0" width="290" height="32" fill="#0f254e" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Admin</text>
+        <rect x="0" y="32" width="290" height="110" fill="#ffffff" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- username : TEXT [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- password_hash : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- role : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- session_state : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="100" fill="#f8fafc" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ authenticate(password) : bool</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ change_password() : bool</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ view_dashboard() : dict</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ export_audit_logs() : file</text>
+    </g>
 
-                    <!-- CLASS: COLLEGEINFO (Bottom-Right) -->
-                    <g transform="translate(440, 390)">
-                        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
-                        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">CollegeInfo (FAQ)</text>
-                        <rect x="0" y="32" width="280" height="122" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="56" font-size="12" fill="#1e293b">- id : INTEGER [PK AUTO]</text>
-                        <text x="12" y="80" font-size="12" fill="#1e293b">- category : TEXT</text>
-                        <text x="12" y="104" font-size="12" fill="#1e293b">- keywords : TEXT</text>
-                        <text x="12" y="128" font-size="12" fill="#1e293b">- answer : TEXT</text>
-                        <rect x="0" y="154" width="280" height="48" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="176" font-size="11.5" font-weight="600" fill="#0f254e">+ match_query(query) : String</text>
-                        <text x="12" y="194" font-size="11.5" font-weight="600" fill="#0f254e">+ get_categories() : List</text>
-                    </g>
+    <!-- CLASS 4: COLLEGE_INFO (Bottom-Right) -->
+    <g transform="translate(440, 395)">
+        <rect x="0" y="0" width="290" height="32" fill="#1e3d73" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">CollegeInfo</text>
+        <rect x="0" y="32" width="290" height="120" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- category : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- keywords : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- answer : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="105" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ match_query(message) : tuple</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ add_faq(cat, kw, ans) : int</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ update_faq(id, data) : bool</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ delete_faq(id) : bool</text>
+    </g>
 
-                    <!-- ================= RELATIONS ================= -->
-                    <!-- 1. Student (1) to ChatHistory (0..*) [Left Vertical] -->
-                    <line x1="170" y1="296" x2="170" y2="390" stroke="#1e3d73" stroke-width="2" marker-end="url(#navArrow)"/>
-                    <rect x="110" y="332" width="120" height="22" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
-                    <text x="170" y="347" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">submits / logs ▼</text>
-                    <text x="155" y="315" font-size="12.5" font-weight="bold" fill="#1e3d73">1</text>
-                    <text x="150" y="380" font-size="12.5" font-weight="bold" fill="#1e3d73">0..*</text>
+    <!-- SOLID RELATIONSHIPS (ALL SOLID LINES & SOLID ARROWS) -->
 
-                    <!-- 2. Admin (1) to CollegeInfo (0..*) [Right Vertical] -->
-                    <line x1="580" y1="214" x2="580" y2="390" stroke="#0f254e" stroke-width="2" marker-end="url(#navArrow)"/>
-                    <rect x="510" y="295" width="140" height="22" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
-                    <text x="580" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">manages / updates ▼</text>
-                    <text x="565" y="235" font-size="12.5" font-weight="bold" fill="#0f254e">1</text>
-                    <text x="560" y="380" font-size="12.5" font-weight="bold" fill="#0f254e">0..*</text>
+    <!-- 1. Student (1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="170" y1="285" x2="170" y2="390" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="180" y="335" font-size="11.5" font-weight="bold" fill="#1e3d73">submits / logs &#9660;</text>
+    <text x="155" y="305" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="150" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
 
-                    <!-- 3. CollegeInfo (0..1) to ChatHistory (0..*) [Bottom Horizontal] -->
-                    <line x1="440" y1="490" x2="310" y2="490" stroke="#1e3d73" stroke-width="2" marker-end="url(#navArrow)"/>
-                    <rect x="330" y="478" width="90" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-                    <text x="375" y="494" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">&#9668; matched_in</text>
-                    <text x="425" y="482" font-size="12" font-weight="bold" fill="#1e3d73">0..1</text>
-                    <text x="318" y="482" font-size="12" font-weight="bold" fill="#1e3d73">0..*</text>
+    <!-- 2. Admin (1) -> (0..*) CollegeInfo (SOLID ARROW) -->
+    <line x1="585" y1="255" x2="585" y2="390" stroke="#0f254e" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="595" y="335" font-size="11.5" font-weight="bold" fill="#0f254e">manages / updates &#9660;</text>
+    <text x="570" y="280" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="560" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
 
-                    <!-- 4. Admin (1) to ChatHistory (0..*) [Diagonal Audit Link] -->
-                    <path d="M 440 180 L 335 250 L 300 390" fill="none" stroke="#d97706" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#navArrow)"/>
-                    <rect x="290" y="260" width="105" height="22" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
-                    <text x="342" y="275" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#b45309">&#9668; audits / exports</text>
-                    <text x="420" y="195" font-size="12" font-weight="bold" fill="#b45309">1</text>
-                    <text x="310" y="375" font-size="12" font-weight="bold" fill="#b45309">0..*</text>
-                </svg>
+    <!-- 3. CollegeInfo (0..1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="440" y1="495" x2="315" y2="495" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="375" y="485" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">&#9668; matched_in</text>
+    <text x="420" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..1</text>
+    <text x="325" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 4. Admin (1) -> (0..*) ChatHistory (SOLID ARROW - NO DASHED!) -->
+    <path d="M 440 180 L 335 250 L 305 390" fill="none" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <rect x="330" y="240" width="105" height="22" rx="3" fill="#f8fafc" stroke="#1e3d73" stroke-width="1"/>
+    <text x="382" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">&#9668; audits / exports</text>
+    <text x="415" y="200" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="315" y="375" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 2: Class Diagram &mdash; fully connected system classes with associations, multiplicities (1 to 0..*), and role verbs.</div>
+            <div class="figure-caption">Fig 2: Class Diagram &mdash; core entities, attributes, operations, and 100% solid association arrows with multiplicities and role verbs.</div>
         </div>
     </div>
 </div>
@@ -348,82 +401,106 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <!-- INSTANCE: stu_kanishk : Student (Top-Left) -->
-                    <g transform="translate(30, 20)">
-                        <rect x="0" y="0" width="290" height="34" fill="#1e3d73" rx="3"/>
-                        <text x="145" y="22" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="bold" text-decoration="underline">stu_kanishk : Student</text>
-                        <rect x="0" y="34" width="290" height="215" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="56" font-size="11.5" fill="#1e293b">roll_no = "ISTU25010120001"</text>
-                        <text x="12" y="78" font-size="11.5" fill="#1e293b">name = "Kanishk Singh"</text>
-                        <text x="12" y="100" font-size="11.5" fill="#1e293b">course = "BBA-CA"</text>
-                        <text x="12" y="122" font-size="11.5" fill="#1e293b">semester = "Semester III"</text>
-                        <text x="12" y="144" font-size="11.5" fill="#1e293b">cgpa = 9.40</text>
-                        <text x="12" y="166" font-size="11.5" fill="#1e293b">attendance = 88.50 %</text>
-                        <text x="12" y="188" font-size="11.5" fill="#1e293b">fees_due = 0.00</text>
-                        <text x="12" y="210" font-size="11.5" fill="#1e293b">mentor = "Dr. R. Sharma"</text>
-                        <text x="12" y="232" font-size="11.5" fill="#1e293b">exam_date = "2026-10-15"</text>
-                    </g>
+    <defs>
+        <marker id="objSolidArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#1e3d73"/>
+        </marker>
+    </defs>
 
-                    <!-- INSTANCE: admin_super : Admin (Top-Right) -->
-                    <g transform="translate(440, 20)">
-                        <rect x="0" y="0" width="280" height="34" fill="#0f254e" rx="3"/>
-                        <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="bold" text-decoration="underline">admin_super : Admin</text>
-                        <rect x="0" y="34" width="280" height="115" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
-                        <text x="12" y="58" font-size="11.5" fill="#1e293b">username = "admin"</text>
-                        <text x="12" y="80" font-size="11.5" fill="#1e293b">password_hash = "pbkdf2:sha256:600000$..."</text>
-                        <text x="12" y="102" font-size="11.5" fill="#1e293b">role = "SuperAdministrator"</text>
-                        <text x="12" y="124" font-size="11.5" fill="#1e293b">session_state = "Authenticated (Active)"</text>
-                    </g>
+    <!-- TOP HEADER: LIVE SCENARIO CONTEXT -->
+    <rect x="25" y="15" width="710" height="65" rx="6" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+    <text x="40" y="38" font-size="12.5" font-weight="bold" fill="#0f254e">Live Execution Snapshot Scenario (Active Student Transaction):</text>
+    <text x="40" y="58" font-size="11.5" fill="#334155">Student Kanishk Singh asks about personal attendance; ChatHistory logs query #42 matched against CollegeInfo FAQ #101.</text>
 
-                    <!-- INSTANCE: msg_42 : ChatHistory (Bottom-Left) -->
-                    <g transform="translate(30, 395)">
-                        <rect x="0" y="0" width="290" height="34" fill="#1e3d73" rx="3"/>
-                        <text x="145" y="22" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="bold" text-decoration="underline">msg_42 : ChatHistory</text>
-                        <rect x="0" y="34" width="290" height="160" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="56" font-size="11.5" fill="#1e293b">id = 42</text>
-                        <text x="12" y="78" font-size="11.5" fill="#1e293b">roll_no = "ISTU25010120001"</text>
-                        <text x="12" y="100" font-size="11.5" fill="#1e293b">user_query = "When are our internal exams?"</text>
-                        <text x="12" y="122" font-size="11.5" fill="#1e293b">bot_response = "Internal Exams start Oct 15..."</text>
-                        <text x="12" y="144" font-size="11.5" fill="#1e293b">timestamp = "2026-09-29 14:22:10"</text>
-                        <text x="12" y="166" font-size="11.5" fill="#1e293b">feedback = "thumbs_up (+1)"</text>
-                    </g>
+    <!-- BOX 1: stu_kanishk : Student (Left) -->
+    <g transform="translate(25, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">stu_kanishk : Student</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">roll_no = "ISTU25010120001"</text>
+        <text x="12" y="125" font-size="11" fill="#1e293b">name = "Kanishk Singh"</text>
+        <text x="12" y="155" font-size="11" fill="#1e293b">course = "BBA-CA"</text>
+        <text x="12" y="185" font-size="11" fill="#1e293b">semester = "Sem III"</text>
+        <text x="12" y="215" font-size="11" fill="#16a34a" font-weight="bold">attendance = 88.50%</text>
+        <text x="12" y="245" font-size="11" fill="#1e293b">fees_due = 0.00 (Cleared)</text>
+        <text x="12" y="275" font-size="11" fill="#1e293b">cgpa = 9.40 / 10.0</text>
+        <text x="12" y="305" font-size="11" fill="#1e293b">mentor = "Dr. R. Sharma"</text>
+        <text x="12" y="335" font-size="11" fill="#1e293b">exam_date = "2026-10-15"</text>
+        <text x="12" y="365" font-size="11" fill="#2563eb">auth_state = "Authenticated"</text>
+    </g>
 
-                    <!-- INSTANCE: faq_104 : CollegeInfo (Bottom-Right) -->
-                    <g transform="translate(440, 395)">
-                        <rect x="0" y="0" width="280" height="34" fill="#1e3d73" rx="3"/>
-                        <text x="140" y="22" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="bold" text-decoration="underline">faq_104 : CollegeInfo</text>
-                        <rect x="0" y="34" width="280" height="135" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="12" y="58" font-size="11.5" fill="#1e293b">id = 104</text>
-                        <text x="12" y="80" font-size="11.5" fill="#1e293b">category = "Examination"</text>
-                        <text x="12" y="102" font-size="11.5" fill="#1e293b">keywords = "exam date internal timetable"</text>
-                        <text x="12" y="124" font-size="11.5" fill="#1e293b">answer = "Internal Exams start Oct 15, 2026."</text>
-                        <text x="12" y="146" font-size="11.5" fill="#1e293b">created_at = "2026-08-01 10:00:00"</text>
-                    </g>
+    <!-- BOX 2: msg_42 : ChatHistory (Center) -->
+    <g transform="translate(268, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">msg_42 : ChatHistory</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">id = 42</text>
+        <text x="12" y="125" font-size="11" fill="#1e293b">roll_no = "ISTU25010120001"</text>
+        <text x="12" y="155" font-size="11" font-weight="bold" fill="#0f254e">user_query =</text>
+        <text x="12" y="175" font-size="10.5" fill="#334155">"What is my attendance?"</text>
+        <text x="12" y="210" font-size="11" font-weight="bold" fill="#0f254e">bot_response =</text>
+        <text x="12" y="230" font-size="10" fill="#334155">"Hi Kanishk, your attendance</text>
+        <text x="12" y="246" font-size="10" fill="#334155">is 88.5% (Good standing)."</text>
+        <text x="12" y="280" font-size="11" fill="#1e293b">timestamp = "10:15:20"</text>
+        <text x="12" y="315" font-size="11" font-weight="bold" fill="#16a34a">feedback = "like" (&#128077;)</text>
+        <text x="12" y="350" font-size="11" fill="#2563eb">channel = "Web Client PWA"</text>
+    </g>
 
-                    <!-- INSTANCE LINKS -->
-                    <!-- Link: stu_kanishk to msg_42 -->
-                    <line x1="175" y1="269" x2="175" y2="395" stroke="#1e3d73" stroke-width="2"/>
-                    <rect x="110" y="315" width="130" height="22" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
-                    <text x="175" y="330" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e3d73">: logged_query</text>
+    <!-- BOX 3: faq_101 : CollegeInfo (Right) -->
+    <g transform="translate(510, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">faq_101 : CollegeInfo</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">id = 101</text>
+        <text x="12" y="125" font-size="11" font-weight="bold" fill="#0f254e">category = "Attendance"</text>
+        <text x="12" y="155" font-size="11" font-weight="bold" fill="#0f254e">keywords =</text>
+        <text x="12" y="175" font-size="10" fill="#334155">"attendance, eligible, rule,</text>
+        <text x="12" y="190" font-size="10" fill="#334155">criteria, shortage, exam"</text>
+        <text x="12" y="225" font-size="11" font-weight="bold" fill="#0f254e">answer =</text>
+        <text x="12" y="245" font-size="10" fill="#334155">"Minimum 75% attendance</text>
+        <text x="12" y="261" font-size="10" fill="#334155">is mandatory to appear in</text>
+        <text x="12" y="277" font-size="10" fill="#334155">semester end exams."</text>
+        <text x="12" y="315" font-size="11" fill="#1e293b">match_confidence = 0.92</text>
+        <text x="12" y="350" font-size="11" fill="#2563eb">nlp_status = "Fuzzy Matched"</text>
+    </g>
 
-                    <!-- Link: admin_super to faq_104 -->
-                    <line x1="580" y1="169" x2="580" y2="395" stroke="#0f254e" stroke-width="2"/>
-                    <rect x="515" y="280" width="130" height="22" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
-                    <text x="580" y="295" text-anchor="middle" font-size="10.5" font-weight="600" fill="#92400e">: created_faq</text>
+    <!-- SOLID CONNECTING ARROWS BETWEEN THE 3 BOXES -->
 
-                    <!-- Link: msg_42 to faq_104 -->
-                    <line x1="320" y1="480" x2="440" y2="480" stroke="#1e3d73" stroke-width="2"/>
-                    <rect x="335" y="468" width="90" height="24" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-                    <text x="380" y="484" text-anchor="middle" font-size="10" font-weight="600" fill="#334155">: matched_from</text>
+    <!-- Arrow 1: Box 1 -> Box 2 (SOLID ARROW) -->
+    <line x1="250" y1="300" x2="265" y2="300" stroke="#1e3d73" stroke-width="3" marker-end="url(#objSolidArrow)"/>
+    
+    <!-- Arrow 2: Box 2 -> Box 3 (SOLID ARROW) -->
+    <line x1="493" y1="300" x2="507" y2="300" stroke="#1e3d73" stroke-width="3" marker-end="url(#objSolidArrow)"/>
 
-                    <!-- Link: admin_super to msg_42 (Audit Link) -->
-                    <path d="M 440 145 L 340 220 L 300 395" fill="none" stroke="#d97706" stroke-width="1.8" stroke-dasharray="5,4"/>
-                    <rect x="290" y="235" width="95" height="22" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
-                    <text x="337" y="250" text-anchor="middle" font-size="10" font-weight="600" fill="#b45309">: audited_log</text>
-                </svg>
+    <!-- Association Callouts on Links -->
+    <g transform="translate(140, 505)">
+        <rect x="0" y="0" width="220" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+        <text x="110" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">Link 1: :logged_query &#9658;</text>
+        <text x="110" y="32" text-anchor="middle" font-size="9.5" fill="#334155">Instance association (1 to 0..*)</text>
+    </g>
+
+    <g transform="translate(400, 505)">
+        <rect x="0" y="0" width="220" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+        <text x="110" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">Link 2: :matched_faq &#9658;</text>
+        <text x="110" y="32" text-anchor="middle" font-size="9.5" fill="#334155">Knowledge reference association</text>
+    </g>
+
+    <!-- Summary Box at bottom -->
+    <rect x="25" y="570" width="710" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+    <text x="40" y="595" font-size="12" font-weight="bold" fill="#0f254e">&#10004; Standard UML Object Diagram Specifications Verified:</text>
+    <text x="55" y="616" font-size="11" fill="#334155">&bull; Exactly 3 Concrete Runtime Object Instances: &lt;u&gt;Student&lt;/u&gt;, &lt;u&gt;ChatHistory&lt;/u&gt;, and &lt;u&gt;CollegeInfo&lt;/u&gt;.</text>
+    <text x="55" y="634" font-size="11" fill="#334155">&bull; Fully populated slot values with actual live strings, numeric metrics (88.5%, CGPA 9.40), and timestamps.</text>
+    <text x="55" y="652" font-size="11" fill="#334155">&bull; 100% Solid Directional Association Arrows between instances (zero dashed lines).</text>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 3: Object Diagram &mdash; concrete runtime object instances with slot values and links during an active student query session.</div>
+            <div class="figure-caption">Fig 3: Object Diagram &mdash; exactly 3 runtime instances (Student, ChatHistory, CollegeInfo) with concrete slots and solid association arrows.</div>
         </div>
     </div>
 </div>
@@ -685,148 +762,178 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <marker id="dfdArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-                            <path d="M0,0 L0,6 L8,3 z" fill="#1e3d73"/>
-                        </marker>
-                    </defs>
+    <defs>
+        <marker id="dfdSolidArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 7 3, 0 6" fill="#1e3d73"/>
+        </marker>
+    </defs>
 
-                    <!-- TOP SECTION: DFD LEVEL 0 (CONTEXT DIAGRAM) -->
-                    <rect x="15" y="10" width="730" height="230" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-                    <rect x="25" y="18" width="220" height="22" rx="4" fill="#1e3d73"/>
-                    <text x="135" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
+    <!-- ==================== TOP: DFD LEVEL 0 (CONTEXT DIAGRAM) ==================== -->
+    <rect x="15" y="10" width="730" height="235" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+    <rect x="25" y="18" width="230" height="22" rx="4" fill="#1e3d73"/>
+    <text x="140" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
 
-                    <!-- Entity: Student -->
-                    <rect x="35" y="65" width="130" height="70" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
-                    <text x="100" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
-                    <text x="100" y="122" text-anchor="middle" font-size="9.5" fill="#64748b">(External Entity)</text>
+    <!-- External Entity: Student (Left) -->
+    <rect x="35" y="65" width="130" height="70" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
+    <text x="100" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">[Entity]</text>
+    <text x="100" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e3d73">Student</text>
 
-                    <!-- Central Process 0.0 -->
-                    <circle cx="380" cy="115" r="55" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
-                    <line x1="330" y1="90" x2="430" y2="90" stroke="#1e3d73" stroke-width="1.2"/>
-                    <text x="380" y="82" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">0.0</text>
-                    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">AI College</text>
-                    <text x="380" y="128" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Chatbot System</text>
+    <!-- Central Process: 0.0 AI College Chatbot System (PROMINENT CIRCLE) -->
+    <circle cx="380" cy="118" r="62" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
+    <line x1="320" y1="95" x2="440" y2="95" stroke="#1e3d73" stroke-width="1.2"/>
+    <text x="380" y="85" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">0.0</text>
+    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">AI College Chatbot</text>
+    <text x="380" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">System</text>
+    <text x="380" y="145" text-anchor="middle" font-size="9" fill="#64748b">(Yourdon Circle Process)</text>
 
-                    <!-- Entity: Admin -->
-                    <rect x="595" y="65" width="130" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
-                    <text x="660" y="105" text-anchor="middle" font-size="13" font-weight="bold" fill="#92400e">Administrator</text>
-                    <text x="660" y="122" text-anchor="middle" font-size="9.5" fill="#b45309">(External Entity)</text>
+    <!-- External Entity: Administrator (Right) -->
+    <rect x="595" y="65" width="130" height="70" rx="4" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
+    <text x="660" y="98" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">[Entity]</text>
+    <text x="660" y="115" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Administrator</text>
 
-                    <!-- Level 0 Data Flows -->
-                    <!-- Student -> System -->
-                    <line x1="165" y1="80" x2="325" y2="80" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="73" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Query (Text/Voice), Roll No</text>
+    <!-- SOLID DATA FLOW ARROWS (LEVEL 0) -->
+    <!-- Student -> System -->
+    <line x1="165" y1="88" x2="318" y2="88" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="240" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query / Roll No / Feedback &#9658;</text>
 
-                    <line x1="165" y1="105" x2="325" y2="105" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="99" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1e3d73">Rating Feedback (👍 / 👎)</text>
+    <!-- System -> Student -->
+    <line x1="318" y1="140" x2="165" y2="140" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="240" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">&#9668; Answers / TTS Audio / Profile</text>
 
-                    <!-- System -> Student -->
-                    <line x1="325" y1="135" x2="165" y2="135" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="130" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Answer, TTS Speech Audio</text>
+    <!-- Admin -> System -->
+    <line x1="595" y1="88" x2="442" y2="88" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="520" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&#9668; Credentials / FAQ Updates</text>
 
-                    <line x1="325" y1="158" x2="165" y2="158" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="245" y="153" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2563eb">Attendance &amp; Academic Summary</text>
+    <!-- System -> Admin -->
+    <line x1="442" y1="140" x2="595" y2="140" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="520" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Audit Logs / CSV Export &#9658;</text>
 
-                    <!-- Admin -> System -->
-                    <line x1="595" y1="85" x2="435" y2="85" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="515" y="78" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">Login Credentials, FAQ CRUD</text>
 
-                    <!-- System -> Admin -->
-                    <line x1="435" y1="140" x2="595" y2="140" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <text x="515" y="134" text-anchor="middle" font-size="9.5" font-weight="600" fill="#92400e">KPI Analytics, CSV Chat Export</text>
+    <!-- ==================== BOTTOM: DFD LEVEL 1 (PROCESS DECOMPOSITION) ==================== -->
+    <rect x="15" y="255" width="730" height="435" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+    <rect x="25" y="263" width="280" height="22" rx="4" fill="#1e3d73"/>
+    <text x="165" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition (Circles)</text>
 
-                    <!-- BOTTOM SECTION: DFD LEVEL 1 (DECOMPOSITION) -->
-                    <rect x="15" y="250" width="730" height="445" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-                    <rect x="25" y="258" width="260" height="22" rx="4" fill="#0f254e"/>
-                    <text x="155" y="273" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition</text>
+    <!-- External Entity: Student (Left) -->
+    <rect x="28" y="320" width="95" height="180" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
+    <text x="75" y="405" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">Student</text>
+    <text x="75" y="422" text-anchor="middle" font-size="10" fill="#475569">(External Entity)</text>
 
-                    <!-- Entities -->
-                    <rect x="30" y="295" width="100" height="42" rx="4" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.6"/>
-                    <text x="80" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">Student</text>
+    <!-- PROCESS 1.0 (CIRCLE): Auth & Student Lookup -->
+    <circle cx="200" cy="345" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="165" y1="330" x2="235" y2="330" stroke="#1e3d73" stroke-width="1"/>
+    <text x="200" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">1.0</text>
+    <text x="200" y="344" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Student Auth &amp;</text>
+    <text x="200" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Profile Lookup</text>
 
-                    <rect x="630" y="295" width="100" height="42" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.6"/>
-                    <text x="680" y="321" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#92400e">Admin</text>
+    <!-- PROCESS 2.0 (CIRCLE): Fuzzy NLP Matcher -->
+    <circle cx="380" cy="345" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="345" y1="330" x2="415" y2="330" stroke="#1e3d73" stroke-width="1"/>
+    <text x="380" y="324" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">2.0</text>
+    <text x="380" y="344" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Fuzzy NLP &amp;</text>
+    <text x="380" y="358" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query Matcher</text>
 
-                    <!-- Processes -->
-                    <rect x="180" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="262" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">1.0 Authenticate &amp;</text>
-                    <text x="262" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Profile Lookup</text>
+    <!-- PROCESS 3.0 (CIRCLE): Voice TTS/STT Engine -->
+    <circle cx="200" cy="540" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="165" y1="525" x2="235" y2="525" stroke="#1e3d73" stroke-width="1"/>
+    <text x="200" y="519" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">3.0</text>
+    <text x="200" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Speech STT &amp;</text>
+    <text x="200" y="553" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">TTS Audio</text>
 
-                    <rect x="400" y="295" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="482" y="316" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">2.0 NLP &amp; Query</text>
-                    <text x="482" y="331" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Matching Engine</text>
+    <!-- PROCESS 4.0 (CIRCLE): Chat & Feedback Logger -->
+    <circle cx="380" cy="540" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
+    <line x1="345" y1="525" x2="415" y2="525" stroke="#1e3d73" stroke-width="1"/>
+    <text x="380" y="519" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">4.0</text>
+    <text x="380" y="539" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Chat Logger &amp;</text>
+    <text x="380" y="553" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Feedback</text>
 
-                    <rect x="180" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="262" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">3.0 Response Formatter</text>
-                    <text x="262" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">&amp; TTS Voice Engine</text>
+    <!-- PROCESS 5.0 (CIRCLE): Admin FAQ CMS Engine -->
+    <circle cx="560" cy="440" r="38" fill="#f8fafc" stroke="#0f254e" stroke-width="2"/>
+    <line x1="525" y1="425" x2="595" y2="425" stroke="#0f254e" stroke-width="1"/>
+    <text x="560" y="419" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">5.0</text>
+    <text x="560" y="439" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin FAQ CMS</text>
+    <text x="560" y="453" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&amp; Analytics</text>
 
-                    <rect x="400" y="445" width="165" height="48" rx="6" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="482" y="466" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">4.0 Chat History &amp;</text>
-                    <text x="482" y="481" text-anchor="middle" font-size="10" font-weight="600" fill="#1e3d73">Feedback Processor</text>
+    <!-- External Entity: Administrator (Right) -->
+    <rect x="645" y="380" width="90" height="120" rx="4" fill="#eff6ff" stroke="#0f254e" stroke-width="1.8"/>
+    <text x="690" y="440" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0f254e">Admin</text>
+    <text x="690" y="455" text-anchor="middle" font-size="9.5" fill="#475569">(Entity)</text>
 
-                    <rect x="400" y="590" width="175" height="48" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="487" y="611" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">5.0 Knowledgebase &amp;</text>
-                    <text x="487" y="626" text-anchor="middle" font-size="10" font-weight="600" fill="#92400e">Admin Analytics Engine</text>
+    <!-- DATA STORES (OPEN PARALLEL BARS) -->
+    <!-- D1: Students Store -->
+    <g transform="translate(140, 435)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D1</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Students Store</text>
+    </g>
 
-                    <!-- Data Stores (Gane-Sarson Style) -->
-                    <!-- D1: Students Data Store -->
-                    <g transform="translate(60, 375)">
-                        <rect x="0" y="0" width="160" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D1</text>
-                        <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Students Store</text>
-                    </g>
+    <!-- D2: College FAQs Store -->
+    <g transform="translate(320, 435)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D2</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">College FAQs</text>
+    </g>
 
-                    <!-- D2: College FAQs Store -->
-                    <g transform="translate(425, 375)">
-                        <rect x="0" y="0" width="180" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D2</text>
-                        <text x="105" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">College FAQs Store</text>
-                    </g>
+    <!-- D3: Chat History & Feedback -->
+    <g transform="translate(320, 630)">
+        <line x1="0" y1="0" x2="140" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="140" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D3</text>
+        <text x="85" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Chat History &amp; Logs</text>
+    </g>
 
-                    <!-- D3: Chat History Store -->
-                    <g transform="translate(180, 520)">
-                        <rect x="0" y="0" width="190" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D3</text>
-                        <text x="110" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Chat History &amp; Ratings</text>
-                    </g>
+    <!-- D4: Admin Credentials Store -->
+    <g transform="translate(500, 315)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#0f254e" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#0f254e" stroke-width="1.8"/>
+        <line x1="30" y1="0" x2="30" y2="24" stroke="#0f254e" stroke-width="1.4"/>
+        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
+        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin Auth DB</text>
+    </g>
 
-                    <!-- D4: Admin Store -->
-                    <g transform="translate(565, 520)">
-                        <rect x="0" y="0" width="165" height="34" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <line x1="35" y1="0" x2="35" y2="34" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="18" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
-                        <text x="98" y="21" text-anchor="middle" font-size="10" font-weight="600" fill="#0f254e">Admin Auth Store</text>
-                    </g>
+    <!-- SOLID DATA FLOWS (LEVEL 1) -->
+    <!-- Student -> 1.0 (Login) -->
+    <line x1="123" y1="340" x2="162" y2="340" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- 1.0 <-> D1 -->
+    <line x1="200" y1="383" x2="200" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <!-- Level 1 Data Flow Connectors -->
-                    <line x1="130" y1="315" x2="180" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="262" y1="343" x2="262" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="210" y1="375" x2="210" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+    <!-- Student -> 2.0 (Query) -->
+    <path d="M 123 370 L 250 370 L 342 355" fill="none" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    
+    <!-- 2.0 <-> D2 (FAQ Lookup) -->
+    <line x1="380" y1="383" x2="380" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="345" y1="315" x2="400" y2="315" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="482" y1="343" x2="482" y2="375" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="515" y1="375" x2="515" y2="343" stroke="#2563eb" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
+    <!-- Student <-> 3.0 (Voice I/O) -->
+    <line x1="123" y1="480" x2="165" y2="520" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <line x1="165" y1="535" x2="123" y2="495" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="482" y1="343" x2="262" y2="445" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="262" y1="493" x2="262" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="180" y1="469" x2="80" y2="469" stroke="#2563eb" stroke-width="1.4"/>
-                    <line x1="80" y1="469" x2="80" y2="337" stroke="#2563eb" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
+    <!-- 2.0 -> 4.0 (Query & Bot Response) -->
+    <line x1="380" y1="383" x2="380" y2="502" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 
-                    <line x1="482" y1="493" x2="350" y2="520" stroke="#1e3d73" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="680" y1="337" x2="680" y2="520" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="630" y1="315" x2="565" y2="315" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="487" y1="590" x2="487" y2="554" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                    <line x1="487" y1="554" x2="487" y2="590" stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,3" marker-end="url(#dfdArrow)"/>
-                    <line x1="575" y1="614" x2="680" y2="614" stroke="#d97706" stroke-width="1.4"/>
-                    <line x1="680" y1="614" x2="680" y2="337" stroke="#d97706" stroke-width="1.4" marker-end="url(#dfdArrow)"/>
-                </svg>
+    <!-- 4.0 -> D3 (Write log) -->
+    <line x1="380" y1="578" x2="380" y2="630" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- Admin <-> 5.0 (CRUD FAQs) -->
+    <line x1="645" y1="435" x2="598" y2="435" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <line x1="598" y1="445" x2="645" y2="445" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 <-> D4 (Admin Auth) -->
+    <line x1="560" y1="402" x2="560" y2="339" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 -> D2 (FAQ Update) -->
+    <path d="M 522 450 L 440 450" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 <- D3 (Read Audit Logs) -->
+    <path d="M 460 642 L 560 642 L 560 478" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 6: Data Flow Diagram &mdash; Level 0 (Context Diagram) and Level 1 (Process Decomposition with Data Stores D1&ndash;D4).</div>
+            <div class="figure-caption">Fig 6: Data Flow Diagram (DFD) &mdash; Level 0 Context &amp; Level 1 Detailed Decomposition using standard circle process symbols and solid data flow arrows.</div>
         </div>
     </div>
 </div>
@@ -845,155 +952,171 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <!-- ENTITY 1: STUDENT (Top-Left) -->
-                    <rect x="70" y="110" width="160" height="56" rx="4" fill="#1e3d73" stroke="#0f254e" stroke-width="2"/>
-                    <text x="150" y="144" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">STUDENT</text>
+    <defs>
+        <filter id="erdShadow" x="-5%" y="-5%" width="110%" height="115%">
+            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+        </filter>
+    </defs>
 
-                    <!-- Student Attributes (Ellipses) -->
-                    <ellipse cx="40" cy="40" rx="40" ry="18" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="40" y="44" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73" text-decoration="underline">roll_no (PK)</text>
-                    <line x1="58" y1="56" x2="100" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- TOP SECTION: ADMIN ENTITY & ATTRIBUTES -->
+    <!-- Entity 1: ADMIN (Top-Center) -->
+    <rect x="420" y="70" width="150" height="50" rx="3" fill="#0f254e" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
+    <text x="495" y="101" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">ADMIN_USER</text>
 
-                    <ellipse cx="140" cy="35" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="140" y="39" text-anchor="middle" font-size="10.5" fill="#334155">name</text>
-                    <line x1="140" y1="52" x2="140" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Admin Attributes (Ellipses above Admin) -->
+    <ellipse cx="440" cy="25" rx="42" ry="16" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
+    <text x="440" y="29" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0f254e" text-decoration="underline">username (PK)</text>
+    <line x1="440" y1="41" x2="465" y2="70" stroke="#64748b" stroke-width="1.2"/>
 
-                    <ellipse cx="225" cy="40" rx="36" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="225" y="44" text-anchor="middle" font-size="10.5" fill="#334155">course</text>
-                    <line x1="210" y1="56" x2="175" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
+    <ellipse cx="550" cy="25" rx="45" ry="16" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
+    <text x="550" y="29" text-anchor="middle" font-size="10" fill="#334155">password_hash</text>
+    <line x1="550" y1="41" x2="525" y2="70" stroke="#64748b" stroke-width="1.2"/>
 
-                    <ellipse cx="30" cy="110" rx="30" ry="16" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="30" y="114" text-anchor="middle" font-size="10" fill="#334155">semester</text>
-                    <line x1="60" y1="115" x2="70" y2="125" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="30" cy="165" rx="30" ry="16" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="30" y="169" text-anchor="middle" font-size="9.5" fill="#334155">attendance</text>
-                    <line x1="58" y1="160" x2="70" y2="150" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- MIDDLE ROW: THE CORE TRANSACTION PIPELINE (PROPER LEFT-TO-RIGHT FLOW) -->
+    <!-- Entity 2: STUDENT (Left) -->
+    <rect x="50" y="260" width="150" height="55" rx="3" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
+    <text x="125" y="294" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">STUDENT</text>
 
-                    <ellipse cx="60" cy="215" rx="35" ry="16" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="60" y="219" text-anchor="middle" font-size="10" fill="#334155">fees_due</text>
-                    <line x1="78" y1="202" x2="105" y2="166" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Relationship Diamond 1: < Submits > -->
+    <polygon points="255,287.5 285,265 315,287.5 285,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="285" y="292" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Submits</text>
 
-                    <ellipse cx="140" cy="220" rx="30" ry="16" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="140" y="224" text-anchor="middle" font-size="10" fill="#334155">cgpa</text>
-                    <line x1="140" y1="204" x2="140" y2="166" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Entity 3: CHAT_HISTORY (Center) -->
+    <rect x="350" y="260" width="155" height="55" rx="3" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
+    <text x="427" y="294" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">CHAT_HISTORY</text>
 
-                    <ellipse cx="215" cy="215" rx="32" ry="16" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="215" y="219" text-anchor="middle" font-size="10" fill="#334155">mentor</text>
-                    <line x1="200" y1="202" x2="175" y2="166" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Relationship Diamond 2: < References / Answers > -->
+    <polygon points="550,287.5 580,265 610,287.5 580,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="580" y="292" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">Answers</text>
 
-                    <!-- ENTITY 2: ADMIN_USER (Top-Right) -->
-                    <rect x="530" y="110" width="160" height="56" rx="4" fill="#0f254e" stroke="#020617" stroke-width="2"/>
-                    <text x="610" y="144" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">ADMIN_USER</text>
+    <!-- Entity 4: COLLEGE_INFO (Right) -->
+    <rect x="645" y="260" width="150" height="55" rx="3" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
+    <text x="720" y="294" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">COLLEGE_INFO</text>
 
-                    <!-- Admin Attributes -->
-                    <ellipse cx="495" cy="40" rx="46" ry="18" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
-                    <text x="495" y="44" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#92400e" text-decoration="underline">username (PK)</text>
-                    <line x1="518" y1="56" x2="560" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="610" cy="35" rx="45" ry="17" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
-                    <text x="610" y="39" text-anchor="middle" font-size="9.5" fill="#78350f">password_hash</text>
-                    <line x1="610" y1="52" x2="610" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- VERTICAL RELATIONSHIP DIAMONDS FROM ADMIN (TOP) -->
+    <!-- Relationship Diamond 3: < Audits > (Between Admin and ChatHistory) -->
+    <polygon points="395,175 425,152 455,175 425,198" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+    <text x="425" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Audits</text>
 
-                    <ellipse cx="710" cy="40" rx="30" ry="17" fill="#fffbeb" stroke="#d97706" stroke-width="1.3"/>
-                    <text x="710" y="44" text-anchor="middle" font-size="10.5" fill="#78350f">role</text>
-                    <line x1="695" y1="56" x2="660" y2="110" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Relationship Diamond 4: < Manages > (Between Admin and CollegeInfo) -->
+    <polygon points="620,175 650,152 680,175 650,198" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
+    <text x="650" y="179" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Manages</text>
 
-                    <!-- RELATIONSHIP 1: STUDENT --< Submits >-- CHAT_HISTORY -->
-                    <polygon points="150,265 195,295 150,325 105,295" fill="#eff6ff" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="150" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">Submits</text>
-                    <line x1="150" y1="166" x2="150" y2="265" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="160" y="195" font-size="12" font-weight="bold" fill="#1e3d73">1</text>
-                    <line x1="150" y1="325" x2="150" y2="390" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="160" y="365" font-size="12" font-weight="bold" fill="#1e3d73">N</text>
 
-                    <!-- ENTITY 3: CHAT_HISTORY (Bottom-Left) -->
-                    <rect x="70" y="390" width="165" height="56" rx="4" fill="#1e3d73" stroke="#0f254e" stroke-width="2"/>
-                    <text x="152" y="424" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">CHAT_HISTORY</text>
+    <!-- CONNECTING FLOW LINES & CARDINALITIES (100% PROPER FLOW) -->
+    <!-- Student (1) -> Submits -> (N) ChatHistory -->
+    <line x1="200" y1="287.5" x2="255" y2="287.5" stroke="#1e3d73" stroke-width="2.2"/>
+    <text x="220" y="278" font-size="12" font-weight="bold" fill="#0f254e">1</text>
+    <line x1="315" y1="287.5" x2="350" y2="287.5" stroke="#1e3d73" stroke-width="2.2"/>
+    <text x="330" y="278" font-size="12" font-weight="bold" fill="#0f254e">N</text>
 
-                    <!-- ChatHistory Attributes -->
-                    <ellipse cx="35" cy="480" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="35" y="484" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
-                    <line x1="55" y1="466" x2="85" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- ChatHistory (N) <- Answers <- (1) CollegeInfo -->
+    <line x1="505" y1="287.5" x2="550" y2="287.5" stroke="#1e3d73" stroke-width="2.2"/>
+    <text x="525" y="278" font-size="12" font-weight="bold" fill="#0f254e">N</text>
+    <line x1="610" y1="287.5" x2="645" y2="287.5" stroke="#1e3d73" stroke-width="2.2"/>
+    <text x="625" y="278" font-size="12" font-weight="bold" fill="#0f254e">1</text>
 
-                    <ellipse cx="115" cy="495" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="115" y="499" text-anchor="middle" font-size="9.5" fill="#334155">roll_no (FK)</text>
-                    <line x1="125" y1="479" x2="135" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Admin (1) -> Audits -> (M) ChatHistory -->
+    <line x1="450" y1="120" x2="425" y2="152" stroke="#0f254e" stroke-width="2"/>
+    <text x="445" y="138" font-size="11" font-weight="bold" fill="#0f254e">1</text>
+    <line x1="425" y1="198" x2="427" y2="260" stroke="#0f254e" stroke-width="2"/>
+    <text x="435" y="240" font-size="11" font-weight="bold" fill="#0f254e">M</text>
 
-                    <ellipse cx="195" cy="495" rx="38" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="195" y="499" text-anchor="middle" font-size="9.5" fill="#334155">user_query</text>
-                    <line x1="185" y1="479" x2="175" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- Admin (1) -> Manages -> (M) CollegeInfo -->
+    <line x1="540" y1="120" x2="650" y2="152" stroke="#0f254e" stroke-width="2"/>
+    <text x="585" y="135" font-size="11" font-weight="bold" fill="#0f254e">1</text>
+    <line x1="650" y1="198" x2="710" y2="260" stroke="#0f254e" stroke-width="2"/>
+    <text x="690" y="235" font-size="11" font-weight="bold" fill="#0f254e">M</text>
 
-                    <ellipse cx="265" cy="470" rx="42" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="265" y="474" text-anchor="middle" font-size="9.5" fill="#334155">bot_response</text>
-                    <line x1="245" y1="456" x2="225" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="100" cy="550" rx="38" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="100" y="554" text-anchor="middle" font-size="9.5" fill="#334155">timestamp</text>
-                    <line x1="110" y1="534" x2="140" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- ATTRIBUTES: STUDENT (CLEAN LEFT SPREAD) -->
+    <g transform="translate(10, 360)">
+        <ellipse cx="40" cy="15" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">roll_no (PK)</text>
+        <line x1="55" y1="0" x2="90" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="185" cy="550" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="185" y="554" text-anchor="middle" font-size="9.5" fill="#334155">feedback</text>
-                    <line x1="175" y1="534" x2="160" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="15" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="19" text-anchor="middle" font-size="10" fill="#334155">name</text>
+        <line x1="120" y1="0" x2="115" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- RELATIONSHIP 2: ADMIN_USER --< Audits >-- CHAT_HISTORY -->
-                    <polygon points="360,265 410,295 360,325 310,295" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="360" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309">Audits</text>
-                    <line x1="535" y1="166" x2="395" y2="275" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="510" y="195" font-size="12" font-weight="bold" fill="#b45309">1</text>
-                    <line x1="325" y1="315" x2="225" y2="390" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="250" y="375" font-size="12" font-weight="bold" fill="#b45309">N</text>
+        <ellipse cx="40" cy="55" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="59" text-anchor="middle" font-size="10" fill="#334155">attendance</text>
+        <line x1="60" y1="42" x2="95" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- RELATIONSHIP 3: ADMIN_USER --< Manages >-- COLLEGE_INFO -->
-                    <polygon points="610,265 655,295 610,325 565,295" fill="#fef3c7" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="610" y="299" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Manages</text>
-                    <line x1="610" y1="166" x2="610" y2="265" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="620" y="195" font-size="12" font-weight="bold" fill="#92400e">1</text>
-                    <line x1="610" y1="325" x2="610" y2="390" stroke="#d97706" stroke-width="1.8"/>
-                    <text x="620" y="365" font-size="12" font-weight="bold" fill="#92400e">M</text>
+        <ellipse cx="120" cy="55" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="59" text-anchor="middle" font-size="10" fill="#334155">fees_due</text>
+        <line x1="120" y1="40" x2="125" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- ENTITY 4: COLLEGE_INFO (Bottom-Right) -->
-                    <rect x="525" y="390" width="170" height="56" rx="4" fill="#1e3d73" stroke="#0f254e" stroke-width="2"/>
-                    <text x="610" y="424" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">COLLEGE_INFO</text>
+        <ellipse cx="40" cy="95" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="99" text-anchor="middle" font-size="10" fill="#334155">course/sem</text>
+        <line x1="65" y1="82" x2="105" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- CollegeInfo Attributes -->
-                    <ellipse cx="485" cy="485" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="485" y="489" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
-                    <line x1="505" y1="471" x2="540" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="95" rx="30" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="99" text-anchor="middle" font-size="10" fill="#334155">cgpa</text>
+        <line x1="120" y1="80" x2="135" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+    </g>
 
-                    <ellipse cx="560" cy="495" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="560" y="499" text-anchor="middle" font-size="9.5" fill="#334155">category</text>
-                    <line x1="570" y1="479" x2="585" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="640" cy="495" rx="35" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="640" y="499" text-anchor="middle" font-size="9.5" fill="#334155">keywords</text>
-                    <line x1="635" y1="479" x2="625" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- ATTRIBUTES: CHAT_HISTORY (CLEAN BOTTOM SPREAD) -->
+    <g transform="translate(320, 360)">
+        <ellipse cx="30" cy="20" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="30" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
+        <line x1="45" y1="6" x2="80" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <ellipse cx="715" cy="485" rx="32" ry="17" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-                    <text x="715" y="489" text-anchor="middle" font-size="9.5" fill="#334155">answer</text>
-                    <line x1="695" y1="471" x2="665" y2="446" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="115" cy="20" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="115" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73">roll_no (FK)</text>
+        <line x1="110" y1="6" x2="105" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- RELATIONSHIP 4: COLLEGE_INFO --< Answers >-- CHAT_HISTORY -->
-                    <polygon points="380,390 425,418 380,446 335,418" fill="#f1f5f9" stroke="#64748b" stroke-width="1.8"/>
-                    <text x="380" y="422" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Answers</text>
-                    <line x1="235" y1="418" x2="335" y2="418" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="250" y="412" font-size="12" font-weight="bold" fill="#1e3d73">N</text>
-                    <line x1="425" y1="418" x2="525" y2="418" stroke="#1e3d73" stroke-width="1.8"/>
-                    <text x="505" y="412" font-size="12" font-weight="bold" fill="#1e3d73">1</text>
+        <ellipse cx="195" cy="20" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="195" y="24" text-anchor="middle" font-size="9.5" fill="#334155">user_query</text>
+        <line x1="180" y1="6" x2="135" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
 
-                    <!-- LEGEND BOX -->
-                    <rect x="235" y="615" width="290" height="48" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-                    <rect x="245" y="630" width="22" height="15" fill="#1e3d73"/>
-                    <text x="272" y="642" font-size="10" font-weight="600" fill="#334155">Entity</text>
-                    <ellipse cx="330" cy="638" rx="14" ry="9" fill="#ffffff" stroke="#1e3d73"/>
-                    <text x="350" y="642" font-size="10" font-weight="600" fill="#334155">Attribute</text>
-                    <polygon points="415,630 427,638 415,646 403,638" fill="#eff6ff" stroke="#1e3d73"/>
-                    <text x="435" y="642" font-size="10" font-weight="600" fill="#334155">Relationship</text>
-                    <text x="495" y="642" font-size="10" font-weight="bold" fill="#1e3d73">1:N / 1:M</text>
-                </svg>
+        <ellipse cx="40" cy="65" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="69" text-anchor="middle" font-size="9.5" fill="#334155">bot_response</text>
+        <line x1="60" y1="52" x2="90" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="125" cy="65" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="125" y="69" text-anchor="middle" font-size="9.5" fill="#334155">timestamp</text>
+        <line x1="125" y1="50" x2="115" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="200" cy="65" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="200" y="69" text-anchor="middle" font-size="9.5" fill="#334155">feedback</text>
+        <line x1="190" y1="50" x2="140" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+    </g>
+
+
+    <!-- ATTRIBUTES: COLLEGE_INFO (CLEAN RIGHT SPREAD) -->
+    <g transform="translate(605, 360)">
+        <ellipse cx="40" cy="20" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
+        <line x1="50" y1="6" x2="85" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="115" cy="20" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="115" y="24" text-anchor="middle" font-size="9.5" fill="#334155">category</text>
+        <line x1="110" y1="6" x2="105" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="40" cy="65" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="69" text-anchor="middle" font-size="9.5" fill="#334155">keywords</text>
+        <line x1="55" y1="50" x2="95" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="115" cy="65" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="115" y="69" text-anchor="middle" font-size="9.5" fill="#334155">answer</text>
+        <line x1="115" y1="50" x2="120" y2="-45" stroke="#94a3b8" stroke-width="1.2"/>
+    </g>
+
+    <!-- LEGEND / EXPLANATION FOOTER -->
+    <rect x="25" y="520" width="710" height="155" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+    <text x="40" y="545" font-size="12.5" font-weight="bold" fill="#0f254e">&#10004; Standard Entity-Relationship Diagram Flow Summary:</text>
+    <text x="55" y="570" font-size="11" fill="#334155">&bull; &lt;b&gt;Left-to-Right Primary Data Flow:&lt;/b&gt; STUDENT [1] submits [N] CHAT_HISTORY, which answers [N:1] from COLLEGE_INFO.</text>
+    <text x="55" y="592" font-size="11" fill="#334155">&bull; &lt;b&gt;Top-to-Bottom Admin Control Flow:&lt;/b&gt; ADMIN_USER [1] audits [M] CHAT_HISTORY and manages [M] COLLEGE_INFO FAQs.</text>
+    <text x="55" y="614" font-size="11" fill="#334155">&bull; &lt;b&gt;Relational Integrity:&lt;/b&gt; Primary Keys underlined (&lt;u&gt;roll_no&lt;/u&gt;, &lt;u&gt;id&lt;/u&gt;, &lt;u&gt;username&lt;/u&gt;); Foreign Key marked (roll_no FK).</text>
+    <text x="55" y="636" font-size="11" fill="#334155">&bull; Zero line crossings; clean orthogonal layout; explicit relationship diamonds with standard cardinality markers.</text>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 7: Entity-Relationship Diagram &mdash; SQLite database schema with Primary Keys (PK), Foreign Keys (FK), attributes, and cardinality mapping.</div>
+            <div class="figure-caption">Fig 7: Entity-Relationship Diagram (ERD) &mdash; structured left-to-right &amp; top-to-bottom relational flow, diamond relationships, cardinalities, and clean non-crossing attributes.</div>
         </div>
     </div>
 </div>
@@ -1010,136 +1133,140 @@
 
             <div class="diagram-container">
                 <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-                    <!-- NODE 1: CLIENT DEVICE (Left 3D Box) -->
-                    <g transform="translate(30, 40)">
-                        <!-- 3D Node Faces -->
-                        <polygon points="0,20 20,0 300,0 280,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.2"/>
-                        <polygon points="280,20 300,0 300,320 280,340" fill="#94a3b8" stroke="#475569" stroke-width="1.2"/>
-                        <rect x="0" y="20" width="280" height="320" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+    <defs>
+        <!-- Folded Corner Artifact Icon Symbol -->
+        <g id="artifactIcon">
+            <path d="M0,0 L12,0 L16,4 L16,18 L0,18 Z" fill="#ffffff" stroke="#1e3d73" stroke-width="1.2"/>
+            <path d="M12,0 L12,4 L16,4" fill="none" stroke="#1e3d73" stroke-width="1.2"/>
+        </g>
+    </defs>
 
-                        <text x="140" y="44" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
-                        <text x="140" y="62" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">Client Device (PC / Smartphone)</text>
+    <!-- TIER 1: CLIENT DEVICE (3D NODE AT TOP) -->
+    <g transform="translate(100, 20)">
+        <!-- Top Face of 3D Cube -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face of 3D Cube -->
+        <polygon points="520,20 540,0 540,140 520,160" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face of 3D Cube -->
+        <rect x="0" y="20" width="520" height="140" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
 
-                        <!-- Execution Environment: Web Browser -->
-                        <rect x="15" y="75" width="250" height="250" rx="6" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="140" y="94" text-anchor="middle" font-size="10.5" fill="#1e3d73">&lt;&lt;executionEnvironment&gt;&gt;</text>
-                        <text x="140" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3d73">Modern Web Browser</text>
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Client Workstation / Smartphone</text>
 
-                        <!-- Artifacts inside Browser -->
-                        <rect x="25" y="122" width="230" height="34" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
-                        <text x="35" y="143" font-size="10.5" font-weight="600" fill="#1e3d73">&lt;&lt;artifact&gt;&gt; index.html &amp; styles.css</text>
+        <!-- Execution Environment inside Client -->
+        <rect x="15" y="72" width="490" height="75" rx="4" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" fill="#1e3d73">&lt;&lt;executionEnvironment&gt;&gt; Web Browser (Chrome / Edge / Safari)</text>
 
-                        <rect x="25" y="164" width="230" height="34" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
-                        <text x="35" y="185" font-size="10.5" font-weight="600" fill="#1e3d73">&lt;&lt;artifact&gt;&gt; app.js (Voice STT / TTS)</text>
+        <!-- Artifacts inside Client -->
+        <rect x="30" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="38" y="102"/>
+        <text x="62" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="62" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">index.html (UI)</text>
 
-                        <rect x="25" y="206" width="230" height="34" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
-                        <text x="35" y="227" font-size="10.5" font-weight="600" fill="#1e3d73">&lt;&lt;artifact&gt;&gt; sw.js &amp; manifest.json (PWA)</text>
+        <rect x="190" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="198" y="102"/>
+        <text x="222" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="222" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">script.js (STT/TTS)</text>
 
-                        <rect x="25" y="248" width="230" height="34" rx="4" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
-                        <text x="35" y="269" font-size="10.5" font-weight="600" fill="#334155">&lt;&lt;subsystem&gt;&gt; Web Speech &amp; Synth API</text>
+        <rect x="350" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="358" y="102"/>
+        <text x="382" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="382" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">style.css (Design)</text>
+    </g>
 
-                        <rect x="25" y="290" width="230" height="26" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
-                        <text x="35" y="307" font-size="9.5" fill="#475569">&lt;&lt;storage&gt;&gt; LocalStorage &amp; Cache API</text>
-                    </g>
 
-                    <!-- COMMUNICATION PROTOCOL ARROW (Client -> Server) -->
-                    <g transform="translate(330, 180)">
-                        <line x1="0" y1="0" x2="80" y2="0" stroke="#1e3d73" stroke-width="2.5"/>
-                        <polygon points="80,-5 90,0 80,5" fill="#1e3d73"/>
-                        <polygon points="0,-5 -10,0 0,5" fill="#1e3d73"/>
+    <!-- COMMUNICATION PATH 1 (CLIENT TO APPLICATION SERVER) -->
+    <g transform="translate(360, 180)">
+        <line x1="0" y1="0" x2="0" y2="70" stroke="#1e3d73" stroke-width="3"/>
+        <polygon points="-5,70 0,80 5,70" fill="#1e3d73"/>
+        <polygon points="-5,0 0,-10 5,0" fill="#1e3d73"/>
 
-                        <rect x="-10" y="-35" width="110" height="24" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
-                        <text x="45" y="-23" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#92400e">HTTPS / TLS 1.3</text>
-                        <text x="45" y="-11" text-anchor="middle" font-size="8.5" fill="#78350f">JSON REST (Port 443)</text>
-                    </g>
+        <!-- Communication Protocol Label Box -->
+        <rect x="-105" y="20" width="210" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+        <text x="0" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">&lt;&lt;protocol&gt;&gt; HTTPS / TLS 1.3</text>
+        <text x="0" y="46" text-anchor="middle" font-size="9" fill="#78350f">TCP/IP Port 443 (Internet / WAN)</text>
+    </g>
 
-                    <!-- NODE 2: CLOUD APPLICATION SERVER (Top-Right 3D Box) -->
-                    <g transform="translate(430, 40)">
-                        <polygon points="0,20 20,0 300,0 280,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.2"/>
-                        <polygon points="280,20 300,0 300,320 280,340" fill="#94a3b8" stroke="#475569" stroke-width="1.2"/>
-                        <rect x="0" y="20" width="280" height="320" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
 
-                        <text x="140" y="44" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;cloud node&gt;&gt;</text>
-                        <text x="140" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Render PaaS (Ubuntu 22.04 LTS)</text>
+    <!-- TIER 2: WEB & APPLICATION SERVER (3D NODE IN MIDDLE) -->
+    <g transform="translate(100, 260)">
+        <!-- Top Face -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face -->
+        <polygon points="520,20 540,0 540,155 520,175" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face -->
+        <rect x="0" y="20" width="520" height="155" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
 
-                        <!-- Execution Environment: Python / WSGI -->
-                        <rect x="15" y="75" width="250" height="250" rx="6" fill="#ffffff" stroke="#0f254e" stroke-width="1.4"/>
-                        <text x="140" y="94" text-anchor="middle" font-size="10.5" fill="#0f254e">&lt;&lt;executionEnvironment&gt;&gt;</text>
-                        <text x="140" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f254e">Python 3.11 Runtime / Gunicorn WSGI</text>
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Application Server (Cloud Linux Container)</text>
 
-                        <!-- Artifacts inside Cloud Node -->
-                        <rect x="25" y="122" width="230" height="34" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
-                        <text x="35" y="143" font-size="10.5" font-weight="bold" fill="#14532d">&lt;&lt;artifact&gt;&gt; app.py (Flask Web App)</text>
+        <!-- Execution Environment inside App Server -->
+        <rect x="15" y="72" width="490" height="92" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#14532d">&lt;&lt;executionEnvironment&gt;&gt; Python 3.11 Runtime / Flask WSGI</text>
 
-                        <rect x="25" y="164" width="230" height="34" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
-                        <text x="35" y="185" font-size="10" font-weight="600" fill="#14532d">&lt;&lt;component&gt;&gt; Fuzzy NLP Matcher (Difflib)</text>
+        <!-- Artifacts & Components inside App Server -->
+        <rect x="25" y="96" width="145" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="32" y="102"/>
+        <text x="54" y="114" font-size="9.5" fill="#14532d">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="54" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">app.py</text>
+        <text x="32" y="146" font-size="8.5" fill="#475569">Main Web Microservice</text>
 
-                        <rect x="25" y="206" width="230" height="34" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
-                        <text x="35" y="227" font-size="10" font-weight="600" fill="#14532d">&lt;&lt;component&gt;&gt; Session &amp; Student Controller</text>
+        <rect x="185" y="96" width="150" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <text x="260" y="112" text-anchor="middle" font-size="9.5" fill="#14532d">&lt;&lt;component&gt;&gt;</text>
+        <text x="260" y="127" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Fuzzy NLP Matcher</text>
+        <text x="260" y="145" text-anchor="middle" font-size="8.5" fill="#475569">difflib Scoring Engine</text>
 
-                        <rect x="25" y="248" width="230" height="34" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
-                        <text x="35" y="269" font-size="10" font-weight="600" fill="#14532d">&lt;&lt;component&gt;&gt; Admin Auth &amp; CSV Exporter</text>
+        <rect x="350" y="96" width="145" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <text x="422" y="112" text-anchor="middle" font-size="9.5" fill="#14532d">&lt;&lt;component&gt;&gt;</text>
+        <text x="422" y="127" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Auth &amp; Session Mgr</text>
+        <text x="422" y="145" text-anchor="middle" font-size="8.5" fill="#475569">Student &amp; Admin APIs</text>
+    </g>
 
-                        <rect x="25" y="290" width="230" height="26" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-                        <text x="35" y="307" font-size="9.5" fill="#1e3d73">&lt;&lt;interface&gt;&gt; REST Endpoints: /chat, /login</text>
-                    </g>
 
-                    <!-- BUS CONNECTOR: Server -> Database -->
-                    <g transform="translate(570, 385)">
-                        <line x1="0" y1="0" x2="0" y2="40" stroke="#0f254e" stroke-width="2.5"/>
-                        <polygon points="-5,40 0,50 5,40" fill="#0f254e"/>
-                        <polygon points="-5,0 0,-10 5,0" fill="#0f254e"/>
+    <!-- COMMUNICATION PATH 2 (APPLICATION SERVER TO DATABASE SERVER) -->
+    <g transform="translate(360, 435)">
+        <line x1="0" y1="0" x2="0" y2="60" stroke="#1e3d73" stroke-width="3"/>
+        <polygon points="-5,60 0,70 5,60" fill="#1e3d73"/>
+        <polygon points="-5,0 0,-10 5,0" fill="#1e3d73"/>
 
-                        <rect x="10" y="8" width="130" height="24" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
-                        <text x="75" y="20" text-anchor="middle" font-size="9" font-weight="bold" fill="#334155">POSIX File I/O Bus</text>
-                        <text x="75" y="30" text-anchor="middle" font-size="8.5" fill="#475569">SQLite3 C-Driver</text>
-                    </g>
+        <!-- Communication Protocol Label Box -->
+        <rect x="-110" y="15" width="220" height="30" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="0" y="29" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e293b">&lt;&lt;protocol&gt;&gt; SQLite C-Driver / POSIX I/O</text>
+        <text x="0" y="41" text-anchor="middle" font-size="9" fill="#475569">Embedded Storage Engine Connection</text>
+    </g>
 
-                    <!-- NODE 3: EMBEDDED DATABASE SYSTEM (Bottom-Right 3D Box) -->
-                    <g transform="translate(430, 440)">
-                        <polygon points="0,20 20,0 300,0 280,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.2"/>
-                        <polygon points="280,20 300,0 300,210 280,230" fill="#94a3b8" stroke="#475569" stroke-width="1.2"/>
-                        <rect x="0" y="20" width="280" height="210" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
 
-                        <text x="140" y="44" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;database system&gt;&gt;</text>
-                        <text x="140" y="62" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Persistent Storage Node</text>
+    <!-- TIER 3: DATABASE SERVER (3D NODE AT BOTTOM) -->
+    <g transform="translate(100, 505)">
+        <!-- Top Face -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face -->
+        <polygon points="520,20 540,0 540,140 520,160" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face -->
+        <rect x="0" y="20" width="520" height="140" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
 
-                        <!-- Execution Environment: SQLite Engine -->
-                        <rect x="15" y="75" width="250" height="140" rx="6" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
-                        <text x="140" y="95" text-anchor="middle" font-size="10.5" fill="#1e3d73">&lt;&lt;database&gt;&gt;</text>
-                        <text x="140" y="112" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e3d73">SQLite 3.x Database Engine</text>
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Database Server (Storage Node)</text>
 
-                        <!-- Artifacts inside Database -->
-                        <rect x="25" y="124" width="230" height="34" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
-                        <text x="35" y="145" font-size="11" font-weight="bold" fill="#92400e">&lt;&lt;artifact&gt;&gt; college.db (Relational DB File)</text>
+        <!-- Execution Environment inside DB Node -->
+        <rect x="15" y="72" width="490" height="78" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">&lt;&lt;executionEnvironment&gt;&gt; SQLite 3 Relational Database Engine</text>
 
-                        <rect x="25" y="165" width="230" height="40" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
-                        <text x="35" y="180" font-size="9.5" fill="#475569">Tables: students, college_info,</text>
-                        <text x="35" y="195" font-size="9.5" fill="#475569">chat_history, admin_users</text>
-                    </g>
+        <!-- Artifacts inside Database -->
+        <rect x="30" y="96" width="220" height="45" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="38" y="102"/>
+        <text x="62" y="114" font-size="9.5" fill="#92400e">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="62" y="130" font-size="11" font-weight="bold" fill="#0f254e">college_chatbot.db</text>
 
-                    <!-- ARCHITECTURAL CALLOUT / SPECIFICATION BOX (Bottom-Left) -->
-                    <g transform="translate(30, 440)">
-                        <rect x="0" y="20" width="280" height="210" rx="6" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.4"/>
-                        <rect x="0" y="20" width="280" height="32" rx="4" fill="#1e3d73"/>
-                        <text x="140" y="41" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">Architecture Specifications</text>
-
-                        <text x="14" y="75" font-size="10" font-weight="bold" fill="#0f254e">&bull; Client Tier:</text>
-                        <text x="24" y="90" font-size="9.5" fill="#334155">Zero-install Progressive Web App (PWA)</text>
-                        <text x="24" y="103" font-size="9.5" fill="#334155">Native browser Web Speech API for voice I/O</text>
-
-                        <text x="14" y="125" font-size="10" font-weight="bold" fill="#0f254e">&bull; Application Server Tier:</text>
-                        <text x="24" y="140" font-size="9.5" fill="#334155">Hosted on Render Cloud PaaS (Cloud Linux)</text>
-                        <text x="24" y="153" font-size="9.5" fill="#334155">Python 3.11 + Flask WSGI production microservice</text>
-
-                        <text x="14" y="175" font-size="10" font-weight="bold" fill="#0f254e">&bull; Persistence &amp; Security:</text>
-                        <text x="24" y="190" font-size="9.5" fill="#334155">Self-contained SQLite embedded file engine</text>
-                        <text x="24" y="203" font-size="9.5" fill="#334155">HTTPS TLS 1.3 encryption &amp; salted PBKDF2 hashes</text>
-                    </g>
-                </svg>
+        <!-- Tables breakdown inside DB -->
+        <rect x="270" y="96" width="220" height="45" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+        <text x="380" y="114" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#334155">Relational Tables / Schemas:</text>
+        <text x="380" y="130" text-anchor="middle" font-size="9.5" fill="#475569">students, college_info, chat_history, admin</text>
+    </g>
+</svg>
             </div>
 
-            <div class="figure-caption">Fig 8: Deployment Diagram &mdash; client device, cloud hosting tier (Render Linux), embedded SQLite persistent storage, and protocol architecture.</div>
+            <div class="figure-caption">Fig 8: Deployment Diagram &mdash; textbook 3-Tier UML deployment architecture with 3D nodes (Client, Application Server, Database Server), execution environments, artifacts, and communication paths.</div>
         </div>
     </div>
 </div>
