@@ -12,10 +12,10 @@
     .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
     .doc-header { text-align: center; margin-bottom: 6px; }
     .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
     .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
     .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
     .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
     .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .diagram-container svg { max-height: 200mm; width: auto; }
@@ -40,18 +40,17 @@
                 </div>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="0 0 760 670" width="670" height="590" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <filter id="erdShadow" x="-5%" y="-5%" width="110%" height="115%">
-            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.10"/>
         </filter>
     </defs>
 
     <!-- TOP SECTION: ADMIN ENTITY (EXACT SQUARE: 80x80) -->
     <rect x="450" y="55" width="80" height="80" fill="#0f254e" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
-    <text x="490" y="85" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#93c5fd">[Square Entity]</text>
-    <text x="490" y="103" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">ADMIN</text>
-    <text x="490" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">USER</text>
+    <text x="490" y="93" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">ADMIN</text>
+    <text x="490" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">USER</text>
 
     <!-- Admin Attributes (Ellipses above Admin) -->
     <ellipse cx="430" cy="22" rx="42" ry="16" fill="#f8fafc" stroke="#0f254e" stroke-width="1.4"/>
@@ -67,8 +66,7 @@
 
     <!-- Entity 1: STUDENT (SQUARE: 85x85) -->
     <rect x="75" y="245" width="85" height="85" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
-    <text x="117" y="280" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#93c5fd">[Square Entity]</text>
-    <text x="117" y="300" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">STUDENT</text>
+    <text x="117" y="293" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">STUDENT</text>
 
     <!-- Relationship Diamond 1: < Submits > -->
     <polygon points="215,287.5 245,265 275,287.5 245,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
@@ -76,9 +74,8 @@
 
     <!-- Entity 2: CHAT_HISTORY (SQUARE: 85x85) -->
     <rect x="335" y="245" width="85" height="85" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
-    <text x="377" y="275" text-anchor="middle" font-size="10" font-weight="bold" fill="#93c5fd">[Square Entity]</text>
-    <text x="377" y="293" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">CHAT</text>
-    <text x="377" y="308" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">HISTORY</text>
+    <text x="377" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">CHAT</text>
+    <text x="377" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">HISTORY</text>
 
     <!-- Relationship Diamond 2: < Answers > -->
     <polygon points="480,287.5 510,265 540,287.5 510,310" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
@@ -86,9 +83,8 @@
 
     <!-- Entity 3: COLLEGE_INFO (SQUARE: 85x85) -->
     <rect x="600" y="245" width="85" height="85" fill="#1e3d73" stroke="#0f254e" stroke-width="2" filter="url(#erdShadow)"/>
-    <text x="642" y="275" text-anchor="middle" font-size="10" font-weight="bold" fill="#93c5fd">[Square Entity]</text>
-    <text x="642" y="293" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">COLLEGE</text>
-    <text x="642" y="308" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">INFO</text>
+    <text x="642" y="285" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">COLLEGE</text>
+    <text x="642" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">INFO</text>
 
 
     <!-- VERTICAL RELATIONSHIP DIAMONDS FROM ADMIN (TOP) -->
@@ -138,77 +134,69 @@
         <line x1="120" y1="0" x2="115" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
         <ellipse cx="40" cy="55" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="40" y="59" text-anchor="middle" font-size="10" fill="#334155">attendance</text>
-        <line x1="60" y1="42" x2="95" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="40" y="59" text-anchor="middle" font-size="10" fill="#334155">course</text>
+        <line x1="60" y1="40" x2="105" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="120" cy="55" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="120" y="59" text-anchor="middle" font-size="10" fill="#334155">fees_due</text>
-        <line x1="120" y1="40" x2="125" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="55" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="59" text-anchor="middle" font-size="10" fill="#334155">semester</text>
+        <line x1="125" y1="40" x2="120" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="40" cy="95" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="40" y="99" text-anchor="middle" font-size="10" fill="#334155">course/sem</text>
-        <line x1="65" y1="82" x2="105" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
-
-        <ellipse cx="120" cy="95" rx="30" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="120" y="99" text-anchor="middle" font-size="10" fill="#334155">cgpa</text>
-        <line x1="120" y1="80" x2="135" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="80" cy="95" rx="46" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="80" y="99" text-anchor="middle" font-size="9.5" fill="#334155">attendance_pct</text>
+        <line x1="85" y1="80" x2="110" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
     </g>
 
 
-    <!-- ATTRIBUTES: CHAT_HISTORY (SPREAD CLEANLY BELOW) -->
-    <g transform="translate(265, 360)">
-        <ellipse cx="40" cy="20" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="40" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
-        <line x1="55" y1="6" x2="95" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- ATTRIBUTES: CHAT_HISTORY (SPREAD CLEANLY IN CENTER-BOTTOM) -->
+    <g transform="translate(250, 360)">
+        <ellipse cx="40" cy="15" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
+        <line x1="50" y1="0" x2="100" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="125" cy="20" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="125" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73">roll_no (FK)</text>
-        <line x1="120" y1="6" x2="115" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="15" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="19" text-anchor="middle" font-size="9.5" fill="#1e3d73" font-style="italic">roll_no (FK)</text>
+        <line x1="120" y1="0" x2="125" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="205" cy="20" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="205" y="24" text-anchor="middle" font-size="9.5" fill="#334155">user_query</text>
-        <line x1="190" y1="6" x2="135" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="40" cy="55" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="59" text-anchor="middle" font-size="9.5" fill="#334155">user_query</text>
+        <line x1="60" y1="40" x2="115" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="45" cy="65" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="45" y="69" text-anchor="middle" font-size="9.5" fill="#334155">bot_response</text>
-        <line x1="65" y1="52" x2="100" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="55" rx="42" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="59" text-anchor="middle" font-size="9.5" fill="#334155">bot_response</text>
+        <line x1="130" y1="40" x2="135" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="130" cy="65" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="130" y="69" text-anchor="middle" font-size="9.5" fill="#334155">timestamp</text>
-        <line x1="130" y1="50" x2="120" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="50" cy="95" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="50" y="99" text-anchor="middle" font-size="9.5" fill="#334155">timestamp</text>
+        <line x1="60" y1="80" x2="120" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="205" cy="65" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="205" y="69" text-anchor="middle" font-size="9.5" fill="#334155">feedback</text>
-        <line x1="195" y1="50" x2="140" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="130" cy="95" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="130" y="99" text-anchor="middle" font-size="9.5" fill="#334155">feedback</text>
+        <line x1="135" y1="80" x2="140" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
     </g>
 
 
-    <!-- ATTRIBUTES: COLLEGE_INFO (SPREAD CLEANLY ON RIGHT) -->
-    <g transform="translate(565, 360)">
-        <ellipse cx="40" cy="20" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="40" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
-        <line x1="50" y1="6" x2="65" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+    <!-- ATTRIBUTES: COLLEGE_INFO (SPREAD CLEANLY ON RIGHT-BOTTOM) -->
+    <g transform="translate(520, 360)">
+        <ellipse cx="40" cy="15" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="19" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3d73" text-decoration="underline">id (PK)</text>
+        <line x1="50" y1="0" x2="100" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="115" cy="20" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="115" y="24" text-anchor="middle" font-size="9.5" fill="#334155">category</text>
-        <line x1="110" y1="6" x2="90" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="15" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="19" text-anchor="middle" font-size="9.5" fill="#334155">category</text>
+        <line x1="120" y1="0" x2="125" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="40" cy="65" rx="34" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="40" y="69" text-anchor="middle" font-size="9.5" fill="#334155">keywords</text>
-        <line x1="55" y1="50" x2="75" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="40" cy="55" rx="38" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="40" y="59" text-anchor="middle" font-size="9.5" fill="#334155">keywords</text>
+        <line x1="60" y1="40" x2="115" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
 
-        <ellipse cx="115" cy="65" rx="32" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
-        <text x="115" y="69" text-anchor="middle" font-size="9.5" fill="#334155">answer</text>
-        <line x1="115" y1="50" x2="105" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+        <ellipse cx="120" cy="55" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="120" y="59" text-anchor="middle" font-size="9.5" fill="#334155">question</text>
+        <line x1="125" y1="40" x2="135" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
+
+        <ellipse cx="80" cy="95" rx="36" ry="15" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.3"/>
+        <text x="80" y="99" text-anchor="middle" font-size="9.5" fill="#334155">answer</text>
+        <line x1="85" y1="80" x2="125" y2="-30" stroke="#94a3b8" stroke-width="1.2"/>
     </g>
-
-    <!-- LEGEND / EXPLANATION FOOTER -->
-    <rect x="25" y="520" width="710" height="155" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
-    <text x="40" y="545" font-size="12.5" font-weight="bold" fill="#0f254e">&#10004; Standard Entity-Relationship Diagram Flow Summary:</text>
-    <text x="55" y="570" font-size="11" fill="#334155">&bull; &lt;b&gt;Exact Square Entity Symbols:&lt;/b&gt; All entities (STUDENT, ADMIN_USER, CHAT_HISTORY, COLLEGE_INFO) rendered as square boxes.</text>
-    <text x="55" y="592" font-size="11" fill="#334155">&bull; &lt;b&gt;Left-to-Right Primary Data Flow:&lt;/b&gt; STUDENT [1] submits [N] CHAT_HISTORY, which answers [N:1] from COLLEGE_INFO.</text>
-    <text x="55" y="614" font-size="11" fill="#334155">&bull; &lt;b&gt;Top-to-Bottom Admin Control Flow:&lt;/b&gt; ADMIN_USER [1] audits [M] CHAT_HISTORY and manages [M] COLLEGE_INFO FAQs.</text>
-    <text x="55" y="636" font-size="11" fill="#334155">&bull; &lt;b&gt;Relational Integrity:&lt;/b&gt; Primary Keys underlined (&lt;u&gt;roll_no&lt;/u&gt;, &lt;u&gt;id&lt;/u&gt;, &lt;u&gt;username&lt;/u&gt;); Foreign Key marked (roll_no FK).</text>
 </svg>
                 </div>
 

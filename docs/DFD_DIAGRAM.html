@@ -12,10 +12,10 @@
     .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
     .doc-header { text-align: center; margin-bottom: 6px; }
     .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
     .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
     .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
     .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
     .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .diagram-container svg { max-height: 200mm; width: auto; }
@@ -52,47 +52,44 @@
     <rect x="25" y="18" width="230" height="22" rx="4" fill="#1e3d73"/>
     <text x="140" y="33" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 0: Context Diagram</text>
 
-    <!-- External Entity: Student (EXACT SQUARE: 85x85) -->
-    <rect x="45" y="65" width="85" height="85" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
-    <text x="87" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">[Square Entity]</text>
-    <text x="87" y="118" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
+    <!-- External Entity: Student (EXACT SQUARE: 75x75) -->
+    <rect x="50" y="70" width="75" height="75" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
+    <text x="87" y="112" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
 
     <!-- Central Process: 0.0 AI College Chatbot System (PROMINENT CIRCLE) -->
-    <circle cx="380" cy="118" r="62" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
-    <line x1="320" y1="95" x2="440" y2="95" stroke="#1e3d73" stroke-width="1.2"/>
-    <text x="380" y="85" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">0.0</text>
-    <text x="380" y="112" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">AI College Chatbot</text>
-    <text x="380" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">System</text>
-    <text x="380" y="145" text-anchor="middle" font-size="9" fill="#64748b">(Process Circle)</text>
+    <circle cx="380" cy="115" r="60" fill="#ffffff" stroke="#1e3d73" stroke-width="2.5"/>
+    <line x1="322" y1="92" x2="438" y2="92" stroke="#1e3d73" stroke-width="1.2"/>
+    <text x="380" y="83" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">0.0</text>
+    <text x="380" y="110" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">AI College Chatbot</text>
+    <text x="380" y="126" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">System</text>
+    <text x="380" y="142" text-anchor="middle" font-size="9" fill="#64748b">(Process)</text>
 
-    <!-- External Entity: Administrator (EXACT SQUARE: 85x85) -->
-    <rect x="630" y="65" width="85" height="85" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
-    <text x="672" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">[Square Entity]</text>
-    <text x="672" y="118" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Admin</text>
+    <!-- External Entity: Administrator (EXACT SQUARE: 75x75) -->
+    <rect x="635" y="70" width="75" height="75" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
+    <text x="672" y="112" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Admin</text>
 
     <!-- SOLID DATA FLOW ARROWS (LEVEL 0) -->
-    <line x1="130" y1="88" x2="318" y2="88" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
-    <text x="224" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query / Roll No / Feedback &#9658;</text>
+    <line x1="125" y1="88" x2="320" y2="88" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="222" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">Query / Roll No / Feedback &#9658;</text>
 
-    <line x1="318" y1="140" x2="130" y2="140" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
-    <text x="224" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">&#9668; Answers / TTS Audio / Profile</text>
+    <line x1="320" y1="138" x2="125" y2="138" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="222" y="154" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">&#9668; Answers / TTS Audio / Profile</text>
 
-    <line x1="630" y1="88" x2="442" y2="88" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
-    <text x="536" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&#9668; Credentials / FAQ Updates</text>
+    <line x1="635" y1="88" x2="440" y2="88" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="537" y="82" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&#9668; Credentials / FAQ Updates</text>
 
-    <line x1="442" y1="140" x2="630" y2="140" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
-    <text x="536" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Audit Logs / CSV Export &#9658;</text>
+    <line x1="440" y1="138" x2="635" y2="138" stroke="#0f254e" stroke-width="1.8" marker-end="url(#dfdSolidArrow)"/>
+    <text x="537" y="154" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Audit Logs / CSV Export &#9658;</text>
 
 
     <!-- ==================== BOTTOM: DFD LEVEL 1 (PROCESS DECOMPOSITION) ==================== -->
     <rect x="15" y="255" width="730" height="435" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
     <rect x="25" y="263" width="280" height="22" rx="4" fill="#1e3d73"/>
-    <text x="165" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition (Circles &amp; Squares)</text>
+    <text x="165" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">DFD Level 1: Process Decomposition</text>
 
-    <!-- External Entity: Student (EXACT SQUARE: 85x85) -->
-    <rect x="28" y="360" width="85" height="85" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
-    <text x="70" y="395" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">[Square]</text>
-    <text x="70" y="414" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
+    <!-- External Entity: Student (EXACT SQUARE: 80x80) -->
+    <rect x="30" y="365" width="80" height="80" fill="#eff6ff" stroke="#1e3d73" stroke-width="2"/>
+    <text x="70" y="411" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3d73">Student</text>
 
     <!-- PROCESS 1.0 (CIRCLE): Auth & Student Lookup -->
     <circle cx="200" cy="345" r="38" fill="#f8fafc" stroke="#1e3d73" stroke-width="2"/>
@@ -129,63 +126,88 @@
     <text x="560" y="439" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin FAQ CMS</text>
     <text x="560" y="453" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">&amp; Analytics</text>
 
-    <!-- External Entity: Administrator (EXACT SQUARE: 85x85) -->
-    <rect x="645" y="395" width="85" height="85" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
-    <text x="687" y="430" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f254e">[Square]</text>
-    <text x="687" y="449" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Admin</text>
+    <!-- External Entity: Administrator (EXACT SQUARE: 80x80) -->
+    <rect x="650" y="400" width="80" height="80" fill="#eff6ff" stroke="#0f254e" stroke-width="2"/>
+    <text x="690" y="446" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0f254e">Admin</text>
 
     <!-- DATA STORES (OPEN PARALLEL BARS) -->
     <g transform="translate(140, 435)">
         <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
         <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
-        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D1</text>
-        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Students Store</text>
+        <line x1="24" y1="0" x2="24" y2="24" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D1</text>
+        <text x="70" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">student_records</text>
     </g>
 
     <g transform="translate(320, 435)">
         <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
         <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
-        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D2</text>
-        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">College FAQs</text>
+        <line x1="24" y1="0" x2="24" y2="24" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D2</text>
+        <text x="70" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">faq_knowledge</text>
     </g>
 
-    <g transform="translate(320, 630)">
-        <line x1="0" y1="0" x2="140" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
-        <line x1="0" y1="24" x2="140" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#1e3d73" stroke-width="1.4"/>
-        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D3</text>
-        <text x="85" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Chat History &amp; Logs</text>
+    <g transform="translate(500, 540)">
+        <line x1="0" y1="0" x2="120" y2="0" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="0" y1="24" x2="120" y2="24" stroke="#1e3d73" stroke-width="1.8"/>
+        <line x1="24" y1="0" x2="24" y2="24" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3d73">D3</text>
+        <text x="70" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">chat_history_logs</text>
     </g>
 
-    <g transform="translate(500, 315)">
-        <line x1="0" y1="0" x2="120" y2="0" stroke="#0f254e" stroke-width="1.8"/>
-        <line x1="0" y1="24" x2="120" y2="24" stroke="#0f254e" stroke-width="1.8"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#0f254e" stroke-width="1.4"/>
-        <text x="15" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">D4</text>
-        <text x="75" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Admin Auth DB</text>
-    </g>
+    <!-- DATA FLOW CONNECTIONS (LEVEL 1) -->
+    <!-- Student to 1.0 (Roll No) -->
+    <line x1="110" y1="385" x2="164" y2="355" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="135" y="365" font-size="9" font-weight="bold" fill="#1e3d73">Roll No</text>
 
-    <!-- SOLID DATA FLOWS -->
-    <line x1="113" y1="380" x2="162" y2="350" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <line x1="200" y1="383" x2="200" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- 1.0 to D1 (Query Student) -->
+    <line x1="200" y1="383" x2="200" y2="433" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
 
-    <path d="M 113 410 L 250 410 L 342 355" fill="none" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <line x1="380" y1="383" x2="380" y2="435" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- D1 to 1.0 (Return Profile) -->
+    <line x1="215" y1="433" x2="215" y2="383" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
 
-    <line x1="113" y1="435" x2="165" y2="520" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <line x1="165" y1="535" x2="113" y2="445" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- Student to 2.0 (Text Query) -->
+    <path d="M 110 400 C 200 400, 260 365, 342 355" fill="none" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="240" y="380" font-size="9" font-weight="bold" fill="#1e3d73">Text Query</text>
 
-    <line x1="380" y1="383" x2="380" y2="502" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <line x1="380" y1="578" x2="380" y2="630" stroke="#1e3d73" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- 2.0 to D2 (Lookup FAQ) -->
+    <line x1="380" y1="383" x2="380" y2="433" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
 
-    <line x1="645" y1="435" x2="598" y2="435" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <line x1="598" y1="445" x2="645" y2="445" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- D2 to 2.0 (Matched Answer) -->
+    <line x1="395" y1="433" x2="395" y2="383" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
 
-    <line x1="560" y1="402" x2="560" y2="339" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <path d="M 522 450 L 440 450" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
-    <path d="M 460 642 L 560 642 L 560 478" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
+    <!-- 2.0 to Student (Bot Response) -->
+    <path d="M 345 330 C 240 310, 150 330, 110 375" fill="none" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="210" y="315" font-size="9" font-weight="bold" fill="#1e3d73">Response</text>
+
+    <!-- Student to 3.0 (Voice Stream) -->
+    <line x1="110" y1="425" x2="168" y2="520" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="135" y="475" font-size="9" font-weight="bold" fill="#1e3d73">Voice In</text>
+
+    <!-- 3.0 to 2.0 (Transcribed Text) -->
+    <line x1="228" y1="515" x2="352" y2="370" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="280" y="450" font-size="9" font-weight="bold" fill="#1e3d73">Text</text>
+
+    <!-- Student to 4.0 (Feedback: Like/Dislike) -->
+    <path d="M 110 440 C 180 500, 260 550, 342 550" fill="none" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="200" y="585" font-size="9" font-weight="bold" fill="#1e3d73">Feedback / Log Query</text>
+
+    <!-- 4.0 to D3 (Store Log) -->
+    <line x1="418" y1="545" x2="498" y2="545" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- Admin to 5.0 (FAQ Updates / CMS) -->
+    <line x1="650" y1="435" x2="598" y2="435" stroke="#0f254e" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="625" y="425" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f254e">FAQ Update</text>
+
+    <!-- 5.0 to D2 (Write Knowledge) -->
+    <path d="M 525 435 C 480 435, 460 445, 442 445" fill="none" stroke="#0f254e" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+
+    <!-- 5.0 to Admin (Analytics & CSV) -->
+    <line x1="598" y1="455" x2="650" y2="455" stroke="#0f254e" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
+    <text x="625" y="470" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f254e">CSV Export</text>
+
+    <!-- D3 to 5.0 (Read Logs) -->
+    <path d="M 550 538 C 550 500, 555 490, 555 478" fill="none" stroke="#0f254e" stroke-width="1.5" marker-end="url(#dfdSolidArrow)"/>
 </svg>
                 </div>
 

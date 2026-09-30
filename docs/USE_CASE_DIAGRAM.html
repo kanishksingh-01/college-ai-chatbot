@@ -12,10 +12,10 @@
     .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
     .doc-header { text-align: center; margin-bottom: 6px; }
     .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
     .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
     .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
     .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
     .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .diagram-container svg { max-height: 200mm; width: auto; }
@@ -36,7 +36,7 @@
 
                 <div class="diagram-heading-box">
                     <div class="diagram-heading">Use Case Diagram (With Broad Database Cylinder)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction: Broad database cylinder with zero stickman icon</div>
+                    <div class="correction-badge">&#10004; Teacher Correction: Broad database cylinder with zero human/stickman representation</div>
                 </div>
 
                 <div class="diagram-container">
@@ -77,23 +77,22 @@
     <text x="80" y="590" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;primary actor&gt;&gt;</text>
     <text x="80" y="605" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">Administrator</text>
 
-    <!-- ACTOR 3: BROAD DATABASE CYLINDER SYMBOL (RIGHT - NO GUY!) -->
-    <g transform="translate(585, 290)">
-        <text x="75" y="0" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;secondary actor&gt;&gt;</text>
-        <text x="75" y="14" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;system&gt;&gt;</text>
+    <!-- SECONDARY ACTOR: BROAD DATABASE CYLINDER (RIGHT - 100% NON-HUMAN DATABASE) -->
+    <g transform="translate(580, 275)">
+        <text x="80" y="-8" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;secondary actor&gt;&gt;</text>
+        <text x="80" y="6" text-anchor="middle" font-size="10.5" fill="#475569">&lt;&lt;database system&gt;&gt;</text>
         
-        <!-- Broad 3D Database Cylinder -->
-        <!-- Cylinder Body -->
-        <path d="M 10 32 L 10 115 C 10 135 140 135 140 115 L 140 32 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.2" filter="url(#ucShadow)"/>
+        <!-- Broad 3D Database Cylinder Body (Width: 160px, Height: 105px) -->
+        <path d="M 0 32 L 0 120 C 0 145 160 145 160 120 L 160 32 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.4" filter="url(#ucShadow)"/>
         <!-- Bottom Curve Segment -->
-        <path d="M 10 75 C 10 95 140 95 140 75" fill="none" stroke="#0284c7" stroke-width="1.8"/>
+        <path d="M 0 76 C 0 100 160 100 160 76" fill="none" stroke="#0284c7" stroke-width="1.8"/>
         <!-- Top Ellipse Cap -->
-        <ellipse cx="75" cy="32" rx="65" ry="18" fill="#bae6fd" stroke="#0284c7" stroke-width="2.2"/>
+        <ellipse cx="80" cy="32" rx="80" ry="20" fill="#bae6fd" stroke="#0284c7" stroke-width="2.4"/>
         
         <!-- Text inside Broad Cylinder -->
-        <text x="75" y="65" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">Database System</text>
-        <text x="75" y="85" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369a1">(SQLite 3 DB)</text>
-        <text x="75" y="105" text-anchor="middle" font-size="9.5" fill="#475569">college_chatbot.db</text>
+        <text x="80" y="62" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#0f254e">Database System</text>
+        <text x="80" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#0369a1">(SQLite 3 DB)</text>
+        <text x="80" y="104" text-anchor="middle" font-size="10" fill="#334155">college_chatbot.db</text>
     </g>
 
     <!-- USE CASES (OVALS IN SYSTEM BOUNDARY) -->
@@ -156,14 +155,14 @@
     <line x1="102" y1="540" x2="240" y2="618" stroke="#1e3d73" stroke-width="1.5"/>
 
     <!-- ASSOCIATIONS: BROAD DATABASE CYLINDER (RIGHT) TO USE CASES -->
-    <line x1="500" y1="72" x2="595" y2="340" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="500" y1="180" x2="595" y2="345" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="515" y1="240" x2="595" y2="350" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="500" y1="300" x2="595" y2="355" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="500" y1="425" x2="595" y2="365" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="515" y1="490" x2="595" y2="370" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="515" y1="554" x2="595" y2="375" stroke="#0284c7" stroke-width="1.6"/>
-    <line x1="500" y1="618" x2="595" y2="385" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="500" y1="72" x2="580" y2="330" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="500" y1="180" x2="580" y2="335" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="515" y1="240" x2="580" y2="340" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="500" y1="300" x2="580" y2="345" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="500" y1="425" x2="580" y2="355" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="515" y1="490" x2="580" y2="360" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="515" y1="554" x2="580" y2="365" stroke="#0284c7" stroke-width="1.6"/>
+    <line x1="500" y1="618" x2="580" y2="370" stroke="#0284c7" stroke-width="1.6"/>
 </svg>
                 </div>
 

@@ -12,10 +12,10 @@
     .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
     .doc-header { text-align: center; margin-bottom: 6px; }
     .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
     .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
     .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
     .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
     .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .diagram-container svg { max-height: 200mm; width: auto; }
@@ -40,177 +40,169 @@
                 </div>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-    <!-- Top-Left Model Name Tag matching Image 2 -->
-    <g transform="translate(15, 8)">
-        <polygon points="0,0 240,0 255,18 0,18" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="8" y="13" font-size="10.5" font-family="'Segoe UI', Arial, sans-serif" fill="#000000">deployment Development Environment Model</text>
-    </g>
+                    <svg viewBox="0 0 760 710" width="670" height="635" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Open Triangle Marker for UML Dependency / Deploy (pointing UP) -->
+        <marker id="deployTriangleUp" markerWidth="10" markerHeight="10" refX="5" refY="1" orient="auto">
+            <polygon points="5 0, 0 8, 10 8" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+        </marker>
+        <!-- Reusable UML 2-tab Component Icon -->
+        <g id="umlComponentTabIcon">
+            <rect x="0" y="0" width="18" height="15" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+            <rect x="-4" y="2" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="0.9"/>
+            <rect x="-4" y="8" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="0.9"/>
+        </g>
+    </defs>
 
-    <!-- Big Title matching Image 2 -->
-    <text x="380" y="58" text-anchor="middle" font-size="28" font-family="'Segoe UI', Arial, sans-serif" font-weight="bold" fill="#000000">Development Environment Model</text>
+    <!-- Top Model Context Tag (matching reference top tab) -->
+    <path d="M 15 12 L 230 12 L 245 26 L 15 26 Z" fill="#ffffff" stroke="#000000" stroke-width="1.1"/>
+    <text x="25" y="22" font-size="10" font-weight="bold" fill="#000000">deployment Development Environment Model</text>
 
-    <!-- TOP 3D NODE: :Ethernet Hub (matching Image 2) -->
-    <g transform="translate(310, 85)">
-        <!-- Top Face of 3D Node -->
-        <polygon points="0,15 15,0 155,0 140,15" fill="#dbeafe" stroke="#000000" stroke-width="1.2"/>
-        <!-- Right Face of 3D Node -->
-        <polygon points="140,15 155,0 155,55 140,70" fill="#93c5fd" stroke="#000000" stroke-width="1.2"/>
-        <!-- Front Face of 3D Node -->
-        <rect x="0" y="15" width="140" height="55" fill="#bfdbfe" stroke="#000000" stroke-width="1.5"/>
-        <text x="70" y="47" text-anchor="middle" font-size="13" font-weight="bold" text-decoration="underline" fill="#000000">:Ethernet Hub</text>
-    </g>
+    <!-- Large Title matching Reference -->
+    <text x="380" y="55" text-anchor="middle" font-size="23" font-weight="bold" fill="#000000">Development Environment Model</text>
 
-    <!-- LINES FROM ETHERNET HUB TO NODES -->
-    <!-- Line to Left Node -->
-    <path d="M 350 155 L 350 250 L 280 250" fill="none" stroke="#000000" stroke-width="1.5"/>
-    <!-- Line to Right Node -->
-    <path d="M 410 155 L 410 250 L 480 250" fill="none" stroke="#000000" stroke-width="1.5"/>
-
-
-    <!-- ==================== LEFT 3D NODE: CLIENT NODE (DEV002) ==================== -->
-    <g transform="translate(35, 185)">
-        <!-- Top Face -->
-        <polygon points="0,18 18,0 268,0 250,18" fill="#dbeafe" stroke="#000000" stroke-width="1.2"/>
-        <!-- Right Face -->
-        <polygon points="250,18 268,0 268,110 250,128" fill="#93c5fd" stroke="#000000" stroke-width="1.2"/>
+    <!-- ==================== TOP: :Ethernet Hub (3D CUBE) ==================== -->
+    <g transform="translate(305, 80)">
         <!-- Front Face -->
-        <rect x="0" y="18" width="250" height="110" fill="#bfdbfe" stroke="#000000" stroke-width="1.5"/>
-        <line x1="0" y1="48" x2="250" y2="48" stroke="#000000" stroke-width="1.2"/>
-        
-        <text x="125" y="38" text-anchor="middle" font-size="12" font-weight="bold" text-decoration="underline" fill="#000000">DEV002: Client Workstation / Phone</text>
-        <text x="15" y="68" font-size="11" fill="#000000">Disk Controller = Local Storage</text>
-        <text x="15" y="85" font-size="11" fill="#000000">Disks = 128 GB SSD</text>
-        <text x="15" y="102" font-size="11" fill="#000000">RAM = 8 GB</text>
-        <text x="15" y="119" font-size="11" fill="#000000">Processor = 2.4 GHz Multi-Core</text>
-    </g>
-
-    <!-- <<deploy>> DEPENDENCY ARROW (LEFT) -->
-    <g transform="translate(160, 313)">
-        <polygon points="0,0 -8,12 8,12" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <line x1="0" y1="12" x2="0" y2="35" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="0" y="27" text-anchor="middle" font-size="11" font-family="'Segoe UI', Arial, sans-serif" fill="#000000">&laquo;deploy&raquo;</text>
-    </g>
-
-    <!-- COMPONENT BOX: CLIENT OS / RUNTIME (PINK / SALMON) -->
-    <g transform="translate(50, 350)">
-        <rect x="0" y="0" width="220" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <!-- Official UML Component Symbol (Rectangle with 2 protruding tabs on left) -->
-        <rect x="185" y="8" width="22" height="15" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="180" y="10" width="8" height="4" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="180" y="17" width="8" height="4" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        
-        <text x="100" y="28" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">Client Runtime S/N 002:</text>
-        <text x="100" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Web Browser (Chrome/Edge)</text>
-    </g>
-
-    <!-- RESIDES DASHED LINES & SUBCOMPONENTS (LEFT) -->
-    <!-- Resides Line 1 -->
-    <g transform="translate(160, 415)">
-        <polygon points="0,0 -6,10 6,10" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <line x1="0" y1="10" x2="0" y2="55" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="0" y="32" text-anchor="middle" font-size="11" font-family="'Segoe UI', Arial, sans-serif" fill="#000000">Resides</text>
-    </g>
-
-    <g transform="translate(75, 470)">
-        <rect x="0" y="0" width="170" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <rect x="140" y="8" width="18" height="13" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="136" y="10" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="136" y="16" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        
-        <text x="75" y="28" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">UI &amp; Voice Client:</text>
-        <text x="75" y="45" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">HTML5 + Speech API</text>
-    </g>
-
-
-    <!-- ==================== RIGHT 3D NODE: SERVER NODE (DEV001) ==================== -->
-    <g transform="translate(470, 185)">
+        <rect x="0" y="12" width="130" height="42" fill="#cce5ff" stroke="#000000" stroke-width="1.2"/>
         <!-- Top Face -->
-        <polygon points="0,18 18,0 268,0 250,18" fill="#dbeafe" stroke="#000000" stroke-width="1.2"/>
+        <polygon points="0 12, 12 0, 142 0, 130 12" fill="#e6f2ff" stroke="#000000" stroke-width="1.2"/>
         <!-- Right Face -->
-        <polygon points="250,18 268,0 268,110 250,128" fill="#93c5fd" stroke="#000000" stroke-width="1.2"/>
-        <!-- Front Face -->
-        <rect x="0" y="18" width="250" height="110" fill="#bfdbfe" stroke="#000000" stroke-width="1.5"/>
-        <line x1="0" y1="48" x2="250" y2="48" stroke="#000000" stroke-width="1.2"/>
+        <polygon points="130 12, 142 0, 142 42, 130 54" fill="#99ccff" stroke="#000000" stroke-width="1.2"/>
+        <!-- Text -->
+        <text x="65" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#000000" text-decoration="underline">:Ethernet Hub</text>
+    </g>
+
+    <!-- NETWORK CONNECTION LINES -->
+    <!-- From Ethernet Hub down to DEV002 (Left) -->
+    <path d="M 335 134 L 335 240 L 210 240" fill="none" stroke="#000000" stroke-width="1.3"/>
+    <!-- From Ethernet Hub down to DEV001 (Right) -->
+    <path d="M 405 134 L 405 240 L 460 240" fill="none" stroke="#000000" stroke-width="1.3"/>
+
+
+    <!-- ==================== LEFT HARDWARE NODE: DEV002 (3D CUBE) ==================== -->
+    <g transform="translate(35, 175)">
+        <!-- Front Face (Width: 175px, Height: 125px) -->
+        <rect x="0" y="14" width="175" height="125" fill="#cce5ff" stroke="#000000" stroke-width="1.2"/>
+        <!-- Top Face -->
+        <polygon points="0 14, 12 0, 187 0, 175 14" fill="#e6f2ff" stroke="#000000" stroke-width="1.2"/>
+        <!-- Right Face -->
+        <polygon points="175 14, 187 0, 187 125, 175 139" fill="#99ccff" stroke="#000000" stroke-width="1.2"/>
         
-        <text x="125" y="38" text-anchor="middle" font-size="12" font-weight="bold" text-decoration="underline" fill="#000000">DEV001: Cloud Server (Render Linux)</text>
-        <text x="15" y="68" font-size="11" fill="#000000">Disk Controller = Persistent Storage</text>
-        <text x="15" y="85" font-size="11" fill="#000000">Disks = 18 GB Cloud SSD</text>
-        <text x="15" y="102" font-size="11" fill="#000000">RAM = 512 MB (WSGI Pool)</text>
-        <text x="15" y="119" font-size="11" fill="#000000">Processor = Cloud Shared CPU</text>
-    </g>
-
-    <!-- <<deploy>> DEPENDENCY ARROW (RIGHT) -->
-    <g transform="translate(595, 313)">
-        <polygon points="0,0 -8,12 8,12" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <line x1="0" y1="12" x2="0" y2="35" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-        <text x="0" y="27" text-anchor="middle" font-size="11" font-family="'Segoe UI', Arial, sans-serif" fill="#000000">&laquo;deploy&raquo;</text>
-    </g>
-
-    <!-- COMPONENT BOX: SERVER OS / RUNTIME (PINK / SALMON) -->
-    <g transform="translate(485, 350)">
-        <rect x="0" y="0" width="220" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <rect x="185" y="8" width="22" height="15" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="180" y="10" width="8" height="4" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="180" y="17" width="8" height="4" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+        <!-- Header -->
+        <text x="87" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000" text-decoration="underline">DEV002: Client Workstation</text>
+        <line x1="0" y1="42" x2="175" y2="42" stroke="#000000" stroke-width="1.1"/>
         
-        <text x="100" y="28" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">Server S/N 001:</text>
-        <text x="100" y="46" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Python 3.11 Runtime / Flask</text>
+        <!-- Hardware Specifications -->
+        <text x="12" y="60" font-size="10" fill="#000000">Disk Controller = POSIX</text>
+        <text x="12" y="78" font-size="10" fill="#000000">Disks = 256 GB SSD</text>
+        <text x="12" y="96" font-size="10" fill="#000000">RAM = 8 GB</text>
+        <text x="12" y="114" font-size="10" fill="#000000">Processor = 2.4 GHz Quad-Core</text>
     </g>
 
-    <!-- RESIDES DASHED LINES & 3 SUBCOMPONENTS (MATCHING IMAGE 2 EXACTLY) -->
-    <!-- Line 1: Left subcomponent -->
-    <path d="M 525 415 L 525 435 L 390 435 L 390 470" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <polygon points="390,460 384,450 396,450" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-    <text x="390" y="448" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
-
-    <!-- Line 2: Middle subcomponent -->
-    <line x1="595" y1="415" x2="595" y2="470" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <polygon points="595,460 589,450 601,450" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-    <text x="595" y="448" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
-
-    <!-- Line 3: Right subcomponent -->
-    <path d="M 665 415 L 665 435 L 700 435 L 700 470" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <polygon points="700,460 694,450 706,450" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-    <text x="700" y="448" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
-
-    <!-- SUBCOMPONENT 1: FLASK APP -->
-    <g transform="translate(325, 470)">
-        <rect x="0" y="0" width="135" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <rect x="110" y="6" width="18" height="13" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="8" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="14" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <text x="60" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">Flask Server:</text>
-        <text x="60" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">app.py Engine</text>
+    <!-- ==================== RIGHT HARDWARE NODE: DEV001 (3D CUBE) ==================== -->
+    <g transform="translate(460, 175)">
+        <!-- Front Face (Width: 205px, Height: 125px) -->
+        <rect x="0" y="14" width="205" height="125" fill="#cce5ff" stroke="#000000" stroke-width="1.2"/>
+        <!-- Top Face -->
+        <polygon points="0 14, 12 0, 217 0, 205 14" fill="#e6f2ff" stroke="#000000" stroke-width="1.2"/>
+        <!-- Right Face -->
+        <polygon points="205 14, 217 0, 217 125, 205 139" fill="#99ccff" stroke="#000000" stroke-width="1.2"/>
+        
+        <!-- Header -->
+        <text x="102" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000" text-decoration="underline">DEV001: Cloud Server (Render)</text>
+        <line x1="0" y1="42" x2="205" y2="42" stroke="#000000" stroke-width="1.1"/>
+        
+        <!-- Hardware Specifications -->
+        <text x="14" y="60" font-size="10" fill="#000000">Disk Controller = POSIX File System</text>
+        <text x="14" y="78" font-size="10" fill="#000000">Disks = 50 GB NVMe</text>
+        <text x="14" y="96" font-size="10" fill="#000000">RAM = 4 GB vRAM</text>
+        <text x="14" y="114" font-size="10" fill="#000000">Processor = Quad-Core Linux vCPU</text>
     </g>
 
-    <!-- SUBCOMPONENT 2: NLP MATCHER -->
-    <g transform="translate(470, 470)">
-        <rect x="0" y="0" width="135" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <rect x="110" y="6" width="18" height="13" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="8" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="14" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <text x="60" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">NLP Matcher:</text>
-        <text x="60" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">difflib Engine</text>
+
+    <!-- ==================== «deploy» ARROWS: HARDWARE TO RUNTIMES ==================== -->
+    <!-- Left «deploy» (points UP to DEV002) -->
+    <line x1="122" y1="380" x2="122" y2="315" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="122" y="348" text-anchor="middle" font-size="11" font-style="italic" fill="#000000">&laquo;deploy&raquo;</text>
+
+    <!-- Right «deploy» (points UP to DEV001) -->
+    <line x1="562" y1="380" x2="562" y2="315" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="562" y="348" text-anchor="middle" font-size="11" font-style="italic" fill="#000000">&laquo;deploy&raquo;</text>
+
+
+    <!-- ==================== MIDDLE TIER: SOFTWARE RUNTIME BOXES (PINK/SALMON) ==================== -->
+    <!-- DEV002 Runtime: Web Browser Environment -->
+    <g transform="translate(45, 380)">
+        <rect x="0" y="0" width="155" height="62" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="130" y="6"/>
+        <text x="65" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000" text-decoration="underline">Client Runtime:</text>
+        <text x="65" y="42" text-anchor="middle" font-size="10" fill="#000000">Web Browser Environment</text>
     </g>
 
-    <!-- SUBCOMPONENT 3: SQL DATABASE -->
-    <g transform="translate(615, 470)">
-        <rect x="0" y="0" width="135" height="65" fill="#fecdd3" stroke="#000000" stroke-width="1.3"/>
-        <rect x="110" y="6" width="18" height="13" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="8" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <rect x="106" y="14" width="6" height="3" fill="#ffffff" stroke="#000000" stroke-width="1"/>
-        <text x="60" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">SQL Server:</text>
-        <text x="60" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">SQLite 3 DB</text>
+    <!-- DEV001 Runtime: Python 3.11 / Flask WSGI -->
+    <g transform="translate(475, 380)">
+        <rect x="0" y="0" width="175" height="62" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="150" y="6"/>
+        <text x="80" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000" text-decoration="underline">Server Runtime:</text>
+        <text x="80" y="42" text-anchor="middle" font-size="10" fill="#000000">Python 3.11 / Flask WSGI</text>
     </g>
 
-    <!-- Explanatory legend footer -->
-    <g transform="translate(25, 570)">
-        <rect x="0" y="0" width="710" height="90" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-        <text x="20" y="24" font-size="11.5" font-weight="bold" fill="#0f254e">UML Deployment Architecture Legend &amp; Mapping:</text>
-        <text x="20" y="45" font-size="10.5" fill="#334155">&bull; &lt;b&gt;:Ethernet Hub:&lt;/b&gt; Central network routing gateway connecting client and cloud server hardware nodes.</text>
-        <text x="20" y="63" font-size="10.5" fill="#334155">&bull; &lt;b&gt;3D Nodes (DEV001 &amp; DEV002):&lt;/b&gt; Physical/virtual hardware devices with CPU, RAM, and Disk controller specifications.</text>
-        <text x="20" y="81" font-size="10.5" fill="#334155">&bull; &lt;b&gt;&laquo;deploy&raquo; &amp; Resides:&lt;/b&gt; Formal deployment relationships indicating software execution runtime and resident artifacts.</text>
+
+    <!-- ==================== «Resides» ARROWS: RUNTIME TO COMPONENTS ==================== -->
+    <!-- Under Client: straight vertical arrow pointing UP to Client Runtime -->
+    <line x1="122" y1="535" x2="122" y2="443" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="122" y="492" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
+
+    <!-- Under Server: 3 arrows pointing UP to Server Runtime -->
+    <!-- Center Component: straight vertical arrow -->
+    <line x1="562" y1="535" x2="562" y2="443" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="562" y="492" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
+
+    <!-- Left Component (IIS equivalent: FlaskServer): bends up into left-bottom of Runtime -->
+    <path d="M 405 535 L 405 480 L 510 480 L 510 443" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="430" y="508" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
+
+    <!-- Right Component (SQL Server equivalent: SQLite DB): bends up into right-bottom of Runtime -->
+    <path d="M 685 535 L 685 480 L 615 480 L 615 443" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#deployTriangleUp)"/>
+    <text x="670" y="508" text-anchor="middle" font-size="10" fill="#000000">Resides</text>
+
+
+    <!-- ==================== BOTTOM TIER: COMPONENT BOXES (PINK/SALMON WITH 2 TABS) ==================== -->
+    <!-- Under Client: WebUI Component -->
+    <g transform="translate(45, 535)">
+        <rect x="0" y="0" width="155" height="70" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="130" y="8"/>
+        <text x="65" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000" text-decoration="underline">ChatbotUI:</text>
+        <text x="65" y="46" text-anchor="middle" font-size="9.5" fill="#000000">HTML5 / JS / CSS3</text>
+        <text x="65" y="60" text-anchor="middle" font-size="9" fill="#475569">Web Interface</text>
+    </g>
+
+    <!-- Under Server Component 1 (Left): FlaskServer (app.py) -->
+    <g transform="translate(340, 535)">
+        <rect x="0" y="0" width="130" height="70" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="105" y="8"/>
+        <text x="55" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000" text-decoration="underline">FlaskServer:</text>
+        <text x="55" y="46" text-anchor="middle" font-size="9.5" fill="#000000">app.py</text>
+        <text x="55" y="60" text-anchor="middle" font-size="9" fill="#475569">HTTP Controller</text>
+    </g>
+
+    <!-- Under Server Component 2 (Center): NLP_Matcher (.NET Server equivalent) -->
+    <g transform="translate(497, 535)">
+        <rect x="0" y="0" width="130" height="70" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="105" y="8"/>
+        <text x="55" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000" text-decoration="underline">NLP_Matcher:</text>
+        <text x="55" y="46" text-anchor="middle" font-size="9.5" fill="#000000">Fuzzy Logic</text>
+        <text x="55" y="60" text-anchor="middle" font-size="9" fill="#475569">Intent Engine</text>
+    </g>
+
+    <!-- Under Server Component 3 (Right): SQL Database (SQL Server 2000 equivalent) -->
+    <g transform="translate(645, 535)">
+        <rect x="0" y="0" width="105" height="70" fill="#ffd4d4" stroke="#000000" stroke-width="1.2"/>
+        <use href="#umlComponentTabIcon" x="80" y="8"/>
+        <text x="45" y="28" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000" text-decoration="underline">SQL Server:</text>
+        <text x="45" y="46" text-anchor="middle" font-size="9.5" fill="#000000">SQLite 3</text>
+        <text x="45" y="60" text-anchor="middle" font-size="8.5" fill="#475569">chatbot.db</text>
     </g>
 </svg>
                 </div>

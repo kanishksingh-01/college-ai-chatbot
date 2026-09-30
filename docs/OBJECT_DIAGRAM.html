@@ -12,10 +12,10 @@
     .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
     .doc-header { text-align: center; margin-bottom: 6px; }
     .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
     .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
     .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
     .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
     .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .diagram-container svg { max-height: 200mm; width: auto; }
@@ -40,86 +40,67 @@
                 </div>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
-    <!-- Title banner matching GeeksforGeeks image format -->
-    <rect x="25" y="15" width="460" height="38" rx="4" fill="#e8f5e9"/>
-    <text x="35" y="40" font-size="15" font-weight="bold" fill="#1b5e20">An object diagram using links and 3 objects</text>
+                    <svg viewBox="0 0 760 520" width="690" height="470" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="objOrangeArrow" markerWidth="6" markerHeight="6" refX="3" refY="5" orient="auto">
+            <path d="M0,0 L6,0 L3,6 z" fill="#ea580c"/>
+        </marker>
+    </defs>
 
-    <!-- OBJECT 1: ADMIN OBJECT (LEFT) -->
-    <text x="135" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Admin Object</text>
-    <g transform="translate(25, 125)">
-        <rect x="0" y="0" width="220" height="42" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="110" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32" text-decoration="underline">Admin 01: Admin</text>
-        <rect x="0" y="42" width="220" height="235" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="12" y="70" font-size="12" fill="#1e293b">+Username: admin</text>
-        <text x="12" y="105" font-size="12" fill="#1e293b">+Role: Administrator</text>
-        <text x="12" y="140" font-size="12" fill="#1e293b">+Department: BBA-CA</text>
-        <text x="12" y="175" font-size="12" fill="#1e293b">+Access_Level: SuperUser</text>
-        <text x="12" y="210" font-size="12" fill="#1e293b">+Managed_FAQs: 50</text>
-        <text x="12" y="245" font-size="12" fill="#1e293b">+Status: Authenticated</text>
-    </g>
+    <!-- Top Diagram Context Title Box (matching GfG style light-green pill) -->
+    <rect x="25" y="15" width="410" height="34" rx="4" fill="#e8f5e9"/>
+    <text x="40" y="38" font-size="15" font-weight="500" fill="#1b5e20">An object diagram using a link and 3 objects</text>
 
-    <!-- OBJECT 2: COLLEGE OBJECT (CENTER) -->
-    <text x="380" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">College Object</text>
-    <g transform="translate(270, 125)">
-        <rect x="0" y="0" width="220" height="42" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="110" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32" text-decoration="underline">College A: College</text>
-        <rect x="0" y="42" width="220" height="235" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="12" y="70" font-size="12" fill="#1e293b">+Number_of_students: 1200</text>
-        <text x="12" y="105" font-size="12" fill="#1e293b">+City: Pune</text>
-        <text x="12" y="140" font-size="12" fill="#1e293b">+Number_of_Departments: 6</text>
-        <text x="12" y="175" font-size="12" fill="#1e293b">+Faculty_Strength: 85</text>
-        <text x="12" y="210" font-size="12" fill="#1e293b">+Chatbot_System: AI Portal</text>
-        <text x="12" y="245" font-size="12" fill="#1e293b">+Affiliation: GHRC</text>
-    </g>
+    <!-- ==================== OBJECT 1: ADMIN OBJECT (LEFT) ==================== -->
+    <text x="110" y="115" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000000">Admin Object</text>
+    <rect x="15" y="130" width="190" height="155" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <line x1="15" y1="168" x2="205" y2="168" stroke="#000000" stroke-width="1.2"/>
+    <text x="110" y="156" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#198754">Admin 01: Admin</text>
+    <text x="25" y="192" font-size="11" fill="#000000">+Username: admin</text>
+    <text x="25" y="214" font-size="11" fill="#000000">+Role: Administrator</text>
+    <text x="25" y="236" font-size="11" fill="#000000">+Department: BBA-CA</text>
+    <text x="25" y="258" font-size="11" fill="#000000">+Privilege_Level: 5</text>
 
-    <!-- OBJECT 3: STUDENT OBJECT (RIGHT) -->
-    <text x="625" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Student Object</text>
-    <g transform="translate(515, 125)">
-        <rect x="0" y="0" width="220" height="42" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="110" y="27" text-anchor="middle" font-size="14" font-weight="bold" fill="#2e7d32" text-decoration="underline">Student 3030: Student</text>
-        <rect x="0" y="42" width="220" height="235" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
-        <text x="12" y="70" font-size="12" fill="#1e293b">+Name: Kanishk Singh</text>
-        <text x="12" y="105" font-size="12" fill="#1e293b">+Roll_No: ISTU25010120001</text>
-        <text x="12" y="140" font-size="12" fill="#1e293b">+Department: BBA-CA</text>
-        <text x="12" y="175" font-size="12" fill="#1e293b">+Year: 2 (Sem III)</text>
-        <text x="12" y="210" font-size="12" fill="#1e293b">+Attendance: 88.5%</text>
-        <text x="12" y="245" font-size="12" fill="#1e293b">+CGPA: 9.40</text>
-    </g>
+    <!-- ==================== LINK 1: ADMIN TO COLLEGE ==================== -->
+    <line x1="205" y1="205" x2="280" y2="205" stroke="#000000" stroke-width="1.4"/>
+    <ellipse cx="242" cy="205" rx="32" ry="14" fill="none" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5,4"/>
+    <text x="242" y="170" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ea580c">Link</text>
+    <line x1="242" y1="174" x2="242" y2="194" stroke="#ea580c" stroke-width="1.6" marker-end="url(#objOrangeArrow)"/>
 
-    <!-- SOLID LINK 1: ADMIN TO COLLEGE -->
-    <line x1="245" y1="230" x2="270" y2="230" stroke="#000000" stroke-width="2"/>
-    <ellipse cx="257" cy="230" rx="18" ry="12" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="4,3"/>
-    <text x="257" y="205" text-anchor="middle" font-size="13" font-weight="bold" fill="#ea580c">Link</text>
-    <path d="M 257 210 L 257 217" stroke="#ea580c" stroke-width="1.8" fill="none"/>
-    <polygon points="257,218 254,213 260,213" fill="#ea580c"/>
+    <!-- ==================== OBJECT 2: COLLEGE OBJECT (CENTER) ==================== -->
+    <text x="380" y="115" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000000">College Object</text>
+    <rect x="280" y="130" width="200" height="155" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <line x1="280" y1="168" x2="480" y2="168" stroke="#000000" stroke-width="1.2"/>
+    <text x="380" y="156" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#198754">College A: College</text>
+    <text x="290" y="192" font-size="11" fill="#000000">+Number_of_students: 1200</text>
+    <text x="290" y="214" font-size="11" fill="#000000">+City: Pune</text>
+    <text x="290" y="236" font-size="11" fill="#000000">+Number_of_Departments: 6</text>
+    <text x="290" y="258" font-size="11" fill="#000000">+Faculty_Strength: 45</text>
 
-    <!-- SOLID LINK 2: COLLEGE TO STUDENT -->
-    <line x1="490" y1="230" x2="515" y2="230" stroke="#000000" stroke-width="2"/>
-    <ellipse cx="502" cy="230" rx="18" ry="12" fill="none" stroke="#ea580c" stroke-width="1.8" stroke-dasharray="4,3"/>
-    <text x="502" y="205" text-anchor="middle" font-size="13" font-weight="bold" fill="#ea580c">Link</text>
-    <path d="M 502 210 L 502 217" stroke="#ea580c" stroke-width="1.8" fill="none"/>
-    <polygon points="502,218 499,213 505,213" fill="#ea580c"/>
+    <!-- ==================== LINK 2: COLLEGE TO STUDENT ==================== -->
+    <line x1="480" y1="205" x2="555" y2="205" stroke="#000000" stroke-width="1.4"/>
+    <ellipse cx="517" cy="205" rx="32" ry="14" fill="none" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="5,4"/>
+    <text x="517" y="170" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ea580c">Link</text>
+    <line x1="517" y1="174" x2="517" y2="194" stroke="#ea580c" stroke-width="1.6" marker-end="url(#objOrangeArrow)"/>
 
-    <!-- Explanatory note matching GeeksforGeeks text -->
-    <text x="380" y="445" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">An object of class Admin and an object of class Student are linked</text>
-    <text x="380" y="465" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">to an object of class College.</text>
+    <!-- ==================== OBJECT 3: STUDENT OBJECT (RIGHT) ==================== -->
+    <text x="655" y="115" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000000">Student Object</text>
+    <rect x="555" y="130" width="190" height="155" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <line x1="555" y1="168" x2="745" y2="168" stroke="#000000" stroke-width="1.2"/>
+    <text x="650" y="156" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#198754">Student 3030: Student</text>
+    <text x="565" y="192" font-size="11" fill="#000000">+Name: Kanishk Singh</text>
+    <text x="565" y="214" font-size="11" fill="#000000">+Department: BBA-CA</text>
+    <text x="565" y="236" font-size="11" fill="#000000">+Semester: 3</text>
+    <text x="565" y="258" font-size="11" fill="#000000">+Queries_Asked: 14</text>
 
-    <!-- Structural Breakdown Table -->
-    <g transform="translate(25, 495)">
-        <rect x="0" y="0" width="710" height="135" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
-        <text x="20" y="24" font-size="12" font-weight="bold" fill="#0f254e">Detailed Object Diagram Breakdown (3 Concrete Instances):</text>
-        <text x="20" y="48" font-size="11" fill="#334155">&bull; &lt;b&gt;Admin Object (Admin 01: Admin):&lt;/b&gt; Models administrator authentication, department role, and active session permissions.</text>
-        <text x="20" y="70" font-size="11" fill="#334155">&bull; &lt;b&gt;College Object (College A: College):&lt;/b&gt; Central institutional node managing student capacity (1200), department quotas, and AI Chatbot.</text>
-        <text x="20" y="92" font-size="11" fill="#334155">&bull; &lt;b&gt;Student Object (Student 3030: Student):&lt;/b&gt; Concrete student instance Kanishk Singh (ISTU25010120001) with 88.5% attendance and CGPA 9.40.</text>
-        <text x="20" y="114" font-size="11" fill="#334155">&bull; &lt;b&gt;Link Semantics:&lt;/b&gt; Both Admin and Student are connected via formal binary links to the College entity, representing institutional association.</text>
-    </g>
+    <!-- Bottom Caption text matching GfG Reference -->
+    <text x="380" y="340" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000000">An object of class Admin and an object of class Student are linked</text>
+    <text x="380" y="362" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#000000">to an object of class College.</text>
 
-    <!-- GeeksforGeeks bottom bar style -->
-    <rect x="0" y="660" width="760" height="35" fill="#f1f5f9"/>
-    <text x="25" y="682" font-size="12" font-weight="bold" fill="#475569">Object Diagrams | Unified Modeling Language (UML)</text>
-    <!-- GfG logo icon -->
-    <text x="715" y="683" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">&#x2286;&#x2287;</text>
+    <!-- Footer Banner matching GfG Reference -->
+    <rect x="25" y="445" width="710" height="30" fill="#e8f5e9" rx="3"/>
+    <text x="40" y="465" font-size="12" font-weight="bold" fill="#2e7d32">Object Diagrams | Unified Modeling Language (UML)</text>
+    <text x="715" y="466" text-anchor="end" font-size="15" font-weight="bold" fill="#1b873f">&#9881; GfG</text>
 </svg>
                 </div>
 
