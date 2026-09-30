@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</title>
+<title>AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</title>
 <style>
     @page { size: A4 portrait; margin: 0; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -32,7 +32,7 @@
             <div class="inner-border">
                 <div class="doc-header">
                     <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
                     <div class="doc-subtitle">Interaction boundaries and broad secondary database cylinder actor</div>
                 </div>
 
@@ -173,24 +173,161 @@
 
                 <div class="page-footer">
                     <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 1 of 5</span>
+                    <span>Page 1 of 6</span>
                 </div>
             </div>
         </div>
     </div>
         
-    <!-- ================= PAGE 2: OBJECT DIAGRAM (ADMIN, COLLEGE & STUDENT OBJECTS) ================= -->
+    <!-- ================= PAGE 2: CLASS DIAGRAM (100% SOLID ASSOCIATION ARROWS) ================= -->
     <div class="page">
         <div class="outer-border">
             <div class="inner-border">
                 <div class="doc-header">
                     <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
+                    <div class="doc-subtitle">Structural classes, attributes, methods, and solid directed relationships</div>
+                </div>
+
+                <div class="diagram-heading-box">
+                    <div class="diagram-heading">2. Class Diagram (100% Solid Association Arrows)</div>
+                    <div class="correction-badge">&#10004; Teacher Correction Applied: 100% solid lines & solid arrowheads with multiplicities.</div>
+                </div>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- SOLID ARROWHEAD DEFINITION -->
+        <marker id="solidArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#1e3d73"/>
+        </marker>
+    </defs>
+
+    <!-- CLASS 1: STUDENT (Top-Left) -->
+    <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Student</text>
+        <rect x="0" y="32" width="280" height="200" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="52" font-size="11.5" fill="#1e293b">- roll_no : TEXT [PK]</text>
+        <text x="12" y="70" font-size="11.5" fill="#1e293b">- name : TEXT</text>
+        <text x="12" y="88" font-size="11.5" fill="#1e293b">- attendance : REAL</text>
+        <text x="12" y="106" font-size="11.5" fill="#1e293b">- fees_due : REAL</text>
+        <text x="12" y="124" font-size="11.5" fill="#1e293b">- course : TEXT</text>
+        <text x="12" y="142" font-size="11.5" fill="#1e293b">- semester : TEXT</text>
+        <text x="12" y="160" font-size="11.5" fill="#1e293b">- cgpa : REAL</text>
+        <text x="12" y="178" font-size="11.5" fill="#1e293b">- mentor : TEXT</text>
+        <text x="12" y="196" font-size="11.5" fill="#1e293b">- exam_date : TEXT</text>
+        <line x1="0" y1="205" x2="280" y2="205" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="205" width="280" height="60" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="224" font-size="11" fill="#0f254e">+ login(roll_no) : bool</text>
+        <text x="12" y="242" font-size="11" fill="#0f254e">+ check_attendance() : float</text>
+        <text x="12" y="260" font-size="11" fill="#0f254e">+ check_fee_status() : float</text>
+    </g>
+
+    <!-- CLASS 2: CHAT_HISTORY (Bottom-Left) -->
+    <g transform="translate(30, 395)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">ChatHistory</text>
+        <rect x="0" y="32" width="280" height="150" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="54" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="74" font-size="11.5" fill="#1e293b">- roll_no : TEXT [FK]</text>
+        <text x="12" y="94" font-size="11.5" fill="#1e293b">- user_query : TEXT</text>
+        <text x="12" y="114" font-size="11.5" fill="#1e293b">- bot_response : TEXT</text>
+        <text x="12" y="134" font-size="11.5" fill="#1e293b">- timestamp : TEXT</text>
+        <text x="12" y="154" font-size="11.5" fill="#1e293b">- feedback : TEXT</text>
+        <line x1="0" y1="165" x2="280" y2="165" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="165" width="280" height="90" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="186" font-size="11" fill="#0f254e">+ log_message() : int</text>
+        <text x="12" y="206" font-size="11" fill="#0f254e">+ update_feedback(rating) : bool</text>
+        <text x="12" y="226" font-size="11" fill="#0f254e">+ fetch_recent_logs() : list</text>
+        <text x="12" y="246" font-size="11" fill="#0f254e">+ export_to_csv() : str</text>
+    </g>
+
+    <!-- CLASS 3: ADMIN (Top-Right) -->
+    <g transform="translate(440, 20)">
+        <rect x="0" y="0" width="290" height="32" fill="#0f254e" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Admin</text>
+        <rect x="0" y="32" width="290" height="110" fill="#ffffff" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- username : TEXT [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- password_hash : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- role : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- session_state : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="100" fill="#f8fafc" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ authenticate(password) : bool</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ change_password() : bool</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ view_dashboard() : dict</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ export_audit_logs() : file</text>
+    </g>
+
+    <!-- CLASS 4: COLLEGE_INFO (Bottom-Right) -->
+    <g transform="translate(440, 395)">
+        <rect x="0" y="0" width="290" height="32" fill="#1e3d73" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">CollegeInfo</text>
+        <rect x="0" y="32" width="290" height="120" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- category : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- keywords : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- answer : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="105" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ match_query(message) : tuple</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ add_faq(cat, kw, ans) : int</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ update_faq(id, data) : bool</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ delete_faq(id) : bool</text>
+    </g>
+
+    <!-- SOLID RELATIONSHIPS (ALL SOLID LINES & SOLID ARROWS) -->
+
+    <!-- 1. Student (1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="170" y1="285" x2="170" y2="390" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="180" y="335" font-size="11.5" font-weight="bold" fill="#1e3d73">submits / logs &#9660;</text>
+    <text x="155" y="305" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="150" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 2. Admin (1) -> (0..*) CollegeInfo (SOLID ARROW) -->
+    <line x1="585" y1="255" x2="585" y2="390" stroke="#0f254e" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="595" y="335" font-size="11.5" font-weight="bold" fill="#0f254e">manages / updates &#9660;</text>
+    <text x="570" y="280" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="560" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 3. CollegeInfo (0..1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="440" y1="495" x2="315" y2="495" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="375" y="485" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">&#9668; matched_in</text>
+    <text x="420" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..1</text>
+    <text x="325" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 4. Admin (1) -> (0..*) ChatHistory (SOLID ARROW - NO DASHED!) -->
+    <path d="M 440 180 L 335 250 L 305 390" fill="none" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <rect x="330" y="240" width="105" height="22" rx="3" fill="#f8fafc" stroke="#1e3d73" stroke-width="1"/>
+    <text x="382" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">&#9668; audits / exports</text>
+    <text x="415" y="200" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="315" y="375" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+</svg>
+                </div>
+
+                <div class="figure-caption">Fig 2: Class Diagram &mdash; core entities, attributes, operations, and 100% solid association arrows.</div>
+
+                <div class="page-footer">
+                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
+                    <span>Page 2 of 6</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- ================= PAGE 3: OBJECT DIAGRAM (ADMIN, COLLEGE & STUDENT OBJECTS) ================= -->
+    <div class="page">
+        <div class="outer-border">
+            <div class="inner-border">
+                <div class="doc-header">
+                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
                     <div class="doc-subtitle">Runtime execution memory snapshot matching GeeksforGeeks reference format</div>
                 </div>
 
                 <div class="diagram-heading-box">
-                    <div class="diagram-heading">2. Object Diagram (Admin, College & Student Objects)</div>
+                    <div class="diagram-heading">3. Object Diagram (Admin, College & Student Objects)</div>
                     <div class="correction-badge">&#10004; Teacher Correction Applied: Admin, College, and Student objects with + slots and link associations.</div>
                 </div>
 
@@ -278,28 +415,28 @@
 </svg>
                 </div>
 
-                <div class="figure-caption">Fig 2: Object Diagram &mdash; Admin, College, and Student objects connected via formal links.</div>
+                <div class="figure-caption">Fig 3: Object Diagram &mdash; Admin, College, and Student objects connected via formal links.</div>
 
                 <div class="page-footer">
                     <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 2 of 5</span>
+                    <span>Page 3 of 6</span>
                 </div>
             </div>
         </div>
     </div>
         
-    <!-- ================= PAGE 3: DATA FLOW DIAGRAM — DFD (SQUARE ENTITIES & CIRCLES) ================= -->
+    <!-- ================= PAGE 4: DATA FLOW DIAGRAM — DFD (SQUARE ENTITIES & CIRCLES) ================= -->
     <div class="page">
         <div class="outer-border">
             <div class="inner-border">
                 <div class="doc-header">
                     <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
                     <div class="doc-subtitle">Information flow with square entities and circle processes</div>
                 </div>
 
                 <div class="diagram-heading-box">
-                    <div class="diagram-heading">3. Data Flow Diagram — DFD (Square Entities & Circles)</div>
+                    <div class="diagram-heading">4. Data Flow Diagram — DFD (Square Entities & Circles)</div>
                     <div class="correction-badge">&#10004; Teacher Correction Applied: Square external entities & circle process symbols with solid flow arrows.</div>
                 </div>
 
@@ -453,28 +590,28 @@
 </svg>
                 </div>
 
-                <div class="figure-caption">Fig 3: Data Flow Diagram (DFD) &mdash; square external entities and circle processes.</div>
+                <div class="figure-caption">Fig 4: Data Flow Diagram (DFD) &mdash; square external entities and circle processes.</div>
 
                 <div class="page-footer">
                     <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 3 of 5</span>
+                    <span>Page 4 of 6</span>
                 </div>
             </div>
         </div>
     </div>
         
-    <!-- ================= PAGE 4: ENTITY-RELATIONSHIP DIAGRAM — ERD (SQUARE ENTITIES) ================= -->
+    <!-- ================= PAGE 5: ENTITY-RELATIONSHIP DIAGRAM — ERD (SQUARE ENTITIES) ================= -->
     <div class="page">
         <div class="outer-border">
             <div class="inner-border">
                 <div class="doc-header">
                     <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
                     <div class="doc-subtitle">Relational data schema with square entities and cardinalities</div>
                 </div>
 
                 <div class="diagram-heading-box">
-                    <div class="diagram-heading">4. Entity-Relationship Diagram — ERD (Square Entities)</div>
+                    <div class="diagram-heading">5. Entity-Relationship Diagram — ERD (Square Entities)</div>
                     <div class="correction-badge">&#10004; Teacher Correction Applied: Square entity symbols for all 4 tables with clean non-crossing flow.</div>
                 </div>
 
@@ -651,28 +788,28 @@
 </svg>
                 </div>
 
-                <div class="figure-caption">Fig 4: Entity-Relationship Diagram (ERD) &mdash; square entities and clean relational flow.</div>
+                <div class="figure-caption">Fig 5: Entity-Relationship Diagram (ERD) &mdash; square entities and clean relational flow.</div>
 
                 <div class="page-footer">
                     <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 4 of 5</span>
+                    <span>Page 5 of 6</span>
                 </div>
             </div>
         </div>
     </div>
         
-    <!-- ================= PAGE 5: DEPLOYMENT DIAGRAM (DEVELOPMENT ENVIRONMENT MODEL) ================= -->
+    <!-- ================= PAGE 6: DEPLOYMENT DIAGRAM (DEVELOPMENT ENVIRONMENT MODEL) ================= -->
     <div class="page">
         <div class="outer-border">
             <div class="inner-border">
                 <div class="doc-header">
                     <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE — ALL REVISED DIAGRAMS (6 PAGES)</div>
                     <div class="doc-subtitle">Development Environment Model matching reference architecture</div>
                 </div>
 
                 <div class="diagram-heading-box">
-                    <div class="diagram-heading">5. Deployment Diagram (Development Environment Model)</div>
+                    <div class="diagram-heading">6. Deployment Diagram (Development Environment Model)</div>
                     <div class="correction-badge">&#10004; Teacher Correction Applied: 3D Nodes, :Ethernet Hub, «deploy» arrows & component boxes.</div>
                 </div>
 
@@ -852,11 +989,11 @@
 </svg>
                 </div>
 
-                <div class="figure-caption">Fig 5: Deployment Diagram &mdash; Development Environment Model matching reference architecture.</div>
+                <div class="figure-caption">Fig 6: Deployment Diagram &mdash; Development Environment Model matching reference architecture.</div>
 
                 <div class="page-footer">
                     <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 5 of 5</span>
+                    <span>Page 6 of 6</span>
                 </div>
             </div>
         </div>

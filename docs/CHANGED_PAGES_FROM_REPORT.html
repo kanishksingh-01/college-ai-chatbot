@@ -2,47 +2,239 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</title>
+<title>Complete Project Report - AI Chatbot for College</title>
 <style>
-    @page { size: A4 portrait; margin: 0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 0; color: #1e293b; }
-    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
-    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
-    .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
-    .doc-header { text-align: center; margin-bottom: 6px; }
-    .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
-    .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
-    .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
-    .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
-    .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-    .diagram-container svg { max-height: 200mm; width: auto; }
-    .figure-caption { text-align: center; font-size: 10px; font-style: italic; color: #475569; margin-top: 3px; }
-    .page-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; }
-    @media print { body { background: none !important; padding: 0 !important; } .page { box-shadow: none !important; margin: 0 !important; width: 210mm !important; height: 297mm !important; max-height: 297mm !important; page-break-after: always !important; page-break-inside: avoid !important; } }
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+        background-color: #525659;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        color: #1e293b;
+        line-height: 1.55;
+    }
+    .page {
+        width: 210mm;
+        height: 297mm;
+        max-height: 297mm;
+        padding: 10mm 12mm;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+    }
+    .outer-border {
+        border: 2.5px solid #1e3d73;
+        padding: 3px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .inner-border {
+        border: 1px solid #1e3d73;
+        padding: 18px 20px 10px 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+    }
+    .title-banner {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .title-banner h1 {
+        font-size: 25px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+    }
+    .info-list {
+        list-style: none;
+        margin-bottom: 16px;
+    }
+    .info-list li {
+        margin-bottom: 6px;
+        font-size: 13.5px;
+    }
+    .info-list li strong {
+        color: #0f254e;
+        display: inline-block;
+        min-width: 155px;
+    }
+    .section-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f254e;
+        margin-top: 14px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        border-bottom: 1.5px solid #e2e8f0;
+        padding-bottom: 4px;
+    }
+    .text-block {
+        font-size: 13px;
+        color: #334155;
+        text-align: justify;
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+    .question-block {
+        margin-bottom: 14px;
+    }
+    .question-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0f254e;
+        margin-bottom: 5px;
+    }
+    .answer-text {
+        font-size: 13px;
+        color: #334155;
+        text-align: justify;
+        line-height: 1.5;
+    }
+    ul.bullet-list {
+        margin-left: 20px;
+        margin-top: 4px;
+        margin-bottom: 6px;
+    }
+    ul.bullet-list li {
+        font-size: 13px;
+        margin-bottom: 3.5px;
+        color: #334155;
+        line-height: 1.45;
+    }
+    table.data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+        font-size: 12.5px;
+    }
+    table.data-table th, table.data-table td {
+        border: 1px solid #cbd5e1;
+        padding: 7px 9px;
+        text-align: left;
+    }
+    table.data-table th {
+        background: #eff6ff;
+        color: #1e3d73;
+        font-weight: 700;
+    }
+    table.data-table tr:nth-child(even) td {
+        background: #f8fafc;
+    }
+    .diagram-frame {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 8px 0;
+        flex: 1;
+    }
+    .diagram-caption {
+        text-align: center;
+        font-size: 12px;
+        font-style: italic;
+        color: #475569;
+        margin-top: 5px;
+    }
+    .doc-header {
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .doc-title {
+        font-size: 21px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .doc-subtitle {
+        font-size: 11px;
+        color: #64748b;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .diagram-heading {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1e3d73;
+        margin: 4px 0 6px 0;
+        border-left: 4px solid #1e3d73;
+        padding-left: 8px;
+    }
+    .diagram-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .diagram-container svg {
+        max-height: 202mm;
+        width: auto;
+    }
+    .figure-caption {
+        text-align: center;
+        font-size: 10.5px;
+        font-style: italic;
+        color: #475569;
+        margin-top: 4px;
+    }
+    .page-footer {
+        margin-top: auto;
+        text-align: right;
+        font-size: 11px;
+        color: #94a3b8;
+    }
+
+    @media print {
+        body {
+            background: none !important;
+            padding: 0 !important;
+            gap: 0 !important;
+        }
+        .page {
+            box-shadow: none !important;
+            margin: 0 !important;
+            width: 210mm !important;
+            height: 297mm !important;
+            max-height: 297mm !important;
+            page-break-after: always !important;
+            page-break-inside: avoid !important;
+        }
+    }
 </style>
 </head>
 <body>
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
 
-    <!-- ================= PAGE 1: USE CASE DIAGRAM (BROAD DATABASE CYLINDER) ================= -->
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
-                    <div class="doc-subtitle">Interaction boundaries and broad secondary database cylinder actor</div>
-                </div>
+            <div class="diagram-heading">1. Use Case Diagram</div>
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">1. Use Case Diagram (Broad Database Cylinder)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction Applied: Broad database cylinder with zero stickman icon.</div>
-                </div>
-
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <filter id="ucShadow" x="-5%" y="-5%" width="110%" height="115%">
             <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.10"/>
@@ -167,35 +359,26 @@
     <line x1="515" y1="554" x2="595" y2="375" stroke="#0284c7" stroke-width="1.6"/>
     <line x1="500" y1="618" x2="595" y2="385" stroke="#0284c7" stroke-width="1.6"/>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig 1: Use Case Diagram &mdash; primary actors and broad secondary database cylinder.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 1 of 5</span>
-                </div>
             </div>
+
+            <div class="figure-caption">Fig 1: Use Case Diagram &mdash; primary actors (Student &amp; Administrator), system boundary, and broad secondary database cylinder (SQLite 3 DB) with data-tier associations.</div>
         </div>
     </div>
-        
-    <!-- ================= PAGE 2: OBJECT DIAGRAM (ADMIN, COLLEGE & STUDENT OBJECTS) ================= -->
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
-                    <div class="doc-subtitle">Runtime execution memory snapshot matching GeeksforGeeks reference format</div>
-                </div>
+</div>
+<!-- ================= PAGE 2: CLASS DIAGRAM (WITH COMPLETE RELATIONS) ================= -->
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">2. Object Diagram (Admin, College & Student Objects)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction Applied: Admin, College, and Student objects with + slots and link associations.</div>
-                </div>
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
 
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+            <div class="diagram-heading">3. Object Diagram (Runtime Instances &amp; Slot Values)</div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
     <!-- Title banner matching GeeksforGeeks image format -->
     <rect x="25" y="15" width="460" height="38" rx="4" fill="#e8f5e9"/>
     <text x="35" y="40" font-size="15" font-weight="bold" fill="#1b5e20">An object diagram using links and 3 objects</text>
@@ -276,35 +459,26 @@
     <!-- GfG logo icon -->
     <text x="715" y="683" text-anchor="middle" font-size="16" font-weight="bold" fill="#2e7d32">&#x2286;&#x2287;</text>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig 2: Object Diagram &mdash; Admin, College, and Student objects connected via formal links.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 2 of 5</span>
-                </div>
             </div>
+
+            <div class="figure-caption">Fig 3: Object Diagram &mdash; runtime object instances (Admin Object, College Object, Student Object) connected via formal UML links matching GeeksforGeeks standard notation.</div>
         </div>
     </div>
-        
-    <!-- ================= PAGE 3: DATA FLOW DIAGRAM — DFD (SQUARE ENTITIES & CIRCLES) ================= -->
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
-                    <div class="doc-subtitle">Information flow with square entities and circle processes</div>
-                </div>
+</div>
+<!-- ================= PAGE 4: SEQUENCE DIAGRAM (WITH EXPLICIT END) ================= -->
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">3. Data Flow Diagram — DFD (Square Entities & Circles)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction Applied: Square external entities & circle process symbols with solid flow arrows.</div>
-                </div>
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
 
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+            <div class="diagram-heading">6. Data Flow Diagram (DFD Level 0 Context &amp; Level 1 Detailed)</div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <marker id="dfdSolidArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
             <polygon points="0 0, 7 3, 0 6" fill="#1e3d73"/>
@@ -451,35 +625,28 @@
     <path d="M 522 450 L 440 450" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
     <path d="M 460 642 L 560 642 L 560 478" fill="none" stroke="#0f254e" stroke-width="1.6" marker-end="url(#dfdSolidArrow)"/>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig 3: Data Flow Diagram (DFD) &mdash; square external entities and circle processes.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 3 of 5</span>
-                </div>
             </div>
+
+            <div class="figure-caption">Fig 6: Data Flow Diagram (DFD) &mdash; Level 0 Context &amp; Level 1 Process Breakdown using square entity symbols, circle process symbols, and solid data flow arrows.</div>
         </div>
     </div>
-        
-    <!-- ================= PAGE 4: ENTITY-RELATIONSHIP DIAGRAM — ERD (SQUARE ENTITIES) ================= -->
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
-                    <div class="doc-subtitle">Relational data schema with square entities and cardinalities</div>
-                </div>
+</div>
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">4. Entity-Relationship Diagram — ERD (Square Entities)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction Applied: Square entity symbols for all 4 tables with clean non-crossing flow.</div>
-                </div>
 
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+<!-- ================= PAGE 7: ENTITY RELATIONSHIP DIAGRAM (ERD) ================= -->
+
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
+
+            <div class="diagram-heading">7. Entity-Relationship Diagram (ERD &mdash; Database Architecture)</div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <filter id="erdShadow" x="-5%" y="-5%" width="110%" height="115%">
             <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.08"/>
@@ -649,35 +816,26 @@
     <text x="55" y="614" font-size="11" fill="#334155">&bull; &lt;b&gt;Top-to-Bottom Admin Control Flow:&lt;/b&gt; ADMIN_USER [1] audits [M] CHAT_HISTORY and manages [M] COLLEGE_INFO FAQs.</text>
     <text x="55" y="636" font-size="11" fill="#334155">&bull; &lt;b&gt;Relational Integrity:&lt;/b&gt; Primary Keys underlined (&lt;u&gt;roll_no&lt;/u&gt;, &lt;u&gt;id&lt;/u&gt;, &lt;u&gt;username&lt;/u&gt;); Foreign Key marked (roll_no FK).</text>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig 4: Entity-Relationship Diagram (ERD) &mdash; square entities and clean relational flow.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 4 of 5</span>
-                </div>
             </div>
+
+            <div class="figure-caption">Fig 7: Entity-Relationship Diagram (ERD) &mdash; structured left-to-right relational flow using square entity symbols (STUDENT, ADMIN_USER, CHAT_HISTORY, COLLEGE_INFO) with cardinalities and non-crossing attributes.</div>
         </div>
     </div>
-        
-    <!-- ================= PAGE 5: DEPLOYMENT DIAGRAM (DEVELOPMENT ENVIRONMENT MODEL) ================= -->
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE — CHANGED PAGES ONLY (LATEST REVISION)</div>
-                    <div class="doc-subtitle">Development Environment Model matching reference architecture</div>
-                </div>
+</div>
+<!-- ================= PAGE 8: DEPLOYMENT DIAGRAM ================= -->
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">5. Deployment Diagram (Development Environment Model)</div>
-                    <div class="correction-badge">&#10004; Teacher Correction Applied: 3D Nodes, :Ethernet Hub, «deploy» arrows & component boxes.</div>
-                </div>
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">SYSTEM &amp; UML DIAGRAMS</div>
+                <div class="doc-subtitle">AI Chatbot for College &middot; BBA Computer Applications</div>
+            </div>
 
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+            <div class="diagram-heading">8. Deployment Diagram (Hosting Topology &amp; Artifact Architecture)</div>
+
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
     <!-- Top-Left Model Name Tag matching Image 2 -->
     <g transform="translate(15, 8)">
         <polygon points="0,0 240,0 255,18 0,18" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
@@ -850,17 +1008,11 @@
         <text x="20" y="81" font-size="10.5" fill="#334155">&bull; &lt;b&gt;&laquo;deploy&raquo; &amp; Resides:&lt;/b&gt; Formal deployment relationships indicating software execution runtime and resident artifacts.</text>
     </g>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig 5: Deployment Diagram &mdash; Development Environment Model matching reference architecture.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
-                    <span>Page 5 of 5</span>
-                </div>
             </div>
+
+            <div class="figure-caption">Fig 8: Deployment Diagram &mdash; Development Environment Model with :Ethernet Hub, 3D hardware nodes with specifications, &laquo;deploy&raquo; dependency arrows, and resident software component boxes.</div>
         </div>
     </div>
-        
+</div>
 </body>
 </html>
