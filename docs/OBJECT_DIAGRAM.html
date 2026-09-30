@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Object Diagram (Exactly 3 Boxes)</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .doc-header { text-align: center; margin-bottom: 6px; }
+    .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
+    .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
+    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
+    .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .diagram-container svg { max-height: 200mm; width: auto; }
+    .figure-caption { text-align: center; font-size: 10px; font-style: italic; color: #475569; margin-top: 3px; }
+    .page-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; }
+    @media print { body { background: none !important; padding: 0 !important; } .page { box-shadow: none !important; margin: 0 !important; width: 210mm !important; height: 297mm !important; max-height: 297mm !important; page-break-after: always !important; page-break-inside: avoid !important; } }
+</style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: OBJECT DIAGRAM (EXACTLY 3 BOXES) ================= -->
+    <div class="page">
+        <div class="outer-border">
+            <div class="inner-border">
+                <div class="doc-header">
+                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE &mdash; REVISED DIAGRAMS</div>
+                    <div class="doc-subtitle">Runtime object memory snapshot</div>
+                </div>
+
+                <div class="diagram-heading-box">
+                    <div class="diagram-heading">1. Object Diagram (Exactly 3 Boxes)</div>
+                    <div class="correction-badge">&#10004; Teacher Correction Applied: Strictly 3 runtime instance boxes and solid link arrows.</div>
+                </div>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="objSolidArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#1e3d73"/>
+        </marker>
+    </defs>
+
+    <!-- TOP HEADER: LIVE SCENARIO CONTEXT -->
+    <rect x="25" y="15" width="710" height="65" rx="6" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+    <text x="40" y="38" font-size="12.5" font-weight="bold" fill="#0f254e">Live Execution Snapshot Scenario (Active Student Transaction):</text>
+    <text x="40" y="58" font-size="11.5" fill="#334155">Student Kanishk Singh asks about personal attendance; ChatHistory logs query #42 matched against CollegeInfo FAQ #101.</text>
+
+    <!-- BOX 1: stu_kanishk : Student (Left) -->
+    <g transform="translate(25, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">stu_kanishk : Student</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">roll_no = "ISTU25010120001"</text>
+        <text x="12" y="125" font-size="11" fill="#1e293b">name = "Kanishk Singh"</text>
+        <text x="12" y="155" font-size="11" fill="#1e293b">course = "BBA-CA"</text>
+        <text x="12" y="185" font-size="11" fill="#1e293b">semester = "Sem III"</text>
+        <text x="12" y="215" font-size="11" fill="#16a34a" font-weight="bold">attendance = 88.50%</text>
+        <text x="12" y="245" font-size="11" fill="#1e293b">fees_due = 0.00 (Cleared)</text>
+        <text x="12" y="275" font-size="11" fill="#1e293b">cgpa = 9.40 / 10.0</text>
+        <text x="12" y="305" font-size="11" fill="#1e293b">mentor = "Dr. R. Sharma"</text>
+        <text x="12" y="335" font-size="11" fill="#1e293b">exam_date = "2026-10-15"</text>
+        <text x="12" y="365" font-size="11" fill="#2563eb">auth_state = "Authenticated"</text>
+    </g>
+
+    <!-- BOX 2: msg_42 : ChatHistory (Center) -->
+    <g transform="translate(268, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">msg_42 : ChatHistory</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">id = 42</text>
+        <text x="12" y="125" font-size="11" fill="#1e293b">roll_no = "ISTU25010120001"</text>
+        <text x="12" y="155" font-size="11" font-weight="bold" fill="#0f254e">user_query =</text>
+        <text x="12" y="175" font-size="10.5" fill="#334155">"What is my attendance?"</text>
+        <text x="12" y="210" font-size="11" font-weight="bold" fill="#0f254e">bot_response =</text>
+        <text x="12" y="230" font-size="10" fill="#334155">"Hi Kanishk, your attendance</text>
+        <text x="12" y="246" font-size="10" fill="#334155">is 88.5% (Good standing)."</text>
+        <text x="12" y="280" font-size="11" fill="#1e293b">timestamp = "10:15:20"</text>
+        <text x="12" y="315" font-size="11" font-weight="bold" fill="#16a34a">feedback = "like" (&#128077;)</text>
+        <text x="12" y="350" font-size="11" fill="#2563eb">channel = "Web Client PWA"</text>
+    </g>
+
+    <!-- BOX 3: faq_101 : CollegeInfo (Right) -->
+    <g transform="translate(510, 120)">
+        <rect x="0" y="0" width="225" height="34" fill="#1e3d73" rx="4"/>
+        <text x="112" y="22" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="bold" text-decoration="underline">faq_101 : CollegeInfo</text>
+        <rect x="0" y="34" width="225" height="360" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
+        
+        <text x="12" y="65" font-size="11.5" font-weight="bold" fill="#0f254e">Slot Values:</text>
+        <text x="12" y="95" font-size="11" fill="#1e293b">id = 101</text>
+        <text x="12" y="125" font-size="11" font-weight="bold" fill="#0f254e">category = "Attendance"</text>
+        <text x="12" y="155" font-size="11" font-weight="bold" fill="#0f254e">keywords =</text>
+        <text x="12" y="175" font-size="10" fill="#334155">"attendance, eligible, rule,</text>
+        <text x="12" y="190" font-size="10" fill="#334155">criteria, shortage, exam"</text>
+        <text x="12" y="225" font-size="11" font-weight="bold" fill="#0f254e">answer =</text>
+        <text x="12" y="245" font-size="10" fill="#334155">"Minimum 75% attendance</text>
+        <text x="12" y="261" font-size="10" fill="#334155">is mandatory to appear in</text>
+        <text x="12" y="277" font-size="10" fill="#334155">semester end exams."</text>
+        <text x="12" y="315" font-size="11" fill="#1e293b">match_confidence = 0.92</text>
+        <text x="12" y="350" font-size="11" fill="#2563eb">nlp_status = "Fuzzy Matched"</text>
+    </g>
+
+    <!-- SOLID CONNECTING ARROWS BETWEEN THE 3 BOXES -->
+
+    <!-- Arrow 1: Box 1 -> Box 2 (SOLID ARROW) -->
+    <line x1="250" y1="300" x2="265" y2="300" stroke="#1e3d73" stroke-width="3" marker-end="url(#objSolidArrow)"/>
+    
+    <!-- Arrow 2: Box 2 -> Box 3 (SOLID ARROW) -->
+    <line x1="493" y1="300" x2="507" y2="300" stroke="#1e3d73" stroke-width="3" marker-end="url(#objSolidArrow)"/>
+
+    <!-- Association Callouts on Links -->
+    <g transform="translate(140, 505)">
+        <rect x="0" y="0" width="220" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+        <text x="110" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">Link 1: :logged_query &#9658;</text>
+        <text x="110" y="32" text-anchor="middle" font-size="9.5" fill="#334155">Instance association (1 to 0..*)</text>
+    </g>
+
+    <g transform="translate(400, 505)">
+        <rect x="0" y="0" width="220" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+        <text x="110" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">Link 2: :matched_faq &#9658;</text>
+        <text x="110" y="32" text-anchor="middle" font-size="9.5" fill="#334155">Knowledge reference association</text>
+    </g>
+
+    <!-- Summary Box at bottom -->
+    <rect x="25" y="570" width="710" height="95" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+    <text x="40" y="595" font-size="12" font-weight="bold" fill="#0f254e">&#10004; Standard UML Object Diagram Specifications Verified:</text>
+    <text x="55" y="616" font-size="11" fill="#334155">&bull; Exactly 3 Concrete Runtime Object Instances: &lt;u&gt;Student&lt;/u&gt;, &lt;u&gt;ChatHistory&lt;/u&gt;, and &lt;u&gt;CollegeInfo&lt;/u&gt;.</text>
+    <text x="55" y="634" font-size="11" fill="#334155">&bull; Fully populated slot values with actual live strings, numeric metrics (88.5%, CGPA 9.40), and timestamps.</text>
+    <text x="55" y="652" font-size="11" fill="#334155">&bull; 100% Solid Directional Association Arrows between instances (zero dashed lines).</text>
+</svg>
+                </div>
+
+                <div class="figure-caption">Fig: Object Diagram &mdash; exactly 3 runtime instances with concrete slots and solid arrows.</div>
+
+                <div class="page-footer">
+                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
+                    <span>Page 1 of 1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

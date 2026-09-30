@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Deployment Diagram (Textbook 3-Tier 3D UML Architecture)</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .doc-header { text-align: center; margin-bottom: 6px; }
+    .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
+    .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
+    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
+    .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .diagram-container svg { max-height: 200mm; width: auto; }
+    .figure-caption { text-align: center; font-size: 10px; font-style: italic; color: #475569; margin-top: 3px; }
+    .page-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; }
+    @media print { body { background: none !important; padding: 0 !important; } .page { box-shadow: none !important; margin: 0 !important; width: 210mm !important; height: 297mm !important; max-height: 297mm !important; page-break-after: always !important; page-break-inside: avoid !important; } }
+</style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: DEPLOYMENT DIAGRAM (TEXTBOOK 3-TIER 3D UML ARCHITECTURE) ================= -->
+    <div class="page">
+        <div class="outer-border">
+            <div class="inner-border">
+                <div class="doc-header">
+                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE &mdash; REVISED DIAGRAMS</div>
+                    <div class="doc-subtitle">Client, application server, and database server nodes</div>
+                </div>
+
+                <div class="diagram-heading-box">
+                    <div class="diagram-heading">1. Deployment Diagram (Textbook 3-Tier 3D UML Architecture)</div>
+                    <div class="correction-badge">&#10004; Teacher Correction Applied: Classic 3-Tier UML 2.0 deployment model with 3D nodes and communication paths.</div>
+                </div>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 760 705" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Folded Corner Artifact Icon Symbol -->
+        <g id="artifactIcon">
+            <path d="M0,0 L12,0 L16,4 L16,18 L0,18 Z" fill="#ffffff" stroke="#1e3d73" stroke-width="1.2"/>
+            <path d="M12,0 L12,4 L16,4" fill="none" stroke="#1e3d73" stroke-width="1.2"/>
+        </g>
+    </defs>
+
+    <!-- TIER 1: CLIENT DEVICE (3D NODE AT TOP) -->
+    <g transform="translate(100, 20)">
+        <!-- Top Face of 3D Cube -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face of 3D Cube -->
+        <polygon points="520,20 540,0 540,140 520,160" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face of 3D Cube -->
+        <rect x="0" y="20" width="520" height="140" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Client Workstation / Smartphone</text>
+
+        <!-- Execution Environment inside Client -->
+        <rect x="15" y="72" width="490" height="75" rx="4" fill="#ffffff" stroke="#1e3d73" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" fill="#1e3d73">&lt;&lt;executionEnvironment&gt;&gt; Web Browser (Chrome / Edge / Safari)</text>
+
+        <!-- Artifacts inside Client -->
+        <rect x="30" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="38" y="102"/>
+        <text x="62" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="62" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">index.html (UI)</text>
+
+        <rect x="190" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="198" y="102"/>
+        <text x="222" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="222" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">script.js (STT/TTS)</text>
+
+        <rect x="350" y="96" width="140" height="42" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="358" y="102"/>
+        <text x="382" y="114" font-size="9.5" fill="#1e3d73">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="382" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">style.css (Design)</text>
+    </g>
+
+
+    <!-- COMMUNICATION PATH 1 (CLIENT TO APPLICATION SERVER) -->
+    <g transform="translate(360, 180)">
+        <line x1="0" y1="0" x2="0" y2="70" stroke="#1e3d73" stroke-width="3"/>
+        <polygon points="-5,70 0,80 5,70" fill="#1e3d73"/>
+        <polygon points="-5,0 0,-10 5,0" fill="#1e3d73"/>
+
+        <!-- Communication Protocol Label Box -->
+        <rect x="-105" y="20" width="210" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+        <text x="0" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">&lt;&lt;protocol&gt;&gt; HTTPS / TLS 1.3</text>
+        <text x="0" y="46" text-anchor="middle" font-size="9" fill="#78350f">TCP/IP Port 443 (Internet / WAN)</text>
+    </g>
+
+
+    <!-- TIER 2: WEB & APPLICATION SERVER (3D NODE IN MIDDLE) -->
+    <g transform="translate(100, 260)">
+        <!-- Top Face -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face -->
+        <polygon points="520,20 540,0 540,155 520,175" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face -->
+        <rect x="0" y="20" width="520" height="155" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Application Server (Cloud Linux Container)</text>
+
+        <!-- Execution Environment inside App Server -->
+        <rect x="15" y="72" width="490" height="92" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#14532d">&lt;&lt;executionEnvironment&gt;&gt; Python 3.11 Runtime / Flask WSGI</text>
+
+        <!-- Artifacts & Components inside App Server -->
+        <rect x="25" y="96" width="145" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="32" y="102"/>
+        <text x="54" y="114" font-size="9.5" fill="#14532d">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="54" y="128" font-size="10.5" font-weight="bold" fill="#0f254e">app.py</text>
+        <text x="32" y="146" font-size="8.5" fill="#475569">Main Web Microservice</text>
+
+        <rect x="185" y="96" width="150" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <text x="260" y="112" text-anchor="middle" font-size="9.5" fill="#14532d">&lt;&lt;component&gt;&gt;</text>
+        <text x="260" y="127" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Fuzzy NLP Matcher</text>
+        <text x="260" y="145" text-anchor="middle" font-size="8.5" fill="#475569">difflib Scoring Engine</text>
+
+        <rect x="350" y="96" width="145" height="58" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+        <text x="422" y="112" text-anchor="middle" font-size="9.5" fill="#14532d">&lt;&lt;component&gt;&gt;</text>
+        <text x="422" y="127" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f254e">Auth &amp; Session Mgr</text>
+        <text x="422" y="145" text-anchor="middle" font-size="8.5" fill="#475569">Student &amp; Admin APIs</text>
+    </g>
+
+
+    <!-- COMMUNICATION PATH 2 (APPLICATION SERVER TO DATABASE SERVER) -->
+    <g transform="translate(360, 435)">
+        <line x1="0" y1="0" x2="0" y2="60" stroke="#1e3d73" stroke-width="3"/>
+        <polygon points="-5,60 0,70 5,60" fill="#1e3d73"/>
+        <polygon points="-5,0 0,-10 5,0" fill="#1e3d73"/>
+
+        <!-- Communication Protocol Label Box -->
+        <rect x="-110" y="15" width="220" height="30" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="0" y="29" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e293b">&lt;&lt;protocol&gt;&gt; SQLite C-Driver / POSIX I/O</text>
+        <text x="0" y="41" text-anchor="middle" font-size="9" fill="#475569">Embedded Storage Engine Connection</text>
+    </g>
+
+
+    <!-- TIER 3: DATABASE SERVER (3D NODE AT BOTTOM) -->
+    <g transform="translate(100, 505)">
+        <!-- Top Face -->
+        <polygon points="0,20 20,0 540,0 520,20" fill="#cbd5e1" stroke="#475569" stroke-width="1.4"/>
+        <!-- Right Face -->
+        <polygon points="520,20 540,0 540,140 520,160" fill="#94a3b8" stroke="#475569" stroke-width="1.4"/>
+        <!-- Front Face -->
+        <rect x="0" y="20" width="520" height="140" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+
+        <text x="260" y="42" text-anchor="middle" font-size="11" fill="#475569">&lt;&lt;device&gt;&gt;</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f254e">Database Server (Storage Node)</text>
+
+        <!-- Execution Environment inside DB Node -->
+        <rect x="15" y="72" width="490" height="78" rx="4" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+        <text x="260" y="88" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">&lt;&lt;executionEnvironment&gt;&gt; SQLite 3 Relational Database Engine</text>
+
+        <!-- Artifacts inside Database -->
+        <rect x="30" y="96" width="220" height="45" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+        <use href="#artifactIcon" x="38" y="102"/>
+        <text x="62" y="114" font-size="9.5" fill="#92400e">&lt;&lt;artifact&gt;&gt;</text>
+        <text x="62" y="130" font-size="11" font-weight="bold" fill="#0f254e">college_chatbot.db</text>
+
+        <!-- Tables breakdown inside DB -->
+        <rect x="270" y="96" width="220" height="45" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+        <text x="380" y="114" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#334155">Relational Tables / Schemas:</text>
+        <text x="380" y="130" text-anchor="middle" font-size="9.5" fill="#475569">students, college_info, chat_history, admin</text>
+    </g>
+</svg>
+                </div>
+
+                <div class="figure-caption">Fig: Deployment Diagram &mdash; textbook 3-Tier UML deployment architecture with 3D nodes.</div>
+
+                <div class="page-footer">
+                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
+                    <span>Page 1 of 1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

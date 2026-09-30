@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class Diagram (100% Solid Arrows)</title>
+<style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
+    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
+    .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
+    .doc-header { text-align: center; margin-bottom: 6px; }
+    .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-title { font-size: 19px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+    .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
+    .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
+    .diagram-heading { font-size: 13.5px; font-weight: 700; color: #0f254e; }
+    .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
+    .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+    .diagram-container svg { max-height: 200mm; width: auto; }
+    .figure-caption { text-align: center; font-size: 10px; font-style: italic; color: #475569; margin-top: 3px; }
+    .page-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; }
+    @media print { body { background: none !important; padding: 0 !important; } .page { box-shadow: none !important; margin: 0 !important; width: 210mm !important; height: 297mm !important; max-height: 297mm !important; page-break-after: always !important; page-break-inside: avoid !important; } }
+</style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: CLASS DIAGRAM (100% SOLID ARROWS) ================= -->
+    <div class="page">
+        <div class="outer-border">
+            <div class="inner-border">
+                <div class="doc-header">
+                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; SYBBA-CA (Sem III)</div>
+                    <div class="doc-title">AI CHATBOT FOR COLLEGE &mdash; REVISED DIAGRAMS</div>
+                    <div class="doc-subtitle">Structural classes and solid directed relationships</div>
+                </div>
+
+                <div class="diagram-heading-box">
+                    <div class="diagram-heading">1. Class Diagram (100% Solid Arrows)</div>
+                    <div class="correction-badge">&#10004; Teacher Correction Applied: 100% solid association lines &amp; arrowheads with multiplicities.</div>
+                </div>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 760 700" width="670" height="630" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- SOLID ARROWHEAD DEFINITION -->
+        <marker id="solidArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#1e3d73"/>
+        </marker>
+    </defs>
+
+    <!-- CLASS 1: STUDENT (Top-Left) -->
+    <g transform="translate(30, 20)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Student</text>
+        <rect x="0" y="32" width="280" height="200" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="52" font-size="11.5" fill="#1e293b">- roll_no : TEXT [PK]</text>
+        <text x="12" y="70" font-size="11.5" fill="#1e293b">- name : TEXT</text>
+        <text x="12" y="88" font-size="11.5" fill="#1e293b">- attendance : REAL</text>
+        <text x="12" y="106" font-size="11.5" fill="#1e293b">- fees_due : REAL</text>
+        <text x="12" y="124" font-size="11.5" fill="#1e293b">- course : TEXT</text>
+        <text x="12" y="142" font-size="11.5" fill="#1e293b">- semester : TEXT</text>
+        <text x="12" y="160" font-size="11.5" fill="#1e293b">- cgpa : REAL</text>
+        <text x="12" y="178" font-size="11.5" fill="#1e293b">- mentor : TEXT</text>
+        <text x="12" y="196" font-size="11.5" fill="#1e293b">- exam_date : TEXT</text>
+        <line x1="0" y1="205" x2="280" y2="205" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="205" width="280" height="60" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="224" font-size="11" fill="#0f254e">+ login(roll_no) : bool</text>
+        <text x="12" y="242" font-size="11" fill="#0f254e">+ check_attendance() : float</text>
+        <text x="12" y="260" font-size="11" fill="#0f254e">+ check_fee_status() : float</text>
+    </g>
+
+    <!-- CLASS 2: CHAT_HISTORY (Bottom-Left) -->
+    <g transform="translate(30, 395)">
+        <rect x="0" y="0" width="280" height="32" fill="#1e3d73" rx="3"/>
+        <text x="140" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">ChatHistory</text>
+        <rect x="0" y="32" width="280" height="150" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="54" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="74" font-size="11.5" fill="#1e293b">- roll_no : TEXT [FK]</text>
+        <text x="12" y="94" font-size="11.5" fill="#1e293b">- user_query : TEXT</text>
+        <text x="12" y="114" font-size="11.5" fill="#1e293b">- bot_response : TEXT</text>
+        <text x="12" y="134" font-size="11.5" fill="#1e293b">- timestamp : TEXT</text>
+        <text x="12" y="154" font-size="11.5" fill="#1e293b">- feedback : TEXT</text>
+        <line x1="0" y1="165" x2="280" y2="165" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="165" width="280" height="90" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="186" font-size="11" fill="#0f254e">+ log_message() : int</text>
+        <text x="12" y="206" font-size="11" fill="#0f254e">+ update_feedback(rating) : bool</text>
+        <text x="12" y="226" font-size="11" fill="#0f254e">+ fetch_recent_logs() : list</text>
+        <text x="12" y="246" font-size="11" fill="#0f254e">+ export_to_csv() : str</text>
+    </g>
+
+    <!-- CLASS 3: ADMIN (Top-Right) -->
+    <g transform="translate(440, 20)">
+        <rect x="0" y="0" width="290" height="32" fill="#0f254e" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">Admin</text>
+        <rect x="0" y="32" width="290" height="110" fill="#ffffff" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- username : TEXT [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- password_hash : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- role : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- session_state : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="100" fill="#f8fafc" stroke="#0f254e" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ authenticate(password) : bool</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ change_password() : bool</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ view_dashboard() : dict</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ export_audit_logs() : file</text>
+    </g>
+
+    <!-- CLASS 4: COLLEGE_INFO (Bottom-Right) -->
+    <g transform="translate(440, 395)">
+        <rect x="0" y="0" width="290" height="32" fill="#1e3d73" rx="3"/>
+        <text x="145" y="21" text-anchor="middle" fill="#ffffff" font-size="14.5" font-weight="bold">CollegeInfo</text>
+        <rect x="0" y="32" width="290" height="120" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="56" font-size="11.5" fill="#1e293b">- id : INTEGER [PK]</text>
+        <text x="12" y="78" font-size="11.5" fill="#1e293b">- category : TEXT</text>
+        <text x="12" y="100" font-size="11.5" fill="#1e293b">- keywords : TEXT</text>
+        <text x="12" y="122" font-size="11.5" fill="#1e293b">- answer : TEXT</text>
+        <line x1="0" y1="135" x2="290" y2="135" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="0" y="135" width="290" height="105" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.5"/>
+        <text x="12" y="158" font-size="11" fill="#0f254e">+ match_query(message) : tuple</text>
+        <text x="12" y="178" font-size="11" fill="#0f254e">+ add_faq(cat, kw, ans) : int</text>
+        <text x="12" y="198" font-size="11" fill="#0f254e">+ update_faq(id, data) : bool</text>
+        <text x="12" y="218" font-size="11" fill="#0f254e">+ delete_faq(id) : bool</text>
+    </g>
+
+    <!-- SOLID RELATIONSHIPS (ALL SOLID LINES & SOLID ARROWS) -->
+
+    <!-- 1. Student (1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="170" y1="285" x2="170" y2="390" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="180" y="335" font-size="11.5" font-weight="bold" fill="#1e3d73">submits / logs &#9660;</text>
+    <text x="155" y="305" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="150" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 2. Admin (1) -> (0..*) CollegeInfo (SOLID ARROW) -->
+    <line x1="585" y1="255" x2="585" y2="390" stroke="#0f254e" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="595" y="335" font-size="11.5" font-weight="bold" fill="#0f254e">manages / updates &#9660;</text>
+    <text x="570" y="280" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="560" y="380" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 3. CollegeInfo (0..1) -> (0..*) ChatHistory (SOLID ARROW) -->
+    <line x1="440" y1="495" x2="315" y2="495" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <text x="375" y="485" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#1e3d73">&#9668; matched_in</text>
+    <text x="420" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..1</text>
+    <text x="325" y="515" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+
+    <!-- 4. Admin (1) -> (0..*) ChatHistory (SOLID ARROW - NO DASHED!) -->
+    <path d="M 440 180 L 335 250 L 305 390" fill="none" stroke="#1e3d73" stroke-width="2.5" marker-end="url(#solidArrow)"/>
+    <rect x="330" y="240" width="105" height="22" rx="3" fill="#f8fafc" stroke="#1e3d73" stroke-width="1"/>
+    <text x="382" y="255" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3d73">&#9668; audits / exports</text>
+    <text x="415" y="200" font-size="11.5" font-weight="bold" fill="#0f254e">1</text>
+    <text x="315" y="375" font-size="11.5" font-weight="bold" fill="#0f254e">0..*</text>
+</svg>
+                </div>
+
+                <div class="figure-caption">Fig: Class Diagram &mdash; core entities, attributes, operations, and 100% solid association arrows.</div>
+
+                <div class="page-footer">
+                    <span>AI Chatbot for College &bull; Revised Submission Dossier</span>
+                    <span>Page 1 of 1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
