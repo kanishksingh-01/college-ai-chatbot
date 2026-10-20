@@ -124,12 +124,21 @@ def init_db():
         ),
         (
             "Attendance Rules",
-            "attendance,present,absent,shortage,minimum attendance,criteria,medical leave",
-            "📊 ATTENDANCE REGULATIONS & POLICY:\n"
-            "• Mandatory Requirement: Minimum 75% overall attendance is mandatory to appear for university end-semester examinations.\n"
-            "• Medical Condonation: Students having 65% to 74% attendance due to illness must submit medical certificates to their HOD within 3 working days.\n"
-            "• Shortage Action: Attendance below 65% leads to strict detention from end-term examinations.\n"
-            "• Daily Tracking: Students can view real-time lecture attendance on the student ERP portal or by logging in here and asking 'what is my attendance?'."
+            "attendance,present,absent,shortage,minimum attendance,criteria,medical leave,detention,detention policy,rubrics",
+            "📊 ATTENDANCE REGULATIONS & OFFICIAL DETENTION POLICY (PUNE CAMPUS):\n\n"
+            "• Mandatory Requirement: Minimum 75% overall attendance is mandatory to appear for university end-semester examinations.\n\n"
+            "📋 OFFICIAL DETENTION RUBRICS (Implementation of Student Detention Policy):\n"
+            "1. Above 75% (Good Standing):\n"
+            "   - Status: Fully eligible to appear for semester examinations.\n\n"
+            "2. 60% to 75% Attendance (Excluding Medical):\n"
+            "   - Theory Rubric: End Sem Examination Paper Sets of previous 2 years to be solved in Open Book mode in the College.\n"
+            "   - Practical Rubric: Student will not be eligible for the attendance mark component of internal marks.\n\n"
+            "3. 50% to 59.99% Attendance (Excluding Medical):\n"
+            "   - Theory Rubric: (1) End Sem Examination Paper Sets of previous 2 years to be solved in Open Book mode in the College. (2) Student must appear for a prelim examination and score a minimum of 60% marks to be eligible to get out of detention.\n"
+            "   - Practical Rubric: Student must appear for a practical-based prelim examination and score a minimum of 60% marks to get out of detention (Max 2 practicals conducted in a day).\n\n"
+            "4. Below 50% Attendance (<50%):\n"
+            "   - Theory & Practical: No consideration. Strictly detained from semester examinations.\n\n"
+            "📌 Tip: Logged-in students can view real-time percentage and specific detention rubrics by asking 'what is my attendance?'."
         ),
         (
             "Library Timings",
@@ -213,22 +222,25 @@ def init_db():
         (
             "Emergency & Helpline",
             "emergency,helpline,ragging,anti ragging,complaint,grievance,doctor,medical,clinic,security",
-            "🚨 CAMPUS EMERGENCY & STUDENT HELPLINE:\n"
-            "• Campus Security / Gate Control: +91 712-6617111 (24/7)\n"
+            "🚨 CAMPUS EMERGENCY & STUDENT HELPLINE (PUNE CAMPUS):\n"
+            "• Campus Security / Gate Control: +91 20-67528000 / +91 9604787185 (24/7)\n"
             "• Anti-Ragging Helpline (Zero Tolerance): 1800-180-5522 | antiragging@college.edu\n"
-            "• Women Grievance / ICC Cell: icc@college.edu\n"
+            "• Women Grievance / ICC Cell: icc.pune@raisoni.net\n"
             "• Health Care Center / First Aid: Medical Unit, Ground Floor near Sports Complex (Full-time doctor on campus).\n"
-            "• Student Counselor: counselor@college.edu (Confidential mental health & career counseling)."
+            "• Student Counselor: counselor.pune@raisoni.net (Confidential mental health & career counseling)."
         ),
         (
             "Campus Location & Map",
-            "location,address,where is,map,campus,how to reach,bus,transport,nearest metro",
-            "📍 CAMPUS ADDRESS & CONNECTIVITY:\n"
-            "• Campus Address: GH Raisoni Campus, Hingna Road, Digdoh Hills, Nagpur, Maharashtra - 440016.\n"
-            "• Bus Facility: Fleet of 35+ college buses running across 18 routes in the city.\n"
-            "• Nearest Metro Station: Lokmanya Nagar Metro Station (3.2 km — feeder autos available).\n"
-            "• Nearest Railway Station: Nagpur Central Junction (11 km).\n"
-            "• Campus Map & Bus Routes: Downloadable on college.edu/transport."
+            "location,address,where is,map,campus,how to reach,bus,transport,nearest metro,pune,wagholi",
+            "📍 CAMPUS ADDRESS & CONNECTIVITY (PUNE):\n"
+            "• College Name: GH Raisoni College (GHRCEM / GH Raisoni Institute, Pune)\n"
+            "• Campus Address: Navin Gat No. 1200, Domkhel Road, Wagholi, Pune, Maharashtra - 412207.\n"
+            "• Affiliation: Affiliated to Savitribai Phule Pune University (SPPU), Approved by AICTE New Delhi.\n"
+            "• Bus Facility: Comprehensive college bus service connecting Kharadi, Viman Nagar, Hadapsar, Chandan Nagar, Pune Station, and Shivaji Nagar.\n"
+            "• Nearest Railway Station: Pune Junction Railway Station (~14 km).\n"
+            "• Nearest Airport: Pune International Airport, Lohegaon (~10 km).\n"
+            "• Highway Connectivity: Located off the Pune-Ahmednagar State Highway.\n"
+            "• Official Portal: pune.raisoni.net"
         )
     ]
 
@@ -239,7 +251,7 @@ def init_db():
         college_info_data
     )
 
-    # Refresh or seed demo students
+    # Refresh or seed demo students covering all 4 detention brackets
     students_data = [
         (
             "ISTU00000001",
@@ -285,6 +297,50 @@ def init_db():
             9.45,
             "Dr. N. Patil"
         ),
+        (
+            "ISTU00000005",
+            "Aditya Joshi",
+            54.5,
+            8000.0,
+            "10-Dec-2026",
+            "BBA (Computer Applications)",
+            "Semester III",
+            6.20,
+            "Prof. R. Verma"
+        ),
+        (
+            "ISTU00000006",
+            "Tanvi Shinde",
+            42.0,
+            15000.0,
+            "10-Dec-2026",
+            "BCA",
+            "Semester III",
+            5.80,
+            "Dr. A. Sharma"
+        ),
+        (
+            "ISTU25010120001",
+            "Kanishk Singh",
+            88.5,
+            0.0,
+            "10-Dec-2026",
+            "BBA (Computer Applications)",
+            "Semester III",
+            9.40,
+            "Dr. A. Sharma"
+        ),
+        (
+            "ISTU25010120002",
+            "Vibhor Saini",
+            82.0,
+            0.0,
+            "10-Dec-2026",
+            "BBA (Computer Applications)",
+            "Semester III",
+            8.85,
+            "Prof. R. Verma"
+        )
     ]
 
     cur.execute("DELETE FROM students")

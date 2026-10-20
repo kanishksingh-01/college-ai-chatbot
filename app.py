@@ -154,10 +154,31 @@ def personalized_answer(message, roll_no):
             f"• Next Exam Date: {student['exam_date']}"
         )
 
-    # Attendance
+    # Attendance with official 4-tier College Detention Policy
     if "attendance" in msg and any(k in msg for k in ["my", "what", "how", "current", "show"]):
-        status = "Good standing (eligible for exams)" if student["attendance"] >= 75 else "⚠️ Shortage alert (<75% threshold)"
-        return f"Hi {student['name']}, your current attendance is {student['attendance']}% ({status})."
+        att = student["attendance"]
+        if att >= 75.0:
+            status = "✅ Good Standing — Fully eligible for semester examinations"
+            advice = "Your attendance is in good standing. Keep maintaining it above 75%!"
+        elif 60.0 <= att < 75.0:
+            status = "⚠️ Detention Warning (60% to 75% Bracket)"
+            advice = (
+                "Under the college detention policy rubrics, you must complete the following to clear detention:\n"
+                "• Theory: End Sem Examination Paper Sets of previous 2 years must be solved in Open Book mode in the College.\n"
+                "• Practical: You will not be eligible for the attendance mark component of internal marks."
+            )
+        elif 50.0 <= att < 60.0:
+            status = "🚨 Critical Detention Shortage (50% to 59.99% Bracket)"
+            advice = (
+                "Under official detention policy rubrics, you are detained unless you complete:\n"
+                "• Theory: (1) End Sem Examination Paper Sets of previous 2 years must be solved in Open Book mode in the College, AND (2) Appear for a prelim examination and score a minimum of 60% marks to be eligible to get out of detention.\n"
+                "• Practical: Appear for a practical-based prelim examination and score a minimum of 60% marks (Max 2 practicals conducted in a day)."
+            )
+        else:  # < 50.0
+            status = "❌ Strictly Detained (<50% Attendance)"
+            advice = "As per college detention policy, students with attendance below 50% have No Consideration and are strictly detained from university semester examinations. Contact your HOD immediately."
+
+        return f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n📋 College Rubrics & Action Required:\n{advice}"
 
     # Fees
     if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending"]) and any(k in msg for k in ["my", "how", "what", "check"]):
