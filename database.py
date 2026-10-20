@@ -231,16 +231,19 @@ def init_db():
         ),
         (
             "Campus Location & Map",
-            "location,address,where is,map,campus,how to reach,bus,transport,nearest metro,pune,wagholi",
-            "📍 CAMPUS ADDRESS & CONNECTIVITY (PUNE):\n"
-            "• College Name: GH Raisoni College (GHRCEM / GH Raisoni Institute, Pune)\n"
-            "• Campus Address: Navin Gat No. 1200, Domkhel Road, Wagholi, Pune, Maharashtra - 412207.\n"
-            "• Affiliation: Affiliated to Savitribai Phule Pune University (SPPU), Approved by AICTE New Delhi.\n"
-            "• Bus Facility: Comprehensive college bus service connecting Kharadi, Viman Nagar, Hadapsar, Chandan Nagar, Pune Station, and Shivaji Nagar.\n"
+            "location,address,where is,map,campus,how to reach,bus,transport,nearest metro,pune,wagholi,yerwada,yerawada,campuses,airport road,shastrinagar,domkhel",
+            "📍 GH RAISONI COLLEGE PUNE — CAMPUS ADDRESSES & CONNECTIVITY:\n\n"
+            "🏛️ 1. WAGHOLI CAMPUS (Main Academic Campus):\n"
+            "• Address: Gat 1200, Domkhel Rd, Wagholi, Pune, Maharashtra 412207.\n"
+            "• Programs Offered: BBA-CA, BCA, B.Com (Computer Applications), MCA & Engineering.\n"
+            "• Connectivity: Off Pune-Ahmednagar State Highway. College buses connect major routes across Pune (Kharadi, Hadapsar, Viman Nagar, Pune Station, Shivaji Nagar).\n"
             "• Nearest Railway Station: Pune Junction Railway Station (~14 km).\n"
-            "• Nearest Airport: Pune International Airport, Lohegaon (~10 km).\n"
-            "• Highway Connectivity: Located off the Pune-Ahmednagar State Highway.\n"
-            "• Official Portal: pune.raisoni.net"
+            "• Nearest Airport: Pune International Airport, Lohegaon (~10 km).\n\n"
+            "🏢 2. YERAWADA CAMPUS (City Campus):\n"
+            "• Address: Nyati Unitree East-Wing, Deepak Fertilizer Building, Airport Rd, Shastrinagar, Yerawada, Pune, Maharashtra 411006.\n"
+            "• Landmark: Near Shastrinagar Chowk, Airport Road, Yerawada.\n"
+            "• Connectivity: Strategically located on Airport Road, ~3.5 km from Pune Airport and ~5.5 km from Pune Junction.\n\n"
+            "🌐 Official Portal: pune.raisoni.net | Affiliated to Savitribai Phule Pune University (SPPU)"
         )
     ]
 
