@@ -13,9 +13,11 @@
 
 <div class="auth-card">
     <div class="auth-header">
-        <div class="auth-badge">🎓</div>
+        <div class="auth-logo-container">
+            <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="GH Raisoni International Skill Tech University, Pune" class="auth-logo-img">
+        </div>
         <h2>Student Portal Login</h2>
-        <p class="auth-sub">GH Raisoni College AI Assistant &middot; BBA Computer Applications</p>
+        <p class="auth-sub">GH Raisoni Skill Tech University &middot; Pune (Wagholi &amp; Yerawada Campuses)</p>
     </div>
 
     {% if error %}
