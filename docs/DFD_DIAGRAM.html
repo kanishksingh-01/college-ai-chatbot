@@ -2,45 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Data Flow Diagram &mdash; DFD (Level 1 with Symbols Table)</title>
+<title>Data Flow Diagram (DFD Level 1) - AI Chatbot for College</title>
 <style>
-    @page { size: A4 portrait; margin: 0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background-color: #525659; display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-    .page { width: 210mm; height: 297mm; max-height: 297mm; padding: 10mm 12mm; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.35); display: flex; flex-direction: column; page-break-after: always; page-break-inside: avoid; overflow: hidden; }
-    .outer-border { border: 2.5px solid #1e3d73; padding: 3px; height: 100%; display: flex; flex-direction: column; flex: 1; }
-    .inner-border { border: 1px solid #1e3d73; padding: 14px 16px 8px 16px; height: 100%; display: flex; flex-direction: column; flex: 1; position: relative; }
-    .doc-header { text-align: center; margin-bottom: 6px; }
-    .college-tag { font-size: 10.5px; font-weight: 700; color: #1e3d73; letter-spacing: 1px; text-transform: uppercase; }
-    .doc-title { font-size: 18px; font-weight: 800; color: #0f254e; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
-    .doc-subtitle { font-size: 11px; color: #64748b; font-style: italic; }
-    .diagram-heading-box { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4.5px solid #1e3d73; padding: 5px 10px; border-radius: 4px; margin: 5px 0 7px 0; }
-    .diagram-heading { font-size: 13px; font-weight: 700; color: #0f254e; }
-    .correction-badge { font-size: 10px; font-weight: 700; color: #15803d; background: #dcfce7; padding: 3px 7px; border-radius: 3px; border: 1px solid #86efac; }
-    .diagram-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-    .diagram-container svg { max-height: 200mm; width: auto; }
-    .figure-caption { text-align: center; font-size: 10px; font-style: italic; color: #475569; margin-top: 3px; }
-    .page-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 4px; }
-    @media print { body { background: none !important; padding: 0 !important; } .page { box-shadow: none !important; margin: 0 !important; width: 210mm !important; height: 297mm !important; max-height: 297mm !important; page-break-after: always !important; page-break-inside: avoid !important; } }
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+        background-color: #525659;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+    .page {
+        width: 210mm;
+        height: 297mm;
+        max-height: 297mm;
+        padding: 10mm 12mm;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: hidden;
+    }
+    /* College Project Double Blue Border */
+    .outer-border {
+        border: 2.5px solid #1e3d73;
+        padding: 3px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .inner-border {
+        border: 1px solid #1e3d73;
+        padding: 14px 16px 8px 16px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+    }
+    .doc-header {
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .doc-title {
+        font-size: 21px;
+        font-weight: 800;
+        color: #0f254e;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .doc-subtitle {
+        font-size: 11px;
+        color: #64748b;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .badge-bar {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 4px;
+    }
+    .badge {
+        background: #e0f2fe;
+        color: #0369a1;
+        font-size: 9.5px;
+        font-weight: bold;
+        padding: 2px 8px;
+        border-radius: 10px;
+        border: 1px solid #bae6fd;
+    }
+    .badge-success {
+        background: #dcfce7;
+        color: #15803d;
+        border-color: #bbf7d0;
+    }
+    .diagram-heading {
+        font-size: 14px;
+        font-weight: 700;
+        color: #1e3d73;
+        margin: 6px 0 6px 0;
+        border-left: 4px solid #1e3d73;
+        padding-left: 8px;
+    }
+    .diagram-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .diagram-container svg {
+        max-height: 205mm;
+        width: auto;
+    }
+    .figure-caption {
+        text-align: center;
+        font-size: 10.5px;
+        font-style: italic;
+        color: #475569;
+        margin-top: 4px;
+        line-height: 1.35;
+    }
+
+    @media print {
+        body {
+            background: none;
+            padding: 0;
+            gap: 0;
+        }
+        .page {
+            box-shadow: none;
+            margin: 0;
+            width: 210mm;
+            height: 297mm;
+        }
+    }
 </style>
 </head>
 <body>
-    <div class="page">
-        <div class="outer-border">
-            <div class="inner-border">
-                <div class="doc-header">
-                    <div class="college-tag">GH Raisoni College &bull; Department of BBA-CA &bull; Pune Campus</div>
-                    <div class="doc-title">AI CHATBOT FOR COLLEGE &mdash; SYSTEM &amp; UML SPECIFICATIONS</div>
-                    <div class="doc-subtitle">First-Level process decomposition with stores and reference symbols</div>
-                </div>
 
-                <div class="diagram-heading-box">
-                    <div class="diagram-heading">Data Flow Diagram &mdash; DFD (Level 1 with Symbols Table)</div>
-                    <div class="correction-badge">&#10004; First-Level DFD &amp; Formal Symbols Table</div>
+<div class="page">
+    <div class="outer-border">
+        <div class="inner-border">
+            <div class="doc-header">
+                <div class="doc-title">AI Chatbot for College</div>
+                <div class="doc-subtitle">ACADEMIC UML &amp; ARCHITECTURAL SPECIFICATION</div>
+                <div class="badge-bar">
+                    <span class="badge badge-success">&#10003; Level 1 Decomposition (1.0 - 4.0)</span>
+                    <span class="badge badge-success">&#10003; Data Stores (D1, D2, D3)</span>
+                    <span class="badge badge-success">&#10003; DFD Symbols Reference Table</span>
                 </div>
-
-                <div class="diagram-container">
-                    <svg viewBox="0 0 760 670" width="670" height="590" xmlns="http://www.w3.org/2000/svg">
+            </div>
+            <div class="diagram-heading">Data Flow Diagram (Level 1) &mdash; Detailed Process Flows &amp; Symbols Table</div>
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 670" width="670" height="590" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <marker id="dfdGreenArrow" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
             <polygon points="0 0, 5 2.5, 0 5" fill="#2e7d32"/>
@@ -48,201 +157,213 @@
         <marker id="dfdGreenArrowRev" markerWidth="7" markerHeight="7" refX="0" refY="2.5" orient="auto">
             <polygon points="5 0, 0 2.5, 5 5" fill="#2e7d32"/>
         </marker>
+        <filter id="dfdShadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="#000000" flood-opacity="0.1"/>
+        </filter>
     </defs>
 
-    <!-- Title matching Image 2 -->
-    <text x="380" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#000000">Data flow diagram: AI chatbot for college</text>
+    <!-- Diagram Header Title matching Image 2 -->
+    <text x="380" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#0f254e">Data Flow Diagram (Level 1): AI Chatbot for College</text>
 
     <!-- ==================== TOP ROW: EXTERNAL ENTITY & DATA STORES ==================== -->
     <!-- Entity 1: Student (Top Left) -->
-    <rect x="50" y="55" width="95" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
+    <rect x="45" y="55" width="105" height="40" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4" filter="url(#dfdShadow)"/>
     <text x="97" y="79" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">Student</text>
 
     <!-- Data Store D1: Students Store -->
-    <g transform="translate(185, 55)">
-        <rect x="0" y="0" width="115" height="38" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
-        <line x1="26" y1="0" x2="26" y2="38" stroke="#2e7d32" stroke-width="1.3"/>
-        <text x="13" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D1</text>
-        <text x="70" y="18" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">Students</text>
-        <text x="70" y="30" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">Store</text>
+    <g transform="translate(180, 55)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="125" height="40" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="28" y1="0" x2="28" y2="40" stroke="#2e7d32" stroke-width="1.4"/>
+        <text x="14" y="25" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D1</text>
+        <text x="76" y="18" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Students</text>
+        <text x="76" y="31" text-anchor="middle" font-size="9" fill="#1b5e20">Store (Records)</text>
     </g>
 
     <!-- Data Store D2: College FAQs Store -->
-    <g transform="translate(390, 55)">
-        <rect x="0" y="0" width="115" height="38" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
-        <line x1="26" y1="0" x2="26" y2="38" stroke="#2e7d32" stroke-width="1.3"/>
-        <text x="13" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D2</text>
-        <text x="70" y="18" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1b5e20">College FAQs</text>
-        <text x="70" y="30" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1b5e20">Store</text>
+    <g transform="translate(450, 55)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="135" height="40" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="28" y1="0" x2="28" y2="40" stroke="#2e7d32" stroke-width="1.4"/>
+        <text x="14" y="25" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D2</text>
+        <text x="81" y="18" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">College FAQs</text>
+        <text x="81" y="31" text-anchor="middle" font-size="9" fill="#1b5e20">Store (Pune Info)</text>
     </g>
 
-    <!-- Entity 2: Student (Top Right) -->
-    <rect x="600" y="55" width="95" height="38" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
-    <text x="647" y="79" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">Student</text>
+    <!-- Entity 2: Student (Top Right - Consumer) -->
+    <rect x="610" y="55" width="105" height="40" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4" filter="url(#dfdShadow)"/>
+    <text x="662" y="79" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">Student</text>
 
 
     <!-- ==================== MIDDLE ROW: PROCESSES 1.0 TO 4.0 ==================== -->
     <!-- Process 1.0: Receive Query -->
-    <g transform="translate(50, 185)">
-        <rect x="0" y="0" width="95" height="75" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.4"/>
-        <line x1="0" y1="24" x2="95" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="15" y="17" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">1.0</text>
-        <text x="47" y="47" text-anchor="middle" font-size="11" fill="#1b5e20">Receive</text>
-        <text x="47" y="62" text-anchor="middle" font-size="11" fill="#1b5e20">Query</text>
+    <g transform="translate(45, 175)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="105" height="60" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="0" y1="20" x2="105" y2="20" stroke="#2e7d32" stroke-width="1.2"/>
+        <text x="52" y="15" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">1.0</text>
+        <text x="52" y="37" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Receive</text>
+        <text x="52" y="51" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Query</text>
     </g>
 
     <!-- Process 2.0: Get Student Data -->
-    <g transform="translate(195, 185)">
-        <rect x="0" y="0" width="95" height="75" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.4"/>
-        <line x1="0" y1="24" x2="95" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="15" y="17" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">2.0</text>
-        <text x="47" y="47" text-anchor="middle" font-size="10.5" fill="#1b5e20">Get Student</text>
-        <text x="47" y="62" text-anchor="middle" font-size="10.5" fill="#1b5e20">Data</text>
+    <g transform="translate(190, 175)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="105" height="60" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="0" y1="20" x2="105" y2="20" stroke="#2e7d32" stroke-width="1.2"/>
+        <text x="52" y="15" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">2.0</text>
+        <text x="52" y="37" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Get Student</text>
+        <text x="52" y="51" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Data</text>
     </g>
 
     <!-- Process 3.0: Find Answer in FAQs -->
-    <g transform="translate(400, 185)">
-        <rect x="0" y="0" width="95" height="75" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.4"/>
-        <line x1="0" y1="24" x2="95" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="15" y="17" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">3.0</text>
-        <text x="47" y="47" text-anchor="middle" font-size="10.5" fill="#1b5e20">Find Answer</text>
-        <text x="47" y="62" text-anchor="middle" font-size="10.5" fill="#1b5e20">in FAQs</text>
+    <g transform="translate(465, 175)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="105" height="60" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="0" y1="20" x2="105" y2="20" stroke="#2e7d32" stroke-width="1.2"/>
+        <text x="52" y="15" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">3.0</text>
+        <text x="52" y="37" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Find Answer</text>
+        <text x="52" y="51" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">in FAQs</text>
     </g>
 
     <!-- Process 4.0: Show Answer & Save Chat -->
-    <g transform="translate(605, 185)">
-        <rect x="0" y="0" width="95" height="75" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.4"/>
-        <line x1="0" y1="24" x2="95" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <line x1="30" y1="0" x2="30" y2="24" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="15" y="17" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">4.0</text>
-        <text x="47" y="47" text-anchor="middle" font-size="10" fill="#1b5e20">Show Answer</text>
-        <text x="47" y="61" text-anchor="middle" font-size="10" fill="#1b5e20">&amp; Save Chat</text>
-    </g>
-
-    <!-- Data Store D3: Chat History Store (Bottom Right) -->
-    <g transform="translate(605, 305)">
-        <rect x="0" y="0" width="105" height="40" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.3"/>
-        <line x1="26" y1="0" x2="26" y2="40" stroke="#2e7d32" stroke-width="1.3"/>
-        <text x="13" y="25" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D3</text>
-        <text x="65" y="18" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1b5e20">Chat History</text>
-        <text x="65" y="31" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1b5e20">Store</text>
+    <g transform="translate(610, 175)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="105" height="60" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="0" y1="20" x2="105" y2="20" stroke="#2e7d32" stroke-width="1.2"/>
+        <text x="52" y="15" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">4.0</text>
+        <text x="52" y="36" text-anchor="middle" font-size="10" font-weight="bold" fill="#1b5e20">Show Answer</text>
+        <text x="52" y="50" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1b5e20">&amp; Save Chat</text>
     </g>
 
 
-    <!-- ==================== DATA FLOW ARROWS & LABELS ==================== -->
-    <!-- Student (Top Left) down to 1.0 (query) -->
-    <line x1="97" y1="93" x2="97" y2="182" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="115" y="145" font-size="10" fill="#000000">query</text>
-
-    <!-- 1.0 right to 2.0 (roll no) -->
-    <line x1="145" y1="222" x2="192" y2="222" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="170" y="214" text-anchor="middle" font-size="9.5" fill="#000000">roll no</text>
-
-    <!-- 2.0 up to D1 (roll no) -->
-    <line x1="225" y1="182" x2="225" y2="96" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="210" y="145" text-anchor="end" font-size="9.5" fill="#000000">roll no</text>
-
-    <!-- D1 down to 2.0 (student data) -->
-    <line x1="260" y1="96" x2="260" y2="182" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="278" y="140" font-size="9.5" fill="#000000">student</text>
-    <text x="278" y="152" font-size="9.5" fill="#000000">data</text>
-
-    <!-- 2.0 right to 3.0 (query) -->
-    <line x1="290" y1="222" x2="397" y2="222" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="345" y="214" text-anchor="middle" font-size="10" fill="#000000">query</text>
-
-    <!-- 3.0 up to D2 (keywords) -->
-    <line x1="430" y1="182" x2="430" y2="96" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="415" y="145" text-anchor="end" font-size="9.5" fill="#000000">keywords</text>
-
-    <!-- D2 down to 3.0 (FAQ answer) -->
-    <line x1="465" y1="96" x2="465" y2="182" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="482" y="140" font-size="9.5" fill="#000000">FAQ</text>
-    <text x="482" y="152" font-size="9.5" fill="#000000">answer</text>
-
-    <!-- 3.0 right to 4.0 (answer) -->
-    <line x1="495" y1="222" x2="602" y2="222" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="550" y="214" text-anchor="middle" font-size="10" fill="#000000">answer</text>
-
-    <!-- 4.0 up to Student (answer) -->
-    <line x1="647" y1="182" x2="647" y2="96" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="665" y="145" font-size="10" fill="#000000">answer</text>
-
-    <!-- 4.0 down to D3 (chat record) -->
-    <line x1="655" y1="260" x2="655" y2="302" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
-    <text x="670" y="285" font-size="9.5" fill="#000000">chat record</text>
+    <!-- ==================== BOTTOM DATA STORE: D3 CHAT HISTORY ==================== -->
+    <g transform="translate(600, 305)" filter="url(#dfdShadow)">
+        <rect x="0" y="0" width="125" height="38" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.4"/>
+        <line x1="28" y1="0" x2="28" y2="38" stroke="#2e7d32" stroke-width="1.4"/>
+        <text x="14" y="24" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">D3</text>
+        <text x="76" y="17" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Chat History</text>
+        <text x="76" y="30" text-anchor="middle" font-size="9" fill="#1b5e20">Store (Logs)</text>
+    </g>
 
 
-    <!-- ==================== BOTTOM: DFD SYMBOLS TABLE ==================== -->
-    <g transform="translate(45, 370)">
-        <text x="0" y="-12" font-size="13" font-weight="bold" fill="#000000">DFD symbols and their uses</text>
+    <!-- ==================== CONNECTING DATA FLOW ARROWS ==================== -->
+    <!-- Student (Top Left) -> 1.0 Receive Query -->
+    <line x1="97" y1="95" x2="97" y2="175" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="105" y="135" font-size="9.5" font-weight="bold" fill="#1b5e20">query</text>
+
+    <!-- 1.0 Receive Query -> 2.0 Get Student Data -->
+    <line x1="150" y1="205" x2="190" y2="205" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="170" y="198" text-anchor="middle" font-size="9" font-weight="bold" fill="#1b5e20">roll no</text>
+
+    <!-- 2.0 Get Student Data <-> D1 Students Store -->
+    <!-- Upwards arrow: roll no query -->
+    <line x1="225" y1="175" x2="225" y2="95" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="217" y="135" text-anchor="end" font-size="9" fill="#1b5e20">roll no</text>
+    <!-- Downwards arrow: student data return -->
+    <line x1="260" y1="95" x2="260" y2="175" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="268" y="130" font-size="9" font-weight="bold" fill="#1b5e20">student</text>
+    <text x="268" y="142" font-size="9" fill="#1b5e20">data</text>
+
+    <!-- Horizontal Flow: 2.0 -> 3.0 -->
+    <line x1="295" y1="205" x2="465" y2="205" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="380" y="198" text-anchor="middle" font-size="9" font-weight="bold" fill="#1b5e20">query / keywords</text>
+
+    <!-- 3.0 Find Answer in FAQs <-> D2 College FAQs Store -->
+    <!-- Upwards arrow: keywords -->
+    <line x1="495" y1="175" x2="495" y2="95" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="488" y="135" text-anchor="end" font-size="9" fill="#1b5e20">keywords</text>
+    <!-- Downwards arrow: FAQ answer return -->
+    <line x1="535" y1="95" x2="535" y2="175" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="542" y="130" font-size="9" font-weight="bold" fill="#1b5e20">FAQ</text>
+    <text x="542" y="142" font-size="9" fill="#1b5e20">answer</text>
+
+    <!-- 3.0 Find Answer -> 4.0 Show Answer -->
+    <line x1="570" y1="205" x2="610" y2="205" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="590" y="198" text-anchor="middle" font-size="9" font-weight="bold" fill="#1b5e20">answer</text>
+
+    <!-- 4.0 Show Answer -> Student (Top Right) -->
+    <line x1="662" y1="175" x2="662" y2="95" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="670" y="135" font-size="9.5" font-weight="bold" fill="#1b5e20">answer</text>
+
+    <!-- 4.0 Show Answer -> D3 Chat History Store -->
+    <line x1="662" y1="235" x2="662" y2="305" stroke="#2e7d32" stroke-width="1.4" marker-end="url(#dfdGreenArrow)"/>
+    <text x="670" y="270" font-size="9" font-weight="bold" fill="#1b5e20">chat record</text>
+
+
+    <!-- ==================== DFD SYMBOLS AND THEIR USES TABLE ==================== -->
+    <g transform="translate(35, 385)">
+        <text x="345" y="0" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f254e">DFD symbols and their uses</text>
+
+        <!-- Table Outer Border -->
+        <rect x="0" y="12" width="690" height="230" fill="#ffffff" stroke="#2e7d32" stroke-width="1.4"/>
+
+        <!-- Header Row -->
+        <rect x="0" y="12" width="690" height="28" fill="#e8f5e9"/>
+        <line x1="0" y1="40" x2="690" y2="40" stroke="#2e7d32" stroke-width="1.2"/>
         
-        <!-- Table Border -->
-        <rect x="0" y="0" width="670" height="260" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-        
-        <!-- Table Header -->
-        <rect x="0" y="0" width="670" height="34" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-        <text x="45" y="22" font-size="11.5" font-weight="bold" fill="#000000">Symbol</text>
-        <text x="145" y="22" font-size="11.5" font-weight="bold" fill="#000000">Name</text>
-        <text x="320" y="22" font-size="11.5" font-weight="bold" fill="#000000">Use</text>
-        <text x="560" y="22" font-size="11.5" font-weight="bold" fill="#000000">Example in our project</text>
-        
-        <!-- Row Divider Lines -->
-        <line x1="0" y1="34" x2="670" y2="34" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="0" y1="90" x2="670" y2="90" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="0" y1="148" x2="670" y2="148" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="0" y1="204" x2="670" y2="204" stroke="#cbd5e1" stroke-width="1"/>
+        <!-- Column Dividers -->
+        <line x1="85" y1="12" x2="85" y2="242" stroke="#2e7d32" stroke-width="1.2"/>
+        <line x1="190" y1="12" x2="190" y2="242" stroke="#2e7d32" stroke-width="1.2"/>
+        <line x1="435" y1="12" x2="435" y2="242" stroke="#2e7d32" stroke-width="1.2"/>
 
-        <!-- Column Divider Lines -->
-        <line x1="95" y1="0" x2="95" y2="260" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="210" y1="0" x2="210" y2="260" stroke="#cbd5e1" stroke-width="1"/>
-        <line x1="470" y1="0" x2="470" y2="260" stroke="#cbd5e1" stroke-width="1"/>
+        <!-- Header Texts -->
+        <text x="42" y="31" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Symbol</text>
+        <text x="137" y="31" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Name</text>
+        <text x="312" y="31" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Use</text>
+        <text x="562" y="31" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">Example in our project</text>
 
-        <!-- Row 1: External entity -->
-        <rect x="25" y="48" width="45" height="30" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="110" y="60" font-size="11" font-weight="bold" fill="#000000">External</text>
-        <text x="110" y="74" font-size="11" font-weight="bold" fill="#000000">entity</text>
-        <text x="225" y="60" font-size="10.5" fill="#334155">A person outside the system</text>
-        <text x="225" y="74" font-size="10.5" fill="#334155">who gives or gets data</text>
-        <text x="485" y="67" font-size="11" fill="#000000">Student</text>
+        <!-- Row Dividers -->
+        <line x1="0" y1="88" x2="690" y2="88" stroke="#2e7d32" stroke-width="1"/>
+        <line x1="0" y1="138" x2="690" y2="138" stroke="#2e7d32" stroke-width="1"/>
+        <line x1="0" y1="188" x2="690" y2="188" stroke="#2e7d32" stroke-width="1"/>
+
+        <!-- Row 1: External Entity -->
+        <rect x="18" y="52" width="50" height="24" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+        <text x="43" y="68" text-anchor="middle" font-size="8.5" fill="#1b5e20">Student</text>
+        <text x="137" y="62" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">External</text>
+        <text x="137" y="76" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">entity</text>
+        <text x="200" y="60" font-size="10" fill="#334155">A person or external system</text>
+        <text x="200" y="74" font-size="10" fill="#334155">who provides or receives data</text>
+        <text x="445" y="60" font-size="10" font-weight="bold" fill="#0f254e">Student (User asking questions)</text>
+        <text x="445" y="74" font-size="9" fill="#64748b">e.g. Pune campus location, attendance check</text>
 
         <!-- Row 2: Process -->
-        <rect x="22" y="102" width="50" height="34" rx="8" fill="#f1f8e9" stroke="#2e7d32" stroke-width="1.2"/>
-        <text x="110" y="125" font-size="11" font-weight="bold" fill="#000000">Process</text>
-        <text x="225" y="125" font-size="10.5" fill="#334155">A step that works on data</text>
-        <text x="485" y="125" font-size="11" fill="#000000">Find Answer in FAQs</text>
+        <g transform="translate(18, 97)">
+            <rect x="0" y="0" width="50" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+            <line x1="0" y1="10" x2="50" y2="10" stroke="#2e7d32" stroke-width="1"/>
+            <text x="25" y="8" text-anchor="middle" font-size="7" font-weight="bold" fill="#1b5e20">1.0</text>
+            <text x="25" y="22" text-anchor="middle" font-size="7.5" fill="#1b5e20">Process</text>
+        </g>
+        <text x="137" y="119" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Process</text>
+        <text x="200" y="110" font-size="10" fill="#334155">A transformation step that operates</text>
+        <text x="200" y="124" font-size="10" fill="#334155">on data (receives, calculates, finds)</text>
+        <text x="445" y="110" font-size="10" font-weight="bold" fill="#0f254e">3.0 Find Answer in FAQs</text>
+        <text x="445" y="124" font-size="9" fill="#64748b">Evaluates Wagholi/Yerawada &amp; detention rubrics</text>
 
         <!-- Row 3: Data store -->
-        <g transform="translate(18, 162)">
-            <line x1="0" y1="0" x2="55" y2="0" stroke="#2e7d32" stroke-width="1.4"/>
-            <line x1="0" y1="24" x2="55" y2="24" stroke="#2e7d32" stroke-width="1.4"/>
-            <line x1="0" y1="0" x2="0" y2="24" stroke="#2e7d32" stroke-width="1.4"/>
+        <g transform="translate(15, 150)">
+            <rect x="0" y="0" width="56" height="22" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+            <line x1="14" y1="0" x2="14" y2="22" stroke="#2e7d32" stroke-width="1.2"/>
+            <text x="7" y="15" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#1b5e20">D1</text>
+            <text x="35" y="14" text-anchor="middle" font-size="8" fill="#1b5e20">Store</text>
         </g>
-        <text x="110" y="180" font-size="11" font-weight="bold" fill="#000000">Data store</text>
-        <text x="225" y="180" font-size="10.5" fill="#334155">A place where data is kept</text>
-        <text x="485" y="180" font-size="11" fill="#000000">College FAQs Store</text>
+        <text x="137" y="169" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Data store</text>
+        <text x="200" y="160" font-size="10" fill="#334155">A repository where persistent</text>
+        <text x="200" y="174" font-size="10" fill="#334155">data is stored and retrieved</text>
+        <text x="445" y="160" font-size="10" font-weight="bold" fill="#0f254e">D2 College FAQs Store &amp; D1 Students</text>
+        <text x="445" y="174" font-size="9" fill="#64748b">college_chatbot.db (SQLite database)</text>
 
         <!-- Row 4: Data flow -->
-        <line x1="20" y1="232" x2="70" y2="232" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#dfdGreenArrow)"/>
-        <text x="110" y="236" font-size="11" font-weight="bold" fill="#000000">Data flow</text>
-        <text x="225" y="228" font-size="10.5" fill="#334155">An arrow showing data moving</text>
-        <text x="225" y="242" font-size="10.5" fill="#334155">from one place to another</text>
-        <text x="485" y="236" font-size="11" fill="#000000">query, answer, roll no</text>
+        <g transform="translate(18, 206)">
+            <line x1="0" y1="12" x2="48" y2="12" stroke="#2e7d32" stroke-width="1.6" marker-end="url(#dfdGreenArrow)"/>
+        </g>
+        <text x="137" y="219" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1b5e20">Data flow</text>
+        <text x="200" y="209" font-size="10" fill="#334155">A directed arrow showing data moving</text>
+        <text x="200" y="223" font-size="10" fill="#334155">between entities, processes and stores</text>
+        <text x="445" y="209" font-size="10" font-weight="bold" fill="#0f254e">query, answer, roll no, student data</text>
+        <text x="445" y="223" font-size="9" fill="#64748b">Directional data exchange across all 4 steps</text>
     </g>
 </svg>
-                </div>
-
-                <div class="figure-caption">Fig: Data Flow Diagram (DFD) &mdash; First-Level Process Decomposition &amp; DFD Symbols Table.</div>
-
-                <div class="page-footer">
-                    <span>AI Chatbot for College &bull; Official Submission Dossier</span>
-                    <span>Page 1 of 1</span>
-                </div>
             </div>
+            <div class="figure-caption">Fig: Data Flow Diagram (DFD) &mdash; First-Level Process Decomposition (1.0 Receive Query, 2.0 Get Student Data, 3.0 Find Answer in FAQs, 4.0 Show Answer &amp; Save Chat) with data stores (D1 Students, D2 FAQs containing Pune Wagholi &amp; Yerawada info, D3 Chat History) and formal academic DFD symbols reference table.</div>
         </div>
     </div>
+</div>
+
 </body>
 </html>
