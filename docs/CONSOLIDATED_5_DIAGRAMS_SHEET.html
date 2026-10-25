@@ -287,118 +287,108 @@
     <!-- ========================================================================== -->
     <text x="370" y="24" font-size="12" font-weight="bold" fill="#000000">2. CLASS DIAGRAM</text>
 
-    <!-- Class 1: User / Student -->
-    <g transform="translate(370, 42)">
-        <rect x="0" y="0" width="85" height="110" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="42" y="14" text-anchor="middle" font-size="9" font-weight="bold">Student</text>
-        <line x1="0" y1="18" x2="85" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- roll_no: str</text>
-        <text x="5" y="42" font-size="7.5">- name: str</text>
-        <text x="5" y="54" font-size="7.5">- course: str</text>
-        <text x="5" y="66" font-size="7.5">- cgpa: float</text>
-        <text x="5" y="78" font-size="7.5">- attendance: float</text>
-        <line x1="0" y1="84" x2="85" y2="84" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="95" font-size="7.5">+ login()</text>
-        <text x="5" y="105" font-size="7.5">+ askQuery()</text>
+    <!-- Generalization Arrow definition -->
+    <defs>
+        <marker id="genHollowSmall" markerWidth="10" markerHeight="10" refX="5" refY="9" orient="auto">
+            <polygon points="1 9, 5 1, 9 9" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        </marker>
+    </defs>
+
+    <!-- Class 1: User (Base Class at Top Center) -->
+    <g transform="translate(500, 32)">
+        <rect x="0" y="0" width="125" height="72" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        <rect x="0" y="0" width="125" height="17" fill="#e2efda" stroke="#4a7732" stroke-width="1.2"/>
+        <text x="62" y="12" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d5016">User</text>
+        <text x="5" y="27" font-size="7">+username: String</text>
+        <text x="5" y="37" font-size="7">+password_hash: String</text>
+        <text x="5" y="47" font-size="7">+role: String</text>
+        <line x1="0" y1="51" x2="125" y2="51" stroke="#4a7732" stroke-width="0.8"/>
+        <text x="5" y="60" font-size="7">+login(pwd): Boolean</text>
+        <text x="5" y="69" font-size="7">+change_password(): Boolean</text>
     </g>
 
-    <!-- Multiplicity 1 to * connecting Student to ChatHistory -->
-    <line x1="455" y1="95" x2="495" y2="95" stroke="#000000" stroke-width="1.2"/>
-    <text x="462" y="88" font-size="8" font-weight="bold">1</text>
-    <text x="485" y="88" font-size="8" font-weight="bold">*</text>
+    <!-- Generalization / Inheritance Lines from Student & Admin to User -->
+    <line x1="562" y1="120" x2="562" y2="105" stroke="#4a7732" stroke-width="1.3" marker-end="url(#genHollowSmall)"/>
+    <line x1="425" y1="120" x2="700" y2="120" stroke="#4a7732" stroke-width="1.3"/>
+    <line x1="425" y1="120" x2="425" y2="135" stroke="#4a7732" stroke-width="1.3"/>
+    <line x1="700" y1="120" x2="700" y2="135" stroke="#4a7732" stroke-width="1.3"/>
 
-    <!-- Class 2: ChatHistory -->
-    <g transform="translate(495, 42)">
-        <rect x="0" y="0" width="90" height="110" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="45" y="14" text-anchor="middle" font-size="9" font-weight="bold">ChatHistory</text>
-        <line x1="0" y1="18" x2="90" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- id: int</text>
-        <text x="5" y="42" font-size="7.5">- roll_no: str</text>
-        <text x="5" y="54" font-size="7.5">- user_query: text</text>
-        <text x="5" y="66" font-size="7.5">- bot_response: text</text>
-        <text x="5" y="78" font-size="7.5">- timestamp: time</text>
-        <text x="5" y="90" font-size="7.5">- feedback: str</text>
-        <line x1="0" y1="94" x2="90" y2="94" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="105" font-size="7.5">+ logTurn()</text>
+    <!-- Class 2: Student (Subclass at Middle Left) -->
+    <g transform="translate(370, 135)">
+        <rect x="0" y="0" width="112" height="110" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        <rect x="0" y="0" width="112" height="16" fill="#e2efda" stroke="#4a7732" stroke-width="1.2"/>
+        <text x="56" y="12" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d5016">Student</text>
+        <text x="4" y="26" font-size="6.8">+roll_no: String</text>
+        <text x="4" y="35" font-size="6.8">+name: String</text>
+        <text x="4" y="44" font-size="6.8">+attendance: Float</text>
+        <text x="4" y="53" font-size="6.8">+fees_due: Float</text>
+        <text x="4" y="62" font-size="6.8">+course: String</text>
+        <text x="4" y="71" font-size="6.8">+semester: String</text>
+        <text x="4" y="80" font-size="6.8">+cgpa: Float</text>
+        <line x1="0" y1="84" x2="112" y2="84" stroke="#4a7732" stroke-width="0.8"/>
+        <text x="4" y="94" font-size="6.8">+personalized_answer()</text>
+        <text x="4" y="103" font-size="6.8">+get_profile_summary()</text>
     </g>
 
-    <!-- Multiplicity * to 1 connecting ChatHistory to CollegeInfo -->
-    <line x1="585" y1="95" x2="625" y2="95" stroke="#000000" stroke-width="1.2"/>
-    <text x="592" y="88" font-size="8" font-weight="bold">*</text>
-    <text x="615" y="88" font-size="8" font-weight="bold">1</text>
-
-    <!-- Class 3: CollegeInfo (FAQs) -->
-    <g transform="translate(625, 42)">
-        <rect x="0" y="0" width="95" height="110" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="47" y="14" text-anchor="middle" font-size="9" font-weight="bold">CollegeInfo</text>
-        <line x1="0" y1="18" x2="95" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- id: int</text>
-        <text x="5" y="42" font-size="7.5">- category: str</text>
-        <text x="5" y="54" font-size="7.5">- keywords: str</text>
-        <text x="5" y="66" font-size="7.5">- question: text</text>
-        <text x="5" y="78" font-size="7.5">- answer: text</text>
-        <line x1="0" y1="84" x2="95" y2="84" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="95" font-size="7.5">+ matchQuery()</text>
-        <text x="5" y="105" font-size="7.5">+ getAnswer()</text>
+    <!-- Class 3: Admin (Subclass at Middle Right) -->
+    <g transform="translate(642, 135)">
+        <rect x="0" y="0" width="115" height="92" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        <rect x="0" y="0" width="115" height="16" fill="#e2efda" stroke="#4a7732" stroke-width="1.2"/>
+        <text x="57" y="12" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d5016">Admin</text>
+        <line x1="0" y1="28" x2="115" y2="28" stroke="#4a7732" stroke-width="0.8"/>
+        <text x="4" y="40" font-size="6.8">+add_faq(cat, q, a): Int</text>
+        <text x="4" y="52" font-size="6.8">+delete_faq(id): Boolean</text>
+        <text x="4" y="64" font-size="6.8">+view_kpi(): Dict</text>
+        <text x="4" y="76" font-size="6.8">+export_chat_csv(): File</text>
     </g>
 
-    <!-- Class 4: DetentionEngine -->
-    <g transform="translate(370, 180)">
-        <rect x="0" y="0" width="90" height="95" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="45" y="14" text-anchor="middle" font-size="8.5" font-weight="bold">DetentionEngine</text>
-        <line x1="0" y1="18" x2="90" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- min_cutoff: 75.0</text>
-        <text x="5" y="42" font-size="7.5">- tier2_min: 60.0</text>
-        <text x="5" y="54" font-size="7.5">- tier3_min: 50.0</text>
-        <line x1="0" y1="60" x2="90" y2="60" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="72" font-size="7.5">+ evaluateTier()</text>
-        <text x="5" y="84" font-size="7.5">+ getTheoryRubric()</text>
+    <!-- Association between Student and ChatHistory -->
+    <line x1="425" y1="245" x2="425" y2="265" stroke="#000000" stroke-width="1.1"/>
+    <text x="430" y="252" font-size="7" font-weight="bold">1</text>
+    <text x="430" y="260" font-size="6.5" fill="#475569">submits</text>
+    <text x="430" y="264" font-size="7" font-weight="bold">0..*</text>
+
+    <!-- Association between Admin and CollegeInfo -->
+    <line x1="700" y1="227" x2="700" y2="265" stroke="#000000" stroke-width="1.1"/>
+    <text x="705" y="236" font-size="7" font-weight="bold">1</text>
+    <text x="705" y="247" font-size="6.5" fill="#475569">manages</text>
+    <text x="705" y="263" font-size="7" font-weight="bold">0..*</text>
+
+    <!-- Class 4: ChatHistory (Bottom Left) -->
+    <g transform="translate(370, 265)">
+        <rect x="0" y="0" width="112" height="100" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        <rect x="0" y="0" width="112" height="16" fill="#e2efda" stroke="#4a7732" stroke-width="1.2"/>
+        <text x="56" y="12" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#2d5016">ChatHistory</text>
+        <text x="4" y="26" font-size="6.8">-id: Integer</text>
+        <text x="4" y="35" font-size="6.8">-roll_no: String</text>
+        <text x="4" y="44" font-size="6.8">-user_query: String</text>
+        <text x="4" y="53" font-size="6.8">-bot_response: String</text>
+        <text x="4" y="62" font-size="6.8">-timestamp: DateTime</text>
+        <text x="4" y="71" font-size="6.8">-feedback: String</text>
+        <line x1="0" y1="75" x2="112" y2="75" stroke="#4a7732" stroke-width="0.8"/>
+        <text x="4" y="85" font-size="6.8">+record_feedback()</text>
+        <text x="4" y="94" font-size="6.8">+export_logs(): List</text>
     </g>
 
-    <!-- Class 5: VoiceService (TTS / STT) -->
-    <g transform="translate(485, 180)">
-        <rect x="0" y="0" width="85" height="95" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="42" y="14" text-anchor="middle" font-size="8.5" font-weight="bold">VoiceService</text>
-        <line x1="0" y1="18" x2="85" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- lang: string</text>
-        <text x="5" y="42" font-size="7.5">- ttsEngine: gTTS</text>
-        <text x="5" y="54" font-size="7.5">- sttAPI: WebSpeech</text>
-        <line x1="0" y1="60" x2="85" y2="60" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="72" font-size="7.5">+ speechToText()</text>
-        <text x="5" y="84" font-size="7.5">+ textToSpeech()</text>
+    <!-- Class 5: CollegeInfo (FAQ) (Bottom Right) -->
+    <g transform="translate(642, 265)">
+        <rect x="0" y="0" width="115" height="100" fill="#ffffff" stroke="#4a7732" stroke-width="1.2"/>
+        <rect x="0" y="0" width="115" height="16" fill="#e2efda" stroke="#4a7732" stroke-width="1.2"/>
+        <text x="57" y="12" text-anchor="middle" font-size="8" font-weight="bold" fill="#2d5016">CollegeInfo (FAQ)</text>
+        <text x="4" y="28" font-size="6.8">-id: Integer</text>
+        <text x="4" y="38" font-size="6.8">-category: String</text>
+        <text x="4" y="48" font-size="6.8">-keywords: String</text>
+        <text x="4" y="58" font-size="6.8">-answer: String</text>
+        <line x1="0" y1="65" x2="115" y2="65" stroke="#4a7732" stroke-width="0.8"/>
+        <text x="4" y="78" font-size="6.8">+match_query()</text>
+        <text x="4" y="89" font-size="6.8">+get_categories()</text>
     </g>
 
-    <!-- Class 6: Admin -->
-    <g transform="translate(595, 180)">
-        <rect x="0" y="0" width="90" height="95" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="45" y="14" text-anchor="middle" font-size="8.5" font-weight="bold">Admin</text>
-        <line x1="0" y1="18" x2="90" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- username: str</text>
-        <text x="5" y="42" font-size="7.5">- password_hash: str</text>
-        <text x="5" y="54" font-size="7.5">- role: string</text>
-        <line x1="0" y1="60" x2="90" y2="60" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="72" font-size="7.5">+ addFAQ()</text>
-        <text x="5" y="84" font-size="7.5">+ exportCSV()</text>
-    </g>
-
-    <!-- Class 7: ReportGenerator -->
-    <g transform="translate(485, 290)">
-        <rect x="0" y="0" width="105" height="75" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
-        <text x="52" y="14" text-anchor="middle" font-size="8.5" font-weight="bold">ReportGenerator</text>
-        <line x1="0" y1="18" x2="105" y2="18" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="30" font-size="7.5">- export_format: csv</text>
-        <text x="5" y="42" font-size="7.5">- date_filter: range</text>
-        <line x1="0" y1="46" x2="105" y2="46" stroke="#000000" stroke-width="1"/>
-        <text x="5" y="57" font-size="7.5">+ generateChatCSV()</text>
-        <text x="5" y="68" font-size="7.5">+ getDetentionReport()</text>
-    </g>
-
-    <!-- Connectors between classes -->
-    <line x1="412" y1="152" x2="412" y2="180" stroke="#000000" stroke-width="1"/>
-    <line x1="527" y1="152" x2="527" y2="180" stroke="#000000" stroke-width="1"/>
-    <line x1="640" y1="152" x2="640" y2="180" stroke="#000000" stroke-width="1"/>
-    <line x1="537" y1="275" x2="537" y2="290" stroke="#000000" stroke-width="1"/>
-
+    <!-- Association between ChatHistory and CollegeInfo (FAQ) -->
+    <line x1="482" y1="315" x2="642" y2="315" stroke="#000000" stroke-width="1.1"/>
+    <text x="488" y="310" font-size="7" font-weight="bold">0..*</text>
+    <text x="562" y="327" text-anchor="middle" font-size="6.8" fill="#475569">matched in</text>
+    <text x="625" y="310" font-size="7" font-weight="bold">0..*</text>
 
     <!-- ========================================================================== -->
     <!-- 3. ACTIVITY DIAGRAM (RIGHT COLUMN: x=770 to 1095, y=5 to 745)             -->
