@@ -988,118 +988,245 @@
     <div class="topic-header" style="margin-bottom: 6px;">DECISION TREE :</div>
 
     <div class="diagram-container-full" style="flex: 1; display: flex; justify-content: center; align-items: center;">
-        <svg viewBox="0 0 700 750" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 1200 1560" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <marker id="dtArrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 7 3, 0 6" fill="#1e3d73"/>
-        </marker>
-        <filter id="dtShadow" x="-5%" y="-5%" width="110%" height="110%">
-            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+        <filter id="dtShadow" x="-4%" y="-4%" width="108%" height="108%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.10"/>
+        </filter>
+        <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.15"/>
         </filter>
     </defs>
-    <rect x="0" y="0" width="700" height="750" fill="#ffffff"/>
-    <g transform="translate(260, 20)">
-        <rect x="0" y="0" width="180" height="42" rx="6" fill="#1e3d73" stroke="#0f254e" stroke-width="1.5" filter="url(#dtShadow)"/>
-        <text x="90" y="26" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">Student / User Login</text>
+
+    <!-- Canvas Background -->
+    <rect width="1200" height="1560" fill="#ffffff"/>
+
+    <!-- Header Banner -->
+    <rect x="25" y="20" width="1150" height="56" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="45" y="55" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" fill="#0f254e">
+        College AI Chatbot &bull; Decision Tree Analysis (Standard Horizontal Structure)
+    </text>
+    <text x="1155" y="55" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="600" fill="#64748b">
+        Decision Logic Mapped to Page 9 Decision Table &bull; SYBBA-CA (Sem III)
+    </text>
+
+    <!-- ============================================================== -->
+    <!-- 1. ROOT DECISION D1 TO LEVEL 1 (C1 & D12) -->
+    <!-- ============================================================== -->
+
+    <!-- D1 (x=70, y=800) to C1 (x=360, y=580) -->
+    <path d="M 95 780 L 140 580 L 335 580" fill="none" stroke="#1e3d73" stroke-width="2.8" stroke-linejoin="round"/>
+    <text x="145" y="566" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0f254e">D11: Deploy AI Chatbot Engine</text>
+    <text x="145" y="600" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-style="italic" fill="#2563eb">Full Academic &amp; Attendance Automation</text>
+
+    <!-- D1 (x=70, y=800) to D12 (x=680, y=1020) -->
+    <path d="M 95 820 L 145 1020 L 675 1020" fill="none" stroke="#1e3d73" stroke-width="2.8" stroke-linejoin="round"/>
+    <text x="160" y="1005" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f254e">D12: Maintain Legacy Manual Noticeboard Operations</text>
+    <text x="160" y="1040" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-style="italic" fill="#64748b">No Automated Chatbot &bull; Paper Notices &bull; Late Detention Warnings</text>
+    <!-- Terminal for D12 -->
+    <g transform="translate(680, 995)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="480" height="50" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+        <rect x="0" y="0" width="8" height="50" fill="#64748b" rx="3"/>
+        <text x="20" y="21" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#334155">Terminal: Conventional Manual Administration</text>
+        <text x="20" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#64748b">Paper detention lists posted only at term end; no real-time student guidance</text>
     </g>
-    <line x1="310" y1="62" x2="190" y2="100" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <line x1="390" y1="62" x2="510" y2="100" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(110, 100)">
-        <rect x="0" y="0" width="160" height="38" rx="5" fill="#f1f5f9" stroke="#1e3d73" stroke-width="1.5"/>
-        <text x="80" y="23" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Register Account</text>
+
+    <!-- ============================================================== -->
+    <!-- 2. CHANCE NODE C1 TO LEVEL 2 (D2 & D3) -->
+    <!-- ============================================================== -->
+
+    <!-- C1 (x=360, y=580) to D2 (x=600, y=425) -->
+    <path d="M 385 565 L 425 425 L 575 425" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linejoin="round"/>
+    <text x="435" y="411" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#166534">C11: Valid Roll Number</text>
+    <text x="435" y="445" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#15803d">Authenticated &bull; Prob = 0.85</text>
+
+    <!-- C1 (x=360, y=580) to D3 (x=600, y=740) -->
+    <path d="M 385 595 L 425 740 L 575 740" fill="none" stroke="#b91c1c" stroke-width="2.4" stroke-linejoin="round"/>
+    <text x="435" y="726" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#991b1b">C12: Invalid Credentials</text>
+    <text x="435" y="760" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#b91c1c">Auth Failure &bull; Prob = 0.15</text>
+
+    <!-- ============================================================== -->
+    <!-- 3. DECISION NODE D3 TO TERMINAL HELPDESK -->
+    <!-- ============================================================== -->
+
+    <line x1="625" y1="740" x2="675" y2="740" stroke="#b91c1c" stroke-width="2.4" stroke-dasharray="5,4"/>
+    <g transform="translate(680, 715)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="480" height="50" rx="6" fill="#fff1f2" stroke="#e11d48" stroke-width="1.6"/>
+        <rect x="0" y="0" width="8" height="50" fill="#e11d48" rx="3"/>
+        <text x="20" y="21" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#9f1239">D31: Security Fallback &amp; Student Helpline</text>
+        <text x="20" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#be123c">Access denied &bull; Official Wagholi &amp; Yerawada helpdesk contacts displayed</text>
     </g>
-    <g transform="translate(430, 100)">
-        <rect x="0" y="0" width="160" height="38" rx="5" fill="#f1f5f9" stroke="#1e3d73" stroke-width="1.5"/>
-        <text x="80" y="23" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Enter Roll Number</text>
+
+    <!-- ============================================================== -->
+    <!-- 4. DECISION NODE D2 TO C2 (ATTENDANCE) & D22 (FAQ) -->
+    <!-- ============================================================== -->
+
+    <!-- D2 (x=600, y=425) to C2 (x=815, y=280) -->
+    <path d="M 625 415 L 660 280 L 790 280" fill="none" stroke="#1e3d73" stroke-width="2.4" stroke-linejoin="round"/>
+    <text x="668" y="266" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#0f254e">D21: Attendance Engine</text>
+    <text x="668" y="300" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#2563eb">Compute: (Att / Total) &times; 100</text>
+
+    <!-- D2 (x=600, y=425) to D22 (FAQ Terminal, y=570) -->
+    <path d="M 625 435 L 660 570 L 675 570" fill="none" stroke="#1e3d73" stroke-width="2.4" stroke-linejoin="round"/>
+    <g transform="translate(680, 545)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="480" height="50" rx="6" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.6"/>
+        <rect x="0" y="0" width="8" height="50" fill="#0284c7" rx="3"/>
+        <text x="20" y="21" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#0369a1">D22: Wagholi &amp; Yerawada FAQs Dispatched</text>
+        <text x="20" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#0284c7">Instant answers on campus directions, fees &amp; syllabus + gTTS voice audio</text>
     </g>
-    <line x1="190" y1="138" x2="190" y2="175" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(110, 175)">
-        <rect x="0" y="0" width="160" height="38" rx="5" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
-        <text x="80" y="23" text-anchor="middle" font-size="10.5" fill="#1e293b">Submit Student Details</text>
+
+    <!-- ============================================================== -->
+    <!-- 5. CHANCE NODE C2 TO THE 4 TIERS OF ATTENDANCE -->
+    <!-- ============================================================== -->
+
+    <!-- Tier 1 (Safe, >=75%, y=130) -->
+    <path d="M 840 265 L 875 130 L 975 130" fill="none" stroke="#16a34a" stroke-width="2.2" stroke-linejoin="round"/>
+    <text x="880" y="118" font-family="'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#15803d">C21: Safe (&ge; 75%)</text>
+    <text x="880" y="148" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#166534">Prob = 0.70</text>
+    <!-- Terminal Tier 1 -->
+    <g transform="translate(980, 106)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+        <rect x="0" y="0" width="6" height="48" fill="#16a34a" rx="3"/>
+        <text x="14" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#15803d">Case 1 (Safe): Cleared</text>
+        <text x="14" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#166534">Exam hall ticket approved</text>
     </g>
-    <line x1="510" y1="138" x2="510" y2="175" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(430, 175)">
-        <rect x="0" y="0" width="160" height="38" rx="5" fill="#ffffff" stroke="#1e3d73" stroke-width="1.5"/>
-        <text x="80" y="23" text-anchor="middle" font-size="10.5" fill="#1e293b">Verify in SQLite DB</text>
+
+    <!-- Tier 2 (Warning, 60-74.9%, y=230) -->
+    <path d="M 840 275 L 875 230 L 975 230" fill="none" stroke="#ca8a04" stroke-width="2.2" stroke-linejoin="round"/>
+    <text x="880" y="218" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#854d0e">C22: Warning (60-75%)</text>
+    <text x="880" y="248" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#a16207">Prob = 0.18</text>
+    <!-- Terminal Tier 2 -->
+    <g transform="translate(980, 206)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#fefce8" stroke="#ca8a04" stroke-width="1.6"/>
+        <rect x="0" y="0" width="6" height="48" fill="#ca8a04" rx="3"/>
+        <text x="14" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#854d0e">Case 2 (Warning): Notice</text>
+        <text x="14" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#713f12">Warning &amp; coursework</text>
     </g>
-    <line x1="470" y1="213" x2="380" y2="250" stroke="#b91c1c" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(320, 250)">
-        <rect x="0" y="0" width="120" height="34" rx="5" fill="#fee2e2" stroke="#b91c1c" stroke-width="1.2"/>
-        <text x="60" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#991b1b">Auth Failed</text>
+
+    <!-- Tier 3 (Critical, 50-59.9%, y=330) -->
+    <path d="M 840 285 L 875 330 L 975 330" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linejoin="round"/>
+    <text x="880" y="318" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#9a3412">C23: Critical (50-60%)</text>
+    <text x="880" y="348" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#c2410c">Prob = 0.08</text>
+    <!-- Terminal Tier 3 -->
+    <g transform="translate(980, 306)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="1.6"/>
+        <rect x="0" y="0" width="6" height="48" fill="#ea580c" rx="3"/>
+        <text x="14" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#9a3412">Case 3 (Critical): Hearing</text>
+        <text x="14" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#7c2d12">Mandatory PTM &amp; HOD review</text>
     </g>
-    <line x1="550" y1="213" x2="570" y2="250" stroke="#15803d" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(500, 250)">
-        <rect x="0" y="0" width="140" height="34" rx="5" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
-        <text x="70" y="21" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">Login Successful</text>
+
+    <!-- Tier 4 (Severe, <50%, y=430) -->
+    <path d="M 840 295 L 875 430 L 975 430" fill="none" stroke="#dc2626" stroke-width="2.2" stroke-linejoin="round"/>
+    <text x="880" y="418" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="bold" fill="#991b1b">C24: Severe (&lt; 50%)</text>
+    <text x="880" y="448" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" font-style="italic" fill="#b91c1c">Prob = 0.04</text>
+    <!-- Terminal Tier 4 -->
+    <g transform="translate(980, 406)" filter="url(#dtShadow)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+        <rect x="0" y="0" width="6" height="48" fill="#dc2626" rx="3"/>
+        <text x="14" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="bold" fill="#991b1b">Case 4 (Severe): Detained</text>
+        <text x="14" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#7f1d1d">Hall ticket held &bull; Repeat</text>
     </g>
-    <path d="M 320,267 L 290,267 L 290,119 L 430,119" fill="none" stroke="#b91c1c" stroke-width="1.2" stroke-dasharray="3,3" marker-end="url(#dtArrow)"/>
-    <text x="280" y="195" font-size="8.5" fill="#b91c1c" transform="rotate(-90 280,195)">Retry Auth</text>
-    <line x1="190" y1="213" x2="190" y2="250" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(120, 250)">
-        <rect x="0" y="0" width="140" height="34" rx="5" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.2"/>
-        <text x="70" y="21" text-anchor="middle" font-size="10" fill="#1e293b">Account Created</text>
+
+    <!-- ============================================================== -->
+    <!-- NODES: DECISION SQUARES & CHANCE CIRCLES -->
+    <!-- ============================================================== -->
+
+    <!-- ROOT NODE D1 (Square: x=45, y=775, width=50, height=50) -->
+    <g transform="translate(45, 775)" filter="url(#nodeShadow)">
+        <rect x="0" y="0" width="50" height="50" fill="#dbeafe" stroke="#1e3d73" stroke-width="2.6" rx="3"/>
+        <text x="25" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0f254e">D1</text>
     </g>
-    <line x1="190" y1="284" x2="350" y2="330" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <line x1="570" y1="284" x2="350" y2="330" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(230, 330)">
-        <rect x="0" y="0" width="240" height="42" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
-        <text x="120" y="20" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">Enter Student Query</text>
-        <text x="120" y="34" text-anchor="middle" font-size="9" fill="#0284c7">(Text Input or Voice Microphone)</text>
+    <text x="70" y="848" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f254e">Query Intake</text>
+
+    <!-- NODE C1 (Circle: cx=360, cy=580, r=25) -->
+    <g transform="translate(335, 555)" filter="url(#nodeShadow)">
+        <circle cx="25" cy="25" r="25" fill="#fef3c7" stroke="#d97706" stroke-width="2.6"/>
+        <text x="25" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" fill="#92400e">C1</text>
     </g>
-    <line x1="350" y1="372" x2="350" y2="415" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(230, 415)">
-        <polygon points="120,0 240,24 120,48 0,24" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-        <text x="120" y="28" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#92400e">Classify Query Type</text>
+    <text x="360" y="620" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#92400e">Student Auth</text>
+
+    <!-- NODE D2 (Square: x=575, y=400, width=50, height=50) -->
+    <g transform="translate(575, 400)" filter="url(#nodeShadow)">
+        <rect x="0" y="0" width="50" height="50" fill="#dbeafe" stroke="#1e3d73" stroke-width="2.6" rx="3"/>
+        <text x="25" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0f254e">D2</text>
     </g>
-    <line x1="120" y1="439" x2="80" y2="495" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <text x="65" y="465" font-size="9" font-weight="bold" fill="#1e3d73">General FAQ</text>
-    <g transform="translate(10, 495)">
-        <rect x="0" y="0" width="140" height="52" rx="5" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.2"/>
-        <text x="70" y="18" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#0f254e">Campus &amp; Fee FAQs</text>
-        <text x="70" y="32" text-anchor="middle" font-size="8.5" fill="#475569">Wagholi &amp; Yerawada</text>
-        <text x="70" y="44" text-anchor="middle" font-size="8" fill="#64748b">Addresses &amp; Timetable</text>
+    <text x="600" y="470" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#0f254e">Eval Decision</text>
+
+    <!-- NODE D3 (Square: x=575, y=715, width=50, height=50) -->
+    <g transform="translate(575, 715)" filter="url(#nodeShadow)">
+        <rect x="0" y="0" width="50" height="50" fill="#fee2e2" stroke="#dc2626" stroke-width="2.6" rx="3"/>
+        <text x="25" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#991b1b">D3</text>
     </g>
-    <line x1="350" y1="463" x2="350" y2="495" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <text x="358" y="480" font-size="9" font-weight="bold" fill="#1e3d73">Attendance %</text>
-    <g transform="translate(200, 495)">
-        <rect x="0" y="0" width="300" height="135" rx="6" fill="#ffffff" stroke="#1e3d73" stroke-width="1.8"/>
-        <text x="150" y="18" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1e3d73">4-Tier Attendance Detention Engine</text>
-        <line x1="10" y1="24" x2="290" y2="24" stroke="#e2e8f0" stroke-width="1"/>
-        <rect x="15" y="30" width="270" height="22" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="0.8"/>
-        <text x="25" y="45" font-size="8.5" font-weight="bold" fill="#15803d">&gt;= 75% &bull; Tier 1 (Safe):</text>
-        <text x="125" y="45" font-size="8" fill="#166534">Normal Clearance, Exam Eligible</text>
-        <rect x="15" y="56" width="270" height="22" rx="3" fill="#fef9c3" stroke="#ca8a04" stroke-width="0.8"/>
-        <text x="25" y="71" font-size="8.5" font-weight="bold" fill="#854d0e">60% - 74% &bull; Tier 2 (Warning):</text>
-        <text x="145" y="71" font-size="8" fill="#713f12">Warning Letter + Assignments</text>
-        <rect x="15" y="82" width="270" height="22" rx="3" fill="#ffedd5" stroke="#ea580c" stroke-width="0.8"/>
-        <text x="25" y="97" font-size="8.5" font-weight="bold" fill="#9a3412">50% - 59% &bull; Tier 3 (Critical):</text>
-        <text x="140" y="97" font-size="8" fill="#7c2d12">Parent Meeting + HOD Hearing</text>
-        <rect x="15" y="108" width="270" height="22" rx="3" fill="#fee2e2" stroke="#dc2626" stroke-width="0.8"/>
-        <text x="25" y="123" font-size="8.5" font-weight="bold" fill="#991b1b">&lt; 50% &bull; Tier 4 (Severe):</text>
-        <text x="125" y="123" font-size="8" fill="#7f1d1d">Hall Ticket Withheld / Term Repeat</text>
+    <text x="600" y="785" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#991b1b">Security Action</text>
+
+    <!-- NODE C2 (Circle: cx=815, cy=280, r=25) -->
+    <g transform="translate(790, 255)" filter="url(#nodeShadow)">
+        <circle cx="25" cy="25" r="25" fill="#dcfce7" stroke="#16a34a" stroke-width="2.6"/>
+        <text x="25" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" fill="#15803d">C2</text>
     </g>
-    <line x1="470" y1="439" x2="590" y2="495" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <text x="545" y="465" font-size="9" font-weight="bold" fill="#1e3d73">Admin Query</text>
-    <g transform="translate(530, 495)">
-        <rect x="0" y="0" width="150" height="52" rx="5" fill="#f8fafc" stroke="#1e3d73" stroke-width="1.2"/>
-        <text x="75" y="18" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#0f254e">Report Generation</text>
-        <text x="75" y="32" text-anchor="middle" font-size="8.5" fill="#475569">Export Chat Logs (.CSV)</text>
-        <text x="75" y="44" text-anchor="middle" font-size="8" fill="#64748b">Export Detention Summary</text>
-    </g>
-    <line x1="80" y1="547" x2="80" y2="655" stroke="#1e3d73" stroke-width="1.5"/>
-    <line x1="80" y1="655" x2="250" y2="655" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dtArrow)"/>
-    <line x1="350" y1="630" x2="350" y2="655" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <line x1="605" y1="547" x2="605" y2="655" stroke="#1e3d73" stroke-width="1.5"/>
-    <line x1="605" y1="655" x2="450" y2="655" stroke="#1e3d73" stroke-width="1.5" marker-end="url(#dtArrow)"/>
-    <g transform="translate(250, 640)">
-        <rect x="0" y="0" width="200" height="38" rx="5" fill="#1e3d73" stroke="#0f254e" stroke-width="1.5"/>
-        <text x="100" y="18" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#ffffff">Dispatch Bot Answer &amp; Audio</text>
-        <text x="100" y="31" text-anchor="middle" font-size="8.5" fill="#cbd5e1">gTTS Audio + Log to Chat DB</text>
-    </g>
-    <line x1="350" y1="678" x2="350" y2="705" stroke="#1e3d73" stroke-width="1.8" marker-end="url(#dtArrow)"/>
-    <g transform="translate(300, 705)">
-        <rect x="0" y="0" width="100" height="30" rx="15" fill="#0f254e" stroke="#0f254e" stroke-width="1.5"/>
-        <text x="50" y="19" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">End Session</text>
+    <text x="815" y="320" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#15803d">Attendance Eval</text>
+
+    <!-- ============================================================== -->
+    <!-- FORMAL NOTATION LEGEND (Matching reference textbook format) -->
+    <!-- ============================================================== -->
+    <g transform="translate(25, 1140)">
+        <rect x="0" y="0" width="1150" height="385" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6,4"/>
+        
+        <!-- Legend Header -->
+        <rect x="0" y="0" width="1150" height="44" rx="8" fill="#e2e8f0"/>
+        <text x="30" y="28" font-family="'Segoe UI', Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#0f254e">
+            STANDARD DECISION TREE NOTATION &amp; CONVENTIONS (Business Decision Analysis / Software Engineering)
+        </text>
+
+        <!-- Legend Item 1: Decision Node -->
+        <g transform="translate(35, 68)">
+            <rect x="0" y="0" width="44" height="44" fill="#dbeafe" stroke="#1e3d73" stroke-width="2.2" rx="3"/>
+            <text x="22" y="29" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0f254e">D</text>
+            <text x="62" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Decision Node (Square Box)</text>
+            <text x="62" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#64748b">A deliberate choice point where system logic or user actively selects between alternatives.</text>
+        </g>
+
+        <!-- Legend Item 2: Chance Node -->
+        <g transform="translate(600, 68)">
+            <circle cx="22" cy="22" r="22" fill="#fef3c7" stroke="#d97706" stroke-width="2.2"/>
+            <text x="22" y="29" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="bold" fill="#92400e">C</text>
+            <text x="62" y="20" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Chance / State Node (Circle)</text>
+            <text x="62" y="38" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#64748b">An evaluation point representing conditional outcomes or probabilistic states of nature.</text>
+        </g>
+
+        <!-- Legend Item 3: Branch Line -->
+        <g transform="translate(35, 148)">
+            <line x1="0" y1="20" x2="48" y2="20" stroke="#1e3d73" stroke-width="2.8"/>
+            <text x="62" y="18" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Alternative Branch (Directional Connector)</text>
+            <text x="62" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#64748b">Action or decision label written above the line; probability or criteria written below the line.</text>
+        </g>
+
+        <!-- Legend Item 4: Terminal Node -->
+        <g transform="translate(600, 148)">
+            <rect x="0" y="3" width="42" height="34" fill="#dcfce7" stroke="#16a34a" stroke-width="2" rx="3"/>
+            <text x="62" y="18" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Terminal Node (Payoff / Administrative Sanction)</text>
+            <text x="62" y="36" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#64748b">The final institutional outcome (Exam Clearance, Warning, Parent Hearing, Course Detention, FAQs).</text>
+        </g>
+
+        <!-- Legend Divider -->
+        <line x1="25" y1="225" x2="1125" y2="225" stroke="#cbd5e1" stroke-width="1.2"/>
+        
+        <!-- Legend Explanation Table -->
+        <text x="35" y="255" font-family="'Segoe UI', Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f254e">
+            Summary of Project Decision Paths &amp; Alignment with Page 9 Decision Table:
+        </text>
+        <text x="35" y="280" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#334155">
+            &bull; <tspan font-weight="bold">C21 (Attendance &ge; 75.0%):</tspan> Maps to <tspan font-weight="bold" fill="#16a34a">Case 1 (Safe)</tspan> &mdash; Student granted full examination hall ticket clearance without penalties.
+        </text>
+        <text x="35" y="304" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#334155">
+            &bull; <tspan font-weight="bold">C22 (60.0% &le; Att &lt; 75.0%):</tspan> Maps to <tspan font-weight="bold" fill="#854d0e">Case 2 (Warning)</tspan> &mdash; Automated warning notice issued with mandatory remedial academic assignments.
+        </text>
+        <text x="35" y="328" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#334155">
+            &bull; <tspan font-weight="bold">C23 (50.0% &le; Att &lt; 60.0%):</tspan> Maps to <tspan font-weight="bold" fill="#c2410c">Case 3 (Critical)</tspan> &mdash; Compulsory Parent-Teacher Meeting (PTM) and formal HOD hearing required.
+        </text>
+        <text x="35" y="352" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#334155">
+            &bull; <tspan font-weight="bold">C24 (Attendance &lt; 50.0%):</tspan> Maps to <tspan font-weight="bold" fill="#b91c1c">Case 4 (Severe)</tspan> &mdash; Institutional course detention imposed; exam hall ticket withheld for term repeat.
+        </text>
     </g>
 </svg>
     </div>
