@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v6">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v8">
     <script>
         (function() {
             var savedTheme = localStorage.getItem('ghr_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -31,7 +31,7 @@
                 <img src="{{ url_for('static', filename='images/college_logo_vibrant.png') }}" alt="GH Raisoni University Logo" class="brand-logo-img">
             </div>
             <div class="brand-meta-badge">
-                <span class="brand-sub-badge">AUTONOMOUS 2026–27</span>
+                <span class="brand-sub-badge" id="brand-badge-text">AUTONOMOUS 2026–27</span>
             </div>
         </a>
 
@@ -88,7 +88,7 @@
                 <a href="/login" class="nav-btn nav-btn-primary" title="Student Login" id="ui-nav-login">Student Login</a>
             {% endif %}
 
-            <a href="/admin" class="nav-btn nav-btn-ghost admin-btn" title="Admin Portal">Admin</a>
+            <a href="/admin" class="nav-btn nav-btn-ghost admin-btn" id="nav-admin-btn" title="Admin Portal">Admin</a>
         </div>
     </div>
 </header>
@@ -106,10 +106,10 @@
                 <span class="status-strip-text" id="ui-status-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions &amp; Campus Support</span>
             </div>
             <div class="status-quick-bar">
-                <button type="button" class="strip-pill-btn" onclick="openBunkModal()">🎯 Bunk Calc</button>
-                <button type="button" class="strip-pill-btn" onclick="openIdCardModal()">🪪 ID Pass</button>
-                <button type="button" class="strip-pill-btn" onclick="openBonafideModal()">📄 Bonafide</button>
-                <button type="button" class="strip-pill-btn" onclick="openMapModal()">🗺️ Floor Map</button>
+                <button type="button" class="strip-pill-btn" id="strip-btn-bunk" onclick="openBunkModal()">🎯 Bunk Calc</button>
+                <button type="button" class="strip-pill-btn" id="strip-btn-id" onclick="openIdCardModal()">🪪 ID Pass</button>
+                <button type="button" class="strip-pill-btn" id="strip-btn-bonafide" onclick="openBonafideModal()">📄 Bonafide</button>
+                <button type="button" class="strip-pill-btn" id="strip-btn-map" onclick="openMapModal()">🗺️ Floor Map</button>
             </div>
             <div class="strip-right-actions">
                 <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
@@ -126,7 +126,7 @@
                     <div class="bot-text" id="welcome-message-content">
                         <div class="welcome-heading">
                             <strong id="welcome-greeting-text">Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong>
-                            <p class="welcome-subtext">I am your 24/7 campus companion. Ask questions about admissions, fees, timetable, detention rules, or explore our interactive tools below.</p>
+                            <p class="welcome-subtext" id="welcome-subtext">I am your 24/7 campus companion. Ask questions about admissions, fees, timetable, detention rules, or explore our interactive tools below.</p>
                         </div>
 
                         <!-- 4 Star Interactive Services -->
@@ -134,43 +134,43 @@
                             <div class="service-tile" onclick="openBunkModal()">
                                 <div class="service-tile-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">🎯</div>
                                 <div class="service-tile-meta">
-                                    <h4>Bunk Calculator</h4>
-                                    <p>75% Rule &amp; Safe Margins</p>
+                                    <h4 id="tile-bunk-title">Bunk Calculator</h4>
+                                    <p id="tile-bunk-sub">75% Rule &amp; Safe Margins</p>
                                 </div>
                             </div>
                             <div class="service-tile" onclick="openIdCardModal()">
                                 <div class="service-tile-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">🪪</div>
                                 <div class="service-tile-meta">
-                                    <h4>3D Digital ID Pass</h4>
-                                    <p>QR Verified Student Pass</p>
+                                    <h4 id="tile-id-title">3D Digital ID Pass</h4>
+                                    <p id="tile-id-sub">QR Verified Student Pass</p>
                                 </div>
                             </div>
                             <div class="service-tile" onclick="openBonafideModal()">
                                 <div class="service-tile-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
                                 <div class="service-tile-meta">
-                                    <h4>Bonafide / NOC</h4>
-                                    <p>Instant Download &amp; Print</p>
+                                    <h4 id="tile-bonafide-title">Bonafide / NOC</h4>
+                                    <p id="tile-bonafide-sub">Instant Download &amp; Print</p>
                                 </div>
                             </div>
                             <div class="service-tile" onclick="openMapModal()">
                                 <div class="service-tile-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">🗺️</div>
                                 <div class="service-tile-meta">
-                                    <h4>Floor Navigator</h4>
-                                    <p>Labs, Rooms &amp; Counters</p>
+                                    <h4 id="tile-map-title">Floor Navigator</h4>
+                                    <p id="tile-map-sub">Labs, Rooms &amp; Counters</p>
                                 </div>
                             </div>
                         </div>
 
                         {% if student_name %}
                             <div class="auth-notice-card logged-in">
-                                <span>✨ Logged in as <strong>{{ student_name }}</strong>. Quick questions:</span>
+                                <span id="student-notice-text" data-student-name="{{ student_name }}">✨ Logged in as <strong>{{ student_name }}</strong>. Quick questions:</span>
                                 <div class="student-quick-prompts">
-                                    <button class="prompt-chip" data-query="can I bunk?">🎯 Can I Bunk?</button>
-                                    <button class="prompt-chip" data-query="what is my attendance?">📊 My Attendance</button>
-                                    <button class="prompt-chip" data-query="show my id card">🪪 Digital ID Card</button>
-                                    <button class="prompt-chip" data-query="generate bonafide certificate">📄 Bonafide Letter</button>
-                                    <button class="prompt-chip" data-query="how much are my fees?">💰 My Fee Balance</button>
-                                    <button class="prompt-chip" data-query="what is my cgpa?">🌟 My CGPA</button>
+                                    <button class="prompt-chip" id="chip-bunk" data-query="can I bunk?">🎯 Can I Bunk?</button>
+                                    <button class="prompt-chip" id="chip-att" data-query="what is my attendance?">📊 My Attendance</button>
+                                    <button class="prompt-chip" id="chip-id" data-query="show my id card">🪪 Digital ID Card</button>
+                                    <button class="prompt-chip" id="chip-bonafide" data-query="generate bonafide certificate">📄 Bonafide Letter</button>
+                                    <button class="prompt-chip" id="chip-fee" data-query="how much are my fees?">💰 My Fee Balance</button>
+                                    <button class="prompt-chip" id="chip-cgpa" data-query="what is my cgpa?">🌟 My CGPA</button>
                                 </div>
                             </div>
                         {% else %}
@@ -692,6 +692,6 @@
 
 <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
-<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v6"></script>
+<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v8"></script>
 </body>
 </html>

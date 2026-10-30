@@ -23,6 +23,20 @@ from flask import (
     Response,
 )
 
+from knowledge_i18n import (
+    CROSS_LANG_SYNONYMS,
+    get_localized_answer,
+    get_localized_fallback,
+    format_attendance_simulation,
+    format_bunk_calculator,
+    format_student_attendance,
+    format_student_fees,
+    format_student_cgpa,
+    format_bonafide,
+    format_id_card,
+    format_profile_summary,
+)
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
@@ -182,8 +196,10 @@ SYNONYM_MAP = {
     "clothes": ["dress code", "uniform"],
 }
 
+SYNONYM_MAP.update(CROSS_LANG_SYNONYMS)
 
-def campus_brain(message, student=None):
+
+def campus_brain(message, student=None, lang="en"):
     """
     Rich Offline Campus Intelligence Engine:
     Handles greetings, small-talk, leadership, daily amenities,
@@ -193,9 +209,33 @@ def campus_brain(message, student=None):
     words = set(re.findall(r"[a-zA-Z0-9\u0900-\u097F]+", msg))
 
     # 1. Greetings & Pleasantries
-    greetings = ["hello", "hi", "hey", "namaste", "kem cho", "yo", "wassup", "sup"]
+    greetings = ["hello", "hi", "hey", "namaste", "kem cho", "yo", "wassup", "sup", "नमस्कार", "नमस्ते", "हॅलो", "हाय"]
     if any(g == msg or msg.startswith(g + " ") for g in greetings):
         name_greet = f", {student['name'].split()[0]}" if student else ""
+        if lang == "mr":
+            return (
+                f"👋 नमस्कार{name_greet}! **जीएच रायसोनी स्किल टेक युनिव्हर्सिटी स्मार्ट असिस्टंट** मध्ये आपले स्वागत आहे.\n\n"
+                f"आज मी तुम्हाला कशी मदत करू शकतो? तुम्ही विचारू शकता:\n"
+                f"• 🎯 *'मी आज २ तास गैरहजर राहिलो तर?'* किंवा *'मी बंक करू शकतो का?'*\n"
+                f"• 📊 *'माझी हजेरी'* किंवा *'माझे सीजीपीए'*\n"
+                f"• 🪪 *'माझे डिजिटल आयडी कार्ड'*\n"
+                f"• 📄 *'बोनाफाइड प्रमाणपत्र'*\n"
+                f"• 📶 *'कॅम्पस वायफाय'* किंवा *'पार्किंग नियम'*\n"
+                f"• 🗺️ *'अकाउंट्स काउंटर / रूम ३०२ कुठे आहे?'*",
+                "Campus Assistant (Greeting)"
+            )
+        elif lang == "hi":
+            return (
+                f"👋 नमस्ते{name_greet}! **जीएच रायसोनी स्किल टेक यूनिवर्सिटी स्मार्ट कैंपस सहायक** में आपका स्वागत है।\n\n"
+                f"आज मैं आपकी किस प्रकार सहायता कर सकता हूँ? आप पूछ सकते हैं:\n"
+                f"• 🎯 *'क्या मैं आज 2 क्लास मिस कर सकता हूँ?'* या *'क्या मैं बंक कर सकता हूँ?'*\n"
+                f"• 📊 *'मेरी उपस्थिति'* या *'मेरा सीजीपीए'*\n"
+                f"• 🪪 *'डिजिटल आईडी कार्ड'*\n"
+                f"• 📄 *'बोनाफाइड प्रमाण पत्र'*\n"
+                f"• 📶 *'कैंपस वाई-फाई'* या *'पार्किंग नियम'*\n"
+                f"• 🗺️ *'अकाउंट्स काउंटर / रूम 302 कहाँ है?'*",
+                "Campus Assistant (Greeting)"
+            )
         return (
             f"👋 Hello{name_greet}! Welcome to **GH Raisoni International Skill Tech University Smart Campus Assistant**.\n\n"
             f"How can I assist you today? You can ask me:\n"
@@ -208,8 +248,20 @@ def campus_brain(message, student=None):
             "Campus Assistant (Greeting)"
         )
 
-    if any(t in msg for t in ["good morning", "good afternoon", "good evening", "shubh prabhat"]):
+    if any(t in msg for t in ["good morning", "good afternoon", "good evening", "shubh prabhat", "शुभ सकाळ", "शुभ दुपार", "शुभ संध्याकाळ", "सुप्रभात"]):
         name_greet = f", {student['name'].split()[0]}" if student else ""
+        if lang == "mr":
+            return (
+                f"🌅 शुभ दिवस{name_greet}! जीएच रायसोनी कॅम्पस असिस्टंटमध्ये आपले स्वागत आहे.\n\n"
+                f"हजेरी तपासण्यासाठी, ३D डिजिटल आयडी पाहण्यासाठी, परीक्षा वेळापत्रक किंवा कॅम्पस नकाशे जाणून घेण्यासाठी मी २४/७ उपलब्ध आहे.",
+                "Campus Assistant (Greeting)"
+            )
+        elif lang == "hi":
+            return (
+                f"🌅 शुभ दिन{name_greet}! जीएच रायसोनी कैंपस सहायक में आपका स्वागत है।\n\n"
+                f"उपस्थिति जांचने, 3D डिजिटल पहचान पत्र देखने, परीक्षा समय सारणी या परिसर नक्शा खोजने हेतु मैं 24/7 उपस्थित हूँ।",
+                "Campus Assistant (Greeting)"
+            )
         return (
             f"🌅 Good day{name_greet}! Welcome to GH Raisoni Campus Portal.\n\n"
             f"I'm here 24/7 to help you track your lecture attendance, view your 3D digital ID pass, "
@@ -404,30 +456,14 @@ def campus_brain(message, student=None):
     return None, None
 
 
-def smart_fallback_response(message, student=None):
+def smart_fallback_response(message, student=None, lang="en"):
     """
     Intelligent campus fallback with dynamic action pill suggestions.
     """
-    name = f" {student['name'].split()[0]}" if student else ""
-    return (
-        f"I couldn't find a direct campus FAQ match for: *\"{message}\"*.\n\n"
-        f"As the official **GH Raisoni Campus Smart Assistant**, I can directly help you with:\n"
-        f"• 🎯 **Attendance & Bunk Simulator**: Ask *'What if I miss 2 classes today?'* or *'Can I bunk?'*\n"
-        f"• 📊 **Live Student Records**: Check real-time attendance percentage, CGPA, and pending fee balance\n"
-        f"• 🪪 **Digital ID Pass**: Access your 3D flippable institutional identity card\n"
-        f"• 📄 **Bonafide Certificates**: Preview and print official college letterhead drafts\n"
-        f"• 🏛️ **Campus Amenities**: Wi-Fi login, parking rules, library hours, canteen menu, and medical center\n"
-        f"• 🗺️ **Floor Navigator**: Locate classrooms, seminar halls, and computer labs across all 4 floors\n\n"
-        f"👉 **Quick Action Tools:**\n"
-        f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Bunk Calculator</button> "
-        f"<button class='action-pill-btn' onclick='openIdCardModal()'>🪪 Digital ID Pass</button> "
-        f"<button class='action-pill-btn' onclick='openBonafideModal()'>📄 Bonafide Draft</button> "
-        f"<button class='action-pill-btn' onclick='openMapModal()'>🗺️ Floor Map</button>\n\n"
-        f"*(For in-person support, visit Central Admin Counter 4 or call Campus Security at +91 20-67528000)*"
-    )
+    return get_localized_fallback(message, student=student, lang=lang)
 
 
-def match_query(message):
+def match_query(message, lang="en"):
     """
     Rule-based NLP with typo tolerance and synonym expansion.
     Returns (answer, category) or (None, None).
@@ -489,7 +525,8 @@ def match_query(message):
     # If only matched fuzzily without any exact or synonym match, require threshold >= 3
     min_threshold = 2 if had_exact else 3
     if best_row and best_score >= min_threshold:
-        return best_row["answer"], best_row["category"]
+        localized_ans = get_localized_answer(best_row["category"], best_row["answer"], lang=lang)
+        return localized_ans, best_row["category"]
 
     return None, None
 
@@ -501,7 +538,7 @@ def get_categories():
     return [r["category"] for r in rows]
 
 
-def personalized_answer(message, roll_no):
+def personalized_answer(message, roll_no, lang="en"):
     """
     If a logged-in student asks about their personal records,
     fetch their specific record instead of the generic FAQ answer.
@@ -528,22 +565,34 @@ def personalized_answer(message, roll_no):
         r"(?:absent|leave|off)\s+today",
         r"(?:take|taking)\s+leave",
         r"not\s+(?:coming|going|attending)",
+        r"(?:गैरहजर|उपस्थित|तास|बंक|सुट्टी|नाही|नाहीत)",
+        r"(?:अनुपस्थित|क्लास|कक्षा|कक्षाएं|छोड़|मिस)",
     ]
-    if any(re.search(p, msg) for p in miss_patterns) and any(w in msg for w in ["class", "classes", "lecture", "lectures", "period", "periods", "today", "tomorrow"]):
-        num_match = re.search(r"(\d+)\s*(?:classes|class|lectures|lecture|periods|period|hours|hour)?", msg)
-        word_nums = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "half": 2}
+    if any(re.search(p, msg) for p in miss_patterns) and any(w in msg for w in ["class", "classes", "lecture", "lectures", "period", "periods", "today", "tomorrow", "तास", "वर्ग", "कक्षा", "कक्षाएं", "आज", "उद्या", "कल"]):
+        num_match = re.search(r"(\d+|[०-९]+)\s*(?:classes|class|lectures|lecture|periods|period|hours|hour|तास|कक्षा|कक्षाएं)?", msg)
+        devanagari_nums = {"०": "0", "१": "1", "२": "2", "३": "3", "४": "4", "५": "5", "६": "6", "७": "7", "८": "8", "९": "9"}
+        word_nums = {
+            "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "half": 2,
+            "एक": 1, "दोन": 2, "दो": 2, "तीन": 3, "चार": 4, "पाच": 5, "पांच": 5
+        }
 
         miss_count = None
         if num_match:
-            miss_count = int(num_match.group(1))
-        else:
+            raw_val = num_match.group(1)
+            converted = "".join(devanagari_nums.get(c, c) for c in raw_val)
+            try:
+                miss_count = int(converted)
+            except ValueError:
+                pass
+
+        if miss_count is None:
             for w, val in word_nums.items():
                 if w in msg:
                     miss_count = val
                     break
 
         if miss_count is None:
-            miss_count = 2 if any(w in msg for w in ["classes", "lectures", "periods"]) else 1
+            miss_count = 2 if any(w in msg for w in ["classes", "lectures", "periods", "तास", "कक्षाएं"]) else 1
 
         miss_count = max(1, min(miss_count, 15))
         new_total = total_conducted + miss_count
@@ -551,206 +600,85 @@ def personalized_answer(message, roll_no):
         new_pct = round((new_attended / new_total) * 100, 2)
         diff_pct = round(att - new_pct, 2)
 
-        if new_pct >= 75.0:
-            safe_remaining = int(math.floor((new_attended / 0.75) - new_total))
-            safe_remaining = max(0, safe_remaining)
-            return (
-                f"🎯 **ATTENDANCE IMPACT SIMULATOR FOR {student['name'].upper()}**:\n\n"
-                f"• Current Attendance: **{att}%** ({attended}/{total_conducted} conducted lectures attended)\n"
-                f"• **If you miss {miss_count} lecture(s) today:**\n"
-                f"  - Total Conducted: {total_conducted} ➔ **{new_total}**\n"
-                f"  - Your Attended: {attended} ➔ **{new_attended}**\n"
-                f"  - Projected Attendance: **{new_pct}%** (drops by {diff_pct}%)\n"
-                f"• Standing: ✅ **SAFE / GOOD STANDING** (Above 75% cutoff)\n"
-                f"• Safe Buffer: You can still safely miss up to **{safe_remaining} more lecture(s)** afterwards!\n\n"
-                f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>",
-                "Attendance Simulator"
-            )
-        elif att >= 75.0 and new_pct < 75.0:
-            return (
-                f"🚨 **ATTENDANCE SHORTAGE RISK FOR {student['name'].upper()}**:\n\n"
-                f"• Current Attendance: **{att}%** ({attended}/{total_conducted} conducted lectures attended)\n"
-                f"• **If you miss {miss_count} lecture(s) today:**\n"
-                f"  - Total Conducted: {total_conducted} ➔ **{new_total}**\n"
-                f"  - Your Attended: {attended} ➔ **{new_attended}**\n"
-                f"  - Projected Attendance: **{new_pct}%** (drops by {diff_pct}%)\n"
-                f"• Standing: ⚠️ **DROPS BELOW 75% MANDATORY CUTOFF!**\n"
-                f"• Warning: Missing {miss_count} lecture(s) today pushes you into the detention warning bracket!\n"
-                f"• Recommendation: 🛑 **Do NOT miss classes today.** Maintain your exam eligibility!\n\n"
-                f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>",
-                "Attendance Alert"
-            )
-        else:
-            needed = int(math.ceil(((0.75 * new_total) - new_attended) / 0.25))
-            needed = max(1, needed)
-            return (
-                f"🚨 **ATTENDANCE SHORTAGE ALERT FOR {student['name'].upper()}**:\n\n"
-                f"• Current Attendance: **{att}%** ({attended}/{total_conducted} conducted lectures attended)\n"
-                f"  *(Note: You are already in the detention warning bracket below 75%)*\n"
-                f"• **If you miss {miss_count} lecture(s) today:**\n"
-                f"  - Total Conducted: {total_conducted} ➔ **{new_total}**\n"
-                f"  - Your Attended: {attended} ➔ **{new_attended}**\n"
-                f"  - Projected Attendance: **{new_pct}%** (drops by {diff_pct}%)\n"
-                f"• Impact: ❌ **Deepens your detention shortage!**\n"
-                f"• Recovery Target: After missing today, you must attend **{needed} consecutive lectures** with 0 absences to climb back to 75%.\n"
-                f"• Faculty Mentor: Contact **{student['mentor']}** at Admin Block Counter 4.\n"
-                f"• Urgent Advice: 🛑 We strongly advise attending all lectures today. If medically unwell, submit a registered doctor certificate within 48 hours.\n\n"
-                f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>",
-                "Detention Alert"
-            )
+        return format_attendance_simulation(student, miss_count, total_conducted, attended, new_total, new_attended, new_pct, diff_pct, lang=lang)
 
     # 2. Full profile summary
-    if any(q in msg for q in ["profile", "who am i", "my details", "about me", "my info", "student info"]):
-        fee_status = (
-            f"Rs {student['fees_due']:.0f} pending"
-            if student["fees_due"] and student["fees_due"] > 0
-            else "All cleared (No dues)"
-        )
-        return (
-            f"👤 STUDENT PROFILE SUMMARY:\n\n"
-            f"• Full Name: {student['name']}\n"
-            f"• Registration No: {student['roll_no']}\n"
-            f"• Program: {student['course']} ({student['semester']})\n"
-            f"• Cumulative GPA (CGPA): {student['cgpa']} / 10.0\n"
-            f"• Lecture Attendance: {student['attendance']}%\n"
-            f"• Fee Balance: {fee_status}\n"
-            f"• Faculty Mentor: {student['mentor']}\n"
-            f"• Next Exam Date: {student['exam_date']}\n\n"
-            f"💡 Tip: Tap 'My ID Card' to view your 3D digital pass or ask 'Can I bunk?' for your safe attendance margin.",
-            "Student Profile"
-        )
+    if any(q in msg for q in ["profile", "who am i", "my details", "about me", "my info", "student info", "माझी माहिती", "माझे तपशील", "माझी प्रोफाइल", "मेरी जानकारी", "मेरा प्रोफाइल"]):
+        return format_profile_summary(student, lang=lang)
 
     # 3. Smart Attendance & Bunk Target Calculator
-    if any(k in msg for k in ["bunk", "miss class", "skip class", "attendance target", "target attendance", "can i bunk", "how many bunk"]) or (
-        "how many" in msg and any(k in msg for k in ["class", "lecture", "attend"])
+    if any(k in msg for k in ["bunk", "miss class", "skip class", "attendance target", "target attendance", "can i bunk", "how many bunk", "बंक", "बंक करू", "मी बंक करू", "क्या मैं बंक कर"]) or (
+        ("how many" in msg or "किती" in msg or "कितने" in msg) and any(k in msg for k in ["class", "lecture", "attend", "तास", "कक्षा"])
     ):
         if att >= 75.0:
             bunkable = int(math.floor((attended / 0.75) - total_conducted))
             bunkable = max(0, bunkable)
-            if bunkable > 0:
-                new_pct = round((attended / (total_conducted + bunkable)) * 100, 1)
-                return (
-                    f"🎯 SMART BUNK CALCULATOR for {student['name']}:\n\n"
-                    f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
-                    f"• Academic Standing: ✅ Safe / Good Standing (Above 75%)\n"
-                    f"• Safe Bunks Margin: You can safely miss up to **{bunkable} lecture(s)** and still remain above 75%! 🎉\n"
-                    f"• Forecast: After bunking {bunkable} classes, your attendance will be approximately {new_pct}%.\n\n"
-                    f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>",
-                    "Bunk Calculator"
-                )
-            else:
-                return (
-                    f"🎯 SMART BUNK CALCULATOR for {student['name']}:\n\n"
-                    f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
-                    f"• Status: ⚠️ Right at 75% Boundary\n"
-                    f"• Safe Bunk Margin: **0 classes**. Missing even 1 single lecture will push you below 75% and trigger the detention bracket!\n\n"
-                    f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>",
-                    "Bunk Calculator"
-                )
+            new_pct = round((attended / (total_conducted + bunkable)) * 100, 1) if bunkable > 0 else att
+            return format_bunk_calculator(student, att, attended, total_conducted, bunkable, new_pct, 0, is_safe=True, lang=lang)
         else:
             needed = int(math.ceil(((0.75 * total_conducted) - attended) / 0.25))
             needed = max(1, needed)
             new_pct = round(((attended + needed) / (total_conducted + needed)) * 100, 1)
-            return (
-                f"🚨 ATTENDANCE RECOVERY & BUNK ALERT for {student['name']}:\n\n"
-                f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
-                f"• Can you bunk? **Strictly NO. You are currently in a detention shortage bracket.**\n"
-                f"• Recovery Target: You must attend **{needed} consecutive lectures** without missing any to reach the safe 75% threshold.\n"
-                f"• Forecast: Attending {needed} more classes will bring your attendance to {new_pct}%.\n"
-                f"• Detention Action: Review the required assignments or prelims with HOD ({student['mentor']}).\n\n"
-                f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Attendance Recovery Calculator</button>",
-                "Attendance Recovery"
-            )
+            return format_bunk_calculator(student, att, attended, total_conducted, 0, new_pct, needed, is_safe=False, lang=lang)
 
     # 4. Bonafide / NOC Certificate
-    if any(k in msg for k in ["bonafide", "certificate", "noc", "document draft", "bus pass", "railway concession"]):
-        return (
-            f"📄 OFFICIAL DIGITAL BONAFIDE & DOCUMENT PORTAL:\n\n"
-            f"Verified Student Record: {student['name']} ({student['roll_no']})\n"
-            f"Program: {student['course']}, {student['semester']}\n\n"
-            f"Your institutional Bonafide Certificate draft is ready for instant viewing and printing!\n\n"
-            f"👉 Tap the button below to preview your official college letterhead draft:\n"
-            f"<button class='action-pill-btn' onclick='openBonafideModal()'>📜 View & Print Official Bonafide</button>",
-            "Bonafide Service"
-        )
+    if any(k in msg for k in ["bonafide", "certificate", "noc", "document draft", "bus pass", "railway concession", "बोनाफाइड", "प्रमाणपत्र", "दाखला"]):
+        return format_bonafide(student, lang=lang)
 
     # 5. Digital Student ID Card (excludes lost/duplicate report queries)
-    if ("lost" not in msg and "duplicate" not in msg) and any(k in msg for k in ["id card", "digital id", "my id", "student card", "campus pass", "identity card"]):
-        return (
-            f"🪪 DIGITAL STUDENT IDENTITY CARD:\n\n"
-            f"Digital campus identity credentials for {student['name']} ({student['roll_no']}) are ready.\n"
-            f"Features: 3D Flip, Live Verification QR Code, and Barcode.\n\n"
-            f"👉 <button class='action-pill-btn' onclick='openIdCardModal()'>✨ Open 3D Digital Student ID Card</button>",
-            "Digital ID Pass"
-        )
+    if ("lost" not in msg and "duplicate" not in msg and "हरवले" not in msg and "खो गया" not in msg) and any(k in msg for k in ["id card", "digital id", "my id", "student card", "campus pass", "identity card", "आयडी", "ओळखपत्र", "पहचान पत्र"]):
+        return format_id_card(student, lang=lang)
 
     # 6. Attendance with official 4-tier College Detention Policy
-    if "attendance" in msg or any(k in msg for k in ["hajeri", "hazari", "upasthiti", "present", "shortage"]):
-        if att >= 75.0:
-            status = "✅ Good Standing — Fully eligible for semester examinations"
-            advice = "Your attendance is in good standing. Keep maintaining it above 75%!"
-        elif 60.0 <= att < 75.0:
-            status = "⚠️ Detention Warning (60% to 75% Bracket)"
-            advice = (
-                "Under the college detention policy rubrics, you must complete the following to clear detention:\n"
-                "• Theory: End Sem Examination Paper Sets of previous 2 years must be solved in Open Book mode in the College.\n"
-                "• Practical: You will not be eligible for the attendance mark component of internal marks."
-            )
-        elif 50.0 <= att < 60.0:
-            status = "🚨 Critical Detention Shortage (50% to 59.99% Bracket)"
-            advice = (
-                "Under official detention policy rubrics, you are detained unless you complete:\n"
-                "• Theory: (1) End Sem Examination Paper Sets of previous 2 years must be solved in Open Book mode in the College, AND (2) Appear for a prelim examination and score a minimum of 60% marks to be eligible to get out of detention.\n"
-                "• Practical: Appear for a practical-based prelim examination and score a minimum of 60% marks (Max 2 practicals conducted in a day)."
-            )
-        else:
-            status = "❌ Strictly Detained (<50% Attendance)"
-            advice = "As per college detention policy, students with attendance below 50% have No Consideration and are strictly detained from university semester examinations. Contact your HOD immediately."
-
-        return (
-            f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n"
-            f"📋 College Rubrics & Action Required:\n{advice}\n\n"
-            f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Calculator</button>",
-            "Student Attendance"
-        )
+    if any(k in msg for k in ["attendance", "hajeri", "hazari", "upasthiti", "present", "shortage", "हजेरी", "उपस्थिती", "हाजिरी"]):
+        return format_student_attendance(student, att, attended, total_conducted, lang=lang)
 
     # 7. Fees
-    if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending", "shulk", "shulka"]):
-        due = student["fees_due"]
-        if due and due > 0:
-            return (
-                f"Hi {student['name']}, you have Rs {due:.0f} in pending fees. You can pay online via the student ERP portal or at Accounts Counter 4.",
-                "Fee Status"
-            )
-        return f"Hi {student['name']}, you have no pending fees. You're completely all clear! 🎉", "Fee Status"
+    if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending", "shulk", "shulka", "फी", "शुल्क", "फीस", "बाकी"]):
+        return format_student_fees(student, lang=lang)
 
     # 8. Exams
-    if any(k in msg for k in ["exam", "exams", "datesheet", "timetable", "pariksha"]):
-        return (
-            f"Hi {student['name']}, your next semester examination begins on {student['exam_date']}. Admit cards are downloadable from the student portal exactly 7 days before commencement.",
-            "Exam Schedule"
-        )
+    if any(k in msg for k in ["exam", "exams", "datesheet", "timetable", "pariksha", "परीक्षा", "वेळापत्रक", "समयसारणी"]):
+        if lang == "mr":
+            return (
+                f"नमस्कार {student['name']}, तुमची पुढील सेमिस्टर परीक्षा **{student['exam_date']}** रोजी सुरू होत आहे. "
+                f"हॉल तिकीट (Admit Card) परीक्षा सुरू होण्याच्या ७ दिवस आधी ईआरपी पोर्टलवरून डाउनलोड करता येईल.",
+                "Exam Schedule"
+            )
+        elif lang == "hi":
+            return (
+                f"नमस्ते {student['name']}, आपकी अगली सेमेस्टर परीक्षा **{student['exam_date']}** से प्रारंभ हो रही है। "
+                f"प्रवेश पत्र परीक्षा से 7 दिन पूर्व छात्र ईआरपी पोर्टल से डाउनलोड किया जा सकता है।",
+                "Exam Schedule"
+            )
+        else:
+            return (
+                f"Hi {student['name']}, your next semester examination begins on {student['exam_date']}. "
+                f"Admit cards are downloadable from the student portal exactly 7 days before commencement.",
+                "Exam Schedule"
+            )
 
     # 9. CGPA / Marks / Results (excludes generic passing criteria queries)
-    if ("passing" not in msg and "pass mark" not in msg and "cutoff" not in msg) and any(k in msg for k in ["cgpa", "sgpa", "gpa", "marks", "result", "grade", "score", "gun", "pointer"]):
-        return (
-            f"Hi {student['name']}, your current CGPA is {student['cgpa']} / 10.0 in {student['course']} ({student['semester']}). Keep up the great work! 🌟",
-            "Student CGPA"
-        )
+    if ("passing" not in msg and "pass mark" not in msg and "cutoff" not in msg and "उत्तीर्ण" not in msg) and any(k in msg for k in ["cgpa", "sgpa", "gpa", "marks", "result", "grade", "score", "gun", "pointer", "गुण", "मार्क्स", "सीजीपीए"]):
+        return format_student_cgpa(student, lang=lang)
 
     # 10. Mentor / Guide
-    if any(k in msg for k in ["mentor", "guide", "counselor", "class teacher"]):
-        return (
-            f"Hi {student['name']}, your designated faculty mentor is {student['mentor']}. You can contact them during mentoring hours or via email.",
-            "Faculty Mentor"
-        )
+    if any(k in msg for k in ["mentor", "guide", "counselor", "class teacher", "मार्गदर्शक", "प्राध्यापक"]):
+        if lang == "mr":
+            return f"नमस्कार {student['name']}, तुमचे अधिकृत प्राध्यापक मार्गदर्शक **{student['mentor']}** आहेत. तुम्ही मेंटॉरिंग वेळेत किंवा ईमेलद्वारे त्यांच्याशी संपर्क साधू शकता.", "Faculty Mentor"
+        elif lang == "hi":
+            return f"नमस्ते {student['name']}, आपके अधिकृत शिक्षक मेंटॉर **{student['mentor']}** हैं। आप उनसे मेंटॉरिंग समय या ईमेल पर संपर्क कर सकते हैं।", "Faculty Mentor"
+        else:
+            return f"Hi {student['name']}, your designated faculty mentor is {student['mentor']}. You can contact them during mentoring hours or via email.", "Faculty Mentor"
 
     # 11. Course / Semester
-    if any(k in msg for k in ["course", "semester", "branch", "program"]):
-        return (
-            f"Hi {student['name']}, you are currently registered in {student['course']}, {student['semester']}.",
-            "Course Info"
-        )
+    if any(k in msg for k in ["course", "semester", "branch", "program", "अभ्यासक्रम", "शाखा", "सेमिस्टर"]):
+        if lang == "mr":
+            return f"नमस्कार {student['name']}, तुम्ही **{student['course']} ({student['semester']})** मध्ये नोंदणीकृत आहात.", "Course Info"
+        elif lang == "hi":
+            return f"नमस्ते {student['name']}, आप **{student['course']} ({student['semester']})** में पंजीकृत हैं।", "Course Info"
+        else:
+            return f"Hi {student['name']}, you are currently registered in {student['course']}, {student['semester']}.", "Course Info"
 
     return None
 
@@ -806,9 +734,14 @@ def docs_report():
 def chat():
     data = request.get_json() or {}
     user_message = (data.get("message") or "").strip()
+    lang = (data.get("lang") or "en").lower()
+
+    if bool(re.search(r"[\u0900-\u097F]", user_message)) and lang == "en":
+        lang = "mr"
 
     if not user_message:
-        return jsonify({"response": "Please type a question or use voice input."})
+        err = "कृपया प्रश्न विचारा किंवा व्हॉइस इनपुट वापरा." if lang == "mr" else ("कृपया प्रश्न पूछें या वॉइस इनपुट का उपयोग करें।" if lang == "hi" else "Please type a question or use voice input.")
+        return jsonify({"response": err})
 
     roll_no = session.get("roll_no")
     student = None
@@ -823,7 +756,7 @@ def chat():
 
     # Tier 1: Check personalized student queries (Simulation, Attendance, CGPA, ID, etc.)
     if roll_no and student:
-        resp = personalized_answer(user_message, roll_no)
+        resp = personalized_answer(user_message, roll_no, lang=lang)
         if resp:
             if isinstance(resp, tuple):
                 bot_response, category = resp
@@ -833,14 +766,14 @@ def chat():
 
     # Tier 2: Check rich Campus Brain (Leadership, Facilities, Wifi, Parking, Greetings, About, etc.)
     if not bot_response:
-        resp = campus_brain(user_message, student)
+        resp = campus_brain(user_message, student, lang=lang)
         if resp and resp[0]:
             bot_response, category = resp
             source = "Campus Intelligence"
 
     # Tier 3: Check FAQ Knowledge Base (SQL college_info with fuzzy synonym expansion)
     if not bot_response:
-        ans, cat = match_query(user_message)
+        ans, cat = match_query(user_message, lang=lang)
         if cat:
             bot_response, category = ans, cat
             source = "Knowledge Base"
@@ -855,7 +788,7 @@ def chat():
 
     # Tier 5: Smart Contextual Fallback with Action Buttons
     if not bot_response:
-        bot_response = smart_fallback_response(user_message, student)
+        bot_response = smart_fallback_response(user_message, student, lang=lang)
         category = "Campus Support"
         source = "Campus Assistant"
 

@@ -209,13 +209,26 @@ if (chatBox && scrollBottomBtn) {
 }
 
 // Dynamic Time-Based Greeting
-function updateGreeting() {
+function updateGreeting(lang) {
+    const activeLang = lang || currentLanguage || "en";
     const hour = new Date().getHours();
     let greet = "Namaste! 🙏 Welcome to GH Raisoni College Assistant.";
-    if (hour >= 5 && hour < 12) greet = "Good Morning! ☀️ Welcome to GH Raisoni College Assistant.";
-    else if (hour >= 12 && hour < 17) greet = "Good Afternoon! 🌤️ Welcome to GH Raisoni College Assistant.";
-    else if (hour >= 17 && hour < 22) greet = "Good Evening! 🌆 Welcome to GH Raisoni College Assistant.";
-    else greet = "Hello Night Owl! 🌙 Welcome to GH Raisoni College Assistant.";
+    if (activeLang === "mr") {
+        if (hour >= 5 && hour < 12) greet = "शुभ सकाळ! ☀️ जीएच रायसोनी कॉलेज असिस्टंटमध्ये आपले स्वागत आहे.";
+        else if (hour >= 12 && hour < 17) greet = "शुभ दुपार! 🌤️ जीएच रायसोनी कॉलेज असिस्टंटमध्ये आपले स्वागत आहे.";
+        else if (hour >= 17 && hour < 22) greet = "शुभ संध्याकाळ! 🌆 जीएच रायसोनी कॉलेज असिस्टंटमध्ये आपले स्वागत आहे.";
+        else greet = "नमस्कार! 🌙 जीएच रायसोनी कॉलेज असिस्टंटमध्ये आपले स्वागत आहे.";
+    } else if (activeLang === "hi") {
+        if (hour >= 5 && hour < 12) greet = "सुप्रभात! ☀️ जीएच रायसोनी कॉलेज सहायक में आपका स्वागत है।";
+        else if (hour >= 12 && hour < 17) greet = "शुभ दोपहर! 🌤️ जीएच रायसोनी कॉलेज सहायक में आपका स्वागत है।";
+        else if (hour >= 17 && hour < 22) greet = "शुभ संध्या! 🌆 जीएच रायसोनी कॉलेज सहायक में आपका स्वागत है।";
+        else greet = "नमस्ते! 🌙 जीएच रायसोनी कॉलेज सहायक में आपका स्वागत है।";
+    } else {
+        if (hour >= 5 && hour < 12) greet = "Good Morning! ☀️ Welcome to GH Raisoni College Assistant.";
+        else if (hour >= 12 && hour < 17) greet = "Good Afternoon! 🌤️ Welcome to GH Raisoni College Assistant.";
+        else if (hour >= 17 && hour < 22) greet = "Good Evening! 🌆 Welcome to GH Raisoni College Assistant.";
+        else greet = "Hello Night Owl! 🌙 Welcome to GH Raisoni College Assistant.";
+    }
 
     const greetElem = document.getElementById("welcome-greeting-text");
     if (greetElem) greetElem.textContent = greet;
@@ -509,14 +522,25 @@ function appendFollowUpBar() {
 
     const bar = document.createElement("div");
     bar.className = "follow-up-bar";
+    const isMr = currentLanguage === "mr";
+    const isHi = currentLanguage === "hi";
+
+    const hint = isMr ? "सुचवलेले प्रश्न:" : (isHi ? "सुझाए गए प्रश्न:" : "Suggested queries:");
+    const adm = isMr ? "🎓 प्रवेश" : (isHi ? "🎓 प्रवेश" : "🎓 Admissions");
+    const fee = isMr ? "💰 फी" : (isHi ? "💰 फीस" : "💰 Fees");
+    const exam = isMr ? "📅 परीक्षा" : (isHi ? "📅 परीक्षा" : "📅 Exams");
+    const place = isMr ? "💼 प्लेसमेंट" : (isHi ? "💼 प्लेसमेंट" : "💼 Placements");
+    const hostel = isMr ? "🏢 वसतिगृह" : (isHi ? "🏢 छात्रावास" : "🏢 Hostel");
+    const end = isMr ? "⏹ संवाद समाप्त" : (isHi ? "⏹ चैट समाप्त" : "⏹ End Chat");
+
     bar.innerHTML = `
-        <span class="follow-up-hint">Suggested queries:</span>
-        <button class="follow-up-chip" data-query="Admissions">🎓 Admissions</button>
-        <button class="follow-up-chip" data-query="Fee Structure">💰 Fees</button>
-        <button class="follow-up-chip" data-query="Exam Timetable">📅 Exams</button>
-        <button class="follow-up-chip" data-query="Placements">💼 Placements</button>
-        <button class="follow-up-chip" data-query="Hostel & Mess">🏢 Hostel</button>
-        <button class="follow-up-chip end-chip" data-action="end">⏹ End Chat</button>
+        <span class="follow-up-hint">${hint}</span>
+        <button class="follow-up-chip" data-query="Admission">${adm}</button>
+        <button class="follow-up-chip" data-query="Fee Structure">${fee}</button>
+        <button class="follow-up-chip" data-query="Exam Timetable">${exam}</button>
+        <button class="follow-up-chip" data-query="Placements">${place}</button>
+        <button class="follow-up-chip" data-query="Hostel & Mess">${hostel}</button>
+        <button class="follow-up-chip end-chip" data-action="end">${end}</button>
     `;
 
     const endChip = bar.querySelector('[data-action="end"]');
@@ -540,15 +564,24 @@ function endChatSession() {
 
     if (window.speechSynthesis) window.speechSynthesis.cancel();
 
+    const isMr = currentLanguage === "mr";
+    const isHi = currentLanguage === "hi";
+
+    const title = isMr ? "संवाद सत्र समाप्त झाला" : (isHi ? "चैट सत्र समाप्त" : "Chat Session Completed");
+    const desc = isMr 
+        ? "जीएच रायसोनी कॉलेज असिस्टंट वापरल्याबद्दल धन्यवाद! आशा आहे की तुमच्या सर्व प्रश्नांचे निरसन झाले असेल."
+        : (isHi 
+            ? "जीएच रायसोनी कॉलेज सहायक का उपयोग करने के लिए धन्यवाद! आशा है कि आपके प्रश्नों का समाधान हुआ होगा।"
+            : "Thank you for consulting the GH Raisoni College Assistant! We hope your queries were resolved.");
+    const restartBtnText = isMr ? "🔄 नवीन संवाद सुरू करा" : (isHi ? "🔄 नया सत्र शुरू करें" : "🔄 Start New Session");
+
     const endCard = document.createElement("div");
     endCard.className = "session-ended-card";
     endCard.innerHTML = `
         <div class="session-ended-icon">🎓</div>
-        <div class="session-ended-title">Chat Session Completed</div>
-        <div class="session-ended-desc">
-            Thank you for consulting the GH Raisoni College Assistant! We hope your queries were resolved.
-        </div>
-        <button class="new-session-btn" id="restart-chat-btn">🔄 Start New Session</button>
+        <div class="session-ended-title">${title}</div>
+        <div class="session-ended-desc">${desc}</div>
+        <button class="new-session-btn" id="restart-chat-btn">${restartBtnText}</button>
     `;
 
     chatBox.appendChild(endCard);
@@ -556,7 +589,7 @@ function endChatSession() {
 
     userInput.disabled = true;
     sendBtn.disabled = true;
-    userInput.placeholder = "Session ended. Click 'Start New Session' to resume.";
+    userInput.placeholder = isMr ? "संवाद समाप्त झाला. पुन्हा सुरू करण्यासाठी बटण दाबा." : (isHi ? "सत्र समाप्त हुआ। फिर से शुरू करने के लिए बटन दबाएं।" : "Session ended. Click 'Start New Session' to resume.");
 
     endCard.querySelector("#restart-chat-btn").addEventListener("click", restartChatSession);
 }
@@ -564,16 +597,26 @@ function endChatSession() {
 function restartChatSession() {
     userInput.disabled = false;
     sendBtn.disabled = false;
-    userInput.placeholder = "Ask about admissions, fees, timetable, hostal...";
+    const isMr = currentLanguage === "mr";
+    const isHi = currentLanguage === "hi";
+
+    userInput.placeholder = isMr ? "प्रवेश, फी, परीक्षा, हजेरी, बंक विचारा..." : (isHi ? "प्रवेश, फीस, परीक्षा, बंक पूछें..." : "Ask about admissions, fees, timetable, can I bunk...");
     userInput.value = "";
+
+    const welcomeBack = isMr ? "पुन्हा स्वागत आहे! 👋" : (isHi ? "वापसी पर स्वागत है! 👋" : "Welcome back! 👋");
+    const subText = isMr 
+        ? "आज मी तुम्हाला कॉलेज अभ्यासक्रम किंवा कॅम्पसबद्दल कशी मदत करू शकतो?" 
+        : (isHi 
+            ? "आज मैं कॉलेज या परिसर से जुड़ी आपकी किस प्रकार सहायता कर सकता हूँ?" 
+            : "How can I assist you with your college academics or campus inquiries today?");
 
     chatBox.innerHTML = `
         <div class="msg-row bot-row">
             <div class="avatar bot-avatar">🤖</div>
             <div class="bot-msg">
                 <div class="bot-text">
-                    <strong>Welcome back! 👋</strong><br>
-                    How can I assist you with your college academics or campus inquiries today?
+                    <strong>${welcomeBack}</strong><br>
+                    ${subText}
                 </div>
                 <div class="bot-msg-footer">
                     <span class="msg-time">${formatTime()}</span>
@@ -662,7 +705,7 @@ async function sendMessage(overrideText) {
 
     // Handle session end commands
     const lower = message.toLowerCase();
-    if (["exit", "quit", "bye", "end", "stop"].includes(lower)) {
+    if (["exit", "quit", "bye", "end", "stop", "थांबवा", "बाहेर", "अलविदा", "बंद"].includes(lower)) {
         appendUserMessage(message);
         userInput.value = "";
         setTimeout(endChatSession, 350);
@@ -679,7 +722,7 @@ async function sendMessage(overrideText) {
         const res = await fetch("/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message }),
+            body: JSON.stringify({ message, lang: currentLanguage }),
         });
         const data = await res.json();
 
@@ -691,7 +734,12 @@ async function sendMessage(overrideText) {
         }, 420);
     } catch (err) {
         removeTypingIndicator();
-        appendBotMessage("Connection error: Unable to reach the college assistant server. Please check your network.", null);
+        const errText = currentLanguage === "mr"
+            ? "सर्व्हरशी संपर्क साधता आला नाही. कृपया नेटवर्क कनेक्शन तपासा."
+            : (currentLanguage === "hi"
+                ? "सर्वर से संपर्क करने में असमर्थ। कृपया नेटवर्क कनेक्शन जांचें।"
+                : "Connection error: Unable to reach the college assistant server. Please check your network.");
+        appendBotMessage(errText, null);
     }
 }
 
@@ -731,48 +779,152 @@ if (studentProfileTrigger) {
 // 11. Multilingual Support (English, मराठी, हिंदी)
 // ==========================================================================
 
+const TOPIC_I18N = {
+    "Admission": { en: "Admission", mr: "प्रवेश प्रक्रिया", hi: "प्रवेश प्रक्रिया" },
+    "Fee Structure": { en: "Fee Structure", mr: "फी रचना", hi: "फीस संरचना" },
+    "Exam Timetable": { en: "Exam Timetable", mr: "परीक्षा वेळापत्रक", hi: "परीक्षा समय सारणी" },
+    "Attendance Rules": { en: "Attendance Rules", mr: "हजेरी नियम (७५%)", hi: "उपस्थिति नियम (75%)" },
+    "Placements": { en: "Placements", mr: "प्लेसमेंट व करिअर", hi: "प्लेसमेंट व करियर" },
+    "Canteen & Mess Menu": { en: "Canteen & Mess", mr: "कॅन्टीन व मेस", hi: "कैंटीन व मेस" },
+    "Library Timings": { en: "Library Timings", mr: "ग्रंथालय वेळ", hi: "पुस्तकालय समय" },
+    "Course Information": { en: "Course Information", mr: "अभ्यासक्रम माहिती", hi: "पाठ्यक्रम विवरण" },
+    "Faculty Contact": { en: "Faculty Contact", mr: "प्राध्यापक संपर्क", hi: "शिक्षक संपर्क" },
+    "Branch Change": { en: "Branch Change", mr: "शाखा बदल", hi: "शाखा परिवर्तन" },
+    "Hostel & Mess": { en: "Hostel & Mess", mr: "वसतिगृह व मेस", hi: "छात्रावास व मेस" },
+    "Scholarships": { en: "Scholarships", mr: "शिष्यवृत्ती", hi: "छात्रवृत्ति" },
+    "Clubs & Extracurriculars": { en: "Clubs & Events", mr: "क्लब्स व उपक्रम", hi: "क्लब व गतिविधियां" },
+    "Emergency & Helpline": { en: "Emergency & Helpline", mr: "आपत्कालीन मदत", hi: "आपातकालीन हेल्पलाइन" },
+    "Campus Location & Map": { en: "Campus Location", mr: "कॅम्पस स्थान व पत्ता", hi: "परिसर स्थान व पता" },
+    "Campus Floor & Room Locator": { en: "Floor Navigator", mr: "मजला व कक्ष शोधक", hi: "मंजिल एवं कक्ष खोजक" },
+    "Bonafide & Document Services": { en: "Bonafide Certificate", mr: "बोनाफाइड प्रमाणपत्र", hi: "बोनाफाइड प्रमाण पत्र" },
+    "Attendance & Bunk Calculator Guide": { en: "Bunk Calculator Guide", mr: "बंक कॅल्क्युलेटर नियम", hi: "बंक कैलकुलेटर नियम" },
+    "Campus Amenities & WiFi": { en: "Amenities & WiFi", mr: "वायफाय व सुविधा", hi: "वाई-फाई व सुविधाएं" },
+    "Academic Regulations & Grading": { en: "Grading & Regulations", mr: "शैक्षणिक नियम व ग्रेडिंग", hi: "अकादमिक नियम व ग्रेडिंग" },
+    "University Leadership & Faculty": { en: "University Leadership", mr: "विद्यापीठ नेतृत्व", hi: "विश्वविद्यालय नेतृत्व" },
+    "Academic Calendar & Holidays": { en: "Academic Calendar", mr: "दिनदर्शिका व सुट्ट्या", hi: "कैलेंडर व छुट्टियां" },
+    "Student Life & Chatbot Info": { en: "Student Life", mr: "विद्यार्थी जीवन", hi: "विद्यार्थी जीवन" }
+};
+
 const I18N = {
     en: {
         brandTitle: "GH Raisoni College AI",
         brandSubtitle: "Skill Tech University · Pune (Wagholi & Yerawada)",
+        brandBadge: "AUTONOMOUS 2026–27",
+        aiOnline: "AI Online",
+        sos: '<span class="sos-pulse-dot"></span> 🚨 SOS',
+        logout: "Logout",
+        login: "Student Login",
+        admin: "Admin",
         statusText: "GHR Smart Assistant • 24/7 Academic, Admissions & Campus Support",
-        topicsLabel: "Explore Popular Topics:",
+        stripBunk: "🎯 Bunk Calc",
+        stripId: "🪪 ID Pass",
+        stripBonafide: "📄 Bonafide",
+        stripMap: "🗺️ Floor Map",
+        endChat: "⏹ End Chat",
+        welcomeSub: "I am your 24/7 campus companion. Ask questions about admissions, fees, timetable, detention rules, or explore our interactive tools below.",
+        tileBunkTitle: "Bunk Calculator",
+        tileBunkSub: "75% Rule & Safe Margins",
+        tileIdTitle: "3D Digital ID Pass",
+        tileIdSub: "QR Verified Student Pass",
+        tileBonafideTitle: "Bonafide / NOC",
+        tileBonafideSub: "Instant Download & Print",
+        tileMapTitle: "Floor Navigator",
+        tileMapSub: "Labs, Rooms & Counters",
+        studentNotice: "✨ Logged in as <strong>{name}</strong>. Quick questions:",
+        chipBunk: "🎯 Can I Bunk?",
+        chipAtt: "📊 My Attendance",
+        chipId: "🪪 Digital ID Card",
+        chipBonafide: "📄 Bonafide Letter",
+        chipFee: "💰 My Fee Balance",
+        chipCgpa: "🌟 My CGPA",
+        topicsLabel: "Explore Campus Topics:",
+        toggleTopicsCollapsed: "Browse All Topics ▾",
+        toggleTopicsExpanded: "Show Less ▴",
         placeholder: "Ask about admissions, fees, timetable, can I bunk, canteen menu...",
-        inputHint: "Press Enter ↵ to send • Type exit to end",
-        welcomeTitle: "Namaste! 🙏 Welcome to GH Raisoni College Assistant.",
-        welcomeDesc: "I'm here to answer questions regarding admissions, exams, fees, syllabus, hostel, placements, and campus facilities.",
-        bunkBtn: "Bunk Calc",
-        idPassBtn: "ID Pass",
-        bonafideBtn: "Bonafide",
-        sosBtn: "SOS",
+        inputHint: "Press <strong>Enter ↵</strong> to send • Type <code>exit</code> to end",
+        toast: "English language set 🇬🇧",
+        copyBtn: "📋 Copy",
+        listenBtn: "🔊 Listen"
     },
     mr: {
         brandTitle: "जीएच रायसोनी कॉलेज एआय",
         brandSubtitle: "स्किल टेक युनिव्हर्सिटी · पुणे (वाघोली आणि येरवडा)",
+        brandBadge: "स्वायत्त २०२६–२७",
+        aiOnline: "एआय सक्रिय",
+        sos: '<span class="sos-pulse-dot"></span> 🚨 आपत्कालीन मदत',
+        logout: "लॉगआउट",
+        login: "विद्यार्थी लॉगिन",
+        admin: "प्रशासक",
         statusText: "जीएचआर स्मार्ट असिस्टंट • २४/७ शैक्षणिक, प्रवेश आणि कॅम्पस सहाय्य",
+        stripBunk: "🎯 बंक कॅल्क",
+        stripId: "🪪 डिजिटल आयडी",
+        stripBonafide: "📄 बोनाफाइड",
+        stripMap: "🗺️ फ्लोअर नकाशा",
+        endChat: "⏹ संवाद समाप्त",
+        welcomeSub: "मी तुमचा २४/७ कॅम्पस सहाय्यक आहे. प्रवेश, फी, वेळापत्रक, हजेरी नियम विचारा किंवा खालील साधने वापरा.",
+        tileBunkTitle: "बंक कॅल्क्युलेटर",
+        tileBunkSub: "७५% हजेरी नियम व सुरक्षित बंक",
+        tileIdTitle: "३D डिजिटल आयडी पास",
+        tileIdSub: "क्युआर कोड प्रमाणित विद्यार्थी पास",
+        tileBonafideTitle: "बोनाफाइड / एनओसी",
+        tileBonafideSub: "त्वरित डाउनलोड आणि प्रिंट करा",
+        tileMapTitle: "कॅम्पस फ्लोअर शोधक",
+        tileMapSub: "लॅब्स, वर्गखोल्या व काउन्टर्स",
+        studentNotice: "✨ <strong>{name}</strong> म्हणून लॉगिन केले आहे. द्रुत प्रश्न:",
+        chipBunk: "🎯 मी आज बंक करू शकतो का?",
+        chipAtt: "📊 माझी हजेरी",
+        chipId: "🪪 डिजिटल आयडी कार्ड",
+        chipBonafide: "📄 बोनाफाइड प्रमाणपत्र",
+        chipFee: "💰 माझी उर्वरित फी",
+        chipCgpa: "🌟 माझे सीजीपीए (CGPA)",
         topicsLabel: "लोकप्रिय विषय शोधा:",
-        placeholder: "प्रवेश, फी, परीक्षा वेळापत्रक, हजेरी, बंक, कँटीन मेनू विचारा...",
-        inputHint: "पाठवण्यासाठी Enter ↵ दाबा • थांबवण्यासाठी exit टाइप करा",
-        welcomeTitle: "नमस्कार! 🙏 जीएच रायसोनी कॉलेज असिस्टंटमध्ये आपले स्वागत आहे.",
-        welcomeDesc: "प्रवेश, परीक्षा, फी, अभ्यासक्रम, वसतिगृह, प्लेसमेंट आणि कॅम्पस सुविधांबद्दल मी तुम्हाला मदत करण्यास तयार आहे.",
-        bunkBtn: "बंक कॅल्क्युलेटर",
-        idPassBtn: "आयडी पास",
-        bonafideBtn: "बोनाफाइड",
-        sosBtn: "तातडीची मदत (SOS)",
+        toggleTopicsCollapsed: "सर्व विषय पहा ▾",
+        toggleTopicsExpanded: "कमी दाखवा ▴",
+        placeholder: "प्रवेश, फी, परीक्षा वेळापत्रक, हजेरी, बंक, कॅन्टीन मेनू विचारा...",
+        inputHint: "पाठवण्यासाठी <strong>Enter ↵</strong> दाबा • थांबवण्यासाठी <code>exit</code> टाइप करा",
+        toast: "मराठी भाषा निवडली आहे 🇮🇳",
+        copyBtn: "📋 कॉपी",
+        listenBtn: "🔊 ऐका"
     },
     hi: {
         brandTitle: "जीएच रायसोनी कॉलेज एआई",
         brandSubtitle: "स्किल टेक यूनिवर्सिटी · पुणे (वाघोली एवं येरवडा)",
+        brandBadge: "स्वायत्त 2026–27",
+        aiOnline: "एआई ऑनलाइन",
+        sos: '<span class="sos-pulse-dot"></span> 🚨 आपातकालीन सहायता',
+        logout: "लॉगआउट",
+        login: "छात्र लॉगिन",
+        admin: "एडमिन",
         statusText: "जीएचआर स्मार्ट सहायक • 24/7 शैक्षणिक, प्रवेश व परिसर सहायता",
+        stripBunk: "🎯 बंक कैल्क",
+        stripId: "🪪 डिजिटल आईडी",
+        stripBonafide: "📄 बोनाफाइड",
+        stripMap: "🗺️ फ्लोर नक्शा",
+        endChat: "⏹ चैट समाप्त",
+        welcomeSub: "मैं आपका 24/7 कैंपस साथी हूँ। प्रवेश, फीस, समय सारणी, उपस्थिति नियम पूछें या नीचे दिए गए टूल्स का उपयोग करें।",
+        tileBunkTitle: "बंक कैलकुलेटर",
+        tileBunkSub: "75% उपस्थिति व सुरक्षित बंक",
+        tileIdTitle: "3D डिजिटल आईडी कार्ड",
+        tileIdSub: "क्यूआर कोड सत्यापित छात्र पास",
+        tileBonafideTitle: "बोनाफाइड / एनओसी",
+        tileBonafideSub: "तुरंत डाउनलोड और प्रिंट करें",
+        tileMapTitle: "परिसर फ्लोर नेविगेटर",
+        tileMapSub: "लैब्स, कक्षाएं और काउंटर्स",
+        studentNotice: "✨ <strong>{name}</strong> के रूप में लॉगिन किया गया। त्वरित प्रश्न:",
+        chipBunk: "🎯 क्या मैं बंक कर सकता हूँ?",
+        chipAtt: "📊 मेरी उपस्थिति",
+        chipId: "🪪 डिजिटल आईडी कार्ड",
+        chipBonafide: "📄 बोनाफाइड प्रमाण पत्र",
+        chipFee: "💰 मेरी बकाया फीस",
+        chipCgpa: "🌟 मेरा सीजीपीए (CGPA)",
         topicsLabel: "प्रमुख विषय देखें:",
+        toggleTopicsCollapsed: "सभी विषय देखें ▾",
+        toggleTopicsExpanded: "कम दिखाएं ▴",
         placeholder: "प्रवेश, फीस, परीक्षा, बंक कैलकुलेटर, कैंटीन मेन्यू पूछें...",
-        inputHint: "भेजने के लिए Enter ↵ दबाएं • समाप्त करने के लिए exit टाइप करें",
-        welcomeTitle: "नमस्ते! 🙏 जीएच रायसोनी कॉलेज सहायक में आपका स्वागत है।",
-        welcomeDesc: "प्रवेश, परीक्षा, फीस, सिलेबस, हॉस्टल, प्लेसमेंट और कैंपस से जुड़े सभी सवालों के लिए मैं यहां हूं।",
-        bunkBtn: "बंक कैलकुलेटर",
-        idPassBtn: "आईडी पास",
-        bonafideBtn: "बोनाफाइड",
-        sosBtn: "आपातकालीन सहायता (SOS)",
+        inputHint: "भेजने के लिए <strong>Enter ↵</strong> दबाएं • समाप्त करने के लिए <code>exit</code> टाइप करें",
+        toast: "हिंदी भाषा चुनी गई है 🇮🇳",
+        copyBtn: "📋 कॉपी",
+        listenBtn: "🔊 सुनें"
     }
 };
 
@@ -785,26 +937,146 @@ function setLanguage(lang) {
 
     const data = I18N[lang];
 
-    // Update Header & Brand
+    // 1. Header & Brand
     const titleElem = document.getElementById("ui-brand-title");
     const subElem = document.getElementById("ui-brand-subtitle");
-    const statusElem = document.getElementById("ui-status-text");
-    const topicsElem = document.getElementById("ui-topics-label");
-    const hintElem = document.getElementById("ui-input-hint");
-
     if (titleElem) titleElem.textContent = data.brandTitle;
     if (subElem) subElem.textContent = data.brandSubtitle;
+
+    const brandBadge = document.getElementById("brand-badge-text");
+    if (brandBadge) brandBadge.textContent = data.brandBadge;
+
+    const aiLabel = document.getElementById("ai-status-label");
+    if (aiLabel) aiLabel.textContent = data.aiOnline;
+
+    const navSos = document.getElementById("nav-sos-btn");
+    if (navSos) navSos.innerHTML = data.sos;
+
+    const navLogout = document.getElementById("ui-nav-logout");
+    if (navLogout) navLogout.textContent = data.logout;
+
+    const navLogin = document.getElementById("ui-nav-login");
+    if (navLogin) navLogin.textContent = data.login;
+
+    const navAdmin = document.getElementById("nav-admin-btn");
+    if (navAdmin) navAdmin.textContent = data.admin;
+
+    // 2. Chat Status Strip
+    const statusElem = document.getElementById("ui-status-text");
     if (statusElem) statusElem.textContent = data.statusText;
+
+    const stripBunk = document.getElementById("strip-btn-bunk");
+    if (stripBunk) stripBunk.textContent = data.stripBunk;
+
+    const stripId = document.getElementById("strip-btn-id");
+    if (stripId) stripId.textContent = data.stripId;
+
+    const stripBonafide = document.getElementById("strip-btn-bonafide");
+    if (stripBonafide) stripBonafide.textContent = data.stripBonafide;
+
+    const stripMap = document.getElementById("strip-btn-map");
+    if (stripMap) stripMap.textContent = data.stripMap;
+
+    const endChat = document.getElementById("end-chat-btn");
+    if (endChat) endChat.textContent = data.endChat;
+
+    // 3. Welcome Message & Greeting
+    updateGreeting(lang);
+
+    const welcomeSub = document.getElementById("welcome-subtext");
+    if (welcomeSub) welcomeSub.textContent = data.welcomeSub;
+
+    // 4. 4 Interactive Service Tiles
+    const tileBunkTitle = document.getElementById("tile-bunk-title");
+    if (tileBunkTitle) tileBunkTitle.textContent = data.tileBunkTitle;
+    const tileBunkSub = document.getElementById("tile-bunk-sub");
+    if (tileBunkSub) tileBunkSub.textContent = data.tileBunkSub;
+
+    const tileIdTitle = document.getElementById("tile-id-title");
+    if (tileIdTitle) tileIdTitle.textContent = data.tileIdTitle;
+    const tileIdSub = document.getElementById("tile-id-sub");
+    if (tileIdSub) tileIdSub.textContent = data.tileIdSub;
+
+    const tileBonafideTitle = document.getElementById("tile-bonafide-title");
+    if (tileBonafideTitle) tileBonafideTitle.textContent = data.tileBonafideTitle;
+    const tileBonafideSub = document.getElementById("tile-bonafide-sub");
+    if (tileBonafideSub) tileBonafideSub.textContent = data.tileBonafideSub;
+
+    const tileMapTitle = document.getElementById("tile-map-title");
+    if (tileMapTitle) tileMapTitle.textContent = data.tileMapTitle;
+    const tileMapSub = document.getElementById("tile-map-sub");
+    if (tileMapSub) tileMapSub.textContent = data.tileMapSub;
+
+    // 5. Student Logged In Notice Card
+    const studentNotice = document.getElementById("student-notice-text");
+    if (studentNotice) {
+        const studentName = studentNotice.dataset.studentName || 
+            (studentNotice.querySelector("strong") ? studentNotice.querySelector("strong").textContent : "Student");
+        studentNotice.innerHTML = data.studentNotice.replace("{name}", studentName);
+    }
+
+    // 6. Student Quick Prompts Chips
+    const chipBunk = document.getElementById("chip-bunk");
+    if (chipBunk) chipBunk.textContent = data.chipBunk;
+    const chipAtt = document.getElementById("chip-att");
+    if (chipAtt) chipAtt.textContent = data.chipAtt;
+    const chipId = document.getElementById("chip-id");
+    if (chipId) chipId.textContent = data.chipId;
+    const chipBonafide = document.getElementById("chip-bonafide");
+    if (chipBonafide) chipBonafide.textContent = data.chipBonafide;
+    const chipFee = document.getElementById("chip-fee");
+    if (chipFee) chipFee.textContent = data.chipFee;
+    const chipCgpa = document.getElementById("chip-cgpa");
+    if (chipCgpa) chipCgpa.textContent = data.chipCgpa;
+
+    // 7. Topics Header & Toggle Text
+    const topicsElem = document.getElementById("ui-topics-label");
     if (topicsElem) topicsElem.textContent = data.topicsLabel;
+
+    const toggleText = document.getElementById("toggle-topics-text");
+    const tray = document.getElementById("all-topics-tray");
+    if (toggleText) {
+        const isCollapsed = !tray || tray.classList.contains("collapsed");
+        toggleText.textContent = isCollapsed ? data.toggleTopicsCollapsed : data.toggleTopicsExpanded;
+    }
+
+    // 8. All Topic Chips
+    document.querySelectorAll(".quick-reply-btn").forEach((btn) => {
+        const q = btn.dataset.query;
+        if (q && TOPIC_I18N[q] && TOPIC_I18N[q][lang]) {
+            const span = btn.querySelector("span");
+            if (span) span.textContent = TOPIC_I18N[q][lang];
+        }
+    });
+
+    // 9. Input & Hint
     if (userInput) userInput.placeholder = data.placeholder;
+    const hintElem = document.getElementById("ui-input-hint");
     if (hintElem) hintElem.innerHTML = data.inputHint;
 
-    // Update active button state
+    // 10. Update Active Button State
     document.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("active", btn.dataset.lang === lang);
     });
 
-    showToast(lang === "mr" ? "मराठी भाषा निवडली आहे 🇮🇳" : lang === "hi" ? "हिंदी भाषा चुनी गई है 🇮🇳" : "English language set 🇬🇧");
+    // 11. Welcome message copy/listen buttons
+    const welcomeMsg = document.getElementById("welcome-message-content");
+    if (welcomeMsg) {
+        const parentMsg = welcomeMsg.closest(".bot-msg");
+        if (parentMsg) {
+            const copyBtn = parentMsg.querySelector(".copy-btn");
+            if (copyBtn) copyBtn.textContent = data.copyBtn;
+            const speakBtn = parentMsg.querySelector(".speak-btn");
+            if (speakBtn && !speakBtn.classList.contains("active")) speakBtn.textContent = data.listenBtn;
+        }
+    }
+
+    // 12. Voice Recognition Language
+    if (recognition) {
+        recognition.lang = lang === "mr" ? "mr-IN" : (lang === "hi" ? "hi-IN" : "en-IN");
+    }
+
+    showToast(data.toast);
 }
 
 document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -1106,7 +1378,8 @@ function toggleAllTopics() {
     if (!tray || !label) return;
 
     const isCollapsed = tray.classList.toggle("collapsed");
-    label.textContent = isCollapsed ? "Browse All 18 Topics ▾" : "Show Less ▴";
+    const data = I18N[currentLanguage] || I18N.en;
+    label.textContent = isCollapsed ? data.toggleTopicsCollapsed : data.toggleTopicsExpanded;
     soundFX.playReceive();
 }
 
