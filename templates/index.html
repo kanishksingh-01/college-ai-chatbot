@@ -25,8 +25,8 @@
                 <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="GH Raisoni University Logo" class="brand-logo-img">
             </div>
             <div class="brand-text">
-                <div class="brand-title" id="ui-brand-title">GH Raisoni College AI</div>
-                <div class="brand-subtitle" id="ui-brand-subtitle">Skill Tech University &middot; Pune (Wagholi &amp; Yerawada)</div>
+                <div class="brand-title" id="ui-brand-title">GH Raisoni University</div>
+                <div class="brand-subtitle" id="ui-brand-subtitle">AI Campus Assistant &bull; Pune</div>
             </div>
         </div>
 
@@ -38,21 +38,9 @@
                 <button class="lang-btn" data-lang="hi">हिंदी</button>
             </div>
 
-            <!-- Quick Utilities -->
-            <button id="nav-bunk-btn" class="nav-tool-btn" title="Smart Bunk & Attendance Target Calculator">
-                <span>🎯</span> <span class="nav-tool-text">Bunk Calc</span>
-            </button>
-
-            <button id="nav-id-btn" class="nav-tool-btn" title="3D Digital Student Identity Card">
-                <span>🪪</span> <span class="nav-tool-text">ID Pass</span>
-            </button>
-
-            <button id="nav-bonafide-btn" class="nav-tool-btn" title="Generate Bonafide / NOC Certificate">
-                <span>📄</span> <span class="nav-tool-text">Bonafide</span>
-            </button>
-
-            <button id="nav-sos-btn" class="nav-tool-btn sos-nav-btn" title="Campus Emergency SOS Helpline">
-                <span>🚨</span> <span class="nav-tool-text">SOS</span>
+            <!-- Emergency SOS Button -->
+            <button id="nav-sos-btn" class="nav-sos-pill" title="Campus Emergency SOS Helpline">
+                <span class="sos-pulse-dot"></span> 🚨 SOS
             </button>
 
             <!-- Theme toggle -->
@@ -60,25 +48,29 @@
                 <span class="theme-icon">🌙</span>
             </button>
 
-            <!-- Sound toggle -->
-            <button id="sound-toggle-btn" class="icon-action-btn" title="Toggle Chat Sounds" aria-label="Toggle Sounds">
-                <span class="sound-icon">🔔</span>
-            </button>
-
-            <!-- Export chat -->
-            <button id="export-chat-btn" class="icon-action-btn" title="Export Conversation" aria-label="Export Chat">
-                <span>📥</span>
-            </button>
-
-            <!-- Clear chat -->
-            <button id="clear-chat-btn" class="icon-action-btn" title="Clear Conversation" aria-label="Clear Chat">
-                <span>🗑️</span>
-            </button>
+            <!-- Chat Tools Dropdown -->
+            <div class="header-dropdown-wrap">
+                <button id="header-tools-btn" class="icon-action-btn" title="Chat Settings &amp; Options" aria-label="Chat Options">
+                    <span>⚙️</span>
+                </button>
+                <div class="header-dropdown-menu" id="header-dropdown-menu">
+                    <button id="sound-toggle-btn" class="dropdown-item" type="button">
+                        <span class="sound-icon">🔔</span> <span>Chat Sounds: On</span>
+                    </button>
+                    <button id="export-chat-btn" class="dropdown-item" type="button">
+                        <span>📥</span> <span>Export Chat (.txt)</span>
+                    </button>
+                    <button id="clear-chat-btn" class="dropdown-item danger" type="button">
+                        <span>🗑️</span> <span>Clear Chat</span>
+                    </button>
+                </div>
+            </div>
 
             {% if student_name %}
-                <div class="student-pill" id="student-profile-trigger" title="Logged in as {{ student_name }} (Click to open Digital ID Pass)">
-                    <span class="student-avatar-badge">👤</span>
+                <div class="student-user-pill" id="student-profile-trigger" onclick="openIdCardModal()" title="Logged in as {{ student_name }} (Click for 3D Digital ID Pass)">
+                    <div class="user-avatar-circle">{{ student_name[0] }}</div>
                     <span class="student-pill-name">{{ student_name.split()[0] }}</span>
+                    <span class="id-badge-tag">ID 🪪</span>
                 </div>
                 <a href="/logout" class="nav-btn nav-btn-outline" title="Sign out" id="ui-nav-logout">Logout</a>
             {% else %}
@@ -95,13 +87,14 @@
 
         <!-- Banner / Info Bar -->
         <div class="chat-status-strip">
-            <div class="pulse-wrapper">
-                <span class="pulse-ring"></span>
-                <span class="pulse-center"></span>
+            <div class="status-left">
+                <div class="pulse-wrapper">
+                    <span class="pulse-ring"></span>
+                    <span class="pulse-center"></span>
+                </div>
+                <span class="status-strip-text" id="ui-status-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions &amp; Campus Support</span>
             </div>
-            <span class="status-strip-text" id="ui-status-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions & Campus Support</span>
             <div class="strip-right-actions">
-                <button id="nav-map-btn" class="mini-tool-btn" title="Campus Floor & Room Finder">🗺️ Floor Guide</button>
                 <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
             </div>
         </div>
@@ -114,11 +107,46 @@
                 <div class="avatar bot-avatar">🤖</div>
                 <div class="bot-msg">
                     <div class="bot-text" id="welcome-message-content">
-                        <strong>Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong><br>
-                        I'm here to answer questions regarding admissions, exams, fees, syllabus, hostel, placements, and campus facilities.
+                        <div class="welcome-heading">
+                            <strong>Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong>
+                            <p class="welcome-subtext">I am your 24/7 campus companion. Ask questions about admissions, fees, timetable, detention rules, or explore our interactive tools below.</p>
+                        </div>
+
+                        <!-- 4 Star Interactive Services -->
+                        <div class="hero-services-grid">
+                            <div class="service-tile" onclick="openBunkModal()">
+                                <div class="service-tile-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">🎯</div>
+                                <div class="service-tile-meta">
+                                    <h4>Bunk Calculator</h4>
+                                    <p>75% Rule &amp; Safe Margins</p>
+                                </div>
+                            </div>
+                            <div class="service-tile" onclick="openIdCardModal()">
+                                <div class="service-tile-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">🪪</div>
+                                <div class="service-tile-meta">
+                                    <h4>3D Digital ID Pass</h4>
+                                    <p>QR Verified Student Pass</p>
+                                </div>
+                            </div>
+                            <div class="service-tile" onclick="openBonafideModal()">
+                                <div class="service-tile-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
+                                <div class="service-tile-meta">
+                                    <h4>Bonafide / NOC</h4>
+                                    <p>Instant Download &amp; Print</p>
+                                </div>
+                            </div>
+                            <div class="service-tile" onclick="openMapModal()">
+                                <div class="service-tile-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">🗺️</div>
+                                <div class="service-tile-meta">
+                                    <h4>Floor Navigator</h4>
+                                    <p>Labs, Rooms &amp; Counters</p>
+                                </div>
+                            </div>
+                        </div>
+
                         {% if student_name %}
                             <div class="auth-notice-card logged-in">
-                                <span>✨ Logged in as <strong>{{ student_name }}</strong>. You can ask:</span>
+                                <span>✨ Logged in as <strong>{{ student_name }}</strong>. Quick questions:</span>
                                 <div class="student-quick-prompts">
                                     <button class="prompt-chip" data-query="can I bunk?">🎯 Can I Bunk?</button>
                                     <button class="prompt-chip" data-query="what is my attendance?">📊 My Attendance</button>
@@ -130,7 +158,7 @@
                             </div>
                         {% else %}
                             <div class="auth-notice-card">
-                                <span>💡 <strong>Student Tip:</strong> <a href="/login">Log in with your registration number</a> (e.g. <code>ISTU00000001</code>) to instantly view your personalized attendance, safe bunk calculator, 3D Digital ID Pass, and Bonafide generator!</span>
+                                <span>💡 <strong>Student Tip:</strong> <a href="/login">Log in with your registration number</a> (e.g. <code>ISTU00000001</code>) to unlock personalized attendance, fee balance, and digital pass!</span>
                             </div>
                         {% endif %}
                     </div>
@@ -144,34 +172,47 @@
                 </div>
             </div>
 
-            <!-- Quick Topics Categories -->
+            <!-- Quick Topics Categories: Clean 6 Featured + Collapsible Tray -->
             {% if categories %}
             <div class="quick-topics-container">
-                <div class="quick-topics-label" id="ui-topics-label">Explore Popular Topics:</div>
-                <div class="quick-replies">
+                <div class="quick-topics-header">
+                    <span class="quick-topics-label" id="ui-topics-label">Explore Campus Topics:</span>
+                    <button type="button" class="topics-toggle-pill" id="toggle-topics-btn" onclick="toggleAllTopics()">
+                        <span id="toggle-topics-text">Browse All 18 Topics ▾</span>
+                    </button>
+                </div>
+                
+                <!-- Top 6 Featured Topics (Always visible) -->
+                <div class="quick-replies featured-topics">
+                    <button class="quick-reply-btn" data-query="Admission">🎓 <span>Admission</span></button>
+                    <button class="quick-reply-btn" data-query="Fee Structure">💰 <span>Fee Structure</span></button>
+                    <button class="quick-reply-btn" data-query="Exam Timetable">📅 <span>Exam Timetable</span></button>
+                    <button class="quick-reply-btn" data-query="Attendance Rules">📊 <span>Attendance Rules</span></button>
+                    <button class="quick-reply-btn" data-query="Placements">💼 <span>Placements</span></button>
+                    <button class="quick-reply-btn" data-query="Canteen & Mess Menu">🍛 <span>Canteen &amp; Mess</span></button>
+                </div>
+
+                <!-- Extended Topics Tray (Smooth Collapsible) -->
+                <div class="all-topics-tray collapsed" id="all-topics-tray">
                     {% for cat in categories %}
-                        <button class="quick-reply-btn" data-query="{{ cat }}">
-                            {% if "Admission" in cat %}🎓
-                            {% elif "Fee" in cat %}💰
-                            {% elif "Exam" in cat %}📅
-                            {% elif "Attendance" in cat %}📊
-                            {% elif "Library" in cat %}📚
-                            {% elif "Course" in cat %}📖
-                            {% elif "Faculty" in cat %}👨‍🏫
-                            {% elif "Branch" in cat %}🔄
-                            {% elif "Placement" in cat %}💼
-                            {% elif "Hostel" in cat %}🏢
-                            {% elif "Scholarship" in cat %}🏅
-                            {% elif "Club" in cat %}🎨
-                            {% elif "Emergency" in cat %}🚨
-                            {% elif "Location" in cat or "Map" in cat %}📍
-                            {% elif "Canteen" in cat or "Mess" in cat %}🍛
-                            {% elif "Floor" in cat or "Room" in cat %}🗺️
-                            {% elif "Bonafide" in cat %}📄
-                            {% elif "Bunk" in cat %}🎯
-                            {% else %}📌{% endif %}
-                            <span>{{ cat }}</span>
-                        </button>
+                        {% if cat not in ["Admission", "Fee Structure", "Exam Timetable", "Attendance Rules", "Placements", "Canteen & Mess Menu"] %}
+                            <button class="quick-reply-btn mini" data-query="{{ cat }}">
+                                {% if "Library" in cat %}📚
+                                {% elif "Course" in cat %}📖
+                                {% elif "Faculty" in cat %}👨‍🏫
+                                {% elif "Branch" in cat %}🔄
+                                {% elif "Hostel" in cat %}🏢
+                                {% elif "Scholarship" in cat %}🏅
+                                {% elif "Club" in cat %}🎨
+                                {% elif "Emergency" in cat %}🚨
+                                {% elif "Location" in cat or "Map" in cat %}📍
+                                {% elif "Floor" in cat or "Room" in cat %}🗺️
+                                {% elif "Bonafide" in cat %}📄
+                                {% elif "Bunk" in cat %}🎯
+                                {% else %}📌{% endif %}
+                                <span>{{ cat }}</span>
+                            </button>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

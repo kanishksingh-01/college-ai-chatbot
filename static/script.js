@@ -212,11 +212,17 @@ if (themeToggleBtn) {
 
 function initSound() {
     if (soundToggleBtn) {
-        soundToggleBtn.querySelector(".sound-icon").textContent = soundFX.enabled ? "🔔" : "🔕";
+        const updateSoundLabel = () => {
+            const icon = soundToggleBtn.querySelector(".sound-icon");
+            const labelSpan = soundToggleBtn.querySelector("span:not(.sound-icon)");
+            if (icon) icon.textContent = soundFX.enabled ? "🔔" : "🔕";
+            if (labelSpan) labelSpan.textContent = soundFX.enabled ? "Chat Sounds: On" : "Chat Sounds: Muted";
+        };
+        updateSoundLabel();
         soundToggleBtn.addEventListener("click", () => {
             soundFX.enabled = !soundFX.enabled;
             localStorage.setItem("ghr_sound_fx", soundFX.enabled);
-            soundToggleBtn.querySelector(".sound-icon").textContent = soundFX.enabled ? "🔔" : "🔕";
+            updateSoundLabel();
             showToast(soundFX.enabled ? "Sound effects enabled 🔔" : "Sound effects muted 🔕");
         });
     }
@@ -951,17 +957,33 @@ function showFloor(key) {
 }
 
 // Navigation Tool Buttons
-const navBunkBtn = document.getElementById("nav-bunk-btn");
-if (navBunkBtn) navBunkBtn.addEventListener("click", openBunkModal);
-
-const navIdBtn = document.getElementById("nav-id-btn");
-if (navIdBtn) navIdBtn.addEventListener("click", openIdCardModal);
-
-const navBonafideBtn = document.getElementById("nav-bonafide-btn");
-if (navBonafideBtn) navBonafideBtn.addEventListener("click", openBonafideModal);
-
 const navSosBtn = document.getElementById("nav-sos-btn");
 if (navSosBtn) navSosBtn.addEventListener("click", () => openModal("sos-modal"));
 
-const navMapBtn = document.getElementById("nav-map-btn");
-if (navMapBtn) navMapBtn.addEventListener("click", () => openModal("map-modal"));
+// Header Tools Dropdown Controller
+const headerToolsBtn = document.getElementById("header-tools-btn");
+const headerDropdownMenu = document.getElementById("header-dropdown-menu");
+
+if (headerToolsBtn && headerDropdownMenu) {
+    headerToolsBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        headerDropdownMenu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!headerDropdownMenu.contains(e.target) && e.target !== headerToolsBtn) {
+            headerDropdownMenu.classList.remove("show");
+        }
+    });
+}
+
+// All Topics Collapsible Accordion Controller
+function toggleAllTopics() {
+    const tray = document.getElementById("all-topics-tray");
+    const label = document.getElementById("toggle-topics-text");
+    if (!tray || !label) return;
+
+    const isCollapsed = tray.classList.toggle("collapsed");
+    label.textContent = isCollapsed ? "Browse All 18 Topics ▾" : "Show Less ▴";
+    soundFX.playReceive();
+}
