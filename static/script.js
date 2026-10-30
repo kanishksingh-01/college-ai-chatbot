@@ -249,7 +249,7 @@ function toggleTheme() {
 window.toggleTheme = toggleTheme;
 
 if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", toggleTheme);
+    themeToggleBtn.onclick = toggleTheme;
 }
 
 function initSound() {
@@ -1083,6 +1083,14 @@ function filterFloorRooms() {
     renderFloorList(filtered);
 }
 
+function openMapModal() {
+    openModal("map-modal");
+}
+
+function openSosModal() {
+    openModal("sos-modal");
+}
+
 // Navigation Tool Buttons
 const navSosBtn = document.getElementById("nav-sos-btn");
 if (navSosBtn) navSosBtn.addEventListener("click", () => openModal("sos-modal"));
@@ -1114,3 +1122,19 @@ function toggleAllTopics() {
     label.textContent = isCollapsed ? "Browse All 18 Topics ▾" : "Show Less ▴";
     soundFX.playReceive();
 }
+
+// Global Window Exports for Inline HTML onclick handlers
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.openBunkModal = openBunkModal;
+window.openIdCardModal = openIdCardModal;
+window.openBonafideModal = openBonafideModal;
+window.openMapModal = openMapModal;
+window.openSosModal = openSosModal;
+window.showFloor = showFloor;
+window.filterFloorRooms = filterFloorRooms;
+window.flipIdCard = flipIdCard;
+window.toggleAllTopics = toggleAllTopics;
+window.toggleTheme = toggleTheme;
+window.printBonafideCertificate = printBonafideCertificate;
+window.updateBonafidePurpose = updateBonafidePurpose;
