@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v4">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v6">
     <script>
         (function() {
             var savedTheme = localStorage.getItem('ghr_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -290,7 +290,7 @@
             <button class="modal-close-btn" onclick="closeModal('id-card-modal')">&times;</button>
         </div>
         <div class="id-card-viewport">
-            <div class="id-card-3d-wrap" id="id-card-flipper">
+            <div class="id-card-3d-wrap" id="id-card-flipper" onclick="flipIdCard()">
                 <!-- FRONT OF CARD -->
                 <div class="id-card-face id-card-front">
                     <div class="id-card-topbar">
@@ -692,6 +692,6 @@
 
 <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
-<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v4"></script>
+<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v6"></script>
 </body>
 </html>

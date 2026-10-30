@@ -1963,6 +1963,7 @@ body {
     background: transparent;
     border: none;
     box-shadow: none;
+    overflow: visible;
 }
 
 .id-card-dialog .modal-head {
@@ -2072,7 +2073,8 @@ body {
    ========================================================================== */
 .id-card-viewport {
     perspective: 1200px;
-    padding: 15px 5px;
+    -webkit-perspective: 1200px;
+    padding: 12px 6px;
     display: flex;
     justify-content: center;
     background: rgba(0, 0, 0, 0.15);
@@ -2084,14 +2086,17 @@ body {
     position: relative;
     width: 100%;
     max-width: 440px;
-    min-height: 275px;
+    height: 310px;
     transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    user-select: none;
 }
 
 .id-card-3d-wrap.flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
 }
 
 .id-card-face {
@@ -2101,20 +2106,26 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 18px;
-    padding: 18px 20px;
+    padding: 16px 20px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .id-card-front {
     background: linear-gradient(135deg, #0b1f47 0%, #17366d 50%, #1e4ea5 100%);
     color: #ffffff;
     border: 2px solid rgba(255, 215, 0, 0.4);
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .id-card-back {
@@ -2122,6 +2133,18 @@ body {
     color: #f1f5f9;
     border: 2px solid rgba(255, 215, 0, 0.4);
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.id-card-3d-wrap.flipped .id-card-front {
+    z-index: 1;
+    pointer-events: none;
+}
+
+.id-card-3d-wrap.flipped .id-card-back {
+    z-index: 2;
+    pointer-events: auto;
 }
 
 .id-card-topbar {
@@ -3207,11 +3230,6 @@ body {
 }
 
 /* 3D Holographic Card Shimmer */
-.id-card-face {
-    position: relative;
-    overflow: hidden;
-}
-
 .id-card-face::after {
     content: '';
     position: absolute;

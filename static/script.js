@@ -857,12 +857,21 @@ document.addEventListener("keydown", (e) => {
 
 // ID Card functions
 function openIdCardModal() {
+    const flipper = document.getElementById("id-card-flipper");
+    if (flipper) {
+        flipper.style.transform = "";
+        flipper.classList.remove("flipped");
+    }
     openModal("id-card-modal");
 }
 
-function flipIdCard() {
+function flipIdCard(e) {
+    if (e && e.stopPropagation) {
+        e.stopPropagation();
+    }
     const flipper = document.getElementById("id-card-flipper");
     if (flipper) {
+        flipper.style.transform = "";
         flipper.classList.toggle("flipped");
         soundFX.playSend();
     }
@@ -870,29 +879,7 @@ function flipIdCard() {
 
 const idCardFlipper = document.getElementById("id-card-flipper");
 if (idCardFlipper) {
-    idCardFlipper.addEventListener("click", flipIdCard);
-}
-
-// 3D Card Interactive Holographic Mouse-Tilt Effect
-const idCardViewport = document.querySelector(".id-card-viewport");
-if (idCardViewport) {
-    idCardViewport.addEventListener("mousemove", (e) => {
-        const flipper = document.getElementById("id-card-flipper");
-        if (!flipper || flipper.classList.contains("flipped")) return;
-        const rect = idCardViewport.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        const rotX = -(y / (rect.height / 2)) * 14;
-        const rotY = (x / (rect.width / 2)) * 14;
-        flipper.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg)`;
-    });
-
-    idCardViewport.addEventListener("mouseleave", () => {
-        const flipper = document.getElementById("id-card-flipper");
-        if (flipper && !flipper.classList.contains("flipped")) {
-            flipper.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-        }
-    });
+    idCardFlipper.onclick = flipIdCard;
 }
 
 // Bunk Calculator Functions
