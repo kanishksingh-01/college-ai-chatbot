@@ -25,13 +25,36 @@
                 <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="GH Raisoni University Logo" class="brand-logo-img">
             </div>
             <div class="brand-text">
-                <div class="brand-title">GH Raisoni College AI</div>
-                <div class="brand-subtitle">Skill Tech University &middot; Pune (Wagholi &amp; Yerawada)</div>
+                <div class="brand-title" id="ui-brand-title">GH Raisoni College AI</div>
+                <div class="brand-subtitle" id="ui-brand-subtitle">Skill Tech University &middot; Pune (Wagholi &amp; Yerawada)</div>
             </div>
-        </div>
         </div>
 
         <div class="header-actions">
+            <!-- Multilingual Selector -->
+            <div class="lang-selector" title="Switch Language / भाषा निवडा / भाषा चुनें">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+                <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+
+            <!-- Quick Utilities -->
+            <button id="nav-bunk-btn" class="nav-tool-btn" title="Smart Bunk & Attendance Target Calculator">
+                <span>🎯</span> <span class="nav-tool-text">Bunk Calc</span>
+            </button>
+
+            <button id="nav-id-btn" class="nav-tool-btn" title="3D Digital Student Identity Card">
+                <span>🪪</span> <span class="nav-tool-text">ID Pass</span>
+            </button>
+
+            <button id="nav-bonafide-btn" class="nav-tool-btn" title="Generate Bonafide / NOC Certificate">
+                <span>📄</span> <span class="nav-tool-text">Bonafide</span>
+            </button>
+
+            <button id="nav-sos-btn" class="nav-tool-btn sos-nav-btn" title="Campus Emergency SOS Helpline">
+                <span>🚨</span> <span class="nav-tool-text">SOS</span>
+            </button>
+
             <!-- Theme toggle -->
             <button id="theme-toggle-btn" class="icon-action-btn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
                 <span class="theme-icon">🌙</span>
@@ -53,13 +76,13 @@
             </button>
 
             {% if student_name %}
-                <div class="student-pill" id="student-profile-trigger" title="Logged in as {{ student_name }} (Click for Quick Info)">
+                <div class="student-pill" id="student-profile-trigger" title="Logged in as {{ student_name }} (Click to open Digital ID Pass)">
                     <span class="student-avatar-badge">👤</span>
                     <span class="student-pill-name">{{ student_name.split()[0] }}</span>
                 </div>
-                <a href="/logout" class="nav-btn nav-btn-outline" title="Sign out">Logout</a>
+                <a href="/logout" class="nav-btn nav-btn-outline" title="Sign out" id="ui-nav-logout">Logout</a>
             {% else %}
-                <a href="/login" class="nav-btn nav-btn-primary" title="Student Login">Student Login</a>
+                <a href="/login" class="nav-btn nav-btn-primary" title="Student Login" id="ui-nav-login">Student Login</a>
             {% endif %}
 
             <a href="/admin" class="nav-btn nav-btn-ghost admin-btn" title="Admin Portal">Admin</a>
@@ -76,8 +99,11 @@
                 <span class="pulse-ring"></span>
                 <span class="pulse-center"></span>
             </div>
-            <span class="status-strip-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions & Campus Support</span>
-            <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
+            <span class="status-strip-text" id="ui-status-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions & Campus Support</span>
+            <div class="strip-right-actions">
+                <button id="nav-map-btn" class="mini-tool-btn" title="Campus Floor & Room Finder">🗺️ Floor Guide</button>
+                <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
+            </div>
         </div>
 
         <!-- Chat messages container -->
@@ -87,23 +113,24 @@
             <div class="msg-row bot-row">
                 <div class="avatar bot-avatar">🤖</div>
                 <div class="bot-msg">
-                    <div class="bot-text">
+                    <div class="bot-text" id="welcome-message-content">
                         <strong>Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong><br>
                         I'm here to answer questions regarding admissions, exams, fees, syllabus, hostel, placements, and campus facilities.
                         {% if student_name %}
                             <div class="auth-notice-card logged-in">
                                 <span>✨ Logged in as <strong>{{ student_name }}</strong>. You can ask:</span>
                                 <div class="student-quick-prompts">
+                                    <button class="prompt-chip" data-query="can I bunk?">🎯 Can I Bunk?</button>
                                     <button class="prompt-chip" data-query="what is my attendance?">📊 My Attendance</button>
+                                    <button class="prompt-chip" data-query="show my id card">🪪 Digital ID Card</button>
+                                    <button class="prompt-chip" data-query="generate bonafide certificate">📄 Bonafide Letter</button>
                                     <button class="prompt-chip" data-query="how much are my fees?">💰 My Fee Balance</button>
                                     <button class="prompt-chip" data-query="what is my cgpa?">🌟 My CGPA</button>
-                                    <button class="prompt-chip" data-query="who is my mentor?">👨‍🏫 My Mentor</button>
-                                    <button class="prompt-chip" data-query="my student profile summary">👤 Full Profile</button>
                                 </div>
                             </div>
                         {% else %}
                             <div class="auth-notice-card">
-                                <span>💡 <strong>Student Tip:</strong> <a href="/login">Log in with your registration number</a> (e.g. <code>ISTU00000001</code>) to instantly view your personalized attendance, pending fees, CGPA, and mentor details!</span>
+                                <span>💡 <strong>Student Tip:</strong> <a href="/login">Log in with your registration number</a> (e.g. <code>ISTU00000001</code>) to instantly view your personalized attendance, safe bunk calculator, 3D Digital ID Pass, and Bonafide generator!</span>
                             </div>
                         {% endif %}
                     </div>
@@ -120,7 +147,7 @@
             <!-- Quick Topics Categories -->
             {% if categories %}
             <div class="quick-topics-container">
-                <div class="quick-topics-label">Explore Popular Topics:</div>
+                <div class="quick-topics-label" id="ui-topics-label">Explore Popular Topics:</div>
                 <div class="quick-replies">
                     {% for cat in categories %}
                         <button class="quick-reply-btn" data-query="{{ cat }}">
@@ -138,6 +165,10 @@
                             {% elif "Club" in cat %}🎨
                             {% elif "Emergency" in cat %}🚨
                             {% elif "Location" in cat or "Map" in cat %}📍
+                            {% elif "Canteen" in cat or "Mess" in cat %}🍛
+                            {% elif "Floor" in cat or "Room" in cat %}🗺️
+                            {% elif "Bonafide" in cat %}📄
+                            {% elif "Bunk" in cat %}🎯
                             {% else %}📌{% endif %}
                             <span>{{ cat }}</span>
                         </button>
@@ -159,7 +190,7 @@
                 <input 
                     type="text" 
                     id="user-input" 
-                    placeholder="Ask about admissions, fees, timetable, hostal..." 
+                    placeholder="Ask about admissions, fees, timetable, can I bunk, canteen menu..." 
                     autocomplete="off"
                     aria-label="Your question"
                 >
@@ -169,13 +200,406 @@
                 </button>
             </div>
             <div class="input-footer">
-                <span class="input-hint">Press <strong>Enter ↵</strong> to send &bull; Type <code>exit</code> to end</span>
+                <span class="input-hint" id="ui-input-hint">Press <strong>Enter ↵</strong> to send &bull; Type <code>exit</code> to end</span>
                 <span id="speech-status" class="speech-status-indicator"></span>
             </div>
         </div>
 
     </div>
 </main>
+
+<!-- ==========================================================================
+     MODAL 1: 3D FLIPPABLE DIGITAL STUDENT IDENTITY CARD
+     ========================================================================== -->
+<div id="id-card-modal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="id-card-modal-title">
+    <div class="modal-dialog id-card-dialog">
+        <div class="modal-head">
+            <h3 id="id-card-modal-title">🪪 Digital Student Identity Pass</h3>
+            <button class="modal-close-btn" onclick="closeModal('id-card-modal')">&times;</button>
+        </div>
+        <div class="id-card-viewport">
+            <div class="id-card-3d-wrap" id="id-card-flipper">
+                <!-- FRONT OF CARD -->
+                <div class="id-card-face id-card-front">
+                    <div class="id-card-topbar">
+                        <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="Logo" class="id-card-college-logo">
+                        <div class="id-card-institution">
+                            <div class="inst-name">GH RAISONI UNIVERSITY</div>
+                            <div class="inst-sub">SKILL TECH UNIVERSITY &bull; PUNE</div>
+                        </div>
+                        <div class="id-card-badge-chip">STUDENT</div>
+                    </div>
+                    
+                    <div class="id-card-body">
+                        <div class="id-photo-frame">
+                            <div class="id-avatar-icon">🎓</div>
+                            <span class="id-verified-tick" title="Institutional Verified">✓</span>
+                        </div>
+                        <div class="id-details">
+                            <h2 class="id-student-name" id="card-name">{{ student.name if student else 'Aarav Sharma' }}</h2>
+                            <div class="id-reg-row">
+                                <span class="id-lbl">REG NO:</span>
+                                <span class="id-val" id="card-reg">{{ student.roll_no if student else 'ISTU00000001' }}</span>
+                            </div>
+                            <div class="id-course-row" id="card-course">{{ student.course if student else 'BBA (Computer Applications)' }} &bull; {{ student.semester if student else 'Semester III' }}</div>
+                            
+                            <div class="id-stat-chips">
+                                <div class="id-stat-pill">
+                                    <span class="lbl">ATTENDANCE</span>
+                                    <span class="val highlight" id="card-att">{{ student.attendance if student else '86.5' }}%</span>
+                                </div>
+                                <div class="id-stat-pill">
+                                    <span class="lbl">CGPA</span>
+                                    <span class="val" id="card-cgpa">{{ student.cgpa if student else '8.92' }} / 10</span>
+                                </div>
+                                <div class="id-stat-pill">
+                                    <span class="lbl">DUES</span>
+                                    <span class="val green" id="card-dues">{{ 'Rs ' + student.fees_due|string if student and student.fees_due > 0 else 'NIL (Cleared)' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="id-card-footer">
+                        <div class="id-qr-box">
+                            <!-- High-fidelity Scannable SVG QR Code Representation -->
+                            <svg class="id-qr-svg" viewBox="0 0 100 100" width="60" height="60">
+                                <rect width="100" height="100" fill="#ffffff" rx="4"/>
+                                <rect x="8" y="8" width="26" height="26" fill="#1e3d73"/>
+                                <rect x="13" y="13" width="16" height="16" fill="#ffffff"/>
+                                <rect x="17" y="17" width="8" height="8" fill="#1e3d73"/>
+                                
+                                <rect x="66" y="8" width="26" height="26" fill="#1e3d73"/>
+                                <rect x="71" y="13" width="16" height="16" fill="#ffffff"/>
+                                <rect x="75" y="17" width="8" height="8" fill="#1e3d73"/>
+                                
+                                <rect x="8" y="66" width="26" height="26" fill="#1e3d73"/>
+                                <rect x="13" y="71" width="16" height="16" fill="#ffffff"/>
+                                <rect x="17" y="75" width="8" height="8" fill="#1e3d73"/>
+
+                                <!-- QR Data Pattern -->
+                                <rect x="42" y="12" width="6" height="6" fill="#1e3d73"/>
+                                <rect x="52" y="18" width="6" height="6" fill="#1e3d73"/>
+                                <rect x="42" y="28" width="8" height="8" fill="#1e3d73"/>
+                                <rect x="18" y="44" width="6" height="6" fill="#1e3d73"/>
+                                <rect x="32" y="44" width="14" height="6" fill="#1e3d73"/>
+                                <rect x="52" y="42" width="6" height="16" fill="#1e3d73"/>
+                                <rect x="64" y="48" width="10" height="6" fill="#1e3d73"/>
+                                <rect x="80" y="44" width="8" height="8" fill="#1e3d73"/>
+                                <rect x="42" y="66" width="10" height="8" fill="#1e3d73"/>
+                                <rect x="58" y="72" width="8" height="14" fill="#1e3d73"/>
+                                <rect x="74" y="66" width="14" height="6" fill="#1e3d73"/>
+                                <rect x="78" y="80" width="10" height="8" fill="#1e3d73"/>
+                            </svg>
+                        </div>
+                        <div class="id-barcode-wrap">
+                            <div class="id-barcode-lines"></div>
+                            <div class="id-barcode-num">ISTU-2026-PUNE-VERIFIED</div>
+                        </div>
+                    </div>
+                    <div class="id-card-flip-prompt">🔄 Click card to flip for Mentor &amp; Terms</div>
+                </div>
+
+                <!-- BACK OF CARD -->
+                <div class="id-card-face id-card-back">
+                    <div class="id-card-topbar">
+                        <div class="inst-name">OFFICIAL STUDENT RECORDS</div>
+                        <div class="id-card-badge-chip secondary">CONFIDENTIAL</div>
+                    </div>
+
+                    <div class="id-back-content">
+                        <div class="back-info-item">
+                            <span class="lbl">Designated Faculty Mentor:</span>
+                            <span class="val" id="card-mentor">{{ student.mentor if student else 'Dr. A. Sharma (HOD - BBA CA)' }}</span>
+                        </div>
+                        <div class="back-info-item">
+                            <span class="lbl">Next Semester Examination:</span>
+                            <span class="val" id="card-exam">{{ student.exam_date if student else '10-Dec-2026' }}</span>
+                        </div>
+                        <div class="back-info-item">
+                            <span class="lbl">Academic Term:</span>
+                            <span class="val">2026 – 2027 (Autonomous Cycle)</span>
+                        </div>
+                        <div class="back-info-item">
+                            <span class="lbl">Campus Location:</span>
+                            <span class="val">Wagholi Main Campus, Domkhel Rd, Pune</span>
+                        </div>
+                        
+                        <div class="id-terms-box">
+                            <strong>Terms &amp; Instructions:</strong>
+                            <p>1. This digital identity card is strictly for institutional use at GH Raisoni University.</p>
+                            <p>2. Mandatory attendance of 75% required for examination hall entry.</p>
+                            <p>3. In case of emergency or loss, contact Campus Security at +91 20-67528000.</p>
+                        </div>
+
+                        <div class="id-signatures-row">
+                            <div class="sig-block">
+                                <div class="sig-line">Dr. A. Sharma</div>
+                                <div class="sig-title">Faculty Mentor</div>
+                            </div>
+                            <div class="gold-seal-badge">
+                                <span>GHR</span>
+                                <small>SEAL</small>
+                            </div>
+                            <div class="sig-block">
+                                <div class="sig-line">Registrar</div>
+                                <div class="sig-title">Academic Head</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="id-card-flip-prompt">🔄 Click card to flip back to front</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="closeModal('id-card-modal')">Close</button>
+            <button class="modal-btn primary" onclick="flipIdCard()">🔄 Flip Card</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 2: INTERACTIVE BUNK & ATTENDANCE CALCULATOR
+     ========================================================================== -->
+<div id="bunk-modal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="bunk-modal-title">
+    <div class="modal-dialog">
+        <div class="modal-head">
+            <h3 id="bunk-modal-title">🎯 Smart Bunk &amp; Attendance Target Calculator</h3>
+            <button class="modal-close-btn" onclick="closeModal('bunk-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="modal-intro">Simulate how missing or attending upcoming lectures will impact your semester attendance against the <strong>75% mandatory college rule</strong>.</p>
+            
+            <div class="bunk-calc-grid">
+                <div class="bunk-field">
+                    <label for="bunk-total-input">Total Lectures Conducted So Far</label>
+                    <input type="number" id="bunk-total-input" value="60" min="1" max="250">
+                </div>
+                <div class="bunk-field">
+                    <label for="bunk-attended-input">Lectures Attended</label>
+                    <input type="number" id="bunk-attended-input" value="{{ (student.attendance * 60 / 100)|round|int if student else 48 }}" min="0" max="250">
+                </div>
+                <div class="bunk-field">
+                    <label for="bunk-target-input">Target Threshold (%)</label>
+                    <input type="number" id="bunk-target-input" value="75" min="50" max="100">
+                </div>
+            </div>
+
+            <div class="bunk-btn-row">
+                <button type="button" class="action-btn primary-action" id="run-bunk-calc-btn">Calculate Bunk Forecast</button>
+            </div>
+
+            <div id="bunk-result-card" class="bunk-result-box safe">
+                <div class="bunk-result-header">
+                    <div class="bunk-status-icon">🎉</div>
+                    <div class="bunk-status-text">
+                        <h4 id="bunk-res-title">Safe to Bunk!</h4>
+                        <div id="bunk-res-subtitle">Current Attendance: 80.0%</div>
+                    </div>
+                </div>
+                <div class="bunk-metric-row">
+                    <div class="bunk-metric-chip">
+                        <span class="m-val" id="bunk-res-margin">4</span>
+                        <span class="m-lbl">Safe Lectures to Miss</span>
+                    </div>
+                    <div class="bunk-metric-chip">
+                        <span class="m-val" id="bunk-res-forecast">75.0%</span>
+                        <span class="m-lbl">Forecasted Attendance</span>
+                    </div>
+                </div>
+                <p id="bunk-res-desc" class="bunk-res-desc">You can safely skip up to 4 more lectures and still stay above the 75% boundary!</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="closeModal('bunk-modal')">Close</button>
+            <button class="modal-btn primary" id="paste-bunk-to-chat-btn">💬 Paste in Chat</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 3: OFFICIAL BONAFIDE & NOC CERTIFICATE GENERATOR
+     ========================================================================== -->
+<div id="bonafide-modal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="bonafide-modal-title">
+    <div class="modal-dialog bonafide-dialog">
+        <div class="modal-head">
+            <h3 id="bonafide-modal-title">📄 Official Bonafide / NOC Certificate</h3>
+            <button class="modal-close-btn" onclick="closeModal('bonafide-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="bonafide-purpose-picker no-print">
+                <label for="bonafide-purpose">Select Purpose for Certificate:</label>
+                <select id="bonafide-purpose" onchange="updateBonafidePurpose()">
+                    <option value="MahaDBT & State Government Scholarship Scheme">MahaDBT / National Scholarship Scheme</option>
+                    <option value="PMPML & Maharashtra State Bus Pass Concession">PMPML / ST Bus Pass Concession</option>
+                    <option value="Opening of Student Bank Savings Account / Education Loan">Bank Account Opening / Education Loan</option>
+                    <option value="Corporate Summer Internship & Project Work NOC">Summer Internship &amp; Project Work NOC</option>
+                    <option value="Passport Verification / Visa Processing">Passport / Visa Application</option>
+                </select>
+            </div>
+
+            <!-- PRINTABLE CERTIFICATE SHEET -->
+            <div class="bonafide-paper" id="bonafide-printable-sheet">
+                <div class="cert-header">
+                    <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="GHR Logo" class="cert-logo">
+                    <div class="cert-college-meta">
+                        <h2>GH RAISONI COLLEGE</h2>
+                        <h3>INTERNATIONAL SKILL TECH UNIVERSITY &bull; PUNE</h3>
+                        <p>Approved by Govt of Maharashtra &bull; Affiliated to Savitribai Phule Pune University (SPPU)</p>
+                        <p class="cert-addr">Gat 1200, Domkhel Road, Wagholi, Pune - 412207 | Email: registrar@ghrc.edu</p>
+                    </div>
+                </div>
+
+                <div class="cert-divider"></div>
+
+                <div class="cert-meta-row">
+                    <div><strong>Ref No:</strong> GHRSTU/CERT/2026/<span id="cert-ref-num">8492</span></div>
+                    <div><strong>Date:</strong> <span id="cert-today-date">30-Oct-2026</span></div>
+                </div>
+
+                <div class="cert-title">BONAFIDE CERTIFICATE</div>
+
+                <div class="cert-body-content">
+                    <p>This is to certify that Mr./Ms. <strong id="cert-student-name">{{ student.name if student else 'Aarav Sharma' }}</strong>, bearing Registration No. <strong id="cert-student-reg">{{ student.roll_no if student else 'ISTU00000001' }}</strong>, is a bonafide student of this University.</p>
+                    
+                    <p>He/She is currently studying in <strong>{{ student.course if student else 'BBA (Computer Applications)' }}</strong>, <strong>{{ student.semester if student else 'Semester III' }}</strong> during the Academic Year <strong>2026 – 2027</strong>.</p>
+                    
+                    <p>As per institutional records, his/her lecture attendance is <strong>{{ student.attendance if student else '86.5' }}%</strong> and cumulative grade point average (CGPA) is <strong>{{ student.cgpa if student else '8.92' }}/10.0</strong>.</p>
+
+                    <p>This certificate is issued upon the student's request for the purpose of: <br><strong class="cert-purpose-text" id="cert-purpose-display">MahaDBT &amp; State Government Scholarship Scheme</strong>.</p>
+
+                    <p>To the best of our knowledge, he/she bears a good moral character and conduct.</p>
+                </div>
+
+                <div class="cert-signatures">
+                    <div class="cert-sig-block">
+                        <div class="cert-sig-img">Dr. A. Sharma</div>
+                        <div class="cert-sig-lbl">Head of Department (BBA CA)</div>
+                    </div>
+                    <div class="cert-seal">
+                        <div class="seal-inner">
+                            <span>SEAL OF REGISTRAR</span>
+                            <small>GH RAISONI PUNE</small>
+                        </div>
+                    </div>
+                    <div class="cert-sig-block">
+                        <div class="cert-sig-img">Prof. K. R. Patil</div>
+                        <div class="cert-sig-lbl">Principal / Registrar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer no-print">
+            <button class="modal-btn secondary" onclick="closeModal('bonafide-modal')">Close</button>
+            <button class="modal-btn primary" onclick="printBonafideCertificate()">🖨️ Print / Save as PDF</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 4: EMERGENCY SOS SPEED-DIAL
+     ========================================================================== -->
+<div id="sos-modal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="sos-modal-title">
+    <div class="modal-dialog">
+        <div class="modal-head sos-head">
+            <h3 id="sos-modal-title">🚨 Campus Emergency SOS Speed-Dial</h3>
+            <button class="modal-close-btn" onclick="closeModal('sos-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="modal-intro">Immediate 24/7 security, anti-ragging, medical, and grievance helplines for GH Raisoni Pune campuses.</p>
+            
+            <div class="sos-cards-list">
+                <div class="sos-card">
+                    <div class="sos-card-icon">👮</div>
+                    <div class="sos-card-info">
+                        <h4>Campus Security Control (24/7)</h4>
+                        <p>Main Gate Control Post &bull; Wagholi &amp; Yerawada</p>
+                        <div class="sos-num">+91 20 6752 8000</div>
+                    </div>
+                    <a href="tel:+912067528000" class="sos-call-btn">📞 Call</a>
+                </div>
+
+                <div class="sos-card">
+                    <div class="sos-card-icon">🛡️</div>
+                    <div class="sos-card-info">
+                        <h4>National Anti-Ragging Cell</h4>
+                        <p>Zero Tolerance Policy &bull; Anonymous reporting</p>
+                        <div class="sos-num">1800-180-5522</div>
+                    </div>
+                    <a href="tel:18001805522" class="sos-call-btn">📞 Call</a>
+                </div>
+
+                <div class="sos-card">
+                    <div class="sos-card-icon">🩺</div>
+                    <div class="sos-card-info">
+                        <h4>Campus Health Center &amp; Ambulance</h4>
+                        <p>Dispensary Ground Floor &bull; First Aid &amp; Doctor</p>
+                        <div class="sos-num">+91 96047 87185</div>
+                    </div>
+                    <a href="tel:+919604787185" class="sos-call-btn">📞 Call</a>
+                </div>
+
+                <div class="sos-card">
+                    <div class="sos-card-icon">👩</div>
+                    <div class="sos-card-info">
+                        <h4>Women Safety &amp; ICC Committee</h4>
+                        <p>Internal Complaints Committee (ICC Pune)</p>
+                        <div class="sos-num">icc.pune@raisoni.net</div>
+                    </div>
+                    <a href="mailto:icc.pune@raisoni.net" class="sos-call-btn">✉️ Email</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="closeModal('sos-modal')">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 5: CAMPUS FLOOR & ROOM NAVIGATOR
+     ========================================================================== -->
+<div id="map-modal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+    <div class="modal-dialog">
+        <div class="modal-head">
+            <h3 id="map-modal-title">🗺️ Campus Indoor Floor Navigator</h3>
+            <button class="modal-close-btn" onclick="closeModal('map-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="floor-selector-pills">
+                <button class="floor-pill active" onclick="showFloor('ground')">Ground Floor</button>
+                <button class="floor-pill" onclick="showFloor('first')">1st Floor</button>
+                <button class="floor-pill" onclick="showFloor('second')">2nd Floor</button>
+                <button class="floor-pill" onclick="showFloor('third')">3rd Floor</button>
+            </div>
+
+            <div id="floor-content" class="floor-content-area">
+                <!-- Ground floor by default -->
+                <div class="floor-room-list" id="floor-list-container">
+                    <div class="room-item">
+                        <span class="room-num">Room 101</span>
+                        <div class="room-desc"><strong>Central Admissions Office</strong> &mdash; Main Academic Foyer, counseling desks</div>
+                    </div>
+                    <div class="room-item">
+                        <span class="room-num">Counter 4</span>
+                        <div class="room-desc"><strong>Accounts &amp; Fee Payments</strong> &mdash; ERP billing, DD submission, fee receipts</div>
+                    </div>
+                    <div class="room-item">
+                        <span class="room-num">Room 102</span>
+                        <div class="room-desc"><strong>Principal &amp; Director Secretariat</strong> &mdash; Executive administrative suite</div>
+                    </div>
+                    <div class="room-item">
+                        <span class="room-num">Dispensary</span>
+                        <div class="room-desc"><strong>Campus Medical Unit</strong> &mdash; Next to sports complex, doctor on call</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="closeModal('map-modal')">Close</button>
+        </div>
+    </div>
+</div>
 
 <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 

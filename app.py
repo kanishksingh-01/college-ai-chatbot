@@ -8,6 +8,7 @@ import os
 import re
 import csv
 import io
+import math
 import sqlite3
 import difflib
 from flask import (
@@ -21,6 +22,12 @@ from flask import (
     send_from_directory,
     Response,
 )
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
 
 try:
     from werkzeug.security import generate_password_hash, check_password_hash
@@ -57,6 +64,47 @@ def get_db():
     return conn
 
 
+# ---------------- HYBRID AI: GOOGLE GEMINI FALLBACK ----------------
+
+def ask_gemini(query):
+    """
+    Fallback to Google Gemini API when rule-based confidence is low.
+    Grounded strictly as the official GH Raisoni College Assistant.
+    """
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if not gemini_key:
+        return None
+    try:
+        from google import genai
+        client = genai.Client(api_key=gemini_key)
+        system_instruction = (
+            "You are the official AI Campus Assistant for GH Raisoni College (GH Raisoni International Skill Tech University, Pune - Wagholi & Yerawada campuses). "
+            "You answer student and visitor questions concisely, politely, and accurately. "
+            "Key facts: "
+            "1. Locations: Wagholi Campus (Gat 1200 Domkhel Rd, Wagholi, Pune 412207) and Yerawada Campus (Nyati Unitree, Airport Rd, Pune 411006). "
+            "2. Programs: BBA-CA, BCA, BCom (Comp Apps), MCA, Engineering. Affiliated to SPPU / autonomous Skill Tech University. "
+            "3. Mandatory attendance: 75% minimum, with strict 4-tier detention policy. "
+            "4. Accounts: Counter 4, Admin Block. Admissions: Room 101. Library: 1st floor, 8:30 AM - 7:00 PM. "
+            "5. Emergency / Security: 24/7 Gate Control +91 20-67528000, Anti-Ragging: 1800-180-5522. "
+            "Format responses cleanly with markdown bullet points and emojis where helpful. "
+            "Do not hallucinate external policies. If unsure, advise visiting Admin Counter 4 or emailing admissions@ghrc.edu."
+        )
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=query,
+            config=genai.types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                temperature=0.3,
+                max_output_tokens=500,
+            ),
+        )
+        if response and response.text:
+            return response.text.strip()
+    except Exception as e:
+        print(f"Gemini API error: {e}")
+    return None
+
+
 # ---------------- CHATBOT LOGIC (rule-based keyword matching with fuzzy fallback) ----------------
 
 def match_query(message):
@@ -67,7 +115,7 @@ def match_query(message):
     Returns (answer, category) or a fallback message if nothing matches.
     """
     message_lower = message.lower()
-    words = re.findall(r"[a-zA-Z0-9]+", message_lower)
+    words = re.findall(r"[a-zA-Z0-9\u0900-\u097F]+", message_lower)
 
     conn = get_db()
     rows = conn.execute("SELECT category, keywords, answer FROM college_info").fetchall()
@@ -108,7 +156,7 @@ def match_query(message):
     return (
         "I'm not completely sure about that. You can ask me about Admissions, "
         "Fee Structure, Exam Timetable, Attendance Rules, Placements, Hostels, "
-        "Scholarships, or Faculty Contacts — or tap one of the suggested topics below.",
+        "Canteen Menu, Campus Map, or Bonafide Certificates — or tap one of the suggested topics below.",
         None,
     )
 
@@ -151,11 +199,73 @@ def personalized_answer(message, roll_no):
             f"• Lecture Attendance: {student['attendance']}%\n"
             f"• Fee Balance: {fee_status}\n"
             f"• Faculty Mentor: {student['mentor']}\n"
-            f"• Next Exam Date: {student['exam_date']}"
+            f"• Next Exam Date: {student['exam_date']}\n\n"
+            f"💡 Tip: Tap 'My ID Card' to view your 3D digital pass or ask 'Can I bunk?' for your safe attendance margin."
+        )
+
+    # Smart Attendance & Bunk Target Calculator
+    if any(k in msg for k in ["bunk", "miss class", "skip class", "attendance target", "target attendance", "can i bunk", "how many bunk"]) or (
+        "how many" in msg and any(k in msg for k in ["class", "lecture", "attend"])
+    ):
+        att = student["attendance"]
+        total_conducted = 60
+        attended = int(round((att / 100.0) * total_conducted))
+
+        if att >= 75.0:
+            bunkable = int(math.floor((attended / 0.75) - total_conducted))
+            bunkable = max(0, bunkable)
+            if bunkable > 0:
+                new_pct = round((attended / (total_conducted + bunkable)) * 100, 1)
+                return (
+                    f"🎯 SMART BUNK CALCULATOR for {student['name']}:\n\n"
+                    f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
+                    f"• Academic Standing: ✅ Safe / Good Standing (Above 75%)\n"
+                    f"• Safe Bunks Margin: You can safely miss up to **{bunkable} lecture(s)** and still remain above 75%! 🎉\n"
+                    f"• Forecast: After bunking {bunkable} classes, your attendance will be approximately {new_pct}%.\n\n"
+                    f"💡 Click the '🎯 Bunk Tool' in the top bar to simulate custom lecture scenarios."
+                )
+            else:
+                return (
+                    f"🎯 SMART BUNK CALCULATOR for {student['name']}:\n\n"
+                    f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
+                    f"• Status: ⚠️ Right at 75% Boundary\n"
+                    f"• Safe Bunk Margin: **0 classes**. Missing even 1 single lecture will push you below 75% and trigger the detention bracket!"
+                )
+        else:
+            needed = int(math.ceil(((0.75 * total_conducted) - attended) / 0.25))
+            needed = max(1, needed)
+            new_pct = round(((attended + needed) / (total_conducted + needed)) * 100, 1)
+            return (
+                f"🚨 ATTENDANCE RECOVERY & BUNK ALERT for {student['name']}:\n\n"
+                f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
+                f"• Can you bunk? **Strictly NO. You are currently in a detention shortage bracket.**\n"
+                f"• Recovery Target: You must attend **{needed} consecutive lectures** without missing any to reach the safe 75% threshold.\n"
+                f"• Forecast: Attending {needed} more classes will bring your attendance to {new_pct}%.\n"
+                f"• Detention Action: Review the required assignments or prelims with HOD ({student['mentor']})."
+            )
+
+    # Bonafide / NOC Certificate
+    if any(k in msg for k in ["bonafide", "certificate", "noc", "document draft", "bus pass", "railway concession"]):
+        return (
+            f"📄 OFFICIAL DIGITAL BONAFIDE & DOCUMENT PORTAL:\n\n"
+            f"Verified Student Record: {student['name']} ({student['roll_no']})\n"
+            f"Program: {student['course']}, {student['semester']}\n\n"
+            f"Your institutional Bonafide Certificate draft is ready for instant viewing and printing!\n\n"
+            f"👉 Tap the button below to preview your official college letterhead draft:\n"
+            f"<button class='action-pill-btn' onclick='openBonafideModal()'>📜 View & Print Official Bonafide</button>"
+        )
+
+    # Digital Student ID Card
+    if any(k in msg for k in ["id card", "digital id", "my id", "student card", "campus pass", "identity card"]):
+        return (
+            f"🪪 DIGITAL STUDENT IDENTITY CARD:\n\n"
+            f"Digital campus identity credentials for {student['name']} ({student['roll_no']}) are ready.\n"
+            f"Features: 3D Flip, Live Verification QR Code, and Barcode.\n\n"
+            f"👉 <button class='action-pill-btn' onclick='openIdCardModal()'>✨ Open 3D Digital Student ID Card</button>"
         )
 
     # Attendance with official 4-tier College Detention Policy
-    if "attendance" in msg and any(k in msg for k in ["my", "what", "how", "current", "show"]):
+    if "attendance" in msg and any(k in msg for k in ["my", "what", "how", "current", "show", "hajeri", "hazari"]):
         att = student["attendance"]
         if att >= 75.0:
             status = "✅ Good Standing — Fully eligible for semester examinations"
@@ -178,21 +288,21 @@ def personalized_answer(message, roll_no):
             status = "❌ Strictly Detained (<50% Attendance)"
             advice = "As per college detention policy, students with attendance below 50% have No Consideration and are strictly detained from university semester examinations. Contact your HOD immediately."
 
-        return f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n📋 College Rubrics & Action Required:\n{advice}"
+        return f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n📋 College Rubrics & Action Required:\n{advice}\n\n💡 Ask 'Can I bunk?' to calculate your safe attendance margin!"
 
     # Fees
-    if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending"]) and any(k in msg for k in ["my", "how", "what", "check"]):
+    if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending", "shulk", "shulka"]) and any(k in msg for k in ["my", "how", "what", "check", "kiti"]):
         due = student["fees_due"]
         if due and due > 0:
             return f"Hi {student['name']}, you have Rs {due:.0f} in pending fees. You can pay online via the student ERP portal or at Accounts Counter 4."
         return f"Hi {student['name']}, you have no pending fees. You're completely all clear! 🎉"
 
     # Exams
-    if ("exam" in msg or "exams" in msg or "datesheet" in msg or "timetable" in msg) and "my" in msg:
+    if ("exam" in msg or "exams" in msg or "datesheet" in msg or "timetable" in msg or "pariksha" in msg) and ("my" in msg or "meri" in msg or "majhi" in msg):
         return f"Hi {student['name']}, your next semester examination begins on {student['exam_date']}. Admit cards are downloadable from the student portal."
 
     # CGPA / Marks / Results
-    if any(k in msg for k in ["cgpa", "sgpa", "gpa", "marks", "result", "grade", "score"]) and any(k in msg for k in ["my", "what", "how"]):
+    if any(k in msg for k in ["cgpa", "sgpa", "gpa", "marks", "result", "grade", "score", "gun"]) and any(k in msg for k in ["my", "what", "how", "majhe"]):
         return f"Hi {student['name']}, your current CGPA is {student['cgpa']} / 10.0 in {student['course']} ({student['semester']}). Keep up the great work! 🌟"
 
     # Mentor / Guide
@@ -263,14 +373,26 @@ def chat():
 
     roll_no = session.get("roll_no")
     bot_response = None
+    category = None
+    source = "Knowledge Base"
 
     # Check personalized queries first if student is logged in
     if roll_no:
         bot_response = personalized_answer(user_message, roll_no)
+        if bot_response:
+            category = "Personalized Portal"
+            source = "Student Database"
 
-    category = None
     if not bot_response:
         bot_response, category = match_query(user_message)
+        
+        # If knowledge base returned fallback (low confidence), try Gemini AI Hybrid
+        if not category:
+            gemini_ans = ask_gemini(user_message)
+            if gemini_ans:
+                bot_response = f"{gemini_ans}\n\n*(🤖 Verified Campus AI Hybrid)*"
+                category = "Campus AI (Gemini)"
+                source = "Gemini Hybrid"
 
     # Save to chat history and capture ID
     conn = get_db()
@@ -286,8 +408,68 @@ def chat():
     return jsonify({
         "response": bot_response,
         "category": category,
+        "source": source,
         "history_id": history_id
     })
+
+
+@app.route("/api/student/info")
+def student_info():
+    roll_no = session.get("roll_no")
+    if not roll_no:
+        return jsonify({"error": "Unauthorized"}), 401
+    conn = get_db()
+    student = conn.execute("SELECT * FROM students WHERE roll_no = ?", (roll_no,)).fetchone()
+    conn.close()
+    if not student:
+        return jsonify({"error": "Student not found"}), 404
+    return jsonify(dict(student))
+
+
+@app.route("/api/calculate_bunk", methods=["POST"])
+def api_calculate_bunk():
+    data = request.get_json() or {}
+    try:
+        total = int(data.get("total", 60))
+        attended = int(data.get("attended", 45))
+        target = float(data.get("target", 75.0))
+        
+        if total <= 0:
+            return jsonify({"error": "Total lectures must be greater than 0"}), 400
+        if attended > total:
+            return jsonify({"error": "Attended lectures cannot exceed total lectures"}), 400
+
+        current_pct = round((attended / total) * 100, 2)
+        target_dec = target / 100.0
+
+        if current_pct >= target:
+            # Safe bunks: attended / (total + x) >= target_dec
+            bunkable = int(math.floor((attended / target_dec) - total))
+            bunkable = max(0, bunkable)
+            forecast_pct = round((attended / (total + bunkable)) * 100, 2) if bunkable > 0 else current_pct
+            return jsonify({
+                "status": "safe",
+                "current_percentage": current_pct,
+                "can_bunk": True,
+                "bunks_allowed": bunkable,
+                "forecast_percentage": forecast_pct,
+                "message": f"You can safely miss up to {bunkable} lecture(s) while maintaining >= {target}%."
+            })
+        else:
+            # Consecutive classes needed: (attended + y) / (total + y) >= target_dec
+            needed = int(math.ceil(((target_dec * total) - attended) / (1 - target_dec)))
+            needed = max(1, needed)
+            forecast_pct = round(((attended + needed) / (total + needed)) * 100, 2)
+            return jsonify({
+                "status": "shortage",
+                "current_percentage": current_pct,
+                "can_bunk": False,
+                "lectures_needed": needed,
+                "forecast_percentage": forecast_pct,
+                "message": f"Shortage detected! You must attend {needed} consecutive lectures to reach {target}%."
+            })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 
 @app.route("/chat/feedback", methods=["POST"])
@@ -378,7 +560,16 @@ def admin_dashboard():
     ).fetchall()
     total_students = conn.execute("SELECT COUNT(*) FROM students").fetchone()[0]
     total_chats = conn.execute("SELECT COUNT(*) FROM chat_history").fetchone()[0]
+    
+    # Identify queries where bot gave fallback (potential missing FAQs)
+    unanswered = conn.execute(
+        "SELECT user_query, COUNT(*) as count FROM chat_history "
+        "WHERE bot_response LIKE '%not completely sure%' "
+        "GROUP BY user_query ORDER BY count DESC LIMIT 5"
+    ).fetchall()
     conn.close()
+
+    gemini_active = bool(os.environ.get("GEMINI_API_KEY", "").strip())
 
     return render_template(
         "admin_dashboard.html",
@@ -387,6 +578,8 @@ def admin_dashboard():
         total_faqs=len(faqs),
         total_chats=total_chats,
         total_students=total_students,
+        unanswered=unanswered,
+        gemini_active=gemini_active,
     )
 
 

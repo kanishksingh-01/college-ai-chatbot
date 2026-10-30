@@ -60,7 +60,35 @@
                 <div class="metric-label">Enrolled Demo Students</div>
             </div>
         </div>
+        <div class="metric-card">
+            <div class="metric-icon">🤖</div>
+            <div class="metric-content">
+                <div class="metric-value" style="font-size: 1.25rem;">{{ "Active 🟢" if gemini_active else "Standby ⚪" }}</div>
+                <div class="metric-label">Gemini Hybrid AI (API Key)</div>
+            </div>
+        </div>
     </div>
+
+    {% if unanswered %}
+    <!-- Missing FAQ Discovery Queue -->
+    <section class="admin-panel-card" style="border-left: 4px solid var(--accent-gold);">
+        <div class="panel-header">
+            <h3>💡 Unanswered Query Discovery (Missing FAQs Queue)</h3>
+            <span class="panel-subtitle">Queries where students received fallback responses — add them to improve the bot!</span>
+        </div>
+        <div class="unanswered-list">
+            {% for u in unanswered %}
+                <div class="unanswered-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--bg-body); margin-bottom: 8px; border-radius: 8px;">
+                    <div>
+                        <strong>"{{ u.user_query }}"</strong>
+                        <span style="font-size: 12px; color: var(--text-muted); margin-left: 10px;">Asked {{ u.count }} time(s)</span>
+                    </div>
+                    <button type="button" class="action-btn secondary-action" style="padding: 4px 10px; font-size: 12px;" onclick="prefillFaq('{{ u.user_query }}')">➕ Add as FAQ</button>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 
     <!-- Add New FAQ Section -->
     <section class="admin-panel-card">
@@ -223,6 +251,17 @@ themeBtn.addEventListener('click', () => {
 
 function updateThemeIcon(t) {
     themeBtn.querySelector('.theme-icon').textContent = t === 'dark' ? '☀️' : '🌙';
+}
+
+function prefillFaq(query) {
+    const kwInput = document.querySelector('input[name="keywords"]');
+    const catInput = document.querySelector('input[name="category"]');
+    if (kwInput) kwInput.value = query.toLowerCase();
+    if (catInput) {
+        catInput.focus();
+        catInput.value = query.charAt(0).toUpperCase() + query.slice(1);
+    }
+    window.scrollTo({ top: 120, behavior: 'smooth' });
 }
 </script>
 

@@ -87,7 +87,7 @@ def init_db():
     college_info_data = [
         (
             "Admission",
-            "admission,admissions,apply,enrollment,enroll,eligibility,entrance,how to apply,registration process",
+            "admission,admissions,apply,enrollment,enroll,eligibility,entrance,how to apply,registration process,pravesh,dakhila,admission kaise le,pravesh prakriya,pravesh niyam,admission kab shuru",
             "🎓 ADMISSIONS (Academic Year 2026-27):\n"
             "• Application Period: June 1 to August 15.\n"
             "• Eligibility: 10+2 (Higher Secondary) with minimum 45% aggregate (40% for reserved categories).\n"
@@ -97,7 +97,7 @@ def init_db():
         ),
         (
             "Fee Structure",
-            "fee,fees,fee structure,payment,tuition,cost,dues,installment",
+            "fee,fees,fee structure,payment,tuition,cost,dues,installment,shulk,shulka,kiti fee,fee kiti ahe,kitni fees,fees kitni,paisa,kharch",
             "💰 FEE STRUCTURE (Academic Year 2026-27 per annum):\n\n"
             "| Course | Tuition Fee | Exam & Lab Fee | Total Annual Fee |\n"
             "|--------|-------------|----------------|------------------|\n"
@@ -110,7 +110,7 @@ def init_db():
         ),
         (
             "Exam Timetable",
-            "exam,exams,timetable,time table,schedule,datesheet,admit card,hall ticket,semester exam",
+            "exam,exams,timetable,time table,schedule,datesheet,admit card,hall ticket,semester exam,pariksha,pariksha kadhi,exam kab hai,paper schedule",
             "📅 UPCOMING SEMESTER EXAMINATIONS:\n\n"
             "EXAM SCHEDULE (Semester III):\n"
             "| Date        | Subject                | Shift / Timing  |\n"
@@ -124,7 +124,7 @@ def init_db():
         ),
         (
             "Attendance Rules",
-            "attendance,present,absent,shortage,minimum attendance,criteria,medical leave,detention,detention policy,rubrics",
+            "attendance,present,absent,shortage,minimum attendance,criteria,medical leave,detention,detention policy,rubrics,hajeri,hazari,upasthiti,attendance niyam",
             "📊 ATTENDANCE REGULATIONS & OFFICIAL DETENTION POLICY (PUNE CAMPUS):\n\n"
             "• Mandatory Requirement: Minimum 75% overall attendance is mandatory to appear for university end-semester examinations.\n\n"
             "📋 OFFICIAL DETENTION RUBRICS (Implementation of Student Detention Policy):\n"
@@ -142,7 +142,7 @@ def init_db():
         ),
         (
             "Library Timings",
-            "library,books,library timing,library hours,digital library,reading room,borrow",
+            "library,books,library timing,library hours,digital library,reading room,borrow,granthalay,pustak,kitabe,reading hall",
             "📚 CENTRAL KNOWLEDGE RESOURCE CENTRE (LIBRARY):\n"
             "• Monday to Saturday: 8:30 AM – 7:00 PM\n"
             "• Reading Hall: Open 24/7 during preparatory leave and examination weeks.\n"
@@ -152,7 +152,7 @@ def init_db():
         ),
         (
             "Course Information",
-            "course,courses,syllabus,subjects,program,curriculum,degree,specialization",
+            "course,courses,syllabus,subjects,program,curriculum,degree,specialization,abhyaskram,vishay,shikshan",
             "📖 ACADEMIC PROGRAMS & COURSES OFFERED:\n"
             "• BBA (Computer Applications): 3 Years / 6 Semesters — Blends management with modern software dev, Cloud, and Data Analytics.\n"
             "• BCA (Bachelor of Computer Applications): 3 Years — Focuses on AI/ML, Full-Stack Web, Cyber Security.\n"
@@ -162,7 +162,7 @@ def init_db():
         ),
         (
             "Faculty Contact",
-            "faculty,professor,teacher,contact,hod,staff,email,directory,head of department",
+            "faculty,professor,teacher,contact,hod,staff,email,directory,head of department,shikshak,pradhyapak,teachers list",
             "👨‍🏫 KEY FACULTY & DEPARTMENT CONTACTS:\n\n"
             "| Role / Department     | Faculty Name    | Email ID                 |\n"
             "|-----------------------|-----------------|--------------------------|\n"
@@ -175,7 +175,7 @@ def init_db():
         ),
         (
             "Branch Change",
-            "change branch,change my branch,switch branch,transfer branch,branch change,change course,change my course,switch course",
+            "change branch,change my branch,switch branch,transfer branch,branch change,change course,change my course,switch course,branch badalne,branch badalna",
             "🔄 BRANCH / COURSE TRANSFER POLICY:\n"
             "1. Eligibility: Branch change requests are accepted only at the start of Semester II or III, subject to seat vacancy and minimum 7.5 CGPA in Year 1.\n"
             "2. Approval Process: Submit the transfer form countersigned by your existing HOD and the destination HOD to the Principal's Office.\n"
@@ -183,7 +183,7 @@ def init_db():
         ),
         (
             "Placements",
-            "placement,placements,job,jobs,package,recruiter,recruiters,internship,internships,career,salary,highest package",
+            "placement,placements,job,jobs,package,recruiter,recruiters,internship,internships,career,salary,highest package,naukri,rojgar,nokari",
             "💼 TRAINING & PLACEMENT CELL (T&P):\n"
             "• Placement Rate: 92%+ eligible students placed in 2025-26.\n"
             "• Highest Package: Rs 14.5 LPA | Average Package: Rs 4.8 LPA.\n"
@@ -193,17 +193,16 @@ def init_db():
         ),
         (
             "Hostel & Mess",
-            "hostel,hostels,mess,food,accommodation,room,stay,hostel fee,warden,curfew",
+            "hostel,hostels,accommodation,room,stay,hostel fee,warden,curfew,vasatigruh,vasatigruh fee,rehne ki jagah,kamra",
             "🏢 HOSTEL & RESIDENTIAL FACILITIES:\n"
             "• Accommodation: Separate air-conditioned and non-AC hostels for boys and girls with 24/7 security & CCTV.\n"
             "• Amenities: Wi-Fi, laundry facilities, study lounges, gym, indoor sports room.\n"
-            "• Mess Menu: 4 meals daily (Breakfast, Lunch, Evening Snacks, Dinner) with hygienic vegetarian & non-veg options.\n"
             "• Fees: Rs 65,000 to Rs 85,000/year (including food & accommodation).\n"
             "• Curfew / In-Time: 8:30 PM sharp. Overnight gate passes require parent SMS verification."
         ),
         (
             "Scholarships",
-            "scholarship,scholarships,financial aid,freeship,concession,mahadbt,nsp,fee waiver",
+            "scholarship,scholarships,financial aid,freeship,concession,mahadbt,nsp,fee waiver,shishyavrutti,chatravritti",
             "🏅 SCHOLARSHIPS & FINANCIAL ASSISTANCE:\n"
             "1. Merit Scholarship: 25% to 50% tuition waiver for students scoring >85% in 12th board exams or university rankers.\n"
             "2. Government Schemes: Full guidance for MahaDBT, Post-Matric Scholarship (SC/ST/OBC/EBC), and National Scholarship Portal (NSP).\n"
@@ -212,7 +211,7 @@ def init_db():
         ),
         (
             "Clubs & Extracurriculars",
-            "club,clubs,sports,activities,gym,events,fest,cultural,hackathon,nss,ncc",
+            "club,clubs,sports,activities,gym,events,fest,cultural,hackathon,nss,ncc,khel,antarang,sanskrutik",
             "🎨 STUDENT CLUBS & EXTRACURRICULARS:\n"
             "• Tech Clubs: Coding Ninjas Chapter, Google Developer Student Club (GDSC), Robotics Club.\n"
             "• Cultural & Arts: Music Club, Dance Troupe, Dramatics Society, Annual Fest 'ANTRANG'.\n"
@@ -221,7 +220,7 @@ def init_db():
         ),
         (
             "Emergency & Helpline",
-            "emergency,helpline,ragging,anti ragging,complaint,grievance,doctor,medical,clinic,security",
+            "emergency,helpline,ragging,anti ragging,complaint,grievance,doctor,medical,clinic,security,madat,tatkal,suraksha",
             "🚨 CAMPUS EMERGENCY & STUDENT HELPLINE (PUNE CAMPUS):\n"
             "• Campus Security / Gate Control: +91 20-67528000 / +91 9604787185 (24/7)\n"
             "• Anti-Ragging Helpline (Zero Tolerance): 1800-180-5522 | antiragging@college.edu\n"
@@ -231,7 +230,7 @@ def init_db():
         ),
         (
             "Campus Location & Map",
-            "location,address,where is,map,campus,how to reach,bus,transport,nearest metro,pune,wagholi,yerwada,yerawada,campuses,airport road,shastrinagar,domkhel",
+            "location,address,where is campus,map,campus,how to reach,bus,transport,nearest metro,pune,wagholi,yerwada,yerawada,campuses,airport road,shastrinagar,domkhel,kahan hai,kothe ahe,patta",
             "📍 GH RAISONI COLLEGE PUNE — CAMPUS ADDRESSES & CONNECTIVITY:\n\n"
             "🏛️ 1. WAGHOLI CAMPUS (Main Academic Campus):\n"
             "• Address: Gat 1200, Domkhel Rd, Wagholi, Pune, Maharashtra 412207.\n"
@@ -244,6 +243,53 @@ def init_db():
             "• Landmark: Near Shastrinagar Chowk, Airport Road, Yerawada.\n"
             "• Connectivity: Strategically located on Airport Road, ~3.5 km from Pune Airport and ~5.5 km from Pune Junction.\n\n"
             "🌐 Official Portal: pune.raisoni.net | Affiliated to Savitribai Phule Pune University (SPPU)"
+        ),
+        (
+            "Canteen & Mess Menu",
+            "canteen,mess,mess menu,food,food menu,canteen menu,mess food,breakfast,lunch,today food,khana,jevan,nashta,thali,canteen rate,snacks,dinner menu",
+            "🍛 CAMPUS CANTEEN & MESS SCHEDULE (Daily Fresh Menu):\n\n"
+            "| Meal | Timings | Popular Daily Specials | Price |\n"
+            "| :--- | :--- | :--- | :--- |\n"
+            "| ☕ Breakfast | 08:00 AM – 10:00 AM | Poha, Upma, Idli Sambhar, Misal Pav, Tea/Coffee | Rs 30 - 45 |\n"
+            "| 🍱 Lunch (Thali) | 12:30 PM – 02:30 PM | Special Student Veg Thali (2 Sabzi, 3 Roti, Dal, Rice, Salad) | Rs 70 |\n"
+            "| 🥪 Snacks / High Tea | 04:30 PM – 06:00 PM | Samosa, Vada Pav, Veg Sandwich, Cold Coffee | Rs 20 - 40 |\n"
+            "| 🍲 Dinner (Hostel) | 07:30 PM – 09:30 PM | Deluxe Thali / Paneer / Egg Curry, Jeera Rice, Sweet | Rs 80 |\n\n"
+            "• Hygiene Certified: FSSAI Grade-A Clean Kitchen & RO Drinking Water.\n"
+            "• Canteen In-charge: Mr. Pawar (+91-20-67528120)."
+        ),
+        (
+            "Campus Floor & Room Locator",
+            "where is lab,where is accounts,lab 302,accounts counter,room 101,audi,seminar hall,find room,floor guide,campus navigator,lost,lift,elevator,building map,room locator,where is office",
+            "🗺️ CAMPUS INDOOR NAVIGATOR & FLOOR DIRECTORY:\n\n"
+            "| Facility / Department | Floor / Wing | Directions & Landmarks |\n"
+            "| :--- | :--- | :--- |\n"
+            "| 🏛️ Central Admissions Office | Ground Floor, Admin Block (Room 101) | Right at main entrance foyer |\n"
+            "| 💳 Accounts & Fee Counter 4 | Ground Floor, Admin Block | Next to Admission Office |\n"
+            "| 🩺 Medical Room & Dispensary | Ground Floor, Sports Complex | Opposite Olympic Gymnasium |\n"
+            "| 📚 Central Library & Reading Hall | 1st Floor, Academic Block A | Take Elevator A, turn right |\n"
+            "| 💻 Computer Labs 201 – 204 | 2nd Floor, Skill Tech Block | High-speed Linux & Coding Labs |\n"
+            "| 💼 Training & Placement Cell | 2nd Floor, Placement Wing | Next to Seminar Hall 1 |\n"
+            "| 🔬 Advanced Project Labs 301–304 | 3rd Floor, Skill Tech Block | BBA-CA / BCA Project Hub |\n"
+            "| 🎭 Central Auditorium (Audi 2) | 3rd Floor, Cultural Wing | Main Hall (Capacity 600) |\n\n"
+            "💡 Pro-Tip: You can ask specific queries like 'Where is Lab 302?' or 'Where is Counter 4?' anytime."
+        ),
+        (
+            "Bonafide & Document Services",
+            "bonafide,noc,certificate,application,document,lor,migration,bus pass,railway concession,identity certificate,bonafide certificate,apply certificate",
+            "📄 STUDENT DOCUMENT & BONAFIDE SERVICES:\n\n"
+            "• Available Certificates: Bonafide Certificate (MahaDBT / Bus Pass / Bank / Passport), Internship NOC, Transfer Certificate (TC), Migration.\n"
+            "• Instant Digital Draft: Logged-in students can type 'generate bonafide certificate' to preview and print an official pre-filled certificate immediately!\n"
+            "• Processing Hard Copies: Physical sealed copies are issued within 24–48 hours at Student Section (Admin Counter 2).\n"
+            "• Requirements: Previous semester mark sheet copy, fee clearance receipt, and Student ID card."
+        ),
+        (
+            "Attendance & Bunk Calculator Guide",
+            "bunk,can i bunk,how many bunk,miss class,skip class,attendance target,bunk calculator,calculate attendance,bunk kitne kar sakte,target attendance",
+            "🎯 ATTENDANCE & BUNK TARGET CALCULATOR:\n\n"
+            "• Mandatory Requirement: 75% overall attendance as per SPPU & Raisoni detention rubrics.\n"
+            "• Personalized Calculation:\n"
+            "  - Logged-in students can ask: 'Can I bunk?' or 'How many lectures to reach 75%?' to see their real-time calculated safe bunk threshold or required classes!\n"
+            "  - You can also click the 🎯 Bunk Tool in the header to open the interactive calculator."
         )
     ]
 
