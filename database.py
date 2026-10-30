@@ -124,7 +124,7 @@ def init_db():
         ),
         (
             "Attendance Rules",
-            "attendance,present,absent,shortage,minimum attendance,criteria,medical leave,detention,detention policy,rubrics,hajeri,hazari,upasthiti,attendance niyam",
+            "attendance,attend,attending,present,absent,miss,missed,skip,skipping,classes,lecture,lectures,not attend,wont attend,leave,shortage,minimum attendance,criteria,medical leave,detention,detention policy,rubrics,hajeri,hazari,upasthiti,attendance niyam",
             "📊 ATTENDANCE REGULATIONS & OFFICIAL DETENTION POLICY (PUNE CAMPUS):\n\n"
             "• Mandatory Requirement: Minimum 75% overall attendance is mandatory to appear for university end-semester examinations.\n\n"
             "📋 OFFICIAL DETENTION RUBRICS (Implementation of Student Detention Policy):\n"
@@ -138,7 +138,7 @@ def init_db():
             "   - Practical Rubric: Student must appear for a practical-based prelim examination and score a minimum of 60% marks to get out of detention (Max 2 practicals conducted in a day).\n\n"
             "4. Below 50% Attendance (<50%):\n"
             "   - Theory & Practical: No consideration. Strictly detained from semester examinations.\n\n"
-            "📌 Tip: Logged-in students can view real-time percentage and specific detention rubrics by asking 'what is my attendance?'."
+            "📌 Tip: Logged-in students can view real-time percentage and specific detention rubrics by asking 'what is my attendance?' or 'what if I miss 2 classes today?'."
         ),
         (
             "Library Timings",
@@ -284,12 +284,62 @@ def init_db():
         ),
         (
             "Attendance & Bunk Calculator Guide",
-            "bunk,can i bunk,how many bunk,miss class,skip class,attendance target,bunk calculator,calculate attendance,bunk kitne kar sakte,target attendance",
+            "bunk,can i bunk,how many bunk,miss class,skip class,attendance target,bunk calculator,calculate attendance,bunk kitne kar sakte,target attendance,miss,skip,lecture bunk",
             "🎯 ATTENDANCE & BUNK TARGET CALCULATOR:\n\n"
             "• Mandatory Requirement: 75% overall attendance as per SPPU & Raisoni detention rubrics.\n"
             "• Personalized Calculation:\n"
-            "  - Logged-in students can ask: 'Can I bunk?' or 'How many lectures to reach 75%?' to see their real-time calculated safe bunk threshold or required classes!\n"
+            "  - Logged-in students can ask: 'Can I bunk?' or 'What if I miss 2 classes today?' to see their real-time calculated safe bunk threshold or required classes!\n"
             "  - You can also click the 🎯 Bunk Tool in the header to open the interactive calculator."
+        ),
+        (
+            "Campus Amenities & WiFi",
+            "wifi,wi-fi,internet,network,parking,bike parking,scooter parking,car parking,vehicle,xerox,photocopy,print,printing,stationery,spiral binding,atm,cash,medical,doctor,sick,fever,first aid,health center",
+            "📶 CAMPUS AMENITIES (Wi-Fi, Parking, Xerox, Health & ATM):\n\n"
+            "• High-Speed Wi-Fi: Connect to 'GHR-Campus-5G' or 'GHR-Student-WiFi' using your Student PRN and ERP Password. Available across all classrooms, library, labs, and hostels.\n"
+            "• Parking: Shaded two-wheeler parking near Gate 1 & Gate 2; staff and visitor car parking near Admin Block.\n"
+            "• Xerox & Reprographics: Ground Floor Amenity Center opposite Canteen and Admin Basement (Photocopy ₹1/page, spiral binding, color prints).\n"
+            "• Health & Medical Center: Room 108 Admin Block (Free First Aid, emergency doctor on-call, nurse on duty 9 AM - 5 PM). Emergency: +91 20-67528000.\n"
+            "• ATM: 24/7 Bank of Maharashtra & HDFC ATM inside campus near Gate 1."
+        ),
+        (
+            "Academic Regulations & Grading",
+            "passing marks,passing criteria,pass percentage,minimum marks,backlog,kt,atkt,arrear,fail,re-exam,grading,sgpa,cgpa,credits,dress code,uniform,what to wear,clothes",
+            "📊 ACADEMIC REGULATIONS, GRADING & DRESS CODE:\n\n"
+            "• Passing Criteria: Minimum 40% marks in each head (Internal Assessments 40 marks + External Theory Exam 60 marks).\n"
+            "• Grading Scale: 10-point CBCS scale (O: 90+, A+: 80+, A: 70+, B+: 60+, B: 55+, C: 50+, P: 40+, F: Fail).\n"
+            "• ATKT & Backlogs: Up to 4 backlogs permitted to carry over to the next academic year under university progression rules.\n"
+            "• Dress Code: Decent smart-casual on regular days; formals on Mondays and seminar presentations.\n"
+            "• Mandatory Rule: Student ID card must be visibly worn around the neck at all times."
+        ),
+        (
+            "University Leadership & Faculty",
+            "vice chancellor,vc,rd kharadkar,kharadkar,dr r d kharadkar,sheela satav,satav,project guide,hod,head of department,dr a sharma,director,dean,registrar",
+            "🏛️ UNIVERSITY LEADERSHIP & KEY FACULTY:\n\n"
+            "• Hon'ble Vice Chancellor: Dr. R. D. Kharadkar\n"
+            "• Project Guide & Faculty Coordinator: Asst. Prof. Sheela Satav (Department of Computer Applications, Cabin 204)\n"
+            "• Head of Department (BBA CA / BCA): Dr. A. Sharma (HOD Office: Room 304, Academic Block)\n"
+            "• Registrar / Academic Head: Central Admin Section, Ground Floor Admin Block\n"
+            "• Central Security & Gate Control: +91 20-67528000"
+        ),
+        (
+            "Academic Calendar & Holidays",
+            "holiday,holidays,vacation,diwali,calendar,academic calendar,semester break,exam dates,term start",
+            "📅 ACADEMIC CALENDAR & HOLIDAYS (Academic Year 2026-27):\n\n"
+            "• Current Term: Semester III (August to December 2026)\n"
+            "• Mid-Term Examination: October 2026\n"
+            "• Diwali Vacation: Declared via official university circular (10 days)\n"
+            "• End-Semester University Examinations: Commencing 10-Dec-2026\n"
+            "• Weekly Off: Sundays & 2nd/4th Saturdays\n"
+            "• Full detailed circular: Available on the Student ERP Portal under 'Academic Notices'."
+        ),
+        (
+            "Student Life & Chatbot Info",
+            "hello,hi,hey,good morning,good afternoon,who are you,who made you,developer,kanishk,kanishk singh,thank you,thanks,joke,motivation,quote",
+            "🤖 GH RAISONI SMART CAMPUS ASSISTANT (2026-27):\n\n"
+            "• Purpose: Official AI chatbot for GH Raisoni International Skill Tech University, Pune.\n"
+            "• Developed By: Kanishk Singh & Team (BBA CA Sem III) under Project Guide Asst. Prof. Sheela Satav. Hon'ble Vice Chancellor: Dr. R. D. Kharadkar.\n"
+            "• Features: 75% Attendance & Bunk Margin Calculator, 3D Flippable Student ID Pass, Bonafide Letter Generator, Multi-Floor Room Map, and Fee/Exam Tracking.\n"
+            "• Help: Ask questions naturally like 'Can I bunk?', 'What if I miss 2 classes today?', 'My attendance', 'Where is Lab 302?'."
         )
     ]
 
