@@ -222,14 +222,15 @@ def personalized_answer(message, roll_no):
                     f"• Academic Standing: ✅ Safe / Good Standing (Above 75%)\n"
                     f"• Safe Bunks Margin: You can safely miss up to **{bunkable} lecture(s)** and still remain above 75%! 🎉\n"
                     f"• Forecast: After bunking {bunkable} classes, your attendance will be approximately {new_pct}%.\n\n"
-                    f"💡 Click the '🎯 Bunk Tool' in the top bar to simulate custom lecture scenarios."
+                    f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>"
                 )
             else:
                 return (
                     f"🎯 SMART BUNK CALCULATOR for {student['name']}:\n\n"
                     f"• Current Attendance: {att}% ({attended}/{total_conducted} conducted lectures attended)\n"
                     f"• Status: ⚠️ Right at 75% Boundary\n"
-                    f"• Safe Bunk Margin: **0 classes**. Missing even 1 single lecture will push you below 75% and trigger the detention bracket!"
+                    f"• Safe Bunk Margin: **0 classes**. Missing even 1 single lecture will push you below 75% and trigger the detention bracket!\n\n"
+                    f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Tool</button>"
                 )
         else:
             needed = int(math.ceil(((0.75 * total_conducted) - attended) / 0.25))
@@ -241,7 +242,8 @@ def personalized_answer(message, roll_no):
                 f"• Can you bunk? **Strictly NO. You are currently in a detention shortage bracket.**\n"
                 f"• Recovery Target: You must attend **{needed} consecutive lectures** without missing any to reach the safe 75% threshold.\n"
                 f"• Forecast: Attending {needed} more classes will bring your attendance to {new_pct}%.\n"
-                f"• Detention Action: Review the required assignments or prelims with HOD ({student['mentor']})."
+                f"• Detention Action: Review the required assignments or prelims with HOD ({student['mentor']}).\n\n"
+                f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Attendance Recovery Calculator</button>"
             )
 
     # Bonafide / NOC Certificate
@@ -288,7 +290,11 @@ def personalized_answer(message, roll_no):
             status = "❌ Strictly Detained (<50% Attendance)"
             advice = "As per college detention policy, students with attendance below 50% have No Consideration and are strictly detained from university semester examinations. Contact your HOD immediately."
 
-        return f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n📋 College Rubrics & Action Required:\n{advice}\n\n💡 Ask 'Can I bunk?' to calculate your safe attendance margin!"
+        return (
+            f"Hi {student['name']}, your current attendance is {att}% ({status}).\n\n"
+            f"📋 College Rubrics & Action Required:\n{advice}\n\n"
+            f"<button class='action-pill-btn' onclick='openBunkModal()'>🎯 Open Interactive Bunk Calculator</button>"
+        )
 
     # Fees
     if any(k in msg for k in ["fee", "fees", "dues", "balance", "pending", "shulk", "shulka"]) and any(k in msg for k in ["my", "how", "what", "check", "kiti"]):

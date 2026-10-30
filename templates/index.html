@@ -22,7 +22,10 @@
     <div class="header-container">
         <a href="/" class="brand" title="GH Raisoni College AI">
             <div class="brand-logo-container">
-                <img src="{{ url_for('static', filename='images/college_logo_white.png') }}" alt="GH Raisoni University Logo" class="brand-logo-img">
+                <img src="{{ url_for('static', filename='images/college_logo_vibrant.png') }}" alt="GH Raisoni University Logo" class="brand-logo-img">
+            </div>
+            <div class="brand-meta-badge">
+                <span class="brand-sub-badge">AUTONOMOUS 2026–27</span>
             </div>
         </a>
 
@@ -32,6 +35,12 @@
                 <button class="lang-btn active" data-lang="en">EN</button>
                 <button class="lang-btn" data-lang="mr">मराठी</button>
                 <button class="lang-btn" data-lang="hi">हिंदी</button>
+            </div>
+
+            <!-- Live AI Engine Indicator -->
+            <div class="ai-status-pill" title="Autonomous Campus AI Engine Active &bull; Version 3.5">
+                <span class="ai-pulse-dot"></span>
+                <span class="ai-status-label">AI Online</span>
             </div>
 
             <!-- Emergency SOS Button -->
@@ -90,6 +99,12 @@
                 </div>
                 <span class="status-strip-text" id="ui-status-text">GHR Smart Assistant &bull; 24/7 Academic, Admissions &amp; Campus Support</span>
             </div>
+            <div class="status-quick-bar">
+                <button type="button" class="strip-pill-btn" onclick="openBunkModal()">🎯 Bunk Calc</button>
+                <button type="button" class="strip-pill-btn" onclick="openIdCardModal()">🪪 ID Pass</button>
+                <button type="button" class="strip-pill-btn" onclick="openBonafideModal()">📄 Bonafide</button>
+                <button type="button" class="strip-pill-btn" onclick="openMapModal()">🗺️ Floor Map</button>
+            </div>
             <div class="strip-right-actions">
                 <button id="end-chat-btn" class="mini-end-btn" title="End Current Session">⏹ End Chat</button>
             </div>
@@ -104,7 +119,7 @@
                 <div class="bot-msg">
                     <div class="bot-text" id="welcome-message-content">
                         <div class="welcome-heading">
-                            <strong>Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong>
+                            <strong id="welcome-greeting-text">Namaste! 🙏 Welcome to GH Raisoni College Assistant.</strong>
                             <p class="welcome-subtext">I am your 24/7 campus companion. Ask questions about admissions, fees, timetable, detention rules, or explore our interactive tools below.</p>
                         </div>
 
@@ -216,6 +231,11 @@
 
         </div>
 
+        <!-- Floating Jump to Bottom Button -->
+        <button id="scroll-bottom-btn" class="scroll-bottom-btn" title="Jump to bottom" aria-label="Jump to bottom">
+            <span class="scroll-bottom-icon">↓</span>
+        </button>
+
         <!-- Chat Input Area -->
         <div class="chat-input-area">
             <div class="input-container">
@@ -231,6 +251,15 @@
                     autocomplete="off"
                     aria-label="Your question"
                 >
+
+                <!-- Voice Activity / Audio Wave Animation -->
+                <div class="audio-wave-anim" id="input-audio-wave" title="Audio Activity">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                </div>
 
                 <button type="button" id="send-btn" class="send-btn" title="Send message" aria-label="Send">
                     <span class="send-icon">➤</span>
@@ -259,7 +288,7 @@
                 <!-- FRONT OF CARD -->
                 <div class="id-card-face id-card-front">
                     <div class="id-card-topbar">
-                        <img src="{{ url_for('static', filename='images/college_logo_white.png') }}" alt="Logo" class="id-card-college-logo">
+                        <img src="{{ url_for('static', filename='images/college_logo_vibrant.png') }}" alt="Logo" class="id-card-college-logo">
                         <div class="id-card-institution">
                             <div class="inst-name">GH RAISONI UNIVERSITY</div>
                             <div class="inst-sub">SKILL TECH UNIVERSITY &bull; PUNE</div>
@@ -427,11 +456,23 @@
             </div>
 
             <div id="bunk-result-card" class="bunk-result-box safe">
-                <div class="bunk-result-header">
-                    <div class="bunk-status-icon">🎉</div>
-                    <div class="bunk-status-text">
-                        <h4 id="bunk-res-title">Safe to Bunk!</h4>
-                        <div id="bunk-res-subtitle">Current Attendance: 80.0%</div>
+                <div class="bunk-result-top-flex">
+                    <div class="bunk-gauge-circle-wrap">
+                        <svg class="radial-gauge-svg" viewBox="0 0 100 100" width="84" height="84">
+                            <circle class="gauge-bg" cx="50" cy="50" r="40" stroke-width="8"></circle>
+                            <circle class="gauge-fill" id="gauge-fill-circle" cx="50" cy="50" r="40" stroke-width="8" stroke-dasharray="251.32" stroke-dashoffset="50.26"></circle>
+                        </svg>
+                        <div class="gauge-center-text">
+                            <span class="gauge-val" id="gauge-val-text">80.0%</span>
+                        </div>
+                    </div>
+                    <div class="bunk-result-header">
+                        <div class="bunk-status-icon">🎉</div>
+                        <div class="bunk-status-text">
+                            <h4 id="bunk-res-title">Safe to Bunk!</h4>
+                            <div id="bunk-res-subtitle">Current Attendance: 80.0%</div>
+                            <span class="gauge-rule-pill" id="gauge-rule-chip">✓ Above 75% Safe Boundary</span>
+                        </div>
                     </div>
                 </div>
                 <div class="bunk-metric-row">
@@ -608,6 +649,11 @@
                 <button class="floor-pill" onclick="showFloor('first')">1st Floor</button>
                 <button class="floor-pill" onclick="showFloor('second')">2nd Floor</button>
                 <button class="floor-pill" onclick="showFloor('third')">3rd Floor</button>
+            </div>
+
+            <div class="floor-search-box">
+                <span class="floor-search-icon">🔍</span>
+                <input type="text" id="floor-search-input" placeholder="Search room, lab, department or counter..." oninput="filterFloorRooms()">
             </div>
 
             <div id="floor-content" class="floor-content-area">

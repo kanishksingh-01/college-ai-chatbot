@@ -173,6 +173,8 @@ const soundToggleBtn = document.getElementById("sound-toggle-btn");
 const exportChatBtn = document.getElementById("export-chat-btn");
 const clearChatBtn = document.getElementById("clear-chat-btn");
 const studentProfileTrigger = document.getElementById("student-profile-trigger");
+const scrollBottomBtn = document.getElementById("scroll-bottom-btn");
+const inputAudioWave = document.getElementById("input-audio-wave");
 
 // Progressive Web App (PWA) Registration
 if ("serviceWorker" in navigator) {
@@ -182,8 +184,43 @@ if ("serviceWorker" in navigator) {
 }
 
 function scrollToBottom() {
-    chatBox.scrollTop = chatBox.scrollHeight;
+    if (chatBox) {
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    if (scrollBottomBtn) {
+        scrollBottomBtn.classList.remove("visible");
+    }
 }
+
+// Scroll to bottom trigger & listener
+if (chatBox && scrollBottomBtn) {
+    chatBox.addEventListener("scroll", () => {
+        const distFromBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight;
+        if (distFromBottom > 130) {
+            scrollBottomBtn.classList.add("visible");
+        } else {
+            scrollBottomBtn.classList.remove("visible");
+        }
+    });
+
+    scrollBottomBtn.addEventListener("click", () => {
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: "smooth" });
+    });
+}
+
+// Dynamic Time-Based Greeting
+function updateGreeting() {
+    const hour = new Date().getHours();
+    let greet = "Namaste! 🙏 Welcome to GH Raisoni College Assistant.";
+    if (hour >= 5 && hour < 12) greet = "Good Morning! ☀️ Welcome to GH Raisoni College Assistant.";
+    else if (hour >= 12 && hour < 17) greet = "Good Afternoon! 🌤️ Welcome to GH Raisoni College Assistant.";
+    else if (hour >= 17 && hour < 22) greet = "Good Evening! 🌆 Welcome to GH Raisoni College Assistant.";
+    else greet = "Hello Night Owl! 🌙 Welcome to GH Raisoni College Assistant.";
+
+    const greetElem = document.getElementById("welcome-greeting-text");
+    if (greetElem) greetElem.textContent = greet;
+}
+updateGreeting();
 
 // ==========================================================================
 // 4. Dark Mode & Sound Toggle Management
@@ -253,6 +290,7 @@ if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
         isRecording = true;
         micBtn.classList.add("active");
         userInput.parentElement.classList.add("listening");
+        if (inputAudioWave) inputAudioWave.classList.add("active");
         if (speechStatus) speechStatus.textContent = "Listening... Speak now";
     };
 
@@ -260,6 +298,7 @@ if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
         const transcript = event.results[0][0].transcript;
         userInput.value = transcript;
         if (speechStatus) speechStatus.textContent = "";
+        stopRecording();
         sendMessage(transcript);
     };
 
@@ -281,6 +320,7 @@ function stopRecording() {
     isRecording = false;
     if (micBtn) micBtn.classList.remove("active");
     if (userInput) userInput.parentElement.classList.remove("listening");
+    if (inputAudioWave) inputAudioWave.classList.remove("active");
     if (speechStatus) speechStatus.textContent = "";
 }
 
@@ -320,6 +360,7 @@ function speakText(text, btnElement) {
 
     if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
+        if (inputAudioWave) inputAudioWave.classList.remove("active");
         document.querySelectorAll(".speak-btn").forEach(b => {
             b.textContent = "🔊 Listen";
             b.classList.remove("active");
@@ -343,12 +384,14 @@ function speakText(text, btnElement) {
         btnElement.textContent = "⏹ Stop";
         btnElement.classList.add("active");
     }
+    if (inputAudioWave) inputAudioWave.classList.add("active");
 
     utterance.onend = () => {
         if (btnElement) {
             btnElement.textContent = "🔊 Listen";
             btnElement.classList.remove("active");
         }
+        if (inputAudioWave) inputAudioWave.classList.remove("active");
         activeUtterance = null;
     };
 
@@ -357,6 +400,7 @@ function speakText(text, btnElement) {
             btnElement.textContent = "🔊 Listen";
             btnElement.classList.remove("active");
         }
+        if (inputAudioWave) inputAudioWave.classList.remove("active");
         activeUtterance = null;
     };
 
@@ -824,6 +868,28 @@ if (idCardFlipper) {
     idCardFlipper.addEventListener("click", flipIdCard);
 }
 
+// 3D Card Interactive Holographic Mouse-Tilt Effect
+const idCardViewport = document.querySelector(".id-card-viewport");
+if (idCardViewport) {
+    idCardViewport.addEventListener("mousemove", (e) => {
+        const flipper = document.getElementById("id-card-flipper");
+        if (!flipper || flipper.classList.contains("flipped")) return;
+        const rect = idCardViewport.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotX = -(y / (rect.height / 2)) * 14;
+        const rotY = (x / (rect.width / 2)) * 14;
+        flipper.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg)`;
+    });
+
+    idCardViewport.addEventListener("mouseleave", () => {
+        const flipper = document.getElementById("id-card-flipper");
+        if (flipper && !flipper.classList.contains("flipped")) {
+            flipper.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+        }
+    });
+}
+
 // Bunk Calculator Functions
 function openBunkModal() {
     openModal("bunk-modal");
@@ -845,6 +911,9 @@ async function calculateBunk() {
     const margin = document.getElementById("bunk-res-margin");
     const forecast = document.getElementById("bunk-res-forecast");
     const desc = document.getElementById("bunk-res-desc");
+    const gaugeFill = document.getElementById("gauge-fill-circle");
+    const gaugeVal = document.getElementById("gauge-val-text");
+    const gaugeRuleChip = document.getElementById("gauge-rule-chip");
 
     if (!resCard) return;
 
@@ -856,8 +925,21 @@ async function calculateBunk() {
         });
         const data = await response.json();
 
+        const pct = Math.min(100, Math.max(0, parseFloat(data.current_percentage) || 0));
+        if (gaugeVal) gaugeVal.textContent = `${pct.toFixed(1)}%`;
+        if (gaugeFill) {
+            const circumference = 251.32;
+            const offset = circumference * (1 - (pct / 100));
+            gaugeFill.style.strokeDashoffset = offset;
+        }
+
         if (data.can_bunk) {
             resCard.className = "bunk-result-box safe";
+            if (gaugeFill) gaugeFill.style.stroke = "#10b981";
+            if (gaugeRuleChip) {
+                gaugeRuleChip.className = "gauge-rule-pill safe";
+                gaugeRuleChip.textContent = "✓ Safe Standing (≥ 75%)";
+            }
             title.textContent = "Safe to Bunk! 🎉";
             subtitle.textContent = `Current Attendance: ${data.current_percentage}%`;
             margin.textContent = data.bunks_allowed;
@@ -865,6 +947,11 @@ async function calculateBunk() {
             desc.textContent = data.message;
         } else {
             resCard.className = "bunk-result-box shortage";
+            if (gaugeFill) gaugeFill.style.stroke = pct >= 60 ? "#f59e0b" : "#ef4444";
+            if (gaugeRuleChip) {
+                gaugeRuleChip.className = pct >= 60 ? "gauge-rule-pill warning" : "gauge-rule-pill danger";
+                gaugeRuleChip.textContent = pct >= 60 ? "⚠️ Detention Warning (60-75%)" : "🚨 Critical Shortage (<60%)";
+            }
             title.textContent = "Detention Shortage Alert! 🚨";
             subtitle.textContent = `Current Attendance: ${data.current_percentage}%`;
             margin.textContent = `${data.lectures_needed} (Needed)`;
@@ -875,6 +962,13 @@ async function calculateBunk() {
         // Fallback local computation
         const curr = ((attended / total) * 100).toFixed(1);
         subtitle.textContent = `Current Attendance: ${curr}%`;
+        if (gaugeVal) gaugeVal.textContent = `${curr}%`;
+        if (gaugeFill) {
+            const pct = Math.min(100, Math.max(0, parseFloat(curr) || 0));
+            const circumference = 251.32;
+            gaugeFill.style.strokeDashoffset = circumference * (1 - (pct / 100));
+            gaugeFill.style.stroke = pct >= 75 ? "#10b981" : (pct >= 60 ? "#f59e0b" : "#ef4444");
+        }
     }
 }
 
@@ -939,16 +1033,50 @@ const FLOOR_DATA = {
     ]
 };
 
+let currentFloorKey = "ground";
+
 function showFloor(key) {
+    currentFloorKey = key;
     document.querySelectorAll(".floor-pill").forEach(p => p.classList.remove("active"));
     const container = document.getElementById("floor-list-container");
     if (!container || !FLOOR_DATA[key]) return;
 
-    if (window.event && window.event.target) {
+    if (window.event && window.event.target && window.event.target.classList.contains("floor-pill")) {
         window.event.target.classList.add("active");
     }
 
-    container.innerHTML = FLOOR_DATA[key].map(r => `
+    renderFloorList(FLOOR_DATA[key]);
+    const searchInput = document.getElementById("floor-search-input");
+    if (searchInput) searchInput.value = "";
+}
+
+function renderFloorList(rooms) {
+    const container = document.getElementById("floor-list-container");
+    if (!container) return;
+    if (!rooms.length) {
+        container.innerHTML = `<div class="room-item empty"><div class="room-desc">No matching rooms found on this floor.</div></div>`;
+        return;
+    }
+    container.innerHTML = rooms.map(r => `
+        <div class="room-item">
+            <span class="room-num">${r.num}</span>
+            <div class="room-desc">${r.desc}</div>
+        </div>
+    `).join("");
+}
+
+function filterFloorRooms() {
+    const search = (document.getElementById("floor-search-input")?.value || "").toLowerCase().trim();
+    if (!FLOOR_DATA[currentFloorKey]) return;
+    if (!search) {
+        renderFloorList(FLOOR_DATA[currentFloorKey]);
+        return;
+    }
+    const filtered = FLOOR_DATA[currentFloorKey].filter(r => 
+        r.num.toLowerCase().includes(search) || r.desc.toLowerCase().includes(search)
+    );
+    renderFloorList(filtered);
+}
         <div class="room-item">
             <span class="room-num">${r.num}</span>
             <div class="room-desc">${r.desc}</div>

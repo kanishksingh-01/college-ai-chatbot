@@ -2867,3 +2867,389 @@ body {
         font-size: 13.5px;
     }
 }
+
+/* ==========================================================================
+   Comprehensive Modern UI Upgrades (2026-27 Edition)
+   Glassmorphism, Live Audio Waves, Radial Gauges & Telemetry
+   ========================================================================== */
+
+/* Brand Meta Badge */
+.brand-meta-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.brand-sub-badge {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #e0e7ff;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(8px);
+}
+
+/* Live AI Status Capsule in Header */
+.ai-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    color: #6ee7b7;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    user-select: none;
+    transition: var(--transition);
+}
+
+.ai-status-pill:hover {
+    background: rgba(16, 185, 129, 0.25);
+    border-color: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.ai-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: aiPulse 1.8s infinite;
+}
+
+@keyframes aiPulse {
+    0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Status Bar Quick Shortcut Bar */
+.status-quick-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.strip-pill-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.strip-pill-btn:hover {
+    background: var(--accent-blue-light);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Floating Scroll to Bottom Button */
+.scroll-bottom-btn {
+    position: absolute;
+    bottom: 84px;
+    right: 24px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    z-index: 50;
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+}
+
+.scroll-bottom-btn.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.scroll-bottom-btn:hover {
+    background: var(--accent-blue);
+    color: #ffffff;
+    border-color: var(--accent-blue);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+}
+
+/* Animated Audio Waveform for Voice & Speech */
+.audio-wave-anim {
+    display: none;
+    align-items: center;
+    gap: 3px;
+    height: 22px;
+    padding: 0 6px;
+    margin-right: 4px;
+}
+
+.audio-wave-anim.active {
+    display: inline-flex;
+}
+
+.audio-wave-anim .wave-bar {
+    width: 3px;
+    background: var(--accent-blue);
+    border-radius: 3px;
+    animation: waveBarBounce 1.2s infinite ease-in-out;
+}
+
+.audio-wave-anim .wave-bar:nth-child(1) { height: 35%; animation-delay: 0.0s; }
+.audio-wave-anim .wave-bar:nth-child(2) { height: 75%; animation-delay: 0.15s; }
+.audio-wave-anim .wave-bar:nth-child(3) { height: 100%; animation-delay: 0.3s; }
+.audio-wave-anim .wave-bar:nth-child(4) { height: 60%; animation-delay: 0.45s; }
+.audio-wave-anim .wave-bar:nth-child(5) { height: 40%; animation-delay: 0.6s; }
+
+@keyframes waveBarBounce {
+    0%, 100% { transform: scaleY(0.3); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes pulseMic {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.mic-btn.active {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    animation: pulseMic 1.4s infinite;
+}
+
+/* Radial Attendance Gauge in Bunk Calculator */
+.bunk-result-top-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.bunk-gauge-circle-wrap {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radial-gauge-svg {
+    transform: rotate(-90deg);
+}
+
+.radial-gauge-svg .gauge-bg {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .radial-gauge-svg .gauge-bg {
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.radial-gauge-svg .gauge-fill {
+    fill: none;
+    stroke: var(--accent-green);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease;
+}
+
+.gauge-center-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.gauge-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.gauge-rule-pill {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+.gauge-rule-pill.safe {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.gauge-rule-pill.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.gauge-rule-pill.danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-red);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Floor Navigator Search Box */
+.floor-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 7px 12px;
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+
+.floor-search-box:focus-within {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background: var(--bg-surface);
+}
+
+.floor-search-icon {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+#floor-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text-primary);
+    outline: none;
+}
+
+#floor-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.room-item.empty {
+    justify-content: center;
+    text-align: center;
+    opacity: 0.7;
+    padding: 16px;
+}
+
+/* Action Pill Buttons inside Bot Responses */
+.action-pill-btn {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(30, 61, 115, 0.15));
+    border: 1.5px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 8px 4px 4px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.1);
+}
+
+.action-pill-btn:hover {
+    background: var(--accent-blue);
+    color: #ffffff;
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+[data-theme="dark"] .action-pill-btn {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    border-color: #3b82f6;
+}
+
+[data-theme="dark"] .action-pill-btn:hover {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+/* 3D Holographic Card Shimmer */
+.id-card-face {
+    position: relative;
+    overflow: hidden;
+}
+
+.id-card-face::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+    transform: rotate(30deg);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.id-card-viewport:hover .id-card-face::after {
+    opacity: 0.9;
+}
+
+/* Mobile Responsive Adjustments for New Elements */
+@media (max-width: 768px) {
+    .brand-meta-badge {
+        display: none;
+    }
+    .status-quick-bar {
+        display: none;
+    }
+    .ai-status-pill .ai-status-label {
+        display: none;
+    }
+    .scroll-bottom-btn {
+        bottom: 74px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+    }
+}
