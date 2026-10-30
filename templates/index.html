@@ -14,7 +14,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v3">
+    <script>
+        (function() {
+            var savedTheme = localStorage.getItem('ghr_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
 
@@ -49,7 +55,7 @@
             </button>
 
             <!-- Theme toggle -->
-            <button id="theme-toggle-btn" class="icon-action-btn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+            <button id="theme-toggle-btn" class="icon-action-btn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme" onclick="toggleTheme()">
                 <span class="theme-icon">🌙</span>
             </button>
 
@@ -686,6 +692,6 @@
 
 <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v3"></script>
 </body>
 </html>

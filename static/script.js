@@ -235,16 +235,21 @@ function initTheme() {
 function setTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("ghr_theme", theme);
-    if (themeToggleBtn) {
-        themeToggleBtn.querySelector(".theme-icon").textContent = theme === "dark" ? "☀️" : "🌙";
+    const btn = document.getElementById("theme-toggle-btn");
+    if (btn) {
+        const icon = btn.querySelector(".theme-icon") || btn;
+        icon.textContent = theme === "dark" ? "☀️" : "🌙";
     }
 }
 
+function toggleTheme() {
+    const current = document.documentElement.getAttribute("data-theme") || "light";
+    setTheme(current === "dark" ? "light" : "dark");
+}
+window.toggleTheme = toggleTheme;
+
 if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-theme") || "light";
-        setTheme(current === "dark" ? "light" : "dark");
-    });
+    themeToggleBtn.addEventListener("click", toggleTheme);
 }
 
 function initSound() {
@@ -1076,12 +1081,6 @@ function filterFloorRooms() {
         r.num.toLowerCase().includes(search) || r.desc.toLowerCase().includes(search)
     );
     renderFloorList(filtered);
-}
-        <div class="room-item">
-            <span class="room-num">${r.num}</span>
-            <div class="room-desc">${r.desc}</div>
-        </div>
-    `).join("");
 }
 
 // Navigation Tool Buttons
