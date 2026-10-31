@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030_v8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261031_v9">
     <script>
         (function() {
             var savedTheme = localStorage.getItem('ghr_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -38,9 +38,9 @@
         <div class="header-actions">
             <!-- Multilingual Selector -->
             <div class="lang-selector" title="Switch Language / भाषा निवडा / भाषा चुनें">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="mr">मराठी</button>
-                <button class="lang-btn" data-lang="hi">हिंदी</button>
+                <button type="button" class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+                <button type="button" class="lang-btn" data-lang="mr" onclick="setLanguage('mr')">मराठी</button>
+                <button type="button" class="lang-btn" data-lang="hi" onclick="setLanguage('hi')">हिंदी</button>
             </div>
 
             <!-- Live AI Engine Indicator -->
@@ -692,6 +692,6 @@
 
 <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
-<script src="{{ url_for('static', filename='script.js') }}?v=20261030_v8"></script>
+<script src="{{ url_for('static', filename='script.js') }}?v=20261031_v9"></script>
 </body>
 </html>

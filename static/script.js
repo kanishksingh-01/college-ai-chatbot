@@ -176,6 +176,12 @@ const studentProfileTrigger = document.getElementById("student-profile-trigger")
 const scrollBottomBtn = document.getElementById("scroll-bottom-btn");
 const inputAudioWave = document.getElementById("input-audio-wave");
 
+// Active System Language
+let currentLanguage = "en";
+try {
+    currentLanguage = localStorage.getItem("ghr_lang") || "en";
+} catch (e) {}
+
 // Progressive Web App (PWA) Registration
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
@@ -928,155 +934,197 @@ const I18N = {
     }
 };
 
-let currentLanguage = localStorage.getItem("ghr_lang") || "en";
-
 function setLanguage(lang) {
     if (!I18N[lang]) return;
     currentLanguage = lang;
-    localStorage.setItem("ghr_lang", lang);
+    try {
+        localStorage.setItem("ghr_lang", lang);
+    } catch (e) {}
 
     const data = I18N[lang];
 
-    // 1. Header & Brand
-    const titleElem = document.getElementById("ui-brand-title");
-    const subElem = document.getElementById("ui-brand-subtitle");
-    if (titleElem) titleElem.textContent = data.brandTitle;
-    if (subElem) subElem.textContent = data.brandSubtitle;
+    try {
+        // 1. Header & Brand
+        const titleElem = document.getElementById("ui-brand-title");
+        const subElem = document.getElementById("ui-brand-subtitle");
+        if (titleElem) titleElem.textContent = data.brandTitle;
+        if (subElem) subElem.textContent = data.brandSubtitle;
 
-    const brandBadge = document.getElementById("brand-badge-text");
-    if (brandBadge) brandBadge.textContent = data.brandBadge;
+        const brandBadge = document.getElementById("brand-badge-text");
+        if (brandBadge) brandBadge.textContent = data.brandBadge;
 
-    const aiLabel = document.getElementById("ai-status-label");
-    if (aiLabel) aiLabel.textContent = data.aiOnline;
+        const aiLabel = document.getElementById("ai-status-label");
+        if (aiLabel) aiLabel.textContent = data.aiOnline;
 
-    const navSos = document.getElementById("nav-sos-btn");
-    if (navSos) navSos.innerHTML = data.sos;
+        const navSos = document.getElementById("nav-sos-btn");
+        if (navSos) navSos.innerHTML = data.sos;
 
-    const navLogout = document.getElementById("ui-nav-logout");
-    if (navLogout) navLogout.textContent = data.logout;
+        const navLogout = document.getElementById("ui-nav-logout");
+        if (navLogout) navLogout.textContent = data.logout;
 
-    const navLogin = document.getElementById("ui-nav-login");
-    if (navLogin) navLogin.textContent = data.login;
+        const navLogin = document.getElementById("ui-nav-login");
+        if (navLogin) navLogin.textContent = data.login;
 
-    const navAdmin = document.getElementById("nav-admin-btn");
-    if (navAdmin) navAdmin.textContent = data.admin;
-
-    // 2. Chat Status Strip
-    const statusElem = document.getElementById("ui-status-text");
-    if (statusElem) statusElem.textContent = data.statusText;
-
-    const stripBunk = document.getElementById("strip-btn-bunk");
-    if (stripBunk) stripBunk.textContent = data.stripBunk;
-
-    const stripId = document.getElementById("strip-btn-id");
-    if (stripId) stripId.textContent = data.stripId;
-
-    const stripBonafide = document.getElementById("strip-btn-bonafide");
-    if (stripBonafide) stripBonafide.textContent = data.stripBonafide;
-
-    const stripMap = document.getElementById("strip-btn-map");
-    if (stripMap) stripMap.textContent = data.stripMap;
-
-    const endChat = document.getElementById("end-chat-btn");
-    if (endChat) endChat.textContent = data.endChat;
-
-    // 3. Welcome Message & Greeting
-    updateGreeting(lang);
-
-    const welcomeSub = document.getElementById("welcome-subtext");
-    if (welcomeSub) welcomeSub.textContent = data.welcomeSub;
-
-    // 4. 4 Interactive Service Tiles
-    const tileBunkTitle = document.getElementById("tile-bunk-title");
-    if (tileBunkTitle) tileBunkTitle.textContent = data.tileBunkTitle;
-    const tileBunkSub = document.getElementById("tile-bunk-sub");
-    if (tileBunkSub) tileBunkSub.textContent = data.tileBunkSub;
-
-    const tileIdTitle = document.getElementById("tile-id-title");
-    if (tileIdTitle) tileIdTitle.textContent = data.tileIdTitle;
-    const tileIdSub = document.getElementById("tile-id-sub");
-    if (tileIdSub) tileIdSub.textContent = data.tileIdSub;
-
-    const tileBonafideTitle = document.getElementById("tile-bonafide-title");
-    if (tileBonafideTitle) tileBonafideTitle.textContent = data.tileBonafideTitle;
-    const tileBonafideSub = document.getElementById("tile-bonafide-sub");
-    if (tileBonafideSub) tileBonafideSub.textContent = data.tileBonafideSub;
-
-    const tileMapTitle = document.getElementById("tile-map-title");
-    if (tileMapTitle) tileMapTitle.textContent = data.tileMapTitle;
-    const tileMapSub = document.getElementById("tile-map-sub");
-    if (tileMapSub) tileMapSub.textContent = data.tileMapSub;
-
-    // 5. Student Logged In Notice Card
-    const studentNotice = document.getElementById("student-notice-text");
-    if (studentNotice) {
-        const studentName = studentNotice.dataset.studentName || 
-            (studentNotice.querySelector("strong") ? studentNotice.querySelector("strong").textContent : "Student");
-        studentNotice.innerHTML = data.studentNotice.replace("{name}", studentName);
+        const navAdmin = document.getElementById("nav-admin-btn");
+        if (navAdmin) navAdmin.textContent = data.admin;
+    } catch (e) {
+        console.warn("Lang Header update error:", e);
     }
 
-    // 6. Student Quick Prompts Chips
-    const chipBunk = document.getElementById("chip-bunk");
-    if (chipBunk) chipBunk.textContent = data.chipBunk;
-    const chipAtt = document.getElementById("chip-att");
-    if (chipAtt) chipAtt.textContent = data.chipAtt;
-    const chipId = document.getElementById("chip-id");
-    if (chipId) chipId.textContent = data.chipId;
-    const chipBonafide = document.getElementById("chip-bonafide");
-    if (chipBonafide) chipBonafide.textContent = data.chipBonafide;
-    const chipFee = document.getElementById("chip-fee");
-    if (chipFee) chipFee.textContent = data.chipFee;
-    const chipCgpa = document.getElementById("chip-cgpa");
-    if (chipCgpa) chipCgpa.textContent = data.chipCgpa;
+    try {
+        // 2. Chat Status Strip
+        const statusElem = document.getElementById("ui-status-text");
+        if (statusElem) statusElem.textContent = data.statusText;
 
-    // 7. Topics Header & Toggle Text
-    const topicsElem = document.getElementById("ui-topics-label");
-    if (topicsElem) topicsElem.textContent = data.topicsLabel;
+        const stripBunk = document.getElementById("strip-btn-bunk");
+        if (stripBunk) stripBunk.textContent = data.stripBunk;
 
-    const toggleText = document.getElementById("toggle-topics-text");
-    const tray = document.getElementById("all-topics-tray");
-    if (toggleText) {
-        const isCollapsed = !tray || tray.classList.contains("collapsed");
-        toggleText.textContent = isCollapsed ? data.toggleTopicsCollapsed : data.toggleTopicsExpanded;
+        const stripId = document.getElementById("strip-btn-id");
+        if (stripId) stripId.textContent = data.stripId;
+
+        const stripBonafide = document.getElementById("strip-btn-bonafide");
+        if (stripBonafide) stripBonafide.textContent = data.stripBonafide;
+
+        const stripMap = document.getElementById("strip-btn-map");
+        if (stripMap) stripMap.textContent = data.stripMap;
+
+        const endChat = document.getElementById("end-chat-btn");
+        if (endChat) endChat.textContent = data.endChat;
+    } catch (e) {
+        console.warn("Lang Status Strip update error:", e);
     }
 
-    // 8. All Topic Chips
-    document.querySelectorAll(".quick-reply-btn").forEach((btn) => {
-        const q = btn.dataset.query;
-        if (q && TOPIC_I18N[q] && TOPIC_I18N[q][lang]) {
-            const span = btn.querySelector("span");
-            if (span) span.textContent = TOPIC_I18N[q][lang];
+    try {
+        // 3. Welcome Message & Greeting
+        updateGreeting(lang);
+
+        const welcomeSub = document.getElementById("welcome-subtext");
+        if (welcomeSub) welcomeSub.textContent = data.welcomeSub;
+    } catch (e) {
+        console.warn("Lang Welcome text update error:", e);
+    }
+
+    try {
+        // 4. 4 Interactive Service Tiles
+        const tileBunkTitle = document.getElementById("tile-bunk-title");
+        if (tileBunkTitle) tileBunkTitle.textContent = data.tileBunkTitle;
+        const tileBunkSub = document.getElementById("tile-bunk-sub");
+        if (tileBunkSub) tileBunkSub.textContent = data.tileBunkSub;
+
+        const tileIdTitle = document.getElementById("tile-id-title");
+        if (tileIdTitle) tileIdTitle.textContent = data.tileIdTitle;
+        const tileIdSub = document.getElementById("tile-id-sub");
+        if (tileIdSub) tileIdSub.textContent = data.tileIdSub;
+
+        const tileBonafideTitle = document.getElementById("tile-bonafide-title");
+        if (tileBonafideTitle) tileBonafideTitle.textContent = data.tileBonafideTitle;
+        const tileBonafideSub = document.getElementById("tile-bonafide-sub");
+        if (tileBonafideSub) tileBonafideSub.textContent = data.tileBonafideSub;
+
+        const tileMapTitle = document.getElementById("tile-map-title");
+        if (tileMapTitle) tileMapTitle.textContent = data.tileMapTitle;
+        const tileMapSub = document.getElementById("tile-map-sub");
+        if (tileMapSub) tileMapSub.textContent = data.tileMapSub;
+    } catch (e) {
+        console.warn("Lang Service Tiles update error:", e);
+    }
+
+    try {
+        // 5. Student Logged In Notice Card
+        const studentNotice = document.getElementById("student-notice-text");
+        if (studentNotice) {
+            const strongEl = studentNotice.querySelector("strong");
+            const studentName = studentNotice.getAttribute("data-student-name") || 
+                (strongEl ? strongEl.textContent : "Student");
+            if (data.studentNotice) {
+                studentNotice.innerHTML = data.studentNotice.replace("{name}", studentName);
+            }
         }
-    });
+    } catch (e) {
+        console.warn("Lang Student Notice update error:", e);
+    }
 
-    // 9. Input & Hint
-    if (userInput) userInput.placeholder = data.placeholder;
-    const hintElem = document.getElementById("ui-input-hint");
-    if (hintElem) hintElem.innerHTML = data.inputHint;
+    try {
+        // 6. Student Quick Prompts Chips
+        const chipBunk = document.getElementById("chip-bunk");
+        if (chipBunk) chipBunk.textContent = data.chipBunk;
+        const chipAtt = document.getElementById("chip-att");
+        if (chipAtt) chipAtt.textContent = data.chipAtt;
+        const chipId = document.getElementById("chip-id");
+        if (chipId) chipId.textContent = data.chipId;
+        const chipBonafide = document.getElementById("chip-bonafide");
+        if (chipBonafide) chipBonafide.textContent = data.chipBonafide;
+        const chipFee = document.getElementById("chip-fee");
+        if (chipFee) chipFee.textContent = data.chipFee;
+        const chipCgpa = document.getElementById("chip-cgpa");
+        if (chipCgpa) chipCgpa.textContent = data.chipCgpa;
+    } catch (e) {
+        console.warn("Lang Chips update error:", e);
+    }
 
-    // 10. Update Active Button State
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-    });
+    try {
+        // 7. Topics Header & Toggle Text
+        const topicsElem = document.getElementById("ui-topics-label");
+        if (topicsElem) topicsElem.textContent = data.topicsLabel;
 
-    // 11. Welcome message copy/listen buttons
-    const welcomeMsg = document.getElementById("welcome-message-content");
-    if (welcomeMsg) {
-        const parentMsg = welcomeMsg.closest(".bot-msg");
-        if (parentMsg) {
-            const copyBtn = parentMsg.querySelector(".copy-btn");
-            if (copyBtn) copyBtn.textContent = data.copyBtn;
-            const speakBtn = parentMsg.querySelector(".speak-btn");
-            if (speakBtn && !speakBtn.classList.contains("active")) speakBtn.textContent = data.listenBtn;
+        const toggleText = document.getElementById("toggle-topics-text");
+        const tray = document.getElementById("all-topics-tray");
+        if (toggleText) {
+            const isCollapsed = !tray || tray.classList.contains("collapsed");
+            toggleText.textContent = isCollapsed ? data.toggleTopicsCollapsed : data.toggleTopicsExpanded;
         }
+
+        // 8. All Topic Chips
+        document.querySelectorAll(".quick-reply-btn").forEach((btn) => {
+            const q = btn.dataset ? btn.dataset.query : btn.getAttribute("data-query");
+            if (q && TOPIC_I18N[q] && TOPIC_I18N[q][lang]) {
+                const span = btn.querySelector("span");
+                if (span) span.textContent = TOPIC_I18N[q][lang];
+            }
+        });
+    } catch (e) {
+        console.warn("Lang Topics update error:", e);
     }
 
-    // 12. Voice Recognition Language
-    if (recognition) {
-        recognition.lang = lang === "mr" ? "mr-IN" : (lang === "hi" ? "hi-IN" : "en-IN");
-    }
+    try {
+        // 9. Input & Hint
+        if (userInput) userInput.placeholder = data.placeholder;
+        const hintElem = document.getElementById("ui-input-hint");
+        if (hintElem) hintElem.innerHTML = data.inputHint;
+    } catch (e) {}
 
-    showToast(data.toast);
+    try {
+        // 10. Update Active Button State
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+            const bLang = btn.dataset ? btn.dataset.lang : btn.getAttribute("data-lang");
+            btn.classList.toggle("active", bLang === lang);
+        });
+    } catch (e) {}
+
+    try {
+        // 11. Welcome message copy/listen buttons
+        const welcomeMsg = document.getElementById("welcome-message-content");
+        if (welcomeMsg && typeof welcomeMsg.closest === "function") {
+            const parentMsg = welcomeMsg.closest(".bot-msg");
+            if (parentMsg) {
+                const copyBtn = parentMsg.querySelector(".copy-btn");
+                if (copyBtn) copyBtn.textContent = data.copyBtn;
+                const speakBtn = parentMsg.querySelector(".speak-btn");
+                if (speakBtn && !speakBtn.classList.contains("active")) speakBtn.textContent = data.listenBtn;
+            }
+        }
+    } catch (e) {}
+
+    try {
+        // 12. Voice Recognition Language
+        if (recognition) {
+            recognition.lang = lang === "mr" ? "mr-IN" : (lang === "hi" ? "hi-IN" : "en-IN");
+        }
+    } catch (e) {}
+
+    try {
+        showToast(data.toast);
+    } catch (e) {}
 }
 
 document.querySelectorAll(".lang-btn").forEach((btn) => {
@@ -1398,3 +1446,4 @@ window.toggleAllTopics = toggleAllTopics;
 window.toggleTheme = toggleTheme;
 window.printBonafideCertificate = printBonafideCertificate;
 window.updateBonafidePurpose = updateBonafidePurpose;
+window.setLanguage = setLanguage;
